@@ -1,0 +1,1 @@
+export { NamedSource } from './NamedSource';
