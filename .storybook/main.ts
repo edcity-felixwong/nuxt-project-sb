@@ -30,12 +30,12 @@ const config: StorybookConfig = {
     config.resolve.alias ??= {};
     config.resolve.alias = {
       ...config.resolve.alias,
-      "#storybook": resolveRoot(".storybook"),
-      "#stories": resolveRoot(".stories"),
+      // "#storybook": resolveRoot(".storybook"),
+      // "#stories": resolveRoot(".stories"),
       ...nuxtPaths,
       ...paths,
     };
-    console.log("🚀 ~ file: main.ts:38 ~ viteFinal: ~ config:", config);
+    console.log("🚀 ~ file: main.ts:39 ~ viteFinal: ~ config:", config)
     return config;
   },
 };

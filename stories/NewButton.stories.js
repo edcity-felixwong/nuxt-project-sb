@@ -1,4 +1,5 @@
 import MyButton from '@/components/star/atom/TryButton';
+console.log("🚀 ~ file: NewButton.stories.js:2 ~ MyButton:", MyButton.props)
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 export default {

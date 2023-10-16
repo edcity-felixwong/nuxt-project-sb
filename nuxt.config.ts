@@ -2,7 +2,12 @@
 export default defineNuxtConfig({
   ssr: false,
   app: {
-    buildAssetsDir: 'assets/'
+    buildAssetsDir: "assets/",
   },
-  devtools: { enabled: true }
-})
+  devtools: { enabled: true },
+  alias: {
+    "#storybook": "../.storybook",
+    "#storybook/*": "../.storybook/*",
+    "#stories": "../stories",
+  },
+});

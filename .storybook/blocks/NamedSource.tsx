@@ -60,7 +60,6 @@ export const NamedSource = ({
   ...rest
 }: Props) => {
   if (!name) return <Source {...rest} />;
-  console.log(showLanguage);
   return (
     <SourceWrapper>
       <SourceHeader>{name}</SourceHeader>
