@@ -9,10 +9,11 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@storybook/addon-a11y": "^7.4.6",
     "@storybook/addon-essentials": "^7.4.6",
     "@storybook/addon-interactions": "^7.4.6",
     "@storybook/addon-links": "^7.4.6",
@@ -22,6 +23,7 @@
     "@storybook/theming": "^7.4.6",
     "@storybook/vue3": "^7.4.6",
     "@storybook/vue3-vite": "^7.4.6",
+    "chromatic": "^7.4.0",
     "less": "^4.2.0",
     "nuxt": "^3.7.4",
     "react": "^18.2.0",
@@ -32,5 +34,8 @@
   },
   "dependencies": {
     "tdesign-vue-next": "^1.6.2"
-  }
+  },
+  "version": "",
+  "readme": "ERROR: No README data found!",
+  "_id": "nuxt-app@"
 }

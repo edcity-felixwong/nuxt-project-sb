@@ -1,5 +1,5 @@
 import type { StorybookConfig } from "@storybook/vue3-vite";
-import { paths, nuxtPaths,resolveRoot } from "./parse-tsconfig";
+import { paths, nuxtPaths, resolveRoot } from "./parse-tsconfig";
 const config: StorybookConfig = {
   stories: [
     "../stories/**/*.mdx",
@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     "@storybook/addon-links",
     "@storybook/addon-essentials",
     "@storybook/addon-interactions",
+    "@storybook/addon-a11y",
   ],
   framework: {
     name: "@storybook/vue3-vite",
@@ -25,16 +26,16 @@ const config: StorybookConfig = {
   <script src="https://cdn.tailwindcss.com" defer></script>
   `,
   viteFinal: async (config) => {
-    config.resolve ??= {}
-    config.resolve.alias ??= {}
+    config.resolve ??= {};
+    config.resolve.alias ??= {};
     config.resolve.alias = {
       ...config.resolve.alias,
-      '#storybook': resolveRoot('.storybook'),
-      '#stories': resolveRoot('.stories'),
+      "#storybook": resolveRoot(".storybook"),
+      "#stories": resolveRoot(".stories"),
       ...nuxtPaths,
-      ...paths
-    }
-    console.log("🚀 ~ file: main.ts:38 ~ viteFinal: ~ config:", config)
+      ...paths,
+    };
+    console.log("🚀 ~ file: main.ts:38 ~ viteFinal: ~ config:", config);
     return config;
   },
 };

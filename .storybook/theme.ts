@@ -3,7 +3,7 @@ import { create } from "@storybook/theming/create";
 export default create({
     base: 'light',
   // Typography
-  fontBase: `'Inter',"Open Sans", sans-serif`,
+  fontBase: `'Inter',"Open Sans", Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif`,
   fontCode: ` Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace`,
 
   brandTitle: 'My custom Storybook',
@@ -37,14 +37,4 @@ export default create({
   inputBorderRadius: 16,
 //   base: "light",
 
-//   appBorderRadius: 16,
-//   inputBorderRadius: 16,
-
-//   fontBase: `Inter`,
-//   fontCode: ``,
-
-//   brandTitle: "My custom Storybook",
-//   brandUrl: "https://example.com",
-//   brandImage: "https://storybook.js.org/images/placeholders/350x150.png",
-//   brandTarget: "_self",
 });
