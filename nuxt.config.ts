@@ -10,5 +10,9 @@ export default defineNuxtConfig({
     "#storybook/*": "../.storybook/*",
     "#stories": "../stories",
   },
+  modules: ['@nuxtjs/tailwindcss'],
   components: [{ path: "./components/star/atom", prefix: "Star" }],
+  tailwindcss: {
+    cssPath: './styles/global.css',
+  }
 });

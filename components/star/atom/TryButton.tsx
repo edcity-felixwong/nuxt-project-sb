@@ -1,5 +1,5 @@
-import { defineComponent, h, ExtractPropTypes, DefineComponent } from 'vue';
-import { Button as TButton, TdButtonProps } from "tdesign-vue-next/esm";
+import { defineComponent, h } from 'vue';
+import { Button as TButton } from "tdesign-vue-next/esm";
 // import TTButton from "tdesign-vue-next/esm/button/button";
 import TTButtonProp from "tdesign-vue-next/esm/button/props";
 export { TTButtonProp as StarButtonProp }
@@ -20,7 +20,7 @@ export default defineComponent({
     props: TButton.props as unknown as typeof TTButtonProp,
     setup(props, { attrs, slots }) {
         /* https://stackoverflow.com/questions/69875273/non-function-value-encountered-for-default-slot-in-vue-3-composition-api-comp */
-        return () => h(TButton, { ...props, ...attrs }, () => slots.default?.()) // If send `slots.default` instead, can it be non-function?
+        return () => h(TButton, { ...props, ...attrs ,className:'rounded-lg' }, () => slots.default?.()) // If send `slots.default` instead, can it be non-function?
         // return () => <TButton {...attrs} {...props}>{slots}</TButton>
     }
 })
