@@ -10,4 +10,5 @@ export default defineNuxtConfig({
     "#storybook/*": "../.storybook/*",
     "#stories": "../stories",
   },
+  components: [{ path: "./components/star/atom", prefix: "Star" }],
 });

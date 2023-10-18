@@ -49,9 +49,7 @@ interface SimpleArgType {
 }
 
 export type Arg = ArgTypes[string] & SimpleArgType;
-type Verbose<T> = { [K in keyof T]: T[K] } & {};
 
-type r1231 = Verbose<Arg>;
 
 export const withDefault = (
   val: SimplePropType["defaultValue"]

@@ -1,7 +1,8 @@
 import { Preview } from "@storybook/vue3";
 import { themes } from "@storybook/theming";
-import theme from './theme'
-import './../styles'
+import theme from "./theme";
+import "./../styles";
+import  ThemeProvider  from "@/components/star/atom/ThemeProvider/ThemeProvider";
 
 const preview: Preview = {
   parameters: {
@@ -15,12 +16,17 @@ const preview: Preview = {
     docs: {
       theme,
       toc: {
-        disable:false,
-        headingSelector: 'h2, h3, h4, h5, h6',
-      }
+        disable: false,
+        headingSelector: "h2, h3, h4, h5, h6",
+      },
     },
   },
-  
+  decorators: [
+    (story) => ({
+      components: { ThemeProvider, story },
+      template: `<ThemeProvider><story /></ThemeProvider>`,
+    }),
+  ],
 };
 
 export default preview;

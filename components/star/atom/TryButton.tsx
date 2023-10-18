@@ -9,9 +9,9 @@ export { TTButtonProp as StarButtonProp }
 // TButton.__defaults
 // type PropType1 = InstanceType<typeof TButton>['$props']
 // // type PropType2 = (typeof TButton).__defaults
-type Clear<T> = {
-    [P in keyof T]: T[P]
-} & {}
+// type Clear<T> = {
+//     [P in keyof T]: T[P]
+// } & {}
 // type qwr123 = Clear<TdButtonProps>
 // type PropType3 = PropType<TdButtonProps>
 // type t1413=Clear<ExtractPropTypes<typeof TTButtonProp>>

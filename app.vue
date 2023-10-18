@@ -1,5 +1,9 @@
 <template>
-  <div>
+  <StarThemeProvider>
     <NuxtPage />
-  </div>
+  </StarThemeProvider>
 </template>
+<script setup>
+import "@/styles";
+import { StarThemeProvider } from "#components";
+</script>
