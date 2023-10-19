@@ -1,7 +1,10 @@
 import { Preview } from "@storybook/vue3"
 import { themes } from "@storybook/theming"
 import theme from "./theme"
+/* Import project style */
 import "./../styles"
+
+import "./sb-style.css"
 import ThemeProvider from "@/components/star/atom/ThemeProvider/ThemeProvider"
 
 const preview: Preview = {

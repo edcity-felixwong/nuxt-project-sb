@@ -13,3 +13,51 @@ import { NamedSource } from "#storybook/blocks"
 <div>{JSON.stringify(JSON.parse(import.meta.env.SB_PATH_ALIAS))}</div>
 
 }
+
+> This is evaluated at build time.
+
+## How to add path aliases
+
+Create path aliases in the `/config/nuxt-config.ts`, notice that the path is relative to the `.nuxt` folder, for example `/components/ui/*` should be written as `../components/ui/*`, because this will feed into `nuxt.config.ts` and `Nuxt` will handle the mege for `tsconfig.json` and `vite.config.ts` respectively.
+
+<NamedSource
+  code={`
+export const config = {
+  // ...
+  alias: {
+    "@/": "../",
+    "@/*": "../*",
+    "#mypath": "../mypath",
+  }
+}
+`}
+  name="/config/nuxt-config.ts"
+  language="ts"
+/>
+
+## Why bother twisting
+
+The ultimate goal is to ensure all the ts compiler and bundler resolving the same path. Each sub-system in this project has its own configuration, in our case, we have the `main`, `storybook` and `test` environment, we have to make sure that they know the same path 🤔.
+
+There is no easy way to _extend_ `TypeScript` path aliases from `tsconfig.json`, it would only overwrite the path if we do this:
+
+<NamedSource
+  code={`
+{
+  "extends": "./.nuxt/tsconfig.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./*"]
+    }
+  }
+}
+`}
+  name="/tsconfig.json"
+  language="json"
+/>
+
+Also, we have to make sure `TypeScript` and `Vite` resolving the same path. Therefore we leverage `Nuxt` to takes care of the alignment and the merging job, all we need to do is to feed the `alias` in `nuxt.config.ts` 😎. (and feed the same config into `storybook` and `vitest` 😂).
+
+## Why my path is not working
+
+`TypeScript` and `Vite` do separate jobs, `TypeScript` resolves path just by `tsconfig.json` and intellisense can recognize it, but that doesn't mean it can resolves at run time.
