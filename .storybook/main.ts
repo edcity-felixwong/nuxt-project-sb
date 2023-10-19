@@ -1,5 +1,5 @@
-import type { StorybookConfig } from "@storybook/vue3-vite";
-import { paths, nuxtPaths, resolveRoot } from "./parse-tsconfig";
+import type { StorybookConfig } from "@storybook/vue3-vite"
+import { paths, nuxtPaths } from "./../utils/parse-tsconfig"
 const config: StorybookConfig = {
   stories: [
     "../stories/**/*.mdx",
@@ -26,17 +26,17 @@ const config: StorybookConfig = {
   <script src="https://cdn.tailwindcss.com" defer></script>
   `,
   viteFinal: async (config) => {
-    config.resolve ??= {};
-    config.resolve.alias ??= {};
+    config.resolve ??= {}
+    config.resolve.alias ??= {}
     config.resolve.alias = {
       ...config.resolve.alias,
-      // "#storybook": resolveRoot(".storybook"),
-      // "#stories": resolveRoot(".stories"),
+      /* Just ensure at least the root is defined 😂 */
+      "@": "./",
+      "@/*": "./*",
       ...nuxtPaths,
       ...paths,
-    };
-    console.log("🚀 ~ file: main.ts:39 ~ viteFinal: ~ config:", config)
-    return config;
+    }
+    return config
   },
-};
-export default config;
+}
+export default config

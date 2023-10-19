@@ -1,5 +1,8 @@
+import { type DefineNuxtConfig, defineNuxtConfig } from "nuxt/config"
+type NuxtConfig = Parameters<DefineNuxtConfig>[0]
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
+export const config = {
   ssr: false,
   app: {
     baseURL: process.env.NODE_ENV === "development" ? "/" : "/testroute/",
@@ -16,4 +19,5 @@ export default defineNuxtConfig({
   tailwindcss: {
     cssPath: "./styles/global.css",
   },
-})
+} satisfies NuxtConfig
+export default defineNuxtConfig(config)
