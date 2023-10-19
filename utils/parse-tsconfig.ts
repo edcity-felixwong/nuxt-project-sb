@@ -1,6 +1,6 @@
 import * as path from "path"
 import * as fs from "fs"
-import { config } from "../nuxt.config"
+import { config } from "../config/nuxt-config"
 
 export const resolveRoot = (...pathName: string[]): string =>
   path.resolve(path.dirname(__dirname), ...pathName)
