@@ -1,21 +1,15 @@
 import { Source, Markdown } from "@storybook/addon-docs/blocks"
+import { Meta } from "@storybook/blocks"
 import { NamedSource } from "#storybook/blocks"
 
-```js
-function t1() {
-  return 0
+<Meta title="Path Alias" />
+
+# Path Alias
+
+{/* <StoryWithLocale /> */}
+
+{
+
+<div>{JSON.stringify(JSON.parse(import.meta.env.SB_PATH_ALIAS))}</div>
+
 }
-```
-
-<Source code={`abc`} language="jsx" dark={false} className="test" />
-
-some text
-
-<NamedSource
-  code={`a12323sfbcqwe`}
-  language="jsx"
-  dark={false}
-  name="asd-123qd.js"
-/>
-
-some text

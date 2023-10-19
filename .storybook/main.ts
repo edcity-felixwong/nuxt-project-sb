@@ -1,5 +1,5 @@
 import type { StorybookConfig } from "@storybook/vue3-vite"
-import { paths, nuxtPaths } from "./../utils/parse-tsconfig"
+import { paths, nuxtPaths, pathsRoot } from "./../utils/parse-tsconfig"
 const config: StorybookConfig = {
   stories: [
     "../stories/**/*.mdx",
@@ -26,17 +26,38 @@ const config: StorybookConfig = {
   <script src="https://cdn.tailwindcss.com" defer></script>
   `,
   viteFinal: async (config) => {
-    config.resolve ??= {}
-    config.resolve.alias ??= {}
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      /* Just ensure at least the root is defined 😂 */
-      "@": "./",
-      "@/*": "./*",
-      ...nuxtPaths,
-      ...paths,
-    }
-    return config
+    return await Promise.resolve(config)
+      .then(addPathAlias({ ...nuxtPaths, ...paths }))
+      .then(addEnvPrefix("SB_"))
   },
+  env: (config) => ({
+    ...config,
+    SB_PATH_ALIAS: JSON.stringify(pathsRoot),
+  }),
 }
 export default config
+
+/* Just to make pipe */
+type ViteConfig = Parameters<StorybookConfig["viteFinal"]>[0]
+function addPathAlias(alias: Required<ViteConfig>["resolve"]["alias"]) {
+  return (config: ViteConfig): ViteConfig => {
+    const originalAlias = config?.resolve?.alias ?? {}
+
+    return {
+      ...config,
+      resolve: {
+        ...(config?.resolve ?? {}),
+        alias: {
+          ...originalAlias,
+          ...alias,
+        },
+      },
+    }
+  }
+}
+function addEnvPrefix(envPrefix: ViteConfig["envPrefix"]) {
+  return (config: ViteConfig): ViteConfig => ({
+    ...config,
+    envPrefix,
+  })
+}

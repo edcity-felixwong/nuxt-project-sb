@@ -1,8 +1,8 @@
-import { Preview } from "@storybook/vue3";
-import { themes } from "@storybook/theming";
-import theme from "./theme";
-import "./../styles";
-import  ThemeProvider  from "@/components/star/atom/ThemeProvider/ThemeProvider";
+import { Preview } from "@storybook/vue3"
+import { themes } from "@storybook/theming"
+import theme from "./theme"
+import "./../styles"
+import ThemeProvider from "@/components/star/atom/ThemeProvider/ThemeProvider"
 
 const preview: Preview = {
   parameters: {
@@ -27,6 +27,6 @@ const preview: Preview = {
       template: `<ThemeProvider><story /></ThemeProvider>`,
     }),
   ],
-};
+}
 
-export default preview;
+export default preview

@@ -23,16 +23,14 @@ const getTsConfig = (
 
 const nuxtTsConfig = getTsConfig("tsconfig.json", resolveNuxt)
 
-// const rootTsConfig = getTsConfig("tsconfig.json", resolveRoot)
-
 const pathToAlias = (
-  paths: Record<string, string[]>,
+  paths: Record<string, string | string[]>,
   resolver: PathResolver
 ): Record<string, string> =>
   Object.entries(paths).reduce(
     (acc, [key, val]) => ({
       ...acc,
-      [key]: resolver(val[0]),
+      [key]: Array.isArray(val) ? resolver(val[0]) : resolver(val),
     }),
     {}
   )
@@ -47,6 +45,12 @@ function parsePathsTsConfig(
   >
   return pathToAlias(paths, resolver)
 }
-
+/** These are absolute paths that vite can resolve */
 export const nuxtPaths = parsePathsTsConfig(nuxtTsConfig, resolveNuxt)
-export const paths = config.alias
+export const paths = pathToAlias(config.alias, resolveNuxt)
+
+/* This is relative to `/`, eg `/components`, used for docs */
+export const pathsRoot = {
+  ...parsePathsTsConfig(nuxtTsConfig, (p) => path.posix.join("/", p)),
+  ...pathToAlias(config.alias, (p) => path.posix.join("/", p)),
+}
