@@ -4,7 +4,7 @@
   </TButton>
 </template>
 <script lang="ts">
-import { Button as TButton, type TdButtonProps } from "tdesign-vue-next/esm";
+import { Button as TButton, type TdButtonProps } from "tdesign-vue-next/esm"
 // type VueDefault =
 //   | {
 //       default?: any;
@@ -29,7 +29,7 @@ import { Button as TButton, type TdButtonProps } from "tdesign-vue-next/esm";
 // const TButtonDefault = typeToDefault(TButton.props);
 </script>
 <script setup lang="ts">
-const props = withDefaults(defineProps<TdButtonProps>(), {});
+const props = withDefaults(defineProps<TdButtonProps>(), {})
 const match =
   <T>(discriminatedKeyword: T) =>
   (
@@ -37,12 +37,11 @@ const match =
       ? Record<T, Function | any>
       : Record<Extract<T, PropertyKey>, any> & { _: any }
   ) => {
-    const runIfFunction = (v: any) => (typeof v === "function" ? v() : v);
+    const runIfFunction = (v: any) => (typeof v === "function" ? v() : v)
     return discriminatedKeyword in keyResultPair
       ? runIfFunction(keyResultPair[discriminatedKeyword])
-      : runIfFunction(keyResultPair[_]);
-  };
-
+      : runIfFunction(keyResultPair[_])
+  }
 
 // const radius = match(props.size)({
 //   small: "var(--t-radius-sm)",

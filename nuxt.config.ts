@@ -2,7 +2,8 @@
 export default defineNuxtConfig({
   ssr: false,
   app: {
-    buildAssetsDir: "assets/",
+    baseURL: process.env.NODE_ENV === "development" ? "/" : "/testroute/",
+    buildAssetsDir: "/assets/",
   },
   devtools: { enabled: true },
   alias: {
@@ -10,9 +11,9 @@ export default defineNuxtConfig({
     "#storybook/*": "../.storybook/*",
     "#stories": "../stories",
   },
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ["@nuxtjs/tailwindcss"],
   components: [{ path: "./components/star/atom", prefix: "Star" }],
   tailwindcss: {
-    cssPath: './styles/global.css',
-  }
-});
+    cssPath: "./styles/global.css",
+  },
+})
