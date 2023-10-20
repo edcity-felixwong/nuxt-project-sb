@@ -49,7 +49,7 @@ There is no easy way to _extend_ `TypeScript` path aliases from `tsconfig.json`,
     "paths": {
       "@/*": ["./*"]
     }
-  }
+  } // This doesn't work
 }
 `}
   name="/tsconfig.json"
@@ -60,4 +60,4 @@ Also, we have to make sure `TypeScript` and `Vite` resolving the same path. Ther
 
 ## Why my path is not working
 
-`TypeScript` and `Vite` do separate jobs, `TypeScript` resolves path just by `tsconfig.json` and intellisense can recognize it, but that doesn't mean it can resolves at run time.
+`TypeScript` and `Vite` do separate jobs, `TypeScript` resolves path just by `tsconfig.json` and intellisense can recognize it, but that doesn't necessary mean it can resolves at run time.
