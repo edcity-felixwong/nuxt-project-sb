@@ -1,0 +1,107 @@
+import { Meta } from "@storybook/blocks"
+import Hero from "./assets/hero.png"
+import Github from "./assets/github.svg"
+import Figma from "./assets/figma.png"
+import Discord from "./assets/discord.svg"
+import Youtube from "./assets/youtube.svg"
+
+export const RightArrow = () => (
+  <svg
+    viewBox="0 0 14 14"
+    width="8px"
+    height="14px"
+    style={{
+      marginLeft: "4px",
+      display: "inline-block",
+      shapeRendering: "inherit",
+      verticalAlign: "middle",
+      fill: "currentColor",
+      "path fill": "currentColor",
+    }}
+  >
+    <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
+  </svg>
+)
+
+<Meta title="Welcome" />
+
+<img
+  style={{ borderRadius: "4px" }}
+  src={Hero}
+  alt="Integrate your tools with Storybook to connect workflows."
+/>
+
+<div className="not-sr-only spacer h-16 w-full"></div>
+
+# Welcome to STAR UI 🤘
+
+We encourage any feedback and ideas towards the design system itself as well! If you are interested in contributing, check out our guidelines to get started. Have any questions? Open an issue on our Design System issue tracker. Otherwise, be sure to check out the resources below!
+
+<div className="not-sr-only spacer h-16 w-full"></div>
+
+## Contributing to the design system
+
+We encourage any feedback and ideas towards the design system itself as well! If you are interested in contributing, check out our guidelines to get started. Have any questions? Open an issue on our Design System issue tracker. Otherwise, be sure to check out the resources below!
+
+<div className="sb-container">
+  <div className="sb-section flex flex-row gap-5 w-full">
+    <div className="sb-section-item">
+      <img
+        src={Github}
+        className="h-12 w-12"
+        alt="A wall of logos representing different styling technologies"
+      />
+      <h4 className="sb-section-item-heading">Add styling and CSS</h4>
+      <p className="sb-section-item-paragraph">
+        Like with web applications, there are many ways to include CSS within
+        Storybook. Learn more about setting up styling within Storybook.
+      </p>
+      <a
+        href="https://storybook.js.org/docs/vue/configure/styling-and-css"
+        target="_blank"
+      >
+        Explore the repository <RightArrow />
+      </a>
+    </div>
+    <div className="sb-section-item">
+      <img
+        src={Figma}
+        className="h-12 w-12"
+        alt="An abstraction representing the composition of data for a component"
+      />
+      <h4 className="sb-section-item-heading">Provide context and mocking</h4>
+      <p className="sb-section-item-paragraph">
+        Often when a story doesn't render, it's because your component is
+        expecting a specific environment or context (like a theme provider) to
+        be available.
+      </p>
+      <a
+        href="https://storybook.js.org/docs/vue/writing-stories/decorators#context-for-mocking"
+        target="_blank"
+      >
+        Try the Figma UI Kit <RightArrow />
+      </a>
+    </div>
+    <div className="sb-section-item">
+      <img
+        src={Github}
+        className="h-12 w-12"
+        alt="A representation of typography and image assets"
+      />
+      <div>
+        <h4 className="sb-section-item-heading">Load assets and resources</h4>
+        <p className="sb-section-item-paragraph">
+          To link static files (like fonts) to your projects and stories, use
+          the `staticDirs` configuration option to specify folders to load when
+          starting Storybook.
+        </p>
+        <a
+          href="https://storybook.js.org/docs/vue/configure/images-and-assets"
+          target="_blank"
+        >
+          Learn more <RightArrow />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

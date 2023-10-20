@@ -31,6 +31,7 @@
     "@vue/test-utils": "^2.4.1",
     "chromatic": "^7.4.0",
     "eslint": "^8.51.0",
+    "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-vue": "^9.17.0",
     "jsdom": "^22.1.0",
     "less": "^4.2.0",
@@ -48,5 +49,6 @@
   },
   "version": "",
   "readme": "ERROR: No README data found!",
-  "_id": "nuxt-app@"
+  "_id": "nuxt-app@",
+  "browserslist": "> 0.25%, not dead"
 }

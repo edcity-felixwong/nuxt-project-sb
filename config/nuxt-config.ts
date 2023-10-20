@@ -1,7 +1,7 @@
 import { type DefineNuxtConfig } from "nuxt/config"
 type NuxtConfig = Parameters<DefineNuxtConfig>[0]
 /* Lift this config up to distribute to other config like vite, storybook, vitest, etc */
-export const config = {
+export const config: NuxtConfig = {
   ssr: false,
   app: {
     baseURL: process.env.NODE_ENV === "development" ? "/" : "/testroute/",
@@ -18,4 +18,4 @@ export const config = {
   tailwindcss: {
     cssPath: "./styles/global.css",
   },
-} satisfies NuxtConfig
+}

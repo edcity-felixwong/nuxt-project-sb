@@ -35,11 +35,11 @@ export const config = {
   language="ts"
 />
 
-## Why bother twisting
+## Why bother twisting 🍔
 
 The ultimate goal is to ensure all the ts compiler and bundler resolving the same path. Each sub-system in this project has its own configuration, in our case, we have the `main`, `storybook` and `test` environment, we have to make sure that they know the same path 🤔.
 
-There is no easy way to _extend_ `TypeScript` path aliases from `tsconfig.json`, it would only overwrite the path if we do this:
+There is no easy way to _extend_ `TypeScript` path aliases from `tsconfig.json`, it would only overwrite all the path if we do this:
 
 <NamedSource
   code={`
@@ -49,7 +49,7 @@ There is no easy way to _extend_ `TypeScript` path aliases from `tsconfig.json`,
     "paths": {
       "@/*": ["./*"]
     }
-  } // This doesn't work
+  } // This doesn't work 😢
 }
 `}
   name="/tsconfig.json"
@@ -58,6 +58,10 @@ There is no easy way to _extend_ `TypeScript` path aliases from `tsconfig.json`,
 
 Also, we have to make sure `TypeScript` and `Vite` resolving the same path. Therefore we leverage `Nuxt` to takes care of the alignment and the merging job, all we need to do is to feed the `alias` in `nuxt.config.ts` 😎. (and feed the same config into `storybook` and `vitest` 😂).
 
-## Why my path is not working
+## Why my path is not working 🙋‍♂️
 
-`TypeScript` and `Vite` do separate jobs, `TypeScript` resolves path just by `tsconfig.json` and intellisense can recognize it, but that doesn't necessary mean it can resolves at run time.
+`TypeScript` and `Vite` do separate jobs, `TypeScript` resolves path just by `tsconfig.json` and intellisense can recognize it, but that doesn't necessary mean it can resolves at run time, because that is `Vite`'s job. `Vite` only refer to `resolve.alias`.
+
+So if your intellisense is working, `tsconfig.json` is fine. Check the `alias` setting for the `Vite` config at `nuxt-config.ts`
+
+If your intellisense is not working, check the `/.nuxt/tsconfig.json`. Make sure it is re-compiled after the change. `Nuxt` maintains `TypeScript` path by inversely inject path from `nuxt.config.ts` into `/.nuxt/tsconfig.json` at compile time.

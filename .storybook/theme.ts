@@ -1,19 +1,22 @@
 import { create } from "@storybook/theming/create"
+import logoURL from "./../stories/assets/sui-logo.png?url"
+console.log("🚀 ~ file: theme.ts:3 ~ logoURL:", logoURL)
 
 export default create({
   base: "light",
   // Typography
-  fontBase: `'Inter',"Open Sans", Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif`,
+  fontBase: `'Inter',"Open Sans", Segoe UI, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif`,
   fontCode: `'Source Code Pro', Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace`,
 
   brandTitle: "My custom Storybook",
   brandUrl: "https://example.com",
-  brandImage: "https://storybook.js.org/images/placeholders/350x150.png",
+  brandImage: logoURL,
   brandTarget: "_self",
 
   //
   colorPrimary: "#3A10E5",
-  colorSecondary: "#585C6D",
+  // colorSecondary: "#585C6D",
+  colorSecondary: "#D9370F",
 
   // UI
   appBg: "#ffffff",
