@@ -8,3 +8,9 @@ samp {
     "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier,
     monospace !important;
 }
+
+hr:not(.sb-unstyled) {
+  /* For the doc footer */
+  margin-top: 48px;
+  margin-bottom: 48px;
+}

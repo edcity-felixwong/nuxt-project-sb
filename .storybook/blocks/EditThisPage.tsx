@@ -5,6 +5,7 @@ export function EditThisPage({ children }: { children: string }) {
     <a
       className="sb-unstyled text-sm hover:underline text-[hsl(220,6%,40%)]"
       href={getGithubPath(children)}
+      target="_blank"
     >
       ✍️ Edit this page on GitHub
     </a>
