@@ -1,5 +1,10 @@
 import type { StorybookConfig } from "@storybook/vue3-vite"
-import { paths, nuxtPaths, pathsRoot } from "./../utils/parse-tsconfig"
+import {
+  paths,
+  nuxtPaths,
+  pathsRoot,
+  resolveRoot,
+} from "./../utils/parse-tsconfig"
 const config: StorybookConfig = {
   stories: [
     "../stories/**/*.mdx",
@@ -34,7 +39,7 @@ const config: StorybookConfig = {
     ...config,
     SB_PATH_ALIAS: JSON.stringify(pathsRoot),
   }),
-  staticDirs: ["../stories/public"],
+  staticDirs: [resolveRoot("stories", "public")],
   managerHead: (head) => `
   ${head}
   <link rel="icon" href="/favicon.ico" />

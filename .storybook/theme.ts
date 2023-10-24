@@ -6,8 +6,8 @@ export default create({
   fontBase: `'Inter',"Open Sans", Segoe UI, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif`,
   fontCode: `'Source Code Pro', Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace`,
 
-  brandTitle: "My custom Storybook",
-  brandUrl: "https://example.com",
+  brandTitle: "STAR UI",
+  brandUrl: "/",
   brandImage: logoURL,
   brandTarget: "_self",
 
