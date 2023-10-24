@@ -1,7 +1,5 @@
 import { create } from "@storybook/theming/create"
 import logoURL from "./../stories/assets/sui-logo.png?url"
-console.log("🚀 ~ file: theme.ts:3 ~ logoURL:", logoURL)
-
 export default create({
   base: "light",
   // Typography
