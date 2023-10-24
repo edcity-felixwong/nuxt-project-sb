@@ -1,18 +1,20 @@
-
 # Workflow name
 name: "Chromatic"
 
 # Event for the workflow
-on: 
-    push:
-        branches: 
-            - master
-            - dev
+on:
+  push:
+    branches:
+      - master
+      - dev
 
+concurrency:
+  group: storybook
 
 # List of jobs
 jobs:
   chromatic-deployment:
+    # needs: add-modified-date-to-docs-files-when-push-or-pull-requests
     # Operating System
     runs-on: ubuntu-latest
     # Job steps

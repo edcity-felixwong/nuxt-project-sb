@@ -12,6 +12,7 @@ on:
 
 concurrency:
   group: storybook
+  cancel-in-progress: true
 
 jobs:
   # -------------------------------------------------------------
