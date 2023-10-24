@@ -27,6 +27,7 @@ jobs:
   changed_files:
     runs-on: ubuntu-latest # windows-latest || macos-latest
     name: Test changed-files
+    permissions: write-all
     outputs:
       files: ${{ steps.return-array.outputs.array }}
     steps:
@@ -83,3 +84,7 @@ jobs:
           body: ${{ matrix.files }}
           openDelimiter: <EditThisPage>
           closeDelimiter: </EditThisPage>
+
+      - name: Cancelling parallel jobs
+        if: failure()
+        uses: andymckay/cancel-action@0.2
