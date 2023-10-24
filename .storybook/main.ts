@@ -38,6 +38,7 @@ const config: StorybookConfig = {
       .then(addPathAlias({ ...nuxtPaths, ...paths }))
       .then(addEnvPrefix("SB_"))
       .then(setPublicDir(publicDir))
+      .then(setEnvDir(resolveRoot(".storybook")))
   },
   env: (config) => ({
     ...config,
@@ -79,5 +80,11 @@ function setPublicDir(publicDir: ViteConfig["publicDir"]) {
   return (config: ViteConfig): ViteConfig => ({
     ...config,
     publicDir,
+  })
+}
+function setEnvDir(envDir: ViteConfig["envDir"]) {
+  return (config: ViteConfig): ViteConfig => ({
+    ...config,
+    envDir,
   })
 }
