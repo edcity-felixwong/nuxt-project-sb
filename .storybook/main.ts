@@ -34,6 +34,11 @@ const config: StorybookConfig = {
     ...config,
     SB_PATH_ALIAS: JSON.stringify(pathsRoot),
   }),
+  staticDirs: ["../stories/public"],
+  managerHead: (head) => `
+  ${head}
+  <link rel="icon" href="/favicon.ico" />
+  `,
 }
 export default config
 
