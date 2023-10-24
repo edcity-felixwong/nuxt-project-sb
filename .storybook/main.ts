@@ -5,6 +5,9 @@ import {
   pathsRoot,
   resolveRoot,
 } from "./../utils/parse-tsconfig"
+
+const publicDir = resolveRoot("stories", "public")
+
 const config: StorybookConfig = {
   stories: [
     "../stories/**/*.mdx",
@@ -34,12 +37,13 @@ const config: StorybookConfig = {
     return await Promise.resolve(config)
       .then(addPathAlias({ ...nuxtPaths, ...paths }))
       .then(addEnvPrefix("SB_"))
+      .then(setPublicDir(publicDir))
   },
   env: (config) => ({
     ...config,
     SB_PATH_ALIAS: JSON.stringify(pathsRoot),
   }),
-  staticDirs: [resolveRoot("stories", "public")],
+  staticDirs: [publicDir],
   managerHead: (head) => `
   ${head}
   <link rel="icon" href="/favicon.ico" />
@@ -69,5 +73,11 @@ function addEnvPrefix(envPrefix: ViteConfig["envPrefix"]) {
   return (config: ViteConfig): ViteConfig => ({
     ...config,
     envPrefix,
+  })
+}
+function setPublicDir(publicDir: ViteConfig["publicDir"]) {
+  return (config: ViteConfig): ViteConfig => ({
+    ...config,
+    publicDir,
   })
 }
