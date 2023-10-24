@@ -17,8 +17,6 @@ jobs:
     # needs: add-modified-date-to-docs-files-when-push-or-pull-requests
     # Operating System
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
     # Job steps
     steps:
       - uses: actions/checkout@v1
