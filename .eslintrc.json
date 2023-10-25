@@ -7,13 +7,20 @@
     "parser": "@typescript-eslint/parser",
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "extends": [
     "@nuxtjs/eslint-config-typescript",
     "plugin:vue/vue3-recommended",
     "plugin:storybook/recommended",
-    "eslint:recommended", 
-    "plugin:@typescript-eslint/recommended"
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:functional/external-typescript-recommended",
+    "plugin:functional/recommended",
+    "plugin:functional/stylistic"
   ],
   "rules": {
     "vue/multi-word-component-names": "off",
