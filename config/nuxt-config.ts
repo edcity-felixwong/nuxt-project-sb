@@ -13,7 +13,7 @@ export const config: NuxtConfig = {
     "#storybook/*": "../.storybook/*",
     "#stories": "../stories",
   },
-  modules: ["@nuxtjs/tailwindcss"],
+  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt"],
   components: [{ path: "./components/star/atom", prefix: "Star" }],
   tailwindcss: {
     cssPath: "./styles/global.css",

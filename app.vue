@@ -1,6 +1,8 @@
 <template>
   <StarThemeProvider>
-    <NuxtPage />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </StarThemeProvider>
 </template>
 <script setup>
