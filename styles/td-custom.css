@@ -1,4 +1,5 @@
 * {
+    /* Color */
     --td-brand-color-1: var(--sui-color-primary-50);
     --td-brand-color-2: var(--sui-color-primary-100);
     --td-brand-color-3: var(--sui-color-primary-200);
@@ -20,15 +21,15 @@
     --td-text-color-brand: var(--td-brand-color-7);
     --td-text-color-link: var(--td-brand-color-8);
 
-    --td-warning-color-1:  var(--sui-color-warning-50);
-    --td-warning-color-2:  var(--sui-color-warning-100);
-    --td-warning-color-3:  var(--sui-color-warning-200);
-    --td-warning-color-4:  var(--sui-color-warning-300);
-    --td-warning-color-5:  var(--sui-color-warning-400);
-    --td-warning-color-6:  var(--sui-color-warning-500);
-    --td-warning-color-7:  var(--sui-color-warning-600);
-    --td-warning-color-8:  var(--sui-color-warning-700);
-    --td-warning-color-9:  var(--sui-color-warning-800);
+    --td-warning-color-1: var(--sui-color-warning-50);
+    --td-warning-color-2: var(--sui-color-warning-100);
+    --td-warning-color-3: var(--sui-color-warning-200);
+    --td-warning-color-4: var(--sui-color-warning-300);
+    --td-warning-color-5: var(--sui-color-warning-400);
+    --td-warning-color-6: var(--sui-color-warning-500);
+    --td-warning-color-7: var(--sui-color-warning-600);
+    --td-warning-color-8: var(--sui-color-warning-700);
+    --td-warning-color-9: var(--sui-color-warning-800);
     --td-warning-color-10: var(--sui-color-warning-900);
     --td-warning-color: var(--td-warning-color-5);
     --td-warning-color-hover: var(--td-warning-color-4);
@@ -37,16 +38,16 @@
     --td-warning-color-disabled: var(--td-warning-color-3);
     --td-warning-color-light: var(--td-warning-color-1);
     --td-warning-color-light-hover: var(--td-warning-color-2);
-    
-    --td-error-color-1:  var(--sui-color-error-50);
-    --td-error-color-2:  var(--sui-color-error-100);
-    --td-error-color-3:  var(--sui-color-error-200);
-    --td-error-color-4:  var(--sui-color-error-300);
-    --td-error-color-5:  var(--sui-color-error-400);
-    --td-error-color-6:  var(--sui-color-error-500);
-    --td-error-color-7:  var(--sui-color-error-600);
-    --td-error-color-8:  var(--sui-color-error-700);
-    --td-error-color-9:  var(--sui-color-error-800);
+
+    --td-error-color-1: var(--sui-color-error-50);
+    --td-error-color-2: var(--sui-color-error-100);
+    --td-error-color-3: var(--sui-color-error-200);
+    --td-error-color-4: var(--sui-color-error-300);
+    --td-error-color-5: var(--sui-color-error-400);
+    --td-error-color-6: var(--sui-color-error-500);
+    --td-error-color-7: var(--sui-color-error-600);
+    --td-error-color-8: var(--sui-color-error-700);
+    --td-error-color-9: var(--sui-color-error-800);
     --td-error-color-10: var(--sui-color-error-900);
     --td-error-color: var(--td-error-color-6);
     --td-error-color-hover: var(--td-error-color-5);
@@ -55,16 +56,16 @@
     --td-error-color-disabled: var(--td-error-color-3);
     --td-error-color-light: var(--td-error-color-1);
     --td-error-color-light-hover: var(--td-error-color-2);
-   
-    --td-success-color-1:  var(--sui-color-success-50);
-    --td-success-color-2:  var(--sui-color-success-100);
-    --td-success-color-3:  var(--sui-color-success-200);
-    --td-success-color-4:  var(--sui-color-success-300);
-    --td-success-color-5:  var(--sui-color-success-400);
-    --td-success-color-6:  var(--sui-color-success-500);
-    --td-success-color-7:  var(--sui-color-success-600);
-    --td-success-color-8:  var(--sui-color-success-700);
-    --td-success-color-9:  var(--sui-color-success-800);
+
+    --td-success-color-1: var(--sui-color-success-50);
+    --td-success-color-2: var(--sui-color-success-100);
+    --td-success-color-3: var(--sui-color-success-200);
+    --td-success-color-4: var(--sui-color-success-300);
+    --td-success-color-5: var(--sui-color-success-400);
+    --td-success-color-6: var(--sui-color-success-500);
+    --td-success-color-7: var(--sui-color-success-600);
+    --td-success-color-8: var(--sui-color-success-700);
+    --td-success-color-9: var(--sui-color-success-800);
     --td-success-color-10: var(--sui-color-success-900);
     --td-success-color: var(--td-success-color-5);
     --td-success-color-hover: var(--td-success-color-4);
@@ -74,42 +75,43 @@
     --td-success-color-light: var(--td-success-color-1);
     --td-success-color-light-hover: var(--td-success-color-2);
 
+    --td-bg-color-page: var(--sui-color-background);
 
     /* Radius */
-    --td-radius-small:      var(--sui-radius-small);
-    --td-radius-default:    var(--sui-radius-default);
-    --td-radius-medium:     var(--sui-radius-medium);
-    --td-radius-large:      var(--sui-radius-large);
+    --td-radius-small: var(--sui-radius-small);
+    --td-radius-default: var(--sui-radius-default);
+    --td-radius-medium: var(--sui-radius-medium);
+    --td-radius-large: var(--sui-radius-large);
     --td-radius-extraLarge: var(--sui-radius-8);
-    --td-radius-round:      var(--sui-radius-round);
-    --td-radius-circle:     var(--sui-radius-circle);
+    --td-radius-round: var(--sui-radius-round);
+    --td-radius-circle: var(--sui-radius-circle);
 
     /* Size */
-    --td-comp-size-xxxs:    var(--sui-size-2xs);
-    --td-comp-size-xxs:     var(--sui-size-xs);
-    --td-comp-size-xs:      var(--sui-size-sm);
-    --td-comp-size-s:       var(--sui-size-sm);
-    --td-comp-size-m:       var(--sui-size-md);
-    --td-comp-size-l:       var(--sui-size-lg);
-    --td-comp-size-xl:      var(--sui-size-lg);
-    --td-comp-size-xxl:     var(--sui-size-xl);
-    --td-comp-size-xxxl:    var(--sui-size-2xl);
-    --td-comp-size-xxxxl:   var(--sui-size-3xl);
-    --td-comp-size-xxxxxl:  var(--sui-size-4xl);
+    --td-comp-size-xxxs: var(--sui-size-2xs);
+    --td-comp-size-xxs: var(--sui-size-xs);
+    --td-comp-size-xs: var(--sui-size-sm);
+    --td-comp-size-s: var(--sui-size-sm);
+    --td-comp-size-m: var(--sui-size-md);
+    --td-comp-size-l: var(--sui-size-lg);
+    --td-comp-size-xl: var(--sui-size-lg);
+    --td-comp-size-xxl: var(--sui-size-xl);
+    --td-comp-size-xxxl: var(--sui-size-2xl);
+    --td-comp-size-xxxxl: var(--sui-size-3xl);
+    --td-comp-size-xxxxxl: var(--sui-size-4xl);
 
-    --td-pop-padding-s:   var(--td-size-2);
-    --td-pop-padding-m:   var(--td-size-3);
-    --td-pop-padding-l:   var(--td-size-4);
-    --td-pop-padding-xl:  var(--td-size-5);
+    --td-pop-padding-s: var(--td-size-2);
+    --td-pop-padding-m: var(--td-size-3);
+    --td-pop-padding-l: var(--td-size-4);
+    --td-pop-padding-xl: var(--td-size-5);
     --td-pop-padding-xxl: var(--td-size-6);
 
-    --td-comp-paddingLR-xxs:    var(--sui-padding-2xs); 
-    --td-comp-paddingLR-xs:     var(--sui-padding-xs);
-    --td-comp-paddingLR-s:      var(--sui-padding-sm);
-    --td-comp-paddingLR-m:      var(--sui-padding-sm);
-    --td-comp-paddingLR-l:      var(--sui-padding-md);
-    --td-comp-paddingLR-xl:     var(--sui-padding-lg);
-    --td-comp-paddingLR-xxl:    var(--sui-padding-xl);
+    --td-comp-paddingLR-xxs: var(--sui-padding-2xs);
+    --td-comp-paddingLR-xs: var(--sui-padding-xs);
+    --td-comp-paddingLR-s: var(--sui-padding-sm);
+    --td-comp-paddingLR-m: var(--sui-padding-sm);
+    --td-comp-paddingLR-l: var(--sui-padding-md);
+    --td-comp-paddingLR-xl: var(--sui-padding-lg);
+    --td-comp-paddingLR-xxl: var(--sui-padding-xl);
 
     --td-comp-paddingTB-xxs: var(--td-size-1);
     --td-comp-paddingTB-xs: var(--td-size-2);

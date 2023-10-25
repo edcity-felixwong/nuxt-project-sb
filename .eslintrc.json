@@ -5,22 +5,50 @@
   "parser": "vue-eslint-parser",
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
+    "project": [
+      "./tsconfig.json"
+    ],
     "sourceType": "module"
   },
   "plugins": [
-    "@typescript-eslint"
+    "@typescript-eslint",
+    "functional"
   ],
   "extends": [
     "@nuxtjs/eslint-config-typescript",
     "plugin:vue/vue3-recommended",
     "plugin:storybook/recommended",
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/eslint-recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:functional/external-typescript-recommended",
     "plugin:functional/recommended",
     "plugin:functional/stylistic"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "project": [
+          "./tsconfig.json"
+        ],
+        "sourceType": "module"
+      }
+    },
+    {
+      "files": [
+        "*.vue"
+      ],
+      "parser": "vue-eslint-parser"
+    }
   ],
   "rules": {
     "vue/multi-word-component-names": "off",

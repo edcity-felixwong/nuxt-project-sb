@@ -10,7 +10,10 @@
     "postinstall": "nuxt prepare",
     "test": "vitest run",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "lint": "eslint --ext \".js,.jsx,.ts,.tsx,.vue\" --ignore-path .gitignore .",
+    "lint:prettier": "prettier --check .",
+    "lint:fix": "prettier --write --list-different . && eslint --ext \".js,.jsx,.ts,.tsx,.vue\" --ignore-path .gitignore . --fix"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
@@ -48,6 +51,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "bem-cn": "^3.0.1",
     "tdesign-vue-next": "^1.6.2"
   },
   "version": "",

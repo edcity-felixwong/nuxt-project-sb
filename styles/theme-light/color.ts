@@ -47,4 +47,5 @@ export const color = {
     800: "#09925B",
     900: "#087F50",
   },
-};
+  background: "#FFFFFF",
+}
