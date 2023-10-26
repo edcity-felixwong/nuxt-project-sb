@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from "@storybook/vue3";
+import type { Meta, StoryObj } from "@storybook/vue3"
 
-import Button from "@/components/star/atom/TryButton";
+import Button from "@/components/star/atom/TryButton"
 import {
   simpleBooleanArg,
   simpleEnumArg,
   withDefault,
   Arg,
-} from "#storybook/blocks";
+} from "#storybook/blocks"
 
 // // import Button from './Button.vue';
 // type Constructor = typeof String | typeof Boolean | typeof Number;
@@ -53,7 +53,6 @@ import {
 //   { description }: Partial<Record<keyof Meta<T>["argTypes"], string>> = {}
 // ): Meta<T>["argTypes"] => {};
 
-
 /* 'boolean' | 'function' | 'number' | 'string' | 'symbol' | SBType */
 const meta: Meta<typeof Button> = {
   title: "Example/TestButton",
@@ -96,18 +95,18 @@ const meta: Meta<typeof Button> = {
   // args: {
   //   loading: false
   // }
-};
+}
 
-export default meta;
-type Story = StoryObj<typeof Button>;
+export default meta
+type Story = StoryObj<typeof Button>
 
 const render: Story["render"] = (args, { argTypes }) => ({
   components: { Button },
   setup() {
-    return { args };
+    return { args }
   },
   template: '<Button v-bind="args">{{ args.default }}</Button>',
-});
+})
 
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
@@ -122,7 +121,7 @@ export const Default: Story = {
     //
     default: "Button",
   },
-};
+}
 
 export const Secondary: Story = {
   render,
@@ -131,7 +130,7 @@ export const Secondary: Story = {
     theme: "default",
     default: "😄👍😍💯",
   },
-};
+}
 
 export const Block: Story = {
   render,
@@ -140,4 +139,4 @@ export const Block: Story = {
     block: true,
     default: "📚📕📈🤓",
   },
-};
+}

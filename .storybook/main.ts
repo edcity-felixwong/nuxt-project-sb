@@ -5,6 +5,7 @@ import {
   pathsRoot,
   resolveRoot,
 } from "./../utils/parse-tsconfig"
+import Jsx from "@vitejs/plugin-vue-jsx"
 
 const publicDir = resolveRoot("stories", "public")
 
@@ -39,6 +40,7 @@ const config: StorybookConfig = {
       .then(addEnvPrefix("SB_"))
       .then(setPublicDir(publicDir))
       .then(setEnvDir(resolveRoot(".storybook")))
+      .then(addViteJsxCompiler)
   },
   env: (config) => ({
     ...config,
@@ -88,3 +90,10 @@ function setEnvDir(envDir: ViteConfig["envDir"]) {
     envDir,
   })
 }
+/** @description Telling vite to compile jsx to vue,
+ *  otherwise it will decode to react
+ * */
+const addViteJsxCompiler = (config: ViteConfig): ViteConfig => ({
+  ...config,
+  plugins: [...(config?.plugins ?? []), Jsx()],
+})
