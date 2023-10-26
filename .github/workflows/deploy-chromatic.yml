@@ -1,0 +1,22 @@
+name: Deploy to chromatic
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - dev
+
+concurrency:
+  group: storybook
+
+jobs:
+  check-out:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+  deploy:
+    uses: ./.github/workflows/chromatic.yml
+    secrets:
+      CHROMATIC_PROJECT_TOKEN: ${{secrets.CHROMATIC_PROJECT_TOKEN}}

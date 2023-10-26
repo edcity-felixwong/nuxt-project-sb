@@ -3,13 +3,10 @@ name: "Chromatic"
 
 # Event for the workflow
 on:
-  push:
-    branches:
-      - master
-      - dev
-
-concurrency:
-  group: storybook
+  workflow_call:
+    secrets:
+      CHROMATIC_PROJECT_TOKEN:
+        required: true
 
 # List of jobs
 jobs:
@@ -19,7 +16,22 @@ jobs:
     runs-on: ubuntu-latest
     # Job steps
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
+
+      - name: Cache NPM dependencies
+        id: cache-npm
+        uses: actions/cache@v3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-npm-cache-
+
+      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        name: List the state of node modules
+        continue-on-error: true
+        run: npm list
+
       - name: Install dependencies
         # 👇 Install dependencies with the same package manager used in the project (replace it as needed), e.g. yarn, npm, pnpm
         run: npm install
