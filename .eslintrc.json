@@ -21,7 +21,8 @@
     "eslint:recommended",
     "plugin:functional/external-typescript-recommended",
     "plugin:functional/recommended",
-    "plugin:functional/stylistic"
+    "plugin:functional/stylistic",
+    "airbnb-base"
   ],
   "overrides": [
     {
@@ -76,6 +77,7 @@
     "space-before-function-paren": [
       "error",
       "never"
-    ]
+    ],
+    "functional/functional-parameters": "off"
   }
 }

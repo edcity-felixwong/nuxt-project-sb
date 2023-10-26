@@ -1,13 +1,13 @@
-import type { StorybookConfig } from "@storybook/vue3-vite"
+import type { StorybookConfig } from "@storybook/vue3-vite";
 import {
   paths,
   nuxtPaths,
   pathsRoot,
   resolveRoot,
-} from "./../utils/parse-tsconfig"
-import Jsx from "@vitejs/plugin-vue-jsx"
+} from "./../utils/parse-tsconfig";
+import Jsx from "@vitejs/plugin-vue-jsx";
 
-const publicDir = resolveRoot("stories", "public")
+const publicDir = resolveRoot("stories", "public");
 
 const config: StorybookConfig = {
   stories: [
@@ -40,7 +40,7 @@ const config: StorybookConfig = {
       .then(addEnvPrefix("SB_"))
       .then(setPublicDir(publicDir))
       .then(setEnvDir(resolveRoot(".storybook")))
-      .then(addViteJsxCompiler)
+      .then(addViteJsxCompiler);
   },
   env: (config) => ({
     ...config,
@@ -51,14 +51,14 @@ const config: StorybookConfig = {
   ${head}
   <link rel="icon" href="/favicon.ico" />
   `,
-}
-export default config
+};
+export default config;
 
 /* Just to make pipe */
-type ViteConfig = Parameters<StorybookConfig["viteFinal"]>[0]
+type ViteConfig = Parameters<StorybookConfig["viteFinal"]>[0];
 function addPathAlias(alias: Required<ViteConfig>["resolve"]["alias"]) {
   return (config: ViteConfig): ViteConfig => {
-    const originalAlias = config?.resolve?.alias ?? {}
+    const originalAlias = config?.resolve?.alias ?? {};
 
     return {
       ...config,
@@ -69,26 +69,26 @@ function addPathAlias(alias: Required<ViteConfig>["resolve"]["alias"]) {
           ...alias,
         },
       },
-    }
-  }
+    };
+  };
 }
 function addEnvPrefix(envPrefix: ViteConfig["envPrefix"]) {
   return (config: ViteConfig): ViteConfig => ({
     ...config,
     envPrefix,
-  })
+  });
 }
 function setPublicDir(publicDir: ViteConfig["publicDir"]) {
   return (config: ViteConfig): ViteConfig => ({
     ...config,
     publicDir,
-  })
+  });
 }
 function setEnvDir(envDir: ViteConfig["envDir"]) {
   return (config: ViteConfig): ViteConfig => ({
     ...config,
     envDir,
-  })
+  });
 }
 /** @description Telling vite to compile jsx to vue,
  *  otherwise it will decode to react
@@ -96,4 +96,4 @@ function setEnvDir(envDir: ViteConfig["envDir"]) {
 const addViteJsxCompiler = (config: ViteConfig): ViteConfig => ({
   ...config,
   plugins: [...(config?.plugins ?? []), Jsx()],
-})
+});

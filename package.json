@@ -13,7 +13,7 @@
     "build-storybook": "storybook build",
     "lint": "eslint --ext \".js,.jsx,.ts,.tsx,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
-    "lint:fix": "prettier --write --list-different . && eslint --ext \".js,.jsx,.ts,.tsx,.vue\" --ignore-path .gitignore . --fix"
+    "lint:fix": "eslint --ext \".js,.jsx,.ts,.tsx,.vue\" --ignore-path .gitignore . --fix"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
@@ -36,6 +36,7 @@
     "@vueuse/nuxt": "^10.5.0",
     "chromatic": "^7.4.0",
     "eslint": "^8.51.0",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-functional": "^6.0.0",
     "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-vue": "^9.17.0",
