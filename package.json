@@ -48,10 +48,10 @@
     "storybook": "^7.4.6",
     "typescript": "^5.2.2",
     "vitest": "^0.34.6",
-    "vue": "^3.3.4",
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "vue": "^3.3.4",
     "bem-cn": "^3.0.1",
     "tdesign-vue-next": "^1.6.2"
   },

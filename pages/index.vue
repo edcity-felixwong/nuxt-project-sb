@@ -3,8 +3,9 @@
   <div>pos: {{ x }}, {{ y }}</div>
   <div>size: {{ width }}, {{ height }}</div>
   <Badge dot count="2">
-    <StarTryButton>asda</StarTryButton>
+    <StarTryButton class="test"> asda </StarTryButton>
   </Badge>
+  <div class="h-[3000px]" />
 </template>
 <script setup lang="ts">
 // import { Button } from "tdesign-vue-next/esm";

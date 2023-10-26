@@ -1,58 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 
-import Button from "@/components/star/atom/TryButton";
-import {
-  simpleBooleanArg,
-  simpleEnumArg,
-  withDefault,
-  Arg,
-} from "#storybook/blocks";
+import Button, { StarButtonProp } from "@/components/star/atom/TryButton";
+import { simpleBooleanArg, simpleEnumArg } from "#storybook/blocks";
 
-// // import Button from './Button.vue';
-// type Constructor = typeof String | typeof Boolean | typeof Number;
-// type Prop =
-//   | Constructor
-//   | ({ type: Constructor } & { default?: any; validator?: Function });
-// const resolveTypeItem = (v: Prop): any => {
-//   if (typeof v === "function") {
-//     return v();
-//   } else {
-//     return v;
-//   }
-// };
-
-// const getDefault = <T>(prop: T): Record<keyof T, any> => {
-//   return Object.entries(prop).reduce((acc, [k, v]) => {
-//     // if (typeof v === "object" && v.hasOwnProperty("default")) {
-//     //   return { ...acc, [k]: v.default };
-//     // } else if (typeof v === "object" && v.hasOwnProperty("type")) {
-//     //   return { ...acc, [k]: v.type };
-//     // }
-//     if (typeof v === "object" && v.hasOwnProperty("default")) {
-//       return { ...acc, [k]: v.default };
-//     } else if (typeof v === "object" && v.hasOwnProperty("type")) {
-//       return { ...acc, [k]: resolveTypeItem(v.type) };
-//     } else {
-//       return { ...acc, [k]: resolveTypeItem(v) };
-//     }
-//   }, {} as T);
-// };
-// const toArgTypes = (
-//   prop: Record<string, number | string | boolean | Function>
-// ): Arg => {
-//   return Object.entries(prop).reduce((acc, [k, v]) => {
-//     if (typeof v === "boolean") {
-//       return { ...acc, [k]: simpleBooleanArg({ defaultValue: `${v}` }) };
-//     } else {
-//       return { ...acc, [k]: v };
-//     }
-//   }, {});
-// };
-// const PropsToArgTypes = <T>(
-//   Comp: T,
-//   { description }: Partial<Record<keyof Meta<T>["argTypes"], string>> = {}
-// ): Meta<T>["argTypes"] => {};
-
+const props = Button.props as unknown as typeof StarButtonProp;
 /* 'boolean' | 'function' | 'number' | 'string' | 'symbol' | SBType */
 const meta: Meta<typeof Button> = {
   title: "Example/TestButton",
@@ -60,7 +11,7 @@ const meta: Meta<typeof Button> = {
   component: Button,
   argTypes: {
     // ...toArgTypes(getDefault(Button.props)),
-    ...Button.props,
+    ...props,
     default: { type: "string" },
     block: simpleBooleanArg(),
     disabled: simpleBooleanArg(),
@@ -98,7 +49,7 @@ const meta: Meta<typeof Button> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof Button>
+type Story = StoryObj<typeof Button>;
 
 const render: Story["render"] = (args, { argTypes }) => ({
   components: { Button },
