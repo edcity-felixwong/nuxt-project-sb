@@ -11,7 +11,7 @@ const r = {
   10: "20px",
   11: "22px",
   12: "24px",
-} as const
+} as const;
 export const radius = {
   ...r,
   small: r[4],
@@ -21,4 +21,4 @@ export const radius = {
   // extraLarge: r[8],
   round: "9999px",
   circle: "50%",
-}
+};

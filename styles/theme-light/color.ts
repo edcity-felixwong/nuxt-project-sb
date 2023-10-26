@@ -48,4 +48,4 @@ export const color = {
     900: "#087F50",
   },
   background: "#FFFFFF",
-}
+};

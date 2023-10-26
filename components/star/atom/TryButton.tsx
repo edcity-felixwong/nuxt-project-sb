@@ -1,6 +1,7 @@
 import { defineComponent, h } from "vue";
 import { Button as TButton } from "tdesign-vue-next/esm";
 import TTButtonProp from "tdesign-vue-next/esm/button/props";
+
 export { TTButtonProp as StarButtonProp };
 export default defineComponent({
   name: "TryButton",

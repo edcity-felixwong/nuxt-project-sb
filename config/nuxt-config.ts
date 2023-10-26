@@ -1,4 +1,5 @@
-import { type DefineNuxtConfig } from "nuxt/config"
+import { type DefineNuxtConfig } from "nuxt/config";
+
 type NuxtConfig = Parameters<DefineNuxtConfig>[0]
 /* Lift this config up to distribute to other config like vite, storybook, vitest, etc */
 export const config: NuxtConfig = {
@@ -18,4 +19,4 @@ export const config: NuxtConfig = {
   tailwindcss: {
     cssPath: "./styles/global.css",
   },
-}
+};

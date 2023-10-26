@@ -7,44 +7,42 @@ import {
   h,
   type InjectionKey,
   type ExtractPublicPropTypes,
-} from "vue"
-import { flattenObject } from "./flatten-object"
-import { makeStringProp } from "@/utils/props"
-import { lightTheme } from "@/styles/theme"
+} from "vue";
+import { makeStringProp } from "@/utils/props";
+import { lightTheme } from "@/styles/theme";
+import { flattenObject } from "./flatten-object";
 
 type Tag = keyof HTMLElementTagNameMap | "Fragment"
 type Scope = "local" | "global"
 
-export const defaultPrefix: string = "--sui"
-export const defaultTagName: Tag = "div"
-export const defaultScope: Scope = "global"
-export const defaultTheme: string = "light"
+export const defaultPrefix: string = "--sui";
+export const defaultTagName: Tag = "div";
+export const defaultScope: Scope = "global";
+export const defaultTheme: string = "light";
 
-export const globalInjectCount = 0
+export const globalInjectCount = 0;
 export const themeProviderProps = {
   theme: makeStringProp(defaultTheme),
   themeVars: {
     type: Object,
-    default: () =>
-      reactive({
-        light: lightTheme,
-      }),
+    default: () => reactive({
+      light: lightTheme,
+    }),
   },
   prefix: makeStringProp(defaultPrefix),
   tag: makeStringProp<Tag>(defaultTagName),
   scope: makeStringProp<Scope>(defaultScope),
-}
+};
 export type Props = ExtractPublicPropTypes<typeof themeProviderProps>
 
 type InjectedThemeType = InjectionKey<typeof themeProviderProps>
-export const THEME_PROVIDER_KEY: InjectionKey<typeof themeProviderProps> =
-  Symbol("test")
+export const THEME_PROVIDER_KEY: InjectionKey<typeof themeProviderProps> = Symbol("test");
 type destructInjectionKey<T> = T extends InjectionKey<infer K> ? K : never
 
 /* Functions */
 /** @description map `gray1` to `gray-1` */
 function insertDash(str: string) {
-  return str.replace(/([a-zA-Z])(\d)/g, "$1-$2")
+  return str.replace(/([a-zA-Z])(\d)/g, "$1-$2");
 }
 
 // function mapThemeVarsToCSSVars(themeVars: Record<string, Numeric>) {
@@ -59,16 +57,16 @@ function insertDash(str: string) {
 export function useTheme<T extends InjectionKey<any> = InjectedThemeType>(
   providedKey = THEME_PROVIDER_KEY
 ): destructInjectionKey<T> {
-  return inject(providedKey)
+  return inject(providedKey);
 }
 export function getStyle<T>(
   s: T,
   { prefix = defaultPrefix }: { prefix?: typeof defaultPrefix }
 ) {
-  return flattenObject(s, { prefix })
+  return flattenObject(s, { prefix });
 }
 function getClassName(prefix: string = "sui") {
-  return `${prefix}-theme-provider`
+  return `${prefix}-theme-provider`;
 }
 
 export default defineComponent({
@@ -76,17 +74,13 @@ export default defineComponent({
   props: themeProviderProps,
   //   provide: reactive({ abc: 123 }),
   setup(props, { slots }) {
-    const tagName = computed(() =>
-      props.tag === "Fragment" ? Fragment : props.tag
-    )
-    const style = computed(() =>
-      getStyle(props.themeVars[props.theme], { prefix: props.prefix })
-    )
-    const providedProps = computed(() => props)
-    provide(THEME_PROVIDER_KEY, providedProps)
-    return () => {
+    const tagName = computed(() => (props.tag === "Fragment" ? Fragment : props.tag));
+    const style = computed(() => getStyle(props.themeVars[props.theme], { prefix: props.prefix }));
+    const providedProps = computed(() => props);
+    provide(THEME_PROVIDER_KEY, providedProps);
+    return () =>
       // return <`${tagName.value}`>{slots.default() ?? false}</`${tagName.value}`>;
-      return h(
+      h(
         tagName.value,
         {
           class: [getClassName(), props.theme],
@@ -99,7 +93,6 @@ export default defineComponent({
           "data-theme": props.theme,
         },
         slots?.default?.()
-      )
-    }
+      );
   },
-})
+});

@@ -1,4 +1,4 @@
-import MyButton from "@/components/star/atom/TryButton"
+import MyButton from "@/components/star/atom/TryButton";
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 export default {
   title: "Example/NewButton",
@@ -16,7 +16,7 @@ export default {
       options: ["small", "medium", "large"],
     },
   },
-}
+};
 
 // More on writing stories with args: https://storybook.js.org/docs/vue/writing-stories/args
 export const Primary = {
@@ -24,24 +24,24 @@ export const Primary = {
     primary: true,
     label: "Button",
   },
-}
+};
 
 export const Secondary = {
   args: {
     label: "Button",
   },
-}
+};
 
 export const Large = {
   args: {
     size: "large",
     label: "Button",
   },
-}
+};
 
 export const Small = {
   args: {
     size: "small",
     label: "Button",
   },
-}
+};

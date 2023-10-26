@@ -1,5 +1,5 @@
-import { flattenObject } from "./flatten-object";
 import { test, expect } from "vitest";
+import { flattenObject } from "./flatten-object";
 
 test("should flatten nested object correctly with custom prefix and interfix", () => {
   const expectAnswer = {

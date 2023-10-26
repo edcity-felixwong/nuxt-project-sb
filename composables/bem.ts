@@ -1,5 +1,6 @@
-import { block } from "bem-cn"
+import { block } from "bem-cn";
+
 export function createBEM(blockName: string) {
-  const prefix = "sui"
-  return block(`${prefix}-${blockName}`)
+  const prefix = "sui";
+  return block(`${prefix}-${blockName}`);
 }

@@ -32,7 +32,7 @@ type Prefixed<T extends NumericObject, P extends string | number> = {
 };
 type Verbose<T> = {
   [K in keyof T]: T[K];
-} & {};
+} & Readonly<{}>;
 type PrefixedFlatten<
   T extends NumericObject,
   I extends string = never,
@@ -47,18 +47,17 @@ export function flattenObject<
   P extends string = "",
 >(
   obj: T,
-  { prefix = "", interfix = "-" }: { prefix?: P; interfix?: I } = {},
+  { prefix = "", interfix = "-" }: { prefix?: P; interfix?: I } = {}
 ): PrefixedFlatten<T, I, P> {
   return Object.entries(obj).reduce(
     (acc, [key, value]) => {
       const prefixedKey = prefix ? `${prefix}${interfix}${key}` : key;
-      const isObject = <T>(v: T): v is Record<any, any> =>
-        typeof v === "object" && !Array.isArray(v);
+      const isObject = <T>(v: T): v is Record<any, any> => typeof v === "object" && !Array.isArray(v);
       const flattened = isObject(value)
         ? flattenObject(value, { prefix: prefixedKey, interfix })
         : { [prefixedKey]: value }; // base case
       return { ...acc, ...flattened };
     },
-    {} as PrefixedFlatten<T, I, P>,
+    {} as PrefixedFlatten<T, I, P>
   );
 }
