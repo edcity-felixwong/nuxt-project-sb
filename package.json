@@ -37,7 +37,9 @@
     "chromatic": "^7.4.0",
     "eslint": "^8.51.0",
     "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-functional": "^6.0.0",
+    "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-storybook": "^0.6.15",
     "eslint-plugin-vue": "^9.17.0",
     "jsdom": "^22.1.0",
@@ -51,9 +53,9 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
-    "vue": "^3.3.4",
     "bem-cn": "^3.0.1",
-    "tdesign-vue-next": "^1.6.2"
+    "tdesign-vue-next": "^1.6.2",
+    "vue": "^3.3.4"
   },
   "version": "",
   "readme": "ERROR: No README data found!",

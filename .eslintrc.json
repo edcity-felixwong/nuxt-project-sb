@@ -16,8 +16,24 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "functional"
+    "functional",
+    "import"
   ],
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
+    },
+    "import/resolver": {
+      "typescript": {
+        // always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`
+        "alwaysTryTypes": true,
+        "project": "./tsconfig.json"
+      }
+    }
+  },
   "extends": [
     "@nuxtjs/eslint-config-typescript",
     "plugin:vue/vue3-recommended",
@@ -71,6 +87,8 @@
     ],
     "functional/functional-parameters": "off",
     "import/extensions": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "import/no-unresolved": "error",
+    "no-undef": "warn"
   }
 }
