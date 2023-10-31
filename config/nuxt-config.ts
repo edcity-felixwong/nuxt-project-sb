@@ -5,7 +5,7 @@ type NuxtConfig = Parameters<DefineNuxtConfig>[0];
 export const config: NuxtConfig = {
   ssr: false,
   app: {
-    baseURL: process.env.NODE_ENV === "development" ? "/" : "/testroute/",
+    baseURL: process.env.NODE_ENV === "development" ? "/" : "/",
     buildAssetsDir: "/assets/",
   },
   devtools: { enabled: true },
@@ -14,7 +14,7 @@ export const config: NuxtConfig = {
     "#storybook/*": "../.storybook/*",
     "#stories": "../stories",
   },
-  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt"],
+  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "nuxt-vite-legacy"],
   components: [{ path: "./components/star/atom", prefix: "Star" }],
   tailwindcss: {
     cssPath: "./styles/global.css",

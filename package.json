@@ -31,6 +31,7 @@
     "@storybook/vue3": "^7.4.6",
     "@storybook/vue3-vite": "^7.4.6",
     "@typescript-eslint/parser": "^6.8.0",
+    "@vitejs/plugin-legacy": "^4.1.1",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
     "@vue/babel-preset-jsx": "^1.4.0",
     "@vue/test-utils": "^2.4.1",
@@ -47,9 +48,11 @@
     "jsdom": "^22.1.0",
     "less": "^4.2.0",
     "nuxt": "^3.7.4",
+    "nuxt-vite-legacy": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.4.6",
+    "terser": "^5.23.0",
     "typescript": "^5.2.2",
     "vitest": "^0.34.6",
     "vue-router": "^4.2.5"
@@ -62,5 +65,5 @@
   "version": "",
   "readme": "ERROR: No README data found!",
   "_id": "nuxt-app@",
-  "browserslist": "> 0.25%, not dead"
+  "browserslist": "last 2 versions and not dead, > 0.1%"
 }
