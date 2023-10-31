@@ -9,7 +9,9 @@ export default defineComponent({
         {...props}
         width={"76px"}
         class="relative transition-all bg-[var(--sui-color-background)] border-r w-[76px]"
-      ></Aside>
+      >
+        <div class="w-[76px]"></div>
+      </Aside>
     );
   },
 });

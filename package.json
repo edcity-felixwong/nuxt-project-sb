@@ -16,6 +16,7 @@
     "lint:fix": "eslint --ext \".js,.jsx,.ts,.tsx,.vue\" --ignore-path .gitignore . --fix"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.22.15",
     "@nuxt/devtools": "latest",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
     "@nuxtjs/tailwindcss": "^6.8.0",
@@ -31,6 +32,7 @@
     "@storybook/vue3-vite": "^7.4.6",
     "@typescript-eslint/parser": "^6.8.0",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
+    "@vue/babel-preset-jsx": "^1.4.0",
     "@vue/test-utils": "^2.4.1",
     "@vueuse/core": "^10.5.0",
     "@vueuse/nuxt": "^10.5.0",

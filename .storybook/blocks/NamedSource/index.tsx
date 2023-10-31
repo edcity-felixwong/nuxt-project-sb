@@ -23,9 +23,9 @@ export const SourceHeader = ({
 }) => {
   const bgColor = !!variant
     ? {
-      info: "bg-[#2E3438]",
-      warning: "bg-[#ffebcb]",
-    }[variant]
+        info: "bg-[#2E3438]",
+        warning: "bg-[#ffebcb]",
+      }[variant]
     : "bg-[hsl(220,25%,98%)]";
   return (
     <div
@@ -50,7 +50,7 @@ const LanguageTag = ({ children }: ChildrenProp) => {
   );
 };
 const SourceBodyWrapper = ({ children }: ChildrenProp) => {
-  return <div className="named-source--body relative">{children}</div>;
+  return <div className="relative named-source--body">{children}</div>;
 };
 
 export const NamedSource = ({

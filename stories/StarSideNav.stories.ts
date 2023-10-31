@@ -55,7 +55,9 @@ const render: Story["render"] = (args, { argTypes }) => ({
   setup() {
     return { args };
   },
-  template: '<StarSideNav v-bind="args">{{ args.default }}</StarSideNav>',
+  template: `<div>
+    <StarSideNav />
+  </div>`,
 });
 
 /*
