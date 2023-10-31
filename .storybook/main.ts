@@ -6,6 +6,7 @@ import {
   resolveRoot,
 } from "./../utils/parse-tsconfig";
 import Jsx from "@vitejs/plugin-vue-jsx";
+import { transformAsync } from "@babel/core";
 
 const publicDir = resolveRoot("stories", "public");
 
@@ -23,6 +24,9 @@ const config: StorybookConfig = {
   framework: {
     name: "@storybook/vue3-vite",
     options: {},
+  },
+  core: {
+    builder: "@storybook/builder-vite",
   },
   docs: {
     autodocs: "tag",
@@ -93,7 +97,57 @@ function setEnvDir(envDir: ViteConfig["envDir"]) {
 /** @description Telling vite to compile jsx to vue,
  *  otherwise it will decode to react
  * */
-const addViteJsxCompiler = (config: ViteConfig): ViteConfig => ({
-  ...config,
-  plugins: [...(config?.plugins ?? []), Jsx()],
-});
+const addViteJsxCompiler = (config: ViteConfig): ViteConfig => {
+  const vueJsxLoader: NonNullable<ViteConfig["plugins"]>[0] = {
+    name: "transform-vue-jsx-first",
+    enforce: "pre",
+    async transform(code, id) {
+      if (id.match(/\/components\/.*?\.[tj]sx/)) {
+        const r = await transformAsync(code, {
+          filename: id,
+          presets: [
+            // "@babel/preset-env",
+            "@babel/preset-typescript",
+            [
+              "@vue/babel-preset-jsx",
+              {
+                injectH: true,
+                functional: true,
+              },
+            ],
+          ],
+          sourceType: "module",
+        });
+        return {
+          code:
+            "import { h } from 'vue';\n" +
+            r.code.replace(
+              "const h = this.$createElement;\n",
+              "/** NO this.$createElement */\n"
+            ),
+          map: r.map,
+        };
+      } else if ([/\.[tj]sx$/].map((_) => id.match(_)).some((_) => _)) {
+        return transformAsync(code, {
+          filename: id,
+          presets: [
+            // "@babel/preset-env",
+            "@babel/preset-typescript",
+            "@babel/preset-react",
+          ],
+          sourceType: "module",
+        }).then(({ code, map }) => ({ code, map }));
+      }
+      return null;
+    },
+  };
+
+  return {
+    ...config,
+    esbuild: {
+      ...(config?.esbuild ?? {}),
+      jsx: "preserve",
+    },
+    plugins: [vueJsxLoader, ...(config?.plugins ?? [])],
+  };
+};
