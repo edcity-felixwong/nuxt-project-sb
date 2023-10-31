@@ -17,6 +17,8 @@ jobs:
     # Job steps
     steps:
       - uses: actions/checkout@v1
+        with:
+          ref: ${{ github.ref }}
 
       - name: Cache NPM dependencies
         id: cache-npm
