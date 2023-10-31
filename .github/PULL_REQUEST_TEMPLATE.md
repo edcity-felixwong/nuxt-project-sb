@@ -31,3 +31,6 @@
 - [ ] Android Chrome
 - [ ] Android Firefox
 - [ ] Android default browser
+
+#### ✅ Checklist
+
