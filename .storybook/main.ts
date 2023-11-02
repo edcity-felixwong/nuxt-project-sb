@@ -8,6 +8,8 @@ import {
 import Jsx from "@vitejs/plugin-vue-jsx";
 import { transformAsync } from "@babel/core";
 
+const vueJsxOption = undefined;
+
 const publicDir = resolveRoot("stories", "public");
 
 const config: StorybookConfig = {
@@ -103,30 +105,7 @@ const addViteJsxCompiler = (config: ViteConfig): ViteConfig => {
     enforce: "pre",
     async transform(code, id) {
       if (id.match(/\/components\/.*?\.[tj]sx/)) {
-        const r = await transformAsync(code, {
-          filename: id,
-          presets: [
-            // "@babel/preset-env",
-            "@babel/preset-typescript",
-            [
-              "@vue/babel-preset-jsx",
-              {
-                injectH: true,
-                functional: true,
-              },
-            ],
-          ],
-          sourceType: "module",
-        });
-        return {
-          code:
-            "import { h } from 'vue';\n" +
-            r.code.replace(
-              "const h = this.$createElement;\n",
-              "/** NO this.$createElement */\n"
-            ),
-          map: r.map,
-        };
+        return Jsx(vueJsxOption).transform(code, id);
       } else if ([/\.[tj]sx$/].map((_) => id.match(_)).some((_) => _)) {
         return transformAsync(code, {
           filename: id,
