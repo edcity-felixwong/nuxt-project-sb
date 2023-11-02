@@ -1,17 +1,17 @@
 <template>
-  <div :class="`${bem()} h-screen overflow-y-hidden overflow-x-hidden`">
+  <div
+    :class="`${bem()} h-screen overflow-y-hidden overflow-x-hidden flex flex-col`"
+  >
     <StarAlert :class="`${bem('alert')}`">
       lorem ipsum ttttttttttt q2312
     </StarAlert>
     <StarHeader :class="`${bem('header')}`" />
-    <Layout :class="`${bem('body')} h-full `">
+    <Layout :class="`${bem('body')} flex-1 overflow-hidden`">
       <StarSideNav :class="`${bem('side-nav')}`" />
-      <main :class="`${bem('main')} w-full h-full`">
+      <main :class="`${bem('main')} w-full h-full flex flex-col`">
         <StarBreadcrumbNav :class="`${bem('breadcrumb-nav')}`" />
         <Layout
-          :class="`${bem(
-            'page'
-          )} w-full h-full overflow-y-hidden overflow-x-hidden`"
+          :class="`${bem('page')} flex-1 overflow-y-hidden overflow-x-hidden`"
         >
           <slot />
         </Layout>

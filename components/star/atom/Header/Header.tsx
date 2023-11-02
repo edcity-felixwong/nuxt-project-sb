@@ -6,7 +6,7 @@ export default defineComponent({
     return () => (
       <header
         {...props}
-        class="h-[88px] w-full border-b bg-[var(--sui-color-background)]"
+        class="h-[88px] min-h-[88px] w-full border-b bg-[var(--sui-color-background)]"
       ></header>
     );
   },
