@@ -14,3 +14,7 @@ hr:not(.sb-unstyled) {
   margin-top: 48px;
   margin-bottom: 48px;
 }
+
+a:hover {
+  opacity: 0.8;
+}
