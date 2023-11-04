@@ -18,3 +18,10 @@ hr:not(.sb-unstyled) {
 a:hover {
   opacity: 0.8;
 }
+
+blockquote:not(.sb-anchor, .sb-unstyled, .sb-unstyled blockquote) {
+    background-color: hsl(220 25% 98% );
+    padding: 0.75rem 1.25rem;
+    border-width: 0;
+    border-radius: 12px;
+}
