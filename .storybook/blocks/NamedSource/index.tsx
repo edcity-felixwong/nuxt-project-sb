@@ -37,7 +37,7 @@ export const SourceHeader = ({
 };
 export const SourceWrapper = ({ children }: ChildrenProp) => {
   return (
-    <div className="named-source--wrapper rounded-[16px] overflow-hidden shadow border mt-[25px] mb-10">
+    <div className="named-source--wrapper rounded-[16px] overflow-hidden border mt-[25px] mb-10">
       {children}
     </div>
   );
