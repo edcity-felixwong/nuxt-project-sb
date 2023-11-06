@@ -13,7 +13,8 @@
     "build-storybook": "storybook build",
     "lint": "eslint --ext \".js,.jsx,.ts,.tsx,.vue\" --ignore-path .gitignore .",
     "lint:prettier": "prettier --check .",
-    "lint:fix": "eslint --ext \".js,.jsx,.ts,.tsx,.vue\" --ignore-path .gitignore . --fix"
+    "lint:fix": "eslint --ext \".js,.jsx,.ts,.tsx,.vue\" --ignore-path .gitignore . --fix",
+    "cypress:open": "cypress open"
   },
   "devDependencies": {
     "@babel/preset-react": "^7.22.15",
@@ -38,6 +39,7 @@
     "@vueuse/core": "^10.5.0",
     "@vueuse/nuxt": "^10.5.0",
     "chromatic": "^7.4.0",
+    "cypress": "^13.4.0",
     "eslint": "^8.51.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-import-resolver-typescript": "^3.6.1",
