@@ -2,9 +2,12 @@
   <div
     :class="`${bem()} h-screen overflow-y-hidden overflow-x-hidden flex flex-col`"
   >
-    <StarAlert :class="`${bem('alert')}`">
+    <PMessage
+      :class="`${bem('alert')}`"
+      :pt="{ root: { class: 'm-0 border-0' } }"
+    >
       lorem ipsum ttttttttttt q2312
-    </StarAlert>
+    </PMessage>
     <StarHeader :class="`${bem('header')}`" />
     <section :class="`${bem('body')} flex-1 overflow-hidden flex flex-row`">
       <StarSideNav :class="`${bem('side-nav')}`" />

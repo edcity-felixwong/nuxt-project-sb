@@ -14,8 +14,32 @@ export const config: NuxtConfig = {
     "#storybook/*": "../.storybook/*",
     "#stories": "../stories",
   },
-  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "nuxt-vite-legacy"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@vueuse/nuxt",
+    "nuxt-vite-legacy",
+    "nuxt-primevue",
+  ],
   components: [{ path: "./components/star/atom", prefix: "Star" }],
+  primevue: {
+    options: {
+      ripple: true,
+    },
+    components: {
+      prefix: "P",
+      include: [
+        "InputText",
+        "Button",
+        "Checkbox",
+        "Dropdown",
+        "Calendar",
+        "InputSwitch",
+        "Message",
+        "Sidebar",
+      ],
+      // exclude: ["editor", "chart"],
+    },
+  },
   tailwindcss: {
     cssPath: "./styles/global.css",
   },

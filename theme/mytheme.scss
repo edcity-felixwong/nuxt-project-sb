@@ -1,0 +1,29 @@
+// @import url('./theme/lara/lara-light/my/theme.scss');
+$primaryColor: var(--sui-color-primary-default) !default;
+$primaryLightColor: var(--sui-color-primary-100) !default;
+$primaryDarkColor: var(--sui-color-primary-700) !default;
+$primaryDarkerColor: var(--sui-color-primary-900) !default;
+$primaryTextColor: #ffffff !default;
+$highlightBg: var(--sui-color-primary-50) !default;
+$hightlightDarkerColor: var(--sui-color-primary-300) !default; // lightness -25%
+
+$highlightTextColor: $primaryDarkerColor !default;
+$highlightFocusBg: var(--sui-color-primary-highlight-focus) !default;
+
+$borderRadius: var(--sui-radius-default) !default;
+$checkboxRadius: var(--sui-radius-checkbox) !default;
+$buttonBg: var(--sui-color-primary-default) !default;
+$buttonRingColor: var(--sui-color-primary-ring) !default;
+$textButtonHoverBgOpacity: var(--sui-opacity-primary-hover) !default;
+$textButtonActiveBgOpacity: var(--sui-opacity-primary-active) !default;
+
+$linkButtonRingColor: var(--sui-color-primary-ring) !default;
+
+// @import '../_variables';
+// @import './_fonts';
+// @import '../../../../theme-base/_components';
+// @import '../_extensions';
+@import "./theme/lara/lara-light/variables";
+@import "./theme/lara/lara-light/my/fonts";
+@import "./theme-base/components";
+@import "./theme/lara/lara-light/extensions";
