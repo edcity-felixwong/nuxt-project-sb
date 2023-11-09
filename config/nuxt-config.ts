@@ -14,12 +14,7 @@ export const config: NuxtConfig = {
     "#storybook/*": "../.storybook/*",
     "#stories": "../stories",
   },
-  modules: [
-    "@nuxtjs/tailwindcss",
-    "@vueuse/nuxt",
-    "nuxt-vite-legacy",
-    "nuxt-primevue",
-  ],
+  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "nuxt-primevue"],
   components: [{ path: "./components/star/atom", prefix: "Star" }],
   primevue: {
     options: {
