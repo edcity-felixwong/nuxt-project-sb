@@ -19,7 +19,7 @@ console.log("🚀 ~ file: NavItem.tsx:3 ~ PButton:", PButton);
 type Props = ButtonProps
 
 export default defineComponent(
-  (props: Props) => () => <PButton {...props}>abc</PButton>,
+  (props: Props, { slots }) => () => <PButton {...props} label={slots?.default?.()?.[0]?.children}></PButton>,
   {
     name: "StarNavItem",
     props: PButton.extends.props as unknown as Props,
