@@ -10,6 +10,8 @@ export default {
     "./app.{vue,js,ts,jsx,tsx}",
     "./error.{vue,js,ts,jsx,tsx}",
     "./app.config.{vue,js,ts,jsx,tsx}",
+    "./stories/**/*.{vue,js,ts,jsx,tsx,mdx}",
+    "./.storybook/**/*.{vue,js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     extend: {},

@@ -1,5 +1,7 @@
 import { Preview } from "@storybook/vue3";
 import theme from "./theme";
+/* Import tailwind */
+import "./../styles/global.css";
 /* Import project style */
 import "./../styles";
 

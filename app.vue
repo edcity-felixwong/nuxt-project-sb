@@ -6,7 +6,6 @@
   </StarThemeProvider>
 </template>
 <script setup>
-import "./theme/mytheme.scss";
 import "@/styles";
 
 import { StarThemeProvider } from "#components";

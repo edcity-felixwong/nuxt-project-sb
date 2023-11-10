@@ -1,12 +1,12 @@
+import { transformAsync } from "@babel/core";
 import type { StorybookConfig } from "@storybook/vue3-vite";
+import Jsx from "@vitejs/plugin-vue-jsx";
 import {
-  paths,
   nuxtPaths,
+  paths,
   pathsRoot,
   resolveRoot,
 } from "./../utils/parse-tsconfig";
-import Jsx from "@vitejs/plugin-vue-jsx";
-import { transformAsync } from "@babel/core";
 
 const vueJsxOption = undefined;
 
@@ -38,7 +38,7 @@ const config: StorybookConfig = {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@300;400;600&family=Karla&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet"> 
-  <script src="https://cdn.tailwindcss.com" defer></script>
+  
   `,
   viteFinal: async (config) => {
     return await Promise.resolve(config)
