@@ -7,9 +7,9 @@
   @tailwind utilities;
 }
 
-* ::-webkit-scrollbar-track {
+/* * ::-webkit-scrollbar-track {
 }
-/* --sui-scrollbar-corner-background: transparent;
+--sui-scrollbar-corner-background: transparent;
     --sui-scrollbar-button-height: 0;
     --sui-scrollbar-button-width: 0;
     --sui-scrollbar-height: 16px;
@@ -17,8 +17,8 @@
     --sui-scrollbar-overflow: visible;
     --sui-scrollbar-backgroundColor: #f8f9fa;
     --sui-scrollbar-borderRadius: 16px;
-    --sui-scrollbar-borderWidth: 0; */
+    --sui-scrollbar-borderWidth: 0;
 * ::-webkit-scrollbar-thumb {
   background-color: var(--sui-scrollbar-thumb-background-color);
   border-radius: var(--sui-scrollbar-border-radius);
-}
+} */

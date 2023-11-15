@@ -4,5 +4,6 @@ export default {
     tailwindcss: {
       config: "./tailwind.config.js",
     },
+    autoprefixer: {},
   },
 };

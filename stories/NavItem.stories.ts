@@ -16,7 +16,7 @@ const render: Story["render"] = (args, { argTypes }) => ({
     return { args };
   },
   template: `
-    <StarNavItem>{{ args.default }}</StarNavItem>
+    <StarNavItem unstyled>{{ args.default }}</StarNavItem>
   `,
 });
 

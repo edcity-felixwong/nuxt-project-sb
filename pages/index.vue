@@ -8,7 +8,7 @@
         <PButton
           label="qweqwe"
           :pt="{
-            root: { class: 'hover:active:scale-95 duration-300 ease-in-out' },
+            root: { class: 'focus:active:scale-95 duration-300 ease-in-out' },
           }"
         >
           <template #icon>
@@ -17,6 +17,7 @@
         </PButton>
         <StarSideNavItem />
 
+        <div class="text-primary-700/20">qweqweqwe</div>
         <div class="h-[3000px]" />
       </div>
     </section>
