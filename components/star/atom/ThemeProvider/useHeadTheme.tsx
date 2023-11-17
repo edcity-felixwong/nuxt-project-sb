@@ -20,7 +20,7 @@ const defaultOption = {
 } as const;
 
 export function variablize(theme): string {
-  return styleToString(toCssVar(theme)) as string;
+  return styleToString(toCssVar(theme)) ;
 }
 
 export function toCSS(theme, options: { className: string }): string {
@@ -37,7 +37,9 @@ export const useMountTheme = (
   innerHTML: string,
   options: Options,
 ): (() => void) => {
+  console.log("🚀 ~ file: useHeadTheme.tsx:40 ~ innerHTML:", innerHTML)
   const hash = typeof options.key === "function" ? options.key() : options.key;
+  console.log("🚀 ~ file: useHeadTheme.tsx:42 ~ hash:", hash)
   const headEntry = useHead({
     style: [
       {
@@ -45,11 +47,12 @@ export const useMountTheme = (
 
         id: `sui-theme-provider-${hash}`,
         key: hash,
-        tagPriority: -90,
+        // tagPriority: -90,
         // id: options.id
       },
     ],
   });
+  console.log("🚀 ~ file: useHeadTheme.tsx:54 ~ headEntry:", headEntry)
   return headEntry ? headEntry.dispose : () => { };
 };
 

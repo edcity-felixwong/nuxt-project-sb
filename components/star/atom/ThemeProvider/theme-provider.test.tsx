@@ -3,7 +3,7 @@ import themeProvider from "./theme-provider";
 import { test, expect } from "vitest";
 import { defineComponent, Fragment } from "vue";
 
-test("tag: should render proper tag", () => {
+test("tag: should render proper tag", async () => {
   const testTagName = "p";
   const wrapper = mount(themeProvider, {
     props: {
@@ -13,12 +13,12 @@ test("tag: should render proper tag", () => {
   expect((wrapper.vm.$el.tagName as string).toLowerCase()).toBe(testTagName);
 });
 
-test("tag: should render div tag as default", () => {
+test("tag: should render div tag as default", async () => {
   const wrapper = mount(themeProvider, {});
   expect((wrapper.vm.$el.tagName as string).toLowerCase()).toBe("div");
 });
 
-test("tag: should render Fragment as request", () => {
+test("tag: should render Fragment as request", async () => {
   const f = defineComponent(
     defineComponent(() => () => <Fragment>sdsd</Fragment>),
     {},
@@ -35,7 +35,7 @@ test("tag: should render Fragment as request", () => {
   // expect(wrapper).toBe(null);
 });
 
-test("should apply theme vars correctly", () => {
+test("should apply theme vars correctly", async () => {
   const wrapper = mount({
     render() {
       const themeVars = {
@@ -51,11 +51,11 @@ test("should apply theme vars correctly", () => {
     },
   });
   expect(wrapper.element.getAttribute("style")).toEqual(
-    "--sui-color-50: #123123;",
+    "--sui-color-50: #123123; color-scheme: light;",
   );
 });
 
-test("should apply custom prefix to theme vars correctly", () => {
+test("should apply custom prefix to theme vars correctly", async () => {
   const wrapper = mount({
     render() {
       const themeVars = {

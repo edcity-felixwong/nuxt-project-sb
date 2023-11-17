@@ -31,6 +31,8 @@ export const config: NuxtConfig = {
         "InputSwitch",
         "Message",
         "Sidebar",
+        "Menu",
+        "OverlayPanel",
       ],
       // exclude: ["editor", "chart"],
     },

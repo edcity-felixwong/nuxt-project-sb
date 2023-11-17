@@ -16,7 +16,6 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "functional",
     "import"
   ],
   "settings": {
@@ -39,9 +38,6 @@
     "plugin:vue/vue3-recommended",
     "plugin:storybook/recommended",
     "eslint:recommended",
-    "plugin:functional/external-typescript-recommended",
-    "plugin:functional/recommended",
-    "plugin:functional/stylistic",
     "airbnb-base"
   ],
   "overrides": [
@@ -85,10 +81,11 @@
       "error",
       "never"
     ],
-    "functional/functional-parameters": "off",
     "import/extensions": "off",
     "import/prefer-default-export": "off",
     "import/no-unresolved": "error",
-    "no-undef": "warn"
+    "no-undef": "warn",
+    "sort-imports": "warn",
+    "no-console": "error"
   }
 }

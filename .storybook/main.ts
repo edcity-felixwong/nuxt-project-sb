@@ -1,22 +1,14 @@
 import { transformAsync } from "@babel/core";
 import type { StorybookConfig } from "@storybook/vue3-vite";
 import Jsx from "@vitejs/plugin-vue-jsx";
-import {
-  nuxtPaths,
-  paths,
-  pathsRoot,
-  resolveRoot,
-} from "./../utils/parse-tsconfig";
+import { nuxtPaths, paths, pathsRoot, resolveRoot } from "./../utils/parse-tsconfig";
 
 const vueJsxOption = undefined;
 
 const publicDir = resolveRoot("stories", "public");
 
 const config: StorybookConfig = {
-  stories: [
-    "../stories/**/*.mdx",
-    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-  ],
+  stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -46,7 +38,8 @@ const config: StorybookConfig = {
       .then(addEnvPrefix("SB_"))
       .then(setPublicDir(publicDir))
       .then(setEnvDir(resolveRoot(".storybook")))
-      .then(addViteJsxCompiler);
+      .then(addViteJsxCompiler)
+      .then(addTailwind);
   },
   env: (config) => ({
     ...config,
@@ -128,5 +121,21 @@ const addViteJsxCompiler = (config: ViteConfig): ViteConfig => {
       jsx: "preserve",
     },
     plugins: [vueJsxLoader, ...(config?.plugins ?? [])],
+  };
+};
+const addTailwind = (config: ViteConfig): ViteConfig => {
+  return {
+    ...config,
+    css: {
+      ...(config?.css ?? {}),
+      postcss: {
+        ...(config?.css?.postcss ?? {}),
+        plugins: [
+          ...(config?.css?.postcss?.plugins ?? []),
+          require("tailwindcss"),
+          require("autoprefixer"),
+        ],
+      },
+    },
   };
 };

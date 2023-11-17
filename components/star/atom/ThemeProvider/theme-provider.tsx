@@ -41,8 +41,7 @@ export const themeProviderProps = {
 export type Props = ExtractPublicPropTypes<typeof themeProviderProps>;
 
 type InjectedThemeType = InjectionKey<typeof themeProviderProps>;
-export const THEME_PROVIDER_KEY: InjectionKey<typeof themeProviderProps> =
-  Symbol("test");
+export const THEME_PROVIDER_KEY: InjectionKey<typeof themeProviderProps> = Symbol("test");
 type destructInjectionKey<T> = T extends InjectionKey<infer K> ? K : never;
 
 /* Functions */
@@ -61,13 +60,13 @@ function insertDash(str: string) {
 // }
 
 export function useTheme<T extends InjectionKey<any> = InjectedThemeType>(
-  providedKey = THEME_PROVIDER_KEY,
+  providedKey = THEME_PROVIDER_KEY
 ): destructInjectionKey<T> {
   return inject(providedKey);
 }
-export function getStyle<T>(
+export function getStyle<T extends Record<string | number, any>>(
   s: T,
-  { prefix = defaultPrefix }: { prefix?: typeof defaultPrefix },
+  { prefix = defaultPrefix }: { prefix?: typeof defaultPrefix }
 ) {
   return flattenObject(s, { prefix });
 }
@@ -87,26 +86,23 @@ export default defineComponent({
       : "light";
     useHeadTheme(theme, { key: hash });
     useHeadTheme({ colorTheme }, { key: hash });
-    const tagName = computed(() =>
-      props.tag === "Fragment" ? Fragment : props.tag,
-    );
+    const tagName = computed(() => (props.tag === "Fragment" ? Fragment : props.tag));
     const style = computed(() => ({
       ...getStyle(theme, { prefix: props.prefix }),
       "color-scheme": colorTheme,
     }));
     const providedProps = computed(() => props);
     provide(THEME_PROVIDER_KEY, providedProps);
-    return () => {
+    return () =>
       // return <`${tagName.value}`>{slots.default() ?? false}</`${tagName.value}`>;
-      return createVNode(
+      createVNode(
         tagName.value,
         {
           class: [getClassName(), props.theme],
           style: style.value,
           "data-theme": props.theme,
         },
-        slots?.default?.(),
+        slots?.default?.()
       );
-    };
   },
 });

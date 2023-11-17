@@ -1,5 +1,11 @@
+@layer tailwind-base, primevue, tailwind-utilities;
 @layer tailwind-base {
   @tailwind base;
+  *,
+  ::before,
+  ::after {
+    border-color: var(--sui-border-color-default);
+  }
 }
 
 @layer tailwind-utilities {
