@@ -39,6 +39,7 @@
         <PMenubar :model="items"></PMenubar>
         <PToast />
         <PMenubar :model="items2" />
+        <StarTest />
         <div class="h-[3000px]" />
       </div>
     </section>
@@ -49,6 +50,7 @@ import { Icon } from "@iconify/vue";
 import { ref } from "vue";
 import { useToast } from "primevue/usetoast";
 // import PCalendar from "primevue/calendar";
+import StarTest from "@/components/star/organisms/Test.vue";
 
 import {
   StarPage,

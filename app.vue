@@ -1,13 +1,13 @@
 <template>
-  <!-- <StarThemeProvider> -->
-  <NuxtLayout>
-    <NuxtPage />
-  </NuxtLayout>
-  <!-- </StarThemeProvider> -->
+  <StarThemeProvider>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
+  </StarThemeProvider>
 </template>
 <script setup>
 import "@/styles";
-import "@/theme/theme.css.ts";
+// import "@/theme/theme.css.ts";
 
-// import { StarThemeProvider } from "#components";
+import { StarThemeProvider } from "#components";
 </script>

@@ -7,7 +7,7 @@ type NuxtConfig = Parameters<DefineNuxtConfig>[0];
 export const config: NuxtConfig = {
   ssr: false,
   app: {
-    baseURL: process.env.NODE_ENV === "development" ? "/" : "/",
+    baseURL: process.env.NODE_ENV === "development" ? "/" : "/home/papers/",
     buildAssetsDir: "/assets/",
   },
   devtools: { enabled: true },

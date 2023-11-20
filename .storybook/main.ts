@@ -2,6 +2,7 @@ import { transformAsync } from "@babel/core";
 import type { StorybookConfig } from "@storybook/vue3-vite";
 import Jsx from "@vitejs/plugin-vue-jsx";
 import { nuxtPaths, paths, pathsRoot, resolveRoot } from "./../utils/parse-tsconfig";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
 const vueJsxOption = undefined;
 
@@ -38,6 +39,7 @@ const config: StorybookConfig = {
       .then(addEnvPrefix("SB_"))
       .then(setPublicDir(publicDir))
       .then(setEnvDir(resolveRoot(".storybook")))
+      .then(addPlugins(vanillaExtractPlugin()))
       .then(addViteJsxCompiler)
       .then(addTailwind);
   },
@@ -122,6 +124,12 @@ const addViteJsxCompiler = (config: ViteConfig): ViteConfig => {
     },
     plugins: [vueJsxLoader, ...(config?.plugins ?? [])],
   };
+};
+const addPlugins = (...p: NonNullable<ViteConfig["plugins"]>) => {
+  return (config: ViteConfig): ViteConfig => ({
+    ...config,
+    plugins: (config?.plugins ?? []).concat(p),
+  });
 };
 const addTailwind = (config: ViteConfig): ViteConfig => {
   return {
