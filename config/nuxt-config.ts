@@ -62,5 +62,12 @@ export const config: NuxtConfig = {
   },
   vite: {
     plugins: [vanillaExtractPlugin()],
+    build: {
+      rollupOptions: {
+        output: {
+          sourcemap: true,
+        },
+      },
+    },
   },
 };
