@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3";
 import StarHeader from "@/components/star/atom/Header";
 import { simpleBooleanArg, simpleEnumArg } from "#storybook/blocks";
 
+console.log("🚀 ~ file: StarHeader.stories.ts:3 ~ StarHeader:", StarHeader);
 // const props = StarHeader.props as unknown as typeof StarButtonProp;
 /* 'boolean' | 'function' | 'number' | 'string' | 'symbol' | SBType */
 const meta: Meta<typeof StarHeader> = {
@@ -50,13 +51,13 @@ const meta: Meta<typeof StarHeader> = {
 export default meta;
 type Story = StoryObj<typeof StarHeader>;
 
-const render: Story["render"] = (args, { argTypes }) => ({
-  components: { StarHeader },
-  setup() {
-    return { args };
-  },
-  template: '<StarHeader v-bind="args">{{ args.default }}</StarHeader>',
-});
+// const render: Story["render"] = (args, { argTypes }) => ({
+//   components: { StarHeader },
+//   setup() {
+//     return { args };
+//   },
+//   template: '<StarHeader v-bind="args">{{ args.default }}</StarHeader>',
+// });
 
 /*
  *👇 Render functions are a framework specific feature to allow you control on how the component renders.
@@ -64,17 +65,18 @@ const render: Story["render"] = (args, { argTypes }) => ({
  * to learn how to use render functions.
  */
 export const Default: Story = {
-  render,
+  // render,
   args: {
     // theme: 'default',
     // block:,
     //
     default: "Button",
+    role: "teacher",
   },
 };
 
 export const Secondary: Story = {
-  render,
+  // render,
   args: {
     ...Default.args,
     theme: "default",
@@ -83,7 +85,7 @@ export const Secondary: Story = {
 };
 
 export const Block: Story = {
-  render,
+  // render,
   args: {
     ...Default.args,
     block: true,

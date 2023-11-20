@@ -1,70 +1,64 @@
 <template>
   <PMenubar :model="items" :pt="{ root: root() }">
-    <!-- <template #item>
-      <div>qwe</div>
+    <!-- <template #item="{ item, label, hasSubmenu }">
+      <div>{{ item.label }}{{ hasSubmenu }}</div>
     </template> -->
+    <template #itemicon="{ item, class: className }">
+      <div v-if="item.icon">
+        <Icon :icon="item.icon" width="24" :class="[className, 'mr-2']" />
+      </div>
+    </template>
   </PMenubar>
 </template>
 <script setup lang="ts">
 import { header } from "./header-tv";
+import { Icon } from "@iconify/vue";
+import PMenubar from "primevue/menubar";
+import { ref } from "vue";
 
 type Props = {
   role: "teacher" | "student";
 };
 const { root } = header();
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  role: "teacher",
+});
+
+const subjects = [
+  {
+    label: "中文",
+    // icon: "pi pi-bolt",
+    // shortcut: "⌘+S",
+  },
+  {
+    label: "English",
+  },
+  {
+    label: "數學",
+  },
+  {
+    label: "Mathematics",
+  },
+];
 const items = ref([
   {
-    label: "My ",
-    icon: "pi pi-home",
+    label: "My Paper",
+    icon: "material-symbols:article-outline-rounded",
+    items: subjects,
   },
   {
     label: "Features",
-    icon: "pi pi-star",
+    icon: "material-symbols:play-shapes-outline-rounded",
+    items: subjects,
   },
   {
     label: "Projects",
-    icon: "pi pi-search",
-    items: [
-      {
-        label: "Core",
-        icon: "pi pi-bolt",
-        shortcut: "⌘+S",
-      },
-      {
-        label: "Blocks",
-        icon: "pi pi-server",
-        shortcut: "⌘+B",
-      },
-      {
-        label: "UI Kit",
-        icon: "pi pi-pencil",
-        shortcut: "⌘+U",
-      },
-      {
-        separator: true,
-      },
-      {
-        label: "Templates",
-        icon: "pi pi-palette",
-        items: [
-          {
-            label: "Apollo",
-            icon: "pi pi-palette",
-            badge: 2,
-          },
-          {
-            label: "Ultima",
-            icon: "pi pi-palette",
-            badge: 3,
-          },
-        ],
-      },
-    ],
+    icon: "material-symbols:timeline",
+    items: subjects,
   },
   {
     label: "Contact",
-    icon: "pi pi-envelope",
+    // icon: "pi pi-envelope",
     badge: 3,
   },
 ]);
