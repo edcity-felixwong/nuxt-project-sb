@@ -93,16 +93,14 @@ export default defineComponent({
     }));
     const providedProps = computed(() => props);
     provide(THEME_PROVIDER_KEY, providedProps);
-    return () =>
-      // return <`${tagName.value}`>{slots.default() ?? false}</`${tagName.value}`>;
-      createVNode(
-        tagName.value,
-        {
-          class: [getClassName(), props.theme],
-          style: style.value,
-          "data-theme": props.theme,
-        },
-        slots?.default?.()
-      );
+    return () => createVNode(
+      tagName.value,
+      {
+        class: [getClassName(), props.theme],
+        style: style.value,
+        "data-theme": props.theme,
+      },
+      slots?.default?.()
+    );
   },
 });

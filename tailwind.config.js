@@ -12,6 +12,9 @@ export default {
     "./app.config.{vue,js,ts,jsx,tsx}",
     "./stories/**/*.{vue,js,ts,jsx,tsx,mdx}",
     "./.storybook/**/*.{vue,js,ts,jsx,tsx,mdx}",
+    /** Some global style may be injected in plugin config */
+    "./nuxt.config.{ts,js}",
+    "./config/**/*.{js,ts,mjs,cjs,mts,cts}",
   ],
   theme: {
     extend: {

@@ -1,4 +1,6 @@
 import { type DefineNuxtConfig } from "nuxt/config";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
+import type { PrimeVueConfiguration, PrimeVuePTOptions } from "primevue/config";
 
 type NuxtConfig = Parameters<DefineNuxtConfig>[0];
 /* Lift this config up to distribute to other config like vite, storybook, vitest, etc */
@@ -19,7 +21,23 @@ export const config: NuxtConfig = {
   primevue: {
     options: {
       ripple: true,
-    },
+      // unstyled: true,
+      pt: {
+        menu: { menu: "p-2", action: "py-2.5 px-2" },
+        button: { root: "focus:active:scale-95 duration-300 ease-in-out" },
+        // menubar: {
+        //   submenu: "",
+        // },
+      },
+      ptOptions: {
+        /** Merge the custom class with pre-set style */
+        mergeProps: true,
+        /** Merge with primevue default if the section is missed
+         * @tutorial https://primevue.org/passthrough/#usepassthrough
+         */
+        mergeSections: true,
+      },
+    } as PrimeVueConfiguration,
     components: {
       prefix: "P",
       include: [
@@ -33,11 +51,16 @@ export const config: NuxtConfig = {
         "Sidebar",
         "Menu",
         "OverlayPanel",
+        "Menubar",
+        "Toast",
       ],
       // exclude: ["editor", "chart"],
     },
   },
   tailwindcss: {
     cssPath: "./styles/global.css",
+  },
+  vite: {
+    plugins: [vanillaExtractPlugin()],
   },
 };

@@ -5,7 +5,7 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "generate": "nuxt generate --fail-on-error",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "vitest run",
@@ -32,6 +32,7 @@
     "@storybook/vue3": "^7.4.6",
     "@storybook/vue3-vite": "^7.4.6",
     "@typescript-eslint/parser": "^6.8.0",
+    "@vanilla-extract/vite-plugin": "^3.9.1",
     "@vitejs/plugin-legacy": "^4.1.1",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
     "@vue/babel-preset-jsx": "^1.4.0",
@@ -62,6 +63,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@vanilla-extract/css": "^1.14.0",
     "bem-cn": "^3.0.1",
     "nuxt-primevue": "^0.1.0",
     "radix-vue": "^1.1.3",

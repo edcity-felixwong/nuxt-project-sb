@@ -1,3 +1,100 @@
+import { createGlobalTheme, createGlobalThemeContract } from "@vanilla-extract/css";
+
+const palette = {
+  50: "",
+  100: "",
+  200: "",
+  300: "",
+  400: "",
+  500: "",
+  600: "",
+  700: "",
+  800: "",
+  900: "",
+};
+
+export const prefix = "sui";
+
+export const themeType = createGlobalThemeContract(
+  {
+    // font:{
+    //   size:{
+
+    //   }
+    // }
+    /** Color */
+    color: {
+      primary: {
+        ...palette,
+        tw: palette,
+        default: "aka 600",
+        ring: "focus-ring",
+        hover: "",
+        active: "",
+        highlight: { focus: "tint of 50 (lightness -4)" },
+      },
+      default: {
+        0: "background",
+        ...palette,
+        tw: {
+          0: "background for tailwind usage",
+          ...palette,
+        },
+        disabled: "disabled color for UI",
+        default: "default text color",
+        emphasized: "shade of default",
+      },
+      success: {
+        ...palette,
+        tw: palette,
+      },
+      warning: {
+        ...palette,
+        tw: palette,
+      },
+      danger: {
+        ...palette,
+        tw: palette,
+      },
+      surface: {
+        ground: "not done",
+        section: "not done",
+        card: "not done",
+        border: "not done",
+        overlay: "not done",
+      },
+    },
+    /** Radius */
+    radius: {
+      checkbox: "6px",
+      default: "12px",
+      small: "12px",
+      medium: "14px",
+      large: "16px",
+    },
+    /** Border */
+    border: {
+      width: {
+        small: "1px",
+        medium: "2px",
+        large: "3px",
+      },
+      color: {
+        default: "var(--sui-color-default-300)",
+      },
+    },
+    /** Opacity */
+    opacity: {
+      disabled: 0.5,
+      focus: 1,
+      hover: 0.8,
+      divider: 0.15,
+      overlay: 0,
+    },
+  },
+  (_, path) => `${prefix}-${path.join("-")}`
+);
+
 const primary = {
   50: "#FFF1EB",
   100: "#FFDFCC",
@@ -120,28 +217,29 @@ const dangerTw = {
   800: "348deg 70% 52%",
   900: "346deg 65% 48%",
 };
-export default {
-  font: {
-    size: {
-      sm: {
-        xs: "10px",
-        sm: "14px",
-        md: "16px",
-      },
-      md: {
-        xs: "12px",
-        sm: "16px",
-        md: "20px",
-      },
-    },
-    weight: {
-      md: {
-        sm: 400,
-        md: 500,
-        lg: 600,
-      },
-    },
-  },
+
+export const vars = createGlobalTheme(':root, [data-theme="light"]', themeType, {
+  // font: {
+  //   size: {
+  //     sm: {
+  //       xs: "10px",
+  //       sm: "14px",
+  //       md: "16px",
+  //     },
+  //     md: {
+  //       xs: "12px",
+  //       sm: "16px",
+  //       md: "20px",
+  //     },
+  //   },
+  //   weight: {
+  //     md: {
+  //       sm: 400,
+  //       md: 500,
+  //       lg: 600,
+  //     },
+  //   },
+  // },
   color: {
     primary: {
       ...primary,
@@ -150,11 +248,16 @@ export default {
       ring: "#ffc195",
       hover: "test",
       active: "test",
-      highlightFocus: "#FFE2D6", // 50 with lightness -4
+      highlight: {
+        focus: "#FFE2D6", // 50 with lightness -4
+      },
     },
     default: {
       ...gray,
       tw: { ...grayTw },
+      disabled: primary[500],
+      default: primary[700],
+      emphasized: primary[800],
     },
     success: {
       ...success,
@@ -203,4 +306,4 @@ export default {
     divider: 0.15,
     overlay: 0,
   },
-};
+});
