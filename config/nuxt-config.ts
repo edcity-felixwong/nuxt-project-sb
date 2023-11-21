@@ -16,7 +16,13 @@ export const config: NuxtConfig = {
     "#storybook/*": "../.storybook/*",
     "#stories": "../stories",
   },
-  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "nuxt-primevue"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@vueuse/nuxt",
+    "nuxt-primevue",
+    "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
+  ],
   components: [{ path: "./components/star/atom", prefix: "Star" }],
   primevue: {
     options: {
@@ -33,7 +39,7 @@ export const config: NuxtConfig = {
         /** Merge the custom class with pre-set style */
         mergeProps: true,
         /** Merge with primevue default if the section is missed
-         * @tutorial https://primevue.org/passthrough/#usepassthrough
+         * @see https://primevue.org/passthrough/#usepassthrough
          */
         mergeSections: true,
       },
@@ -45,7 +51,6 @@ export const config: NuxtConfig = {
         "Button",
         "Checkbox",
         "Dropdown",
-        "Calendar",
         "InputSwitch",
         "Message",
         "Sidebar",
@@ -70,5 +75,8 @@ export const config: NuxtConfig = {
         },
       },
     },
+  },
+  piniaPersistedstate: {
+    storage: "localStorage",
   },
 };

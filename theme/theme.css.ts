@@ -12,16 +12,29 @@ const palette = {
   800: "",
   900: "",
 };
+const font = {
+  size: "in rem",
+  "line-height": "eg 1.2",
+  weight: "eg 400",
+};
 
 export const prefix = "sui";
 
 export const themeType = createGlobalThemeContract(
   {
-    // font:{
-    //   size:{
-
-    //   }
-    // }
+    /** Font */
+    font: {
+      family: {
+        system: `-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"`,
+        monospace: `ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace`,
+      },
+      body: {
+        small: font,
+        medium: font,
+        large: font,
+      },
+      // size: {},
+    },
     /** Color */
     color: {
       primary: {
@@ -80,7 +93,7 @@ export const themeType = createGlobalThemeContract(
         large: "3px",
       },
       color: {
-        default: "var(--sui-color-default-300)",
+        default: "",
       },
     },
     /** Opacity */
@@ -219,27 +232,31 @@ const dangerTw = {
 };
 
 export const vars = createGlobalTheme(':root, [data-theme="light"]', themeType, {
-  // font: {
-  //   size: {
-  //     sm: {
-  //       xs: "10px",
-  //       sm: "14px",
-  //       md: "16px",
-  //     },
-  //     md: {
-  //       xs: "12px",
-  //       sm: "16px",
-  //       md: "20px",
-  //     },
-  //   },
-  //   weight: {
-  //     md: {
-  //       sm: 400,
-  //       md: 500,
-  //       lg: 600,
-  //     },
-  //   },
-  // },
+  font: {
+    family: {
+      system: `-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"`,
+      monospace: `ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace`,
+    },
+    body: {
+      small: {
+        size: "0.875rem",
+        "line-height": "1.4285",
+        weight: "400",
+      },
+      medium: {
+        size: "1rem",
+        "line-height": "1.5",
+        weight: "400",
+      },
+      large: {
+        size: "1.125rem",
+        "line-height": "1.5555",
+        weight: "400",
+      },
+    },
+
+    // size: {},
+  },
   color: {
     primary: {
       ...primary,
@@ -295,7 +312,7 @@ export const vars = createGlobalTheme(':root, [data-theme="light"]', themeType, 
       large: "3px",
     },
     color: {
-      default: "var(--sui-color-default-300)",
+      default: gray[300],
     },
   },
   /** Opacity */

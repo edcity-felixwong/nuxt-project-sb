@@ -22,6 +22,7 @@
         <PMenu :model="menuItems" :pt="{ menu: 'p-14', action: 'py-2.5 px-2' }"></PMenu>
         <div class="card justify-content-center flex">
           <POverlayPanel ref="op">
+            <PButton v-tooltip="'Enter your username'" />
             <img
               src="https://primefaces.org/cdn/primevue/images/product/bamboo-watch.jpg"
               alt="Bamboo Watch"
@@ -48,7 +49,6 @@
 import { Icon } from "@iconify/vue";
 import { ref } from "vue";
 import { useToast } from "primevue/usetoast";
-// import PCalendar from "primevue/calendar";
 import StarTest from "@/components/star/organisms/Test.vue";
 
 import {
