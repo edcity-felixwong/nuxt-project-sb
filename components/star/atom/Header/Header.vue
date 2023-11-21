@@ -1,5 +1,5 @@
 <template>
-  <PMenubar :model="items" :pt="{ root: root() }">
+  <PMenubar :model="props.role === 'teacher' ? teacherItems : studentItems" :pt="{ root: root() }">
     <!-- <template #item="{ item, label, hasSubmenu }">
       <div>{{ item.label }}{{ hasSubmenu }}</div>
     </template> -->
@@ -40,7 +40,29 @@ const subjects = [
     label: "Mathematics",
   },
 ];
-const items = ref([
+const teacherItems = ref([
+  {
+    label: "My Paper",
+    icon: "material-symbols:article-outline-rounded",
+    items: subjects,
+  },
+  {
+    label: "Preset Papers",
+    icon: "material-symbols:book-4-outline-rounded",
+    items: subjects,
+  },
+  {
+    label: "Student's Corner",
+    icon: "material-symbols:play-shapes-outline-rounded",
+    items: subjects,
+  },
+  {
+    label: "Projects",
+    icon: "material-symbols:timeline",
+    items: subjects,
+  },
+]);
+const studentItems = ref([
   {
     label: "My Paper",
     icon: "material-symbols:article-outline-rounded",
@@ -55,11 +77,6 @@ const items = ref([
     label: "Projects",
     icon: "material-symbols:timeline",
     items: subjects,
-  },
-  {
-    label: "Contact",
-    // icon: "pi pi-envelope",
-    badge: 3,
   },
 ]);
 </script>

@@ -1,8 +1,6 @@
 <template>
   <StarPage>
-    <div>test</div>
     <section class="flex flex-row">
-      <StarSideNav />
       <div>
         <div>pos: {{ x }}, {{ y }}</div>
         <div>size: {{ width }}, {{ height }}</div>

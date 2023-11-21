@@ -1,4 +1,6 @@
-import { Preview } from "@storybook/vue3";
+import { Preview, setup } from "@storybook/vue3";
+import PrimeVue from "primevue/config";
+import type { PrimeVueConfiguration, PrimeVuePTOptions } from "primevue/config";
 import theme from "./theme";
 /* Import tailwind */
 import "./../styles/global.css";
@@ -39,3 +41,14 @@ const preview: Preview = {
 };
 
 export default preview;
+
+setup((app) => {
+  app.use(PrimeVue, {
+    prefix: "P",
+    pt: { menu: { root: "bg-red-900" } },
+    ptOptions: {
+      mergeProps: true,
+      mergeSections: true,
+    },
+  } as PrimeVueConfiguration);
+});
