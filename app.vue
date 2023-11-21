@@ -7,5 +7,7 @@
 </template>
 <script setup>
 import "@/styles";
+// import "@/theme/theme.css.ts";
+
 import { StarThemeProvider } from "#components";
 </script>

@@ -1,22 +1,15 @@
-import type { StorybookConfig } from "@storybook/vue3-vite";
-import {
-  paths,
-  nuxtPaths,
-  pathsRoot,
-  resolveRoot,
-} from "./../utils/parse-tsconfig";
-import Jsx from "@vitejs/plugin-vue-jsx";
 import { transformAsync } from "@babel/core";
+import type { StorybookConfig } from "@storybook/vue3-vite";
+import Jsx from "@vitejs/plugin-vue-jsx";
+import { nuxtPaths, paths, pathsRoot, resolveRoot } from "./../utils/parse-tsconfig";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 
 const vueJsxOption = undefined;
 
 const publicDir = resolveRoot("stories", "public");
 
 const config: StorybookConfig = {
-  stories: [
-    "../stories/**/*.mdx",
-    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
-  ],
+  stories: ["../stories/**/*.mdx", "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",
@@ -38,7 +31,7 @@ const config: StorybookConfig = {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&family=Inter:wght@300;400;600&family=Karla&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet"> 
-  <script src="https://cdn.tailwindcss.com" defer></script>
+  
   `,
   viteFinal: async (config) => {
     return await Promise.resolve(config)
@@ -46,7 +39,9 @@ const config: StorybookConfig = {
       .then(addEnvPrefix("SB_"))
       .then(setPublicDir(publicDir))
       .then(setEnvDir(resolveRoot(".storybook")))
-      .then(addViteJsxCompiler);
+      .then(addPlugins(vanillaExtractPlugin()))
+      .then(addViteJsxCompiler)
+      .then(addTailwind);
   },
   env: (config) => ({
     ...config,
@@ -128,5 +123,27 @@ const addViteJsxCompiler = (config: ViteConfig): ViteConfig => {
       jsx: "preserve",
     },
     plugins: [vueJsxLoader, ...(config?.plugins ?? [])],
+  };
+};
+const addPlugins = (...p: NonNullable<ViteConfig["plugins"]>) => {
+  return (config: ViteConfig): ViteConfig => ({
+    ...config,
+    plugins: (config?.plugins ?? []).concat(p),
+  });
+};
+const addTailwind = (config: ViteConfig): ViteConfig => {
+  return {
+    ...config,
+    css: {
+      ...(config?.css ?? {}),
+      postcss: {
+        ...(config?.css?.postcss ?? {}),
+        plugins: [
+          ...(config?.css?.postcss?.plugins ?? []),
+          require("tailwindcss"),
+          require("autoprefixer"),
+        ],
+      },
+    },
   };
 };

@@ -1,11 +1,14 @@
-import { Preview } from "@storybook/vue3"
-import { themes } from "@storybook/theming"
-import theme from "./theme"
+import { Preview, setup } from "@storybook/vue3";
+import PrimeVue from "primevue/config";
+import type { PrimeVueConfiguration, PrimeVuePTOptions } from "primevue/config";
+import theme from "./theme";
+/* Import tailwind */
+import "./../styles/global.css";
 /* Import project style */
-import "./../styles"
+import "./../styles";
 
-import "./sb-style.css"
-import ThemeProvider from "@/components/star/atom/ThemeProvider/ThemeProvider"
+import StarThemeProvider from "@/components/star/atom/ThemeProvider/theme-provider";
+import "./sb-style.css";
 
 const preview: Preview = {
   parameters: {
@@ -14,6 +17,11 @@ const preview: Preview = {
       matchers: {
         color: /(background|color)$/i,
         date: /Date$/,
+      },
+    },
+    options: {
+      storySort: {
+        order: ["Welcome", "*"],
       },
     },
     docs: {
@@ -26,10 +34,21 @@ const preview: Preview = {
   },
   decorators: [
     (story) => ({
-      components: { ThemeProvider, story },
-      template: `<ThemeProvider><story /></ThemeProvider>`,
+      components: { StarThemeProvider, story },
+      template: `<StarThemeProvider><story /></StarThemeProvider>`,
     }),
   ],
-}
+};
 
-export default preview
+export default preview;
+
+setup((app) => {
+  app.use(PrimeVue, {
+    prefix: "P",
+    pt: { menu: { root: "bg-red-900" } },
+    ptOptions: {
+      mergeProps: true,
+      mergeSections: true,
+    },
+  } as PrimeVueConfiguration);
+});

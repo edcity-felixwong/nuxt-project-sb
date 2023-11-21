@@ -1,11 +1,13 @@
 import { type DefineNuxtConfig } from "nuxt/config";
+import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
+import type { PrimeVueConfiguration, PrimeVuePTOptions } from "primevue/config";
 
 type NuxtConfig = Parameters<DefineNuxtConfig>[0];
 /* Lift this config up to distribute to other config like vite, storybook, vitest, etc */
 export const config: NuxtConfig = {
   ssr: false,
   app: {
-    baseURL: process.env.NODE_ENV === "development" ? "/" : "/",
+    baseURL: process.env.NODE_ENV === "development" ? "/" : "/home/papers/",
     buildAssetsDir: "/assets/",
   },
   devtools: { enabled: true },
@@ -14,9 +16,59 @@ export const config: NuxtConfig = {
     "#storybook/*": "../.storybook/*",
     "#stories": "../stories",
   },
-  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "nuxt-vite-legacy"],
+  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "nuxt-primevue"],
   components: [{ path: "./components/star/atom", prefix: "Star" }],
+  primevue: {
+    options: {
+      ripple: true,
+      // unstyled: true,
+      pt: {
+        menu: { menu: "p-2", action: "py-2.5 px-2" },
+        button: { root: "focus:active:scale-95 duration-300 ease-in-out" },
+        // menubar: {
+        //   submenu: "",
+        // },
+      },
+      ptOptions: {
+        /** Merge the custom class with pre-set style */
+        mergeProps: true,
+        /** Merge with primevue default if the section is missed
+         * @tutorial https://primevue.org/passthrough/#usepassthrough
+         */
+        mergeSections: true,
+      },
+    } as PrimeVueConfiguration,
+    components: {
+      prefix: "P",
+      include: [
+        "InputText",
+        "Button",
+        "Checkbox",
+        "Dropdown",
+        "Calendar",
+        "InputSwitch",
+        "Message",
+        "Sidebar",
+        "Menu",
+        "OverlayPanel",
+        "Menubar",
+        "Toast",
+        "Breadcrumb",
+      ],
+      // exclude: ["editor", "chart"],
+    },
+  },
   tailwindcss: {
     cssPath: "./styles/global.css",
+  },
+  vite: {
+    plugins: [vanillaExtractPlugin()],
+    build: {
+      rollupOptions: {
+        output: {
+          sourcemap: true,
+        },
+      },
+    },
   },
 };

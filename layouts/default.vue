@@ -1,34 +1,24 @@
 <template>
-  <div
-    :class="`${bem()} h-screen overflow-y-hidden overflow-x-hidden flex flex-col`"
-  >
-    <StarAlert :class="`${bem('alert')}`">
+  <div :class="`${bem()} h-screen overflow-y-hidden overflow-x-hidden flex flex-col`">
+    <PMessage :class="`${bem('alert')}`" :pt="{ root: { class: 'm-0 border-0' } }">
       lorem ipsum ttttttttttt q2312
-    </StarAlert>
+    </PMessage>
     <StarHeader :class="`${bem('header')}`" />
-    <Layout :class="`${bem('body')} flex-1 overflow-hidden`">
-      <StarSideNav :class="`${bem('side-nav')}`" />
+    <StarBreadcrumbNav :class="`${bem('breadcrumb-nav')}`" />
+    <section :class="`${bem('body')} flex-1 overflow-hidden flex flex-row`">
+      <!-- <StarSideNav :class="`${bem('side-nav')}`" /> -->
       <main :class="`${bem('main')} w-full h-full flex flex-col`">
-        <StarBreadcrumbNav :class="`${bem('breadcrumb-nav')}`" />
-        <Layout
-          :class="`${bem('page')} flex-1 overflow-y-hidden overflow-x-hidden`"
-        >
+        <!-- <StarBreadcrumbNav :class="`${bem('breadcrumb-nav')}`" /> -->
+        <section :class="`${bem('page')} flex-1 overflow-y-hidden overflow-x-hidden flex flex-row`">
           <slot />
-        </Layout>
+        </section>
       </main>
-    </Layout>
+    </section>
     <!-- <StarFooter /> -->
   </div>
 </template>
 <script setup lang="ts">
-import { Layout, Aside } from "tdesign-vue-next/esm";
-import {
-  StarHeader,
-  StarAlert,
-  StarFooter,
-  StarSideNav,
-  StarBreadcrumbNav,
-} from "#components";
+import { StarHeader, StarAlert, StarFooter, StarSideNav, StarBreadcrumbNav } from "#components";
 
 const bem = createBEM("layout");
 </script>
