@@ -70,7 +70,8 @@
     "sass": "^1.69.5",
     "tailwind-variants": "^0.1.18",
     "tdesign-vue-next": "^1.6.2",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-i18n": "^9.7.0"
   },
   "version": "",
   "readme": "ERROR: No README data found!",
