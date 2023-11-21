@@ -17,11 +17,25 @@ const font = {
   "line-height": "eg 1.2",
   weight: "eg 400",
 };
+export const breakpoint = {
+  sm: "576px",
+  md: "768px",
+  lg: "1024px",
+  xl: "1200px",
+  "2xl": "1400px",
+} as const;
 
 export const prefix = "sui";
 
 export const themeType = createGlobalThemeContract(
   {
+    breakpoint: {
+      ...breakpoint,
+      tablet: breakpoint.md,
+      laptop: breakpoint.lg,
+      desktop: breakpoint.xl,
+      header: breakpoint.md,
+    },
     /** Font */
     font: {
       family: {
@@ -232,6 +246,13 @@ const dangerTw = {
 };
 
 export const vars = createGlobalTheme(':root, [data-theme="light"]', themeType, {
+  breakpoint: {
+    ...breakpoint,
+    tablet: breakpoint.md,
+    laptop: breakpoint.lg,
+    desktop: breakpoint.xl,
+    header: breakpoint.md,
+  },
   font: {
     family: {
       system: `-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"`,

@@ -1,6 +1,6 @@
 <template>
   <StarPage>
-    <section class="flex flex-row">
+    <section class="">
       <div>
         <div>pos: {{ x }}, {{ y }}</div>
         <div>size: {{ width }}, {{ height }}</div>
@@ -40,7 +40,8 @@
         <PMenubar :model="items2" />
         <StarTest />
         <div>{{ $t("errors.toast_message.159") }}</div>
-        <div class="h-[3000px]" />
+        <div class="h-[200px]" />
+        <StarFooter />
       </div>
     </section>
   </StarPage>
@@ -50,6 +51,7 @@ import { Icon } from "@iconify/vue";
 import { ref } from "vue";
 import { useToast } from "primevue/usetoast";
 import StarTest from "@/components/star/organisms/Test.vue";
+import { StarFooter } from "#components";
 
 import {
   StarPage,
