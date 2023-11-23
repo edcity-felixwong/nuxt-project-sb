@@ -1,5 +1,11 @@
 <template>
-  <PMenubar :model="props.role === 'teacher' ? teacherItems : studentItems" :pt="{ root: root() }">
+  <PMenubar
+    :model="props.role === 'teacher' ? teacherItems : studentItems"
+    :pt="{ root: reactive(root()), start: reactive(start()) }"
+  >
+    <template #start>
+      <img :src="logo" alt="" />
+    </template>
     <!-- <template #item="{ item, label, hasSubmenu }">
       <div>{{ item.label }}{{ hasSubmenu }}</div>
     </template> -->
@@ -14,12 +20,13 @@
 import { header } from "./header-tv";
 import { Icon } from "@iconify/vue";
 import PMenubar from "primevue/menubar";
-import { ref } from "vue";
+import { ref, reactive } from "vue";
+import logo from "@/assets/logo.png";
 
 type Props = {
   role: "teacher" | "student";
 };
-const { root } = header();
+const { root, start } = header();
 const props = withDefaults(defineProps<Props>(), {
   role: "teacher",
 });

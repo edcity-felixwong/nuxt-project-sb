@@ -118,6 +118,11 @@ export const themeType = createGlobalThemeContract(
       divider: 0.15,
       overlay: 0,
     },
+    size: {
+      header: {
+        height: "88px",
+      },
+    },
   },
   (_, path) => `${prefix}-${path.join("-")}`
 );
@@ -245,7 +250,7 @@ const dangerTw = {
   900: "346deg 65% 48%",
 };
 
-export const vars = createGlobalTheme(':root, [data-theme="light"]', themeType, {
+export const lightTheme = createGlobalTheme(':root, [data-theme="light"]', themeType, {
   breakpoint: {
     ...breakpoint,
     tablet: breakpoint.md,
@@ -343,5 +348,10 @@ export const vars = createGlobalTheme(':root, [data-theme="light"]', themeType, 
     hover: 0.8,
     divider: 0.15,
     overlay: 0,
+  },
+  size: {
+    header: {
+      height: "88px",
+    },
   },
 });
