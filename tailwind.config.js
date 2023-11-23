@@ -1,3 +1,5 @@
+import { breakpoint } from "@/theme/theme.css";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -17,6 +19,7 @@ export default {
     "./config/**/*.{js,ts,mjs,cjs,mts,cts}",
   ],
   theme: {
+    screens: breakpoint,
     extend: {
       colors: {
         primary: {

@@ -67,6 +67,7 @@
     "@pinia/nuxt": "^0.5.1",
     "@vanilla-extract/css": "^1.14.0",
     "bem-cn": "^3.0.1",
+    "fp-ts": "^2.16.1",
     "nuxt-primevue": "^0.1.0",
     "pinia": "^2.1.7",
     "radix-vue": "^1.1.3",
