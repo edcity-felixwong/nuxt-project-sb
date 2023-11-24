@@ -1,13 +1,9 @@
 <template>
-  <footer>
+  <footer :class="`${bem('root')}`">
     <slot name="divider">
-      <PDivider
-        :pt="{
-          root: 'from-transparent before:h-[1px] before:bg-gradient-to-r before:via-[#0000001f] before:via-50% before:to-transparent',
-        }"
-      />
+      <PDivider :pt="pt" />
     </slot>
-    <div class="text-default-500 flex justify-center w-full px-5 pb-5 space-x-4">
+    <div :class="pt.list">
       <slot name="item">
         <span>© 2023 香港教育城有限公司</span>
         <a href="" class="transition-all drop-shadow-[0_0_2em_#646cffaa]">私隱政策聲明</a>
@@ -22,17 +18,25 @@
 <script setup lang="ts">
 import type { DividerPassThroughOptions } from "primevue/divider";
 import { withDefaults } from "vue";
+import { createBEM } from "@/composables/bem";
+import { usePassThrough } from "@/composables/usePassThrough";
 import { footer } from "./footer-tv";
-import { VariantProps } from "tailwind-variants";
+import { usePropsWatcher } from "@/composables/test-read-props";
 
-type PassThrough = DividerPassThroughOptions & {
-  footer: string;
-};
-type Props = VariantProps<typeof footer> & {
+const bem = createBEM("footer");
+
+/** Variants can be exposed from tv, like VariantProps<footer>,
+ * but vue is too lame to parse complex types 🥴
+ */
+type Props = {
+  isMobile?: boolean;
   pt?: DividerPassThroughOptions;
 };
 const props = withDefaults(defineProps<Props>(), {
-  // pt: {},
   ...footer.defaultVariants,
 });
+
+usePropsWatcher(props);
+
+const pt = usePassThrough(footer, props);
 </script>

@@ -9,6 +9,20 @@ export const config: NuxtConfig = {
   app: {
     baseURL: process.env.NODE_ENV === "development" ? "/" : "/home/papers/",
     buildAssetsDir: "/assets/",
+    head: {
+      title: "STAR",
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        { rel: "canonical", href: "" },
+      ],
+      meta: [
+        { content: "STAR", name: "description" },
+        { property: "og:url", content: "" },
+        { property: "og:title", content: "STAR" },
+        { property: "og:description", content: "STAR" },
+        { name: "google", content: "notranslate" },
+      ],
+    },
   },
   devtools: { enabled: true },
   alias: {

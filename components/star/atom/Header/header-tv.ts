@@ -6,4 +6,17 @@ export const header = tv({
     root: " min-h-[--sui-size-header-height] w-full border-b bg-[var(--sui-color-background)] rounded-none px-1",
     start: "mr-8",
   } satisfies MenubarPassThroughOptions,
+  variants: {
+    isMobile: {
+      true: {
+        root: "",
+      },
+      false: {
+        root: "",
+      },
+    },
+  },
+  defaultVariants: {
+    isMobile: false,
+  },
 });

@@ -24,11 +24,16 @@ export const breakpointBase = {
   xl: "1200px",
   "2xl": "1400px",
 } as const;
-export const breakpoint = {
-  ...breakpointBase,
+export const breakpointSemantic = {
   tablet: breakpointBase.md,
   laptop: breakpointBase.lg,
   desktop: breakpointBase.xl,
+} as const;
+export const breakpoint = {
+  ...breakpointBase,
+  ...breakpointSemantic,
+};
+export const breakpointComponent = {
   header: breakpointBase.md,
 };
 export const prefix = "sui";

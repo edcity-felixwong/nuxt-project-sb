@@ -19,7 +19,7 @@
         <div class="text-primary-700/20">qweqweqwe</div>
         <StarMenuItem>qweqwe</StarMenuItem>
         <StarMenuItemSideNavItem />
-        <PMenu :model="menuItems" :pt="{ menu: 'p-14', action: 'py-2.5 px-2' }"></PMenu>
+        <PMenu :model="menuItems" :pt="{ menu: 'p-2', action: 'py-2.5 px-2' }"></PMenu>
         <div class="card justify-content-center flex">
           <POverlayPanel ref="op">
             <PButton v-tooltip="'Enter your username'" />
@@ -40,8 +40,9 @@
         <PMenubar :model="items2" />
         <StarTest />
         <div>{{ $t("errors.toast_message.159") }}</div>
+        <div class="text-primary tablet:text-success-500">primary</div>
         <div class="h-[200px]" />
-        <StarFooter />
+        <StarFooter :isMobile="!isTabletOrLarger" />
       </div>
     </section>
   </StarPage>
@@ -51,8 +52,8 @@ import { Icon } from "@iconify/vue";
 import { ref } from "vue";
 import { useToast } from "primevue/usetoast";
 import StarTest from "@/components/star/organisms/Test.vue";
+import { useMedia } from "@/composables/useMedia";
 import { StarFooter } from "#components";
-
 import {
   StarPage,
   StarSideNav,
@@ -61,11 +62,9 @@ import {
   StarMenuItemSideNavItem,
 } from "#components";
 
-const op = ref();
+const { isTabletOrLarger } = useMedia();
 
-const toggle = (event) => {
-  op.value.toggle(event);
-};
+const op = ref();
 
 const menuItems = ref([
   { label: "New", icon: "pi pi-plus" },

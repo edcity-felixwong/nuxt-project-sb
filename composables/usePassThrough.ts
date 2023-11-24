@@ -41,15 +41,12 @@ export function usePassThrough<
   T extends { slots: any },
   P extends PassThroughPropsType<T["slots"]>
 >(style: T, props: P) {
-  const propsRef = toRefs(props);
-  const pt = ref(pipe(read(style, props))());
+  // const propsRef = toRefs(props);
+  const pt = ref(read(style, props)());
   watch(
-    () => propsRef?.pt?.value,
-    () => {
-      /** can't use callback value (like newValue),
-       * which needs newValue.value as ref
-       */
-      pt.value = pipe(read(style, props))();
+    () => props,
+    (newProps) => {
+      pt.value = read(style, newProps)();
     },
     {
       deep: true,

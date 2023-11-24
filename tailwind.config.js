@@ -1,4 +1,4 @@
-import { breakpoint } from "@/theme/theme.css";
+import { breakpointSemantic } from "@/theme/theme.css";
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -19,7 +19,8 @@ export default {
     "./config/**/*.{js,ts,mjs,cjs,mts,cts}",
   ],
   theme: {
-    screens: breakpoint,
+    /** referring js object will break intellisense 🙏 */
+    screens: { tablet: "768px", laptop: "1024px", desktop: "1200px" },
     extend: {
       colors: {
         primary: {
