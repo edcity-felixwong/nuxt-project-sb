@@ -1,5 +1,5 @@
 <template>
-  <PBreadcrumb :model="items" :pt="{ root: 'border-0 border-b rounded-none' }">
+  <PBreadcrumb :model="items" :pt="{ root: 'text-xl font-semibold' }">
     <template #item="{ item, props }">
       <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
         <a :href="href" v-bind="props.action" @click="navigate">
@@ -23,6 +23,6 @@ const home = ref({
 const items = ref([
   { label: "Components" },
   { label: "Form" },
-  { label: "InputText", route: "/inputtext" },
+  // { label: "InputText", route: "/inputtext" },
 ]);
 </script>

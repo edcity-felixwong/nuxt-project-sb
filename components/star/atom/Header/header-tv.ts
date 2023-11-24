@@ -9,7 +9,7 @@ export const header = tv({
   variants: {
     isMobile: {
       true: {
-        root: "",
+        root: "justify-between",
       },
       false: {
         root: "",

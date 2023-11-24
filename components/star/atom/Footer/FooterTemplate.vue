@@ -27,10 +27,15 @@ const { t, locale, tm, te, r, set } = useI18n();
 
 const bem = createBEM("footer");
 
+interface Item {
+  label: string;
+  href: string;
+}
 /** Variants can be exposed from tv, like VariantProps<footer>,
  * but vue is too lame to parse complex types 🥴
  */
-type Props = {
+export type Props = {
+  model: Item[];
   isMobile?: boolean;
   pt?: DividerPassThroughOptions;
 };
@@ -42,10 +47,6 @@ usePropsWatcher(props);
 
 const pt = usePassThrough(footer, props);
 
-interface Item {
-  label: string;
-  href: string;
-}
 const items: Ref<Item[]> = computedWithControl(
   () => locale.value,
   () => [
@@ -53,6 +54,7 @@ const items: Ref<Item[]> = computedWithControl(
       label: t("brand.company_name"),
       href: t("brand.privacy_link"),
     },
+
     {
       label: t("brand.privacy"),
       href: t("brand.privacy_link"),

@@ -23,11 +23,13 @@ import logo from "@/assets/logo.png";
 type Props = {
   /** @default teacher */
   role?: "teacher" | "student";
+  isMobile?: boolean;
   pt?: MenubarPassThroughOptions;
 };
 // const { root, start } = header();
 const props = withDefaults(defineProps<Props>(), {
   role: "teacher",
+  ...header.defaultVariants,
 });
 const pt = usePassThrough(header, props);
 const subjects = [
