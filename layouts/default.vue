@@ -3,6 +3,7 @@
     <PMessage :class="`${bem('alert')}`" :pt="{ root: { class: 'm-0 border-0' } }">
       lorem ipsum
     </PMessage>
+    <StarIdentityBar />
     <StarHeader :class="`${bem('header')}`" :isMobile="!isLaptopOrLarger" />
     <StarBreadcrumbNav :class="`${bem('breadcrumb-nav')}`" />
     <section :class="`${bem('body')} flex-1 overflow-hidden flex flex-row`">
@@ -18,7 +19,15 @@
   </div>
 </template>
 <script setup lang="ts">
-import { StarHeader, StarAlert, StarFooter, StarSideNav, StarBreadcrumbNav } from "#components";
+import {
+  StarHeader,
+  StarAlert,
+  StarFooter,
+  StarSideNav,
+  StarBreadcrumbNav,
+  StarIdentityBar,
+} from "#components";
+import { createBEM, useMedia } from "@/composables";
 // import {useMedia}
 const { isLaptopOrLarger } = useMedia();
 

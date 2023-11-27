@@ -226,6 +226,7 @@ export const lightTheme = {
       border: "not done",
       overlay: "not done",
     },
+    edcity: { default: "#1C64AD", hover: "#c93" },
   },
   /** Radius */
   radius: {
@@ -258,6 +259,9 @@ export const lightTheme = {
     header: {
       height: "88px",
     },
+  },
+  padding: {
+    footer: "1.25rem",
   },
 };
 

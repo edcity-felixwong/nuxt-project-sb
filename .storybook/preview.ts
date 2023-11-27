@@ -1,6 +1,9 @@
 import { Preview, setup } from "@storybook/vue3";
 import PrimeVue from "primevue/config";
 import type { PrimeVueConfiguration, PrimeVuePTOptions } from "primevue/config";
+import { messages } from "@/i18n";
+import { i18n } from "@/plugins/i18n";
+
 import theme from "./theme";
 /* Import tailwind */
 import "./../styles/global.css";
@@ -51,4 +54,5 @@ setup((app) => {
       mergeSections: true,
     },
   } as PrimeVueConfiguration);
+  // app.use(i18n);
 });

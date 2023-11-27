@@ -1,19 +1,18 @@
 <template>
-  <PMenubar :model="props.role === 'teacher' ? teacherItems : studentItems" :pt="pt">
+  <!-- <PMenubar :model="props.role === 'teacher' ? teacherItems : studentItems" :pt="pt">
     <template #start>
       <img :src="logo" alt="" />
     </template>
-    <!-- <template #item="{ item, label, hasSubmenu }">
-      <div>{{ item.label }}{{ hasSubmenu }}</div>
-    </template> -->
     <template #itemicon="{ item, class: className }">
       <div v-if="item.icon">
         <Icon :icon="item.icon" width="24" :class="[className, 'mr-2']" />
       </div>
     </template>
-  </PMenubar>
+  </PMenubar> -->
+  <HeaderTemplate :model="props.role === 'teacher' ? teacherItems : studentItems" />
 </template>
 <script setup lang="ts">
+import HeaderTemplate from "./HeaderTemplate.vue";
 import { header } from "./header-tv";
 import { Icon } from "@iconify/vue";
 import PMenubar, { type MenubarPassThroughOptions } from "primevue/menubar";
@@ -21,17 +20,17 @@ import { ref, reactive } from "vue";
 import logo from "@/assets/logo.png";
 
 type Props = {
-  /** @default teacher */
+  //   /** @default teacher */
   role?: "teacher" | "student";
-  isMobile?: boolean;
-  pt?: MenubarPassThroughOptions;
+  //   isMobile?: boolean;
+  //   pt?: MenubarPassThroughOptions;
 };
-// const { root, start } = header();
+// // const { root, start } = header();
 const props = withDefaults(defineProps<Props>(), {
   role: "teacher",
-  ...header.defaultVariants,
+  //   ...header.defaultVariants,
 });
-const pt = usePassThrough(header, props);
+// const pt = usePassThrough(header, props);
 const subjects = [
   {
     label: "中文",

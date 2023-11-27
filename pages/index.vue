@@ -1,7 +1,19 @@
 <template>
   <StarPage>
     <section class="">
-      <StarFooter :isMobile="!isTabletOrLarger" />
+      <div class="h-[300px]"></div>
+      <StarFooter />
+      <div class="card flex justify-content-center">
+        <PButton type="button" icon="pi pi-image" label="Image" @click="toggle" />
+
+        <POverlayPanel ref="op">
+          <img
+            src="https://primefaces.org/cdn/primevue/images/product/bamboo-watch.jpg"
+            alt="Bamboo Watch"
+          />
+          <div class="h-[300px]"></div>
+        </POverlayPanel>
+      </div>
       <div class="h-[300px]"></div>
     </section>
   </StarPage>
@@ -9,7 +21,16 @@
 <script setup lang="ts">
 import { useToast } from "primevue/usetoast";
 import { StarFooter, StarPage } from "#components";
+import POverlayPanel from "primevue/overlaypanel";
 
-const { isTabletOrLarger } = useMedia();
+import { ref } from "vue";
+
+const op = ref();
+
+const toggle = (event) => {
+  op.value.toggle(event);
+};
+
+// const { isTabletOrLarger } = useMedia();
 const toast = useToast();
 </script>

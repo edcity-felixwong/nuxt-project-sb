@@ -1,57 +1,20 @@
 <template>
-  <footer :class="`${bem('root')}`">
-    <slot name="divider">
-      <PDivider :pt="pt" />
-    </slot>
-    <div :class="pt.list">
-      <slot name="item">
-        <!-- <span>© 2023 香港教育城有限公司</span> -->
-        <template v-for="item in items">
-          <a :href="item.href" target="_blank">{{ item.label }}</a>
-        </template>
-      </slot>
-    </div>
-  </footer>
+  <FooterTemplate :model="items" :isMobile="!isTabletOrLarger" />
 </template>
 <script setup lang="ts">
-import type { DividerPassThroughOptions } from "primevue/divider";
-import { withDefaults } from "vue";
-import { createBEM } from "@/composables/bem";
-import { usePassThrough } from "@/composables/usePassThrough";
-import { footer } from "./footer-tv";
-import { usePropsWatcher } from "@/composables/test-read-props";
+import FooterTemplate, { type Props } from "./FooterTemplate.vue";
 import { useI18n } from "vue-i18n";
 import { computedWithControl } from "@vueuse/core";
+import { useMedia } from "@/composables";
 
-const { t, locale, tm, te, r, set } = useI18n();
-
-const bem = createBEM("footer");
-
-/** Variants can be exposed from tv, like VariantProps<footer>,
- * but vue is too lame to parse complex types 🥴
- */
-type Props = {
-  isMobile?: boolean;
-  pt?: DividerPassThroughOptions;
-};
-const props = withDefaults(defineProps<Props>(), {
-  ...footer.defaultVariants,
-});
-
-usePropsWatcher(props);
-
-const pt = usePassThrough(footer, props);
-
-interface Item {
-  label: string;
-  href: string;
-}
-const items: Ref<Item[]> = computedWithControl(
+/** Data */
+const { t, locale } = useI18n();
+const items: Props["model"] = computedWithControl(
   () => locale.value,
   () => [
     {
       label: t("brand.company_name"),
-      href: t("brand.privacy_link"),
+      href: t("brand.company_link"),
     },
     {
       label: t("brand.privacy"),
@@ -75,4 +38,6 @@ const items: Ref<Item[]> = computedWithControl(
     },
   ]
 );
+
+const { isTabletOrLarger } = useMedia();
 </script>

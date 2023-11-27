@@ -1,5 +1,8 @@
 export default {
   company_name: "© 香港教育城有限公司",
+  company_link: "https://www.hkedcity.net",
+
+  home: "主頁",
 
   privacy: "私隱政策聲明",
   privacy_link: "https://www.hkedcity.net/home/zh-hant/dataprivacy/",

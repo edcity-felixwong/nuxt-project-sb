@@ -3,6 +3,9 @@ export default {
   // "footer_links": "<a href=\"https://www.hkedcity.net/home/en/dataprivacy/\">Privacy Statement</a><span class=\"hkecl-divider\">|</span>\n    <a href=\"https://www.hkedcity.net/home/en/notices#s4\">Terms of Service</a><span class=\"hkecl-divider\">|</span>\n    <a href=\"https://www.hkedcity.net/home/en/notices#s2\">Copyright and Intellectual Property Rights</a><span class=\"hkecl-divider\">|</span>\n    <a href=\"https://www.hkedcity.net/home/en/notices#s3\">Disclaimer</a><span class=\"hkecl-divider\">|</span>\n    <a href=\"https://www.hkedcity.net/contactus/?chg_lang=1\">Contact us</a>",
 
   company_name: "© Hong Kong Education City Limited",
+  company_link: "https://www.hkedcity.net",
+
+  home: "HKEdCity Home",
 
   privacy: "Privacy Statement",
   privacy_link: "https://www.hkedcity.net/home/en/dataprivacy/",
