@@ -34,8 +34,6 @@ const props = withDefaults(defineProps<Props>(), {
 const subjects = [
   {
     label: "中文",
-    // icon: "pi pi-bolt",
-    // shortcut: "⌘+S",
   },
   {
     label: "English",

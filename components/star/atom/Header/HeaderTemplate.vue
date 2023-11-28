@@ -23,8 +23,7 @@ export interface Item extends MenuItem {}
 
 export type Props = {
   model: Item[];
-  /** @default teacher */
-  role?: "teacher" | "student";
+  /** @default false */
   isMobile?: boolean;
   pt?: MenubarPassThroughOptions;
 };

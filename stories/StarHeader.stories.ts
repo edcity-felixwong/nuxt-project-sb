@@ -1,8 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 import HeaderTemplate from "@/components/star/atom/Header/HeaderTemplate.vue";
 import { simpleBooleanArg, simpleEnumArg } from "#storybook/blocks";
-
-console.log("🚀 ~ file: HeaderTemplate.stories.ts:3 ~ HeaderTemplate:", HeaderTemplate);
 // const props = HeaderTemplate.props as unknown as typeof StarButtonProp;
 /* 'boolean' | 'function' | 'number' | 'string' | 'symbol' | SBType */
 const meta: Meta<typeof HeaderTemplate> = {
@@ -22,19 +20,69 @@ type Story = StoryObj<typeof HeaderTemplate>;
 //   template: '<HeaderTemplate v-bind="args">{{ args.default }}</HeaderTemplate>',
 // });
 
-/*
- *👇 Render functions are a framework specific feature to allow you control on how the component renders.
- * See https://storybook.js.org/docs/vue/api/csf
- * to learn how to use render functions.
- */
-export const Default: Story = {
+const subjects = [
+  {
+    label: "中文",
+  },
+  {
+    label: "English",
+  },
+  {
+    label: "數學",
+  },
+  {
+    label: "Mathematics",
+  },
+];
+
+export const Teacher: Story = {
   // render,
+  name: "Teacher/English",
   args: {
-    // theme: 'default',
-    // block:,
-    //
-    // default: "Button",
-    // role: "teacher",
-    model: [{ label: "lorem ipsum" }],
+    model: [
+      {
+        label: "My Paper",
+        icon: "material-symbols:article-outline-rounded",
+        items: subjects,
+      },
+      {
+        label: "Preset Papers",
+        icon: "material-symbols:book-4-outline-rounded",
+        items: subjects,
+      },
+      {
+        label: "Student's Corner",
+        icon: "material-symbols:play-shapes-outline-rounded",
+        items: subjects,
+      },
+      {
+        label: "Projects",
+        icon: "material-symbols:timeline",
+        items: subjects,
+      },
+    ],
+  },
+};
+
+export const Student: Story = {
+  name: "Student/English",
+  args: {
+    model: [
+      {
+        label: "My Paper",
+        icon: "material-symbols:article-outline-rounded",
+        items: subjects,
+      },
+      {
+        label: "Features",
+        icon: "material-symbols:play-shapes-outline-rounded",
+        items: subjects,
+      },
+      {
+        label: "Projects",
+        icon: "material-symbols:timeline",
+        items: subjects,
+      },
+    ],
   },
 };

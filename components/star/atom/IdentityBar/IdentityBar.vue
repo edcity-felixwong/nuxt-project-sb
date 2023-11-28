@@ -1,33 +1,52 @@
 <template>
-  <div class="min-h-[36px] w-full flex items-center flex-row-reverse">
-    <div class="flex gap-1 leading-4 text-[--sui-color-edcity-default]">
-      <!-- Felix|English| -->
+  <div class="px-4 text-text-450 min-h-[36px] w-full flex items-center flex-row-reverse">
+    <div class="flex items-center gap-4 leading-4">
+      <div class="flex-none">
+        <img
+          src="https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=50&user_id=200000150"
+          class="w-5 h-5 rounded-full"
+        />
+      </div>
       <div>
-        <a
+        <PButton
+          v-ripple="{
+            unstyled: true,
+          }"
+          class="hover:text-primary-700 focus-visible:outline-4"
           @click="toggle"
-          class="focus:text-[--sui-color-edcity-hover] hover:text-[--sui-color-edcity-hover]"
-          >Felix</a
-        >
+          unstyled
+          label="Jhon qweqw123 qweasdq tew(qweqw-teacher-tr)"
+        />
+        <!-- <a @click="toggle" class="focus:text-text-700 hover:text-primary-700" tabindex="1">Jhon</a> -->
         <UserMenu
           ref="menu"
           :user="{
-            fullname: 'losum ipsum',
-            schoolName: 'hkedity wqwe school no.2',
+            fullname: 'losum ipsum summe(abc-qwere-weq-tr)',
+            schoolName: 'hkedity wqwe school no.2(very long name)',
             avatar:
               'https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=80&user_id=200000150',
           }"
         />
       </div>
       <Divider />
-      <a
-        class="hover:text-[--sui-color-edcity-hover]"
+      <PButton
+        unstyled
+        class="hover:text-primary-700"
         @click="() => (locale === 'zh' ? (locale = 'en') : (locale = 'zh'))"
-        >{{ locale === "zh" ? "中" : "English" }}</a
+        >{{ locale === "zh" ? "中" : "English" }}</PButton
       >
       <Divider />
-      <div class="flex items-center justify-center">
-        <HomeIcon class="hover:text-[--sui-color-edcity-hover]" />
-      </div>
+      <PButton unstyled>
+        <div class="flex items-center justify-center" title="Home">
+          <Icon
+            icon="material-symbols:home-outline-rounded"
+            width="1.25rem"
+            class="text-text-450 hover:text-primary-700"
+            title="Home"
+          />
+          <!-- <HomeIcon class="hover:text-primary-700" title="Home" /> -->
+        </div>
+      </PButton>
     </div>
   </div>
 </template>
@@ -37,22 +56,18 @@ import { createBEM } from "@/composables";
 import PDivider from "primevue/divider";
 import { useI18n } from "vue-i18n";
 import UserMenu from "./UserMenu.vue";
+import { Icon } from "@iconify/vue";
+import PButton from "primevue/button";
 
 const { locale } = useI18n();
 
 const bem = createBEM("identity-bar");
 
 const Divider = defineComponent(
-  () => () =>
-    (
-      <PDivider
-        layout="vertical"
-        pt={{ root: "m-0 p-0 before:border-solid before:border-[color:--sui-color-edcity]" }}
-      />
-    ),
+  () => () => <PDivider layout="vertical" pt={{ root: "m-0   before:border-solid " }} />,
   { name: "Divider" }
 );
-const HomeIcon = defineComponent(
+const EdcityHomeIcon = defineComponent(
   () => () =>
     (
       <svg

@@ -7,7 +7,7 @@ import { onMounted } from "vue";
 import { tv } from "@/utils/tv";
 import { twMerge } from "tailwind-merge";
 import { usePrimeVue } from "primevue/config";
-import { useDefaultPT } from "@/composables/ueDefaultPT";
+import { useDefaultPT } from "@/composables/useDefaultPT";
 
 const nuxtApp = useNuxtApp();
 const primevue = usePrimeVue();
