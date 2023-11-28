@@ -48,7 +48,7 @@ export default preview;
 setup((app) => {
   app.use(PrimeVue, {
     prefix: "P",
-    pt: { menu: { root: "bg-red-900" } },
+    // pt: { menu: { root: "bg-red-900" } },
     ptOptions: {
       mergeProps: true,
       mergeSections: true,

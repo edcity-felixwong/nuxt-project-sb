@@ -8,18 +8,15 @@
           class="focus:text-[--sui-color-edcity-hover] hover:text-[--sui-color-edcity-hover]"
           >Felix</a
         >
-        <PMenu ref="menu" id="overlay_menu" :model="items" :popup="true">
-          <!-- <template #></template> -->
-        </PMenu>
-        <!-- <POverlayPanel ref="op">
-          <div class="min-w-[100px]">
-            <img
-              src="https://primefaces.org/cdn/primevue/images/product/bamboo-watch.jpg"
-              alt="Bamboo Watch"
-            />
-            <div class="h-[300px]"></div>
-          </div>
-        </POverlayPanel> -->
+        <UserMenu
+          ref="menu"
+          :user="{
+            fullname: 'losum ipsum',
+            schoolName: 'hkedity wqwe school no.2',
+            avatar:
+              'https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=80&user_id=200000150',
+          }"
+        />
       </div>
       <Divider />
       <a
@@ -28,7 +25,7 @@
         >{{ locale === "zh" ? "中" : "English" }}</a
       >
       <Divider />
-      <div class="flex justify-center items-center">
+      <div class="flex items-center justify-center">
         <HomeIcon class="hover:text-[--sui-color-edcity-hover]" />
       </div>
     </div>
@@ -38,13 +35,12 @@
 import { ref, defineComponent } from "vue";
 import { createBEM } from "@/composables";
 import PDivider from "primevue/divider";
-import POverlayPanel from "primevue/overlaypanel";
-import PMenu from "primevue/menu";
 import { useI18n } from "vue-i18n";
+import UserMenu from "./UserMenu.vue";
 
 const { locale } = useI18n();
 
-const bem = createBEM("");
+const bem = createBEM("identity-bar");
 
 const Divider = defineComponent(
   () => () =>
@@ -75,30 +71,7 @@ const HomeIcon = defineComponent(
   { name: "HomeIcon" }
 );
 
-// const op = ref();
-
-// const toggle = (event) => {
-//   op.value.toggle(event);
-// };
-
 const menu = ref();
-const items = ref([
-  {
-    label: "Options",
-    items: [
-      {
-        label: "Refresh",
-        icon: "pi pi-refresh",
-      },
-      {
-        label: "Export",
-        icon: "pi pi-upload",
-      },
-    ],
-  },
-]);
-
-const toggle = (event) => {
-  menu.value.toggle(event);
-};
+/** No direct reference to menu.toggle as it is null at start */
+const toggle = (event) => menu.value.menu.toggle(event);
 </script>
