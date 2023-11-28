@@ -1,6 +1,9 @@
 import { Preview, setup } from "@storybook/vue3";
 import PrimeVue from "primevue/config";
 import type { PrimeVueConfiguration, PrimeVuePTOptions } from "primevue/config";
+import { messages } from "@/i18n";
+import { i18n } from "@/plugins/i18n";
+
 import theme from "./theme";
 /* Import tailwind */
 import "./../styles/global.css";
@@ -45,10 +48,11 @@ export default preview;
 setup((app) => {
   app.use(PrimeVue, {
     prefix: "P",
-    pt: { menu: { root: "bg-red-900" } },
+    // pt: { menu: { root: "bg-red-900" } },
     ptOptions: {
       mergeProps: true,
       mergeSections: true,
     },
   } as PrimeVueConfiguration);
+  // app.use(i18n);
 });

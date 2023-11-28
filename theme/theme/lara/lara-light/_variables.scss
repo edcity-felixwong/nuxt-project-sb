@@ -44,7 +44,7 @@ $shade800: var(--sui-color-default-800) !default; //unused
 $shade900: var(--sui-color-default-900) !default; //unused
 
 //global
-$fontFamily: "Inter var", sans-serif !default;
+$fontFamily: var(--sui-font-family-system) !default;
 $fontSize: 1rem !default;
 $fontWeight: normal !default;
 $textColor: $shade700 !default;
@@ -68,6 +68,9 @@ $disabledOpacity: 0.6 !default;
 $maskBg: rgba(0, 0, 0, 0.4) !default;
 $loadingIconFontSize: 2rem !default;
 $errorColor: #e24c4c !default;
+
+//breakpoint
+$menubarBreakpoint: 1024px !default;
 
 //scale
 $scaleSM: 0.875 !default;
@@ -641,7 +644,7 @@ $errorMessageIconColor: #ff5757 !default;
 $overlayContentBorder: 0 none !default;
 $overlayContentBg: $panelContentBg !default;
 /* content bg with scaled 5% lower lightness, be careful on dark theme */
-$overlayContentBgShade: $shade100 !default;
+$overlayContentBgShade: $shade200 !default;
 $overlayContainerShadow: 0 1px 3px rgba(0, 0, 0, 0.3) !default;
 
 //dialog
@@ -883,10 +886,10 @@ $imagePreviewActionIconFontSize: 1.5rem !default;
 $imagePreviewActionIconBorderRadius: 50% !default;
 
 :root {
-    font-family: "Inter var", sans-serif;
+    font-family: #{$fontFamily};
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     font-variation-settings: normal;
-    --font-family: "Inter var", sans-serif;
+    --font-family: #{$fontFamily};
     --font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     --surface-a: #{$shade000};
     --surface-b: #{$shade100};

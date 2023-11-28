@@ -17,6 +17,8 @@ export default {
     "./config/**/*.{js,ts,mjs,cjs,mts,cts}",
   ],
   theme: {
+    /** referring js object will break intellisense 🙏 */
+    screens: { tablet: "768px", laptop: "1024px", desktop: "1200px" },
     extend: {
       colors: {
         primary: {
@@ -44,6 +46,24 @@ export default {
           700: "hsl(var(--sui-color-default-tw-700) / <alpha-value>)",
           800: "hsl(var(--sui-color-default-tw-800) / <alpha-value>)",
           900: "hsl(var(--sui-color-default-tw-900) / <alpha-value>)",
+        },
+        text: {
+          DEFAULT: "var(--sui-color-text-800)",
+          300: "var(--sui-color-text-300)",
+          350: "var(--sui-color-text-350)",
+          400: "var(--sui-color-text-400)",
+          450: "var(--sui-color-text-450)",
+          500: "var(--sui-color-text-500)",
+          550: "var(--sui-color-text-550)",
+          600: "var(--sui-color-text-600)",
+          650: "var(--sui-color-text-650)",
+          700: "var(--sui-color-text-700)",
+          750: "var(--sui-color-text-750)",
+          800: "var(--sui-color-text-800)",
+          850: "var(--sui-color-text-850)",
+          900: "var(--sui-color-text-900)",
+          950: "var(--sui-color-text-950)",
+          1000: "var(--sui-color-text-1000)",
         },
         success: {
           DEFAULT: "hsl(var(--sui-color-success-tw-500) / <alpha-value>)",

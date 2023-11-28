@@ -12,90 +12,33 @@ const palette = {
   800: "",
   900: "",
 };
-
+const font = {
+  size: "in rem",
+  "line-height": "eg 1.2",
+  weight: "eg 400",
+};
+export const breakpointBase = {
+  sm: "576px",
+  md: "768px",
+  lg: "1024px",
+  xl: "1200px",
+  "2xl": "1400px",
+} as const;
+export const breakpointSemantic = {
+  tablet: breakpointBase.md,
+  laptop: breakpointBase.lg,
+  desktop: breakpointBase.xl,
+} as const;
+export const breakpoint = {
+  ...breakpointBase,
+  ...breakpointSemantic,
+};
+export const breakpointComponent = {
+  header: breakpointBase.md,
+};
 export const prefix = "sui";
 
-export const themeType = createGlobalThemeContract(
-  {
-    // font:{
-    //   size:{
-
-    //   }
-    // }
-    /** Color */
-    color: {
-      primary: {
-        ...palette,
-        tw: palette,
-        default: "aka 600",
-        ring: "focus-ring",
-        hover: "",
-        active: "",
-        highlight: { focus: "tint of 50 (lightness -4)" },
-      },
-      default: {
-        0: "background",
-        ...palette,
-        tw: {
-          0: "background for tailwind usage",
-          ...palette,
-        },
-        disabled: "disabled color for UI",
-        default: "default text color",
-        emphasized: "shade of default",
-      },
-      success: {
-        ...palette,
-        tw: palette,
-      },
-      warning: {
-        ...palette,
-        tw: palette,
-      },
-      danger: {
-        ...palette,
-        tw: palette,
-      },
-      surface: {
-        ground: "not done",
-        section: "not done",
-        card: "not done",
-        border: "not done",
-        overlay: "not done",
-      },
-    },
-    /** Radius */
-    radius: {
-      checkbox: "6px",
-      default: "12px",
-      small: "12px",
-      medium: "14px",
-      large: "16px",
-    },
-    /** Border */
-    border: {
-      width: {
-        small: "1px",
-        medium: "2px",
-        large: "3px",
-      },
-      color: {
-        default: "var(--sui-color-default-300)",
-      },
-    },
-    /** Opacity */
-    opacity: {
-      disabled: 0.5,
-      focus: 1,
-      hover: 0.8,
-      divider: 0.15,
-      overlay: 0,
-    },
-  },
-  (_, path) => `${prefix}-${path.join("-")}`
-);
-
-const primary = {
+export const primary = {
   50: "#FFF1EB",
   100: "#FFDFCC",
   200: "#FFCCA8",
@@ -107,7 +50,7 @@ const primary = {
   800: "#EC4F0C",
   900: "#D9370F",
 };
-const primaryTw = {
+export const primaryTw = {
   50: "18deg 100% 96%",
   100: "22deg 100% 90%",
   200: "25deg 100% 83%",
@@ -119,7 +62,7 @@ const primaryTw = {
   800: "18deg 90% 49%",
   900: "12deg 87% 45%",
 };
-const gray = {
+export const gray = {
   0: "#ffffff",
   50: "#f8f9fa",
   100: "#f1f3f5",
@@ -132,7 +75,7 @@ const gray = {
   800: "#343a40",
   900: "#212529",
 };
-const grayTw = {
+export const grayTw = {
   0: "210deg 17% 100%",
   50: "210deg 17% 98%",
   100: "210deg 17% 95%",
@@ -145,7 +88,7 @@ const grayTw = {
   800: "210deg 10% 23%",
   900: "210deg 11% 15%",
 };
-const success = {
+export const success = {
   50: "#EFFAF5",
   100: "#D3F9E8",
   200: "#B2F2D5",
@@ -157,7 +100,7 @@ const success = {
   800: "#09925B",
   900: "#087F50",
 };
-const successTw = {
+export const successTw = {
   50: "153deg 52% 96%",
   100: "153deg 76% 90%",
   200: "153deg 71% 82%",
@@ -169,7 +112,7 @@ const successTw = {
   800: "156deg 88% 30%",
   900: "156deg 88% 26%",
 };
-const warning = {
+export const warning = {
   50: "#FFFAEB",
   100: "#FFF6DD",
   200: "#FFEEBF",
@@ -181,7 +124,7 @@ const warning = {
   800: "#FFC93B",
   900: "#FCC419",
 };
-const warningTw = {
+export const warningTw = {
   50: "45deg 100% 96%",
   100: "44deg 100% 93%",
   200: "44deg 100% 87%",
@@ -193,7 +136,7 @@ const warningTw = {
   800: "43deg 100% 62%",
   900: "45deg 97% 54%",
 };
-const danger = {
+export const danger = {
   50: "#FEECF0",
   100: "#FFE3EA",
   200: "#FFA8BC",
@@ -205,7 +148,7 @@ const danger = {
   800: "#DB3053",
   900: "#C92A4E",
 };
-const dangerTw = {
+export const dangerTw = {
   50: "347deg 90% 96%",
   100: "345deg 100% 95%",
   200: "346deg 100% 83%",
@@ -218,28 +161,33 @@ const dangerTw = {
   900: "346deg 65% 48%",
 };
 
-export const vars = createGlobalTheme(':root, [data-theme="light"]', themeType, {
-  // font: {
-  //   size: {
-  //     sm: {
-  //       xs: "10px",
-  //       sm: "14px",
-  //       md: "16px",
-  //     },
-  //     md: {
-  //       xs: "12px",
-  //       sm: "16px",
-  //       md: "20px",
-  //     },
-  //   },
-  //   weight: {
-  //     md: {
-  //       sm: 400,
-  //       md: 500,
-  //       lg: 600,
-  //     },
-  //   },
-  // },
+export const lightTheme = {
+  breakpoint,
+  font: {
+    family: {
+      system: `-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"`,
+      monospace: `ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace`,
+    },
+    body: {
+      small: {
+        size: "0.875rem",
+        "line-height": "1.4285",
+        weight: "400",
+      },
+      medium: {
+        size: "1rem",
+        "line-height": "1.5",
+        weight: "400",
+      },
+      large: {
+        size: "1.125rem",
+        "line-height": "1.5555",
+        weight: "400",
+      },
+    },
+
+    // size: {},
+  },
   color: {
     primary: {
       ...primary,
@@ -259,6 +207,30 @@ export const vars = createGlobalTheme(':root, [data-theme="light"]', themeType, 
       default: primary[700],
       emphasized: primary[800],
     },
+    /** Text palette is designed by contrast ratios,
+     * Unlike Open Color, which is designed for UI views.
+     * It start from 300, which means 3.0 contrast for icons,
+     * And it passthrough the original gray palette,
+     * so conceptually this and the gray palette is inter-changeable.
+     * @see {@link https://leonardocolor.io/theme.html?name=Untitled&config=%7B%22baseScale%22%3A%22Gray%22%2C%22colorScales%22%3A%5B%7B%22name%22%3A%22Gray%22%2C%22colorKeys%22%3A%5B%22%23212529%22%2C%22%23f8f9fa%22%5D%2C%22colorspace%22%3A%22HSL%22%2C%22ratios%22%3A%5B%221.05%22%2C%221.11%22%2C%221.19%22%2C%221.3%22%2C%221.49%22%2C%222.07%22%2C%223.02%22%2C%223.32%22%2C%223.5%22%2C%224%22%2C%224.54%22%2C%225%22%2C%225.5%22%2C%226%22%2C%226.5%22%2C%227%22%2C%227.5%22%2C%228%22%2C%228.5%22%2C%229%22%2C%229.5%22%2C%2210%22%2C%2210.5%22%2C%2210.86%22%2C%2211%22%2C%2211.5%22%2C%2215.43%22%5D%2C%22smooth%22%3Afalse%7D%5D%2C%22lightness%22%3A100%2C%22contrast%22%3A1%2C%22saturation%22%3A100%2C%22formula%22%3A%22wcag2%22%7D}
+     */
+    text: {
+      300: "#8796a4",
+      350: gray[600],
+      400: "#708192",
+      450: "#687887",
+      500: "#627180",
+      550: "#5d6a78",
+      600: "#586471",
+      650: "#545f6b",
+      700: "#4f5a66",
+      750: "#4b5660",
+      800: gray[700],
+      850: "#444d57",
+      900: "#414a53",
+      950: "#3e474f",
+      1000: "#3c434b",
+    },
     success: {
       ...success,
       tw: { ...successTw },
@@ -270,6 +242,101 @@ export const vars = createGlobalTheme(':root, [data-theme="light"]', themeType, 
     danger: {
       ...danger,
       tw: { ...dangerTw },
+    },
+    surface: {
+      ground: "not done",
+      section: "not done",
+      card: "not done",
+      border: "not done",
+      overlay: "not done",
+    },
+    edcity: { default: "#1C64AD", hover: "#c93" },
+  },
+  /** Radius */
+  radius: {
+    checkbox: "6px",
+    default: "12px",
+    small: "12px",
+    medium: "14px",
+    large: "16px",
+  },
+  /** Border */
+  border: {
+    width: {
+      small: "1px",
+      medium: "2px",
+      large: "3px",
+    },
+    color: {
+      default: gray[300],
+    },
+  },
+  /** Opacity */
+  opacity: {
+    disabled: 0.5,
+    focus: 1,
+    hover: 0.8,
+    divider: 0.15,
+    overlay: 0,
+  },
+  size: {
+    header: {
+      height: "88px",
+    },
+  },
+  padding: {
+    footer: "1.25rem",
+  },
+};
+
+export const t = {
+  breakpoint,
+  /** Font */
+  font: {
+    family: {
+      system: `-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"`,
+      monospace: `ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace`,
+    },
+    body: {
+      small: font,
+      medium: font,
+      large: font,
+    },
+    // size: {},
+  },
+  /** Color */
+  color: {
+    primary: {
+      ...palette,
+      tw: palette,
+      default: "aka 600",
+      ring: "focus-ring",
+      hover: "",
+      active: "",
+      highlight: { focus: "tint of 50 (lightness -4)" },
+    },
+    default: {
+      0: "background",
+      ...palette,
+      tw: {
+        0: "background for tailwind usage",
+        ...palette,
+      },
+      disabled: "disabled color for UI",
+      default: "default text color",
+      emphasized: "shade of default",
+    },
+    success: {
+      ...palette,
+      tw: palette,
+    },
+    warning: {
+      ...palette,
+      tw: palette,
+    },
+    danger: {
+      ...palette,
+      tw: palette,
     },
     surface: {
       ground: "not done",
@@ -295,7 +362,7 @@ export const vars = createGlobalTheme(':root, [data-theme="light"]', themeType, 
       large: "3px",
     },
     color: {
-      default: "var(--sui-color-default-300)",
+      default: "",
     },
   },
   /** Opacity */
@@ -306,4 +373,16 @@ export const vars = createGlobalTheme(':root, [data-theme="light"]', themeType, 
     divider: 0.15,
     overlay: 0,
   },
-});
+  size: {
+    header: {
+      height: "88px",
+    },
+  },
+};
+
+export const themeType = createGlobalThemeContract(
+  lightTheme,
+  (_, path) => `${prefix}-${path.join("-")}`
+);
+
+createGlobalTheme(':root, [data-theme="light"]', themeType, lightTheme);

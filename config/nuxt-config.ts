@@ -9,6 +9,20 @@ export const config: NuxtConfig = {
   app: {
     baseURL: process.env.NODE_ENV === "development" ? "/" : "/home/papers/",
     buildAssetsDir: "/assets/",
+    head: {
+      title: "STAR",
+      link: [
+        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        { rel: "canonical", href: "" },
+      ],
+      meta: [
+        { content: "STAR", name: "description" },
+        { property: "og:url", content: "" },
+        { property: "og:title", content: "STAR" },
+        { property: "og:description", content: "STAR" },
+        { name: "google", content: "notranslate" },
+      ],
+    },
   },
   devtools: { enabled: true },
   alias: {
@@ -16,14 +30,20 @@ export const config: NuxtConfig = {
     "#storybook/*": "../.storybook/*",
     "#stories": "../stories",
   },
-  modules: ["@nuxtjs/tailwindcss", "@vueuse/nuxt", "nuxt-primevue"],
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@vueuse/nuxt",
+    "nuxt-primevue",
+    "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
+  ],
   components: [{ path: "./components/star/atom", prefix: "Star" }],
   primevue: {
     options: {
       ripple: true,
       // unstyled: true,
       pt: {
-        menu: { menu: "p-2", action: "py-2.5 px-2" },
+        // menu: { menu: "p-2", action: "py-2.5 px-2" },
         button: { root: "focus:active:scale-95 duration-300 ease-in-out" },
         // menubar: {
         //   submenu: "",
@@ -33,7 +53,7 @@ export const config: NuxtConfig = {
         /** Merge the custom class with pre-set style */
         mergeProps: true,
         /** Merge with primevue default if the section is missed
-         * @tutorial https://primevue.org/passthrough/#usepassthrough
+         * @see https://primevue.org/passthrough/#usepassthrough
          */
         mergeSections: true,
       },
@@ -45,7 +65,6 @@ export const config: NuxtConfig = {
         "Button",
         "Checkbox",
         "Dropdown",
-        "Calendar",
         "InputSwitch",
         "Message",
         "Sidebar",
@@ -54,6 +73,7 @@ export const config: NuxtConfig = {
         "Menubar",
         "Toast",
         "Breadcrumb",
+        "Divider",
       ],
       // exclude: ["editor", "chart"],
     },
@@ -70,5 +90,8 @@ export const config: NuxtConfig = {
         },
       },
     },
+  },
+  piniaPersistedstate: {
+    storage: "localStorage",
   },
 };
