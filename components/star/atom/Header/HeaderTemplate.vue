@@ -1,7 +1,7 @@
 <template>
   <PMenubar :model="props.model" :pt="pt">
     <template #start>
-      <img :src="logo" alt="STAR" />
+      <img :src="logo" alt="STAR" aria-label="STAR" title="STAR" />
     </template>
     <template #itemicon="{ item, class: className }">
       <div v-if="item.icon">

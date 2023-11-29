@@ -74,6 +74,7 @@ export const config: NuxtConfig = {
         "Toast",
         "Breadcrumb",
         "Divider",
+        "Carousel",
       ],
       // exclude: ["editor", "chart"],
     },

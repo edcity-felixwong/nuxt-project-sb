@@ -1,14 +1,18 @@
 <template>
   <div :class="`${bem()} h-screen overflow-y-hidden overflow-x-hidden flex flex-col`">
-    <PMessage :class="`${bem('alert')}`" :pt="{ root: { class: 'm-0 border-0' } }">
-      lorem ipsum
-    </PMessage>
+    <!-- <PMessage :class="`${bem('alert')}`" :pt="{ root: { class: 'm-0 border-0' } }">
+      On Tuesday November 28th from 9:00AM PT - 12PM PT (5:00PM UTC - 8PM UTC), we will be
+      performing system maintenance on support.mozilla.org. During the maintenance period, users
+      will not be able to sign in to the website, and all users signed in at the start of the
+      maintenance period will be signed out.
+    </PMessage> -->
+    <StarAnonucementBar :class="`${bem('alert')}`" />
     <StarIdentityBar />
     <StarHeader :class="`${bem('header')}`" :isMobile="!isLaptopOrLarger" />
     <StarBreadcrumbNav :class="`${bem('breadcrumb-nav')}`" />
     <section :class="`${bem('body')} flex-1 overflow-hidden flex flex-row`">
       <!-- <StarSideNav :class="`${bem('side-nav')}`" /> -->
-      <main :class="`${bem('main')} w-full h-full flex flex-col`">
+      <main role="main" :class="`${bem('main')} w-full h-full flex flex-col`">
         <!-- <StarBreadcrumbNav :class="`${bem('breadcrumb-nav')}`" /> -->
         <section :class="`${bem('page')} flex-1 overflow-y-hidden overflow-x-hidden flex flex-row`">
           <slot />
@@ -26,6 +30,7 @@ import {
   StarSideNav,
   StarBreadcrumbNav,
   StarIdentityBar,
+  StarAnonucementBar,
 } from "#components";
 import { createBEM, useMedia } from "@/composables";
 // import {useMedia}

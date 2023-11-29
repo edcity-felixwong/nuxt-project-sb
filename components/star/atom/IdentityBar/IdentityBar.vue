@@ -5,6 +5,8 @@
         <img
           src="https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=50&user_id=200000150"
           class="w-5 h-5 rounded-full"
+          alt="user-avatar"
+          aria-label="user-avatar"
         />
       </div>
       <div>
