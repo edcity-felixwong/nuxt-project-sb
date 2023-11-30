@@ -12,12 +12,14 @@
   <HeaderTemplate :model="props.role === 'teacher' ? teacherItems : studentItems" />
 </template>
 <script setup lang="ts">
-import HeaderTemplate from "./HeaderTemplate.vue";
+import HeaderTemplate, { type Props as HeaderProps } from "./HeaderTemplate.vue";
 import { header } from "./header-tv";
 import { Icon } from "@iconify/vue";
 import PMenubar, { type MenubarPassThroughOptions } from "primevue/menubar";
 import { ref, reactive } from "vue";
 import logo from "@/assets/logo.png";
+
+const { push } = useRouter();
 
 type Props = {
   //   /** @default teacher */
@@ -31,25 +33,46 @@ const props = withDefaults(defineProps<Props>(), {
   //   ...header.defaultVariants,
 });
 // const pt = usePassThrough(header, props);
-const subjects = [
+const subjects: HeaderProps["model"] = [
   {
     label: "中文",
+    command: () => push("/?subject=chinese"),
   },
   {
     label: "English",
+    command: () => push("/?subject=english"),
   },
   {
     label: "數學",
+    command: () => push("/?subject=cmath"),
   },
   {
     label: "Mathematics",
+    command: () => push("/?subject=emath"),
   },
 ];
-const teacherItems = ref([
+const teacherItems: Ref<HeaderProps["model"]> = ref<HeaderProps["model"]>([
   {
-    label: "My Paper",
+    label: "My Papers",
     icon: "material-symbols:article-outline-rounded",
-    items: subjects,
+    items: [
+      {
+        label: "中文",
+        command: () => push("/?subject=chinese"),
+      },
+      {
+        label: "English",
+        command: () => push("/?subject=english"),
+      },
+      {
+        label: "數學",
+        command: () => push("/?subject=cmath"),
+      },
+      {
+        label: "Mathematics",
+        command: () => push("/?subject=emath"),
+      },
+    ],
   },
   {
     label: "Preset Papers",
@@ -62,14 +85,31 @@ const teacherItems = ref([
     items: subjects,
   },
   {
-    label: "Projects",
+    label: "Report",
     icon: "material-symbols:timeline",
-    items: subjects,
+    items: [
+      {
+        label: "中文",
+        command: () => push("/report?subject=chinese"),
+      },
+      {
+        label: "English",
+        command: () => push("/report?subject=english"),
+      },
+      {
+        label: "數學",
+        command: () => push("/report?subject=cmath"),
+      },
+      {
+        label: "Mathematics",
+        command: () => push("/report?subject=emath"),
+      },
+    ],
   },
 ]);
 const studentItems = ref([
   {
-    label: "My Paper",
+    label: "My Papers",
     icon: "material-symbols:article-outline-rounded",
     items: subjects,
   },
@@ -79,7 +119,7 @@ const studentItems = ref([
     items: subjects,
   },
   {
-    label: "Projects",
+    label: "Report",
     icon: "material-symbols:timeline",
     items: subjects,
   },

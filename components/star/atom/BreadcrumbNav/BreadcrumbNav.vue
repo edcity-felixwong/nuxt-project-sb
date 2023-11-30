@@ -1,5 +1,5 @@
 <template>
-  <PBreadcrumb :model="items" :pt="{ root: 'text-xl font-semibold' }">
+  <PBreadcrumb :model="items" :pt="{ root: 'text-lg font-semibold border-0' }">
     <template #item="{ item, props }">
       <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
         <a :href="href" v-bind="props.action" @click="navigate">
@@ -16,10 +16,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const home = ref({
-  icon: "pi pi-home",
-  route: "/installation",
-});
 const items = ref([
   { label: "Components" },
   { label: "Form" },

@@ -1,11 +1,11 @@
 <template>
-  <PMenubar :model="props.model" :pt="pt">
+  <PMenubar role="navigation" aria-label="Main navigation" :model="props.model" :pt="pt">
     <template #start>
-      <img :src="logo" alt="STAR" aria-label="STAR" title="STAR" />
+      <img :src="logo" alt="STAR" aria-label="STAR logo" title="STAR" />
     </template>
     <template #itemicon="{ item, class: className }">
       <div v-if="item.icon">
-        <Icon :icon="item.icon" width="24" :class="[className, 'mr-2']" />
+        <Icon :icon="item.icon" width="20" :class="[className, 'mr-2']" />
       </div>
     </template>
   </PMenubar>
@@ -15,6 +15,7 @@ import { header } from "./header-tv";
 import { usePassThrough } from "@/composables/usePassThrough";
 import { Icon } from "@iconify/vue";
 import PMenubar, { type MenubarPassThroughOptions, type MenubarProps } from "primevue/menubar";
+import PMenu, { type MenuProps } from "primevue/menu";
 import { ref, reactive } from "vue";
 import logo from "@/assets/logo.png";
 

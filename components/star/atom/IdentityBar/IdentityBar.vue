@@ -1,27 +1,34 @@
 <template>
-  <div class="px-4 text-text-450 min-h-[36px] w-full flex items-center flex-row-reverse">
-    <div class="flex items-center gap-4 leading-4">
-      <div class="flex-none">
+  <div
+    class="px-4 text-text-450 min-h-[36px] w-full flex items-center flex-row-reverse"
+    :class="`${bem()}`"
+    role="heading"
+    aria-label="Account menu"
+  >
+    <div class="flex items-center gap-4 leading-4" :class="`${bem('function-menu')}`">
+      <div class="flex-none" :class="`${bem('avatar')}`">
         <img
           src="https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=50&user_id=200000150"
           class="w-5 h-5 rounded-full"
           alt="user-avatar"
           aria-label="user-avatar"
+          :class="`${bem('avatar', 'img')}`"
         />
       </div>
-      <div>
+      <div :class="`${bem('account')}`">
         <PButton
           v-ripple="{
             unstyled: true,
           }"
           class="hover:text-primary-700 focus-visible:outline-4"
+          :class="`${bem('account', 'username')}`"
           @click="toggle"
           unstyled
           label="Jhon qweqw123 qweasdq tew(qweqw-teacher-tr)"
         />
-        <!-- <a @click="toggle" class="focus:text-text-700 hover:text-primary-700" tabindex="1">Jhon</a> -->
         <UserMenu
           ref="menu"
+          :class="`${bem('account', 'user-menu')}`"
           :user="{
             fullname: 'losum ipsum summe(abc-qwere-weq-tr)',
             schoolName: 'hkedity wqwe school no.2(very long name)',
@@ -34,19 +41,21 @@
       <PButton
         unstyled
         class="hover:text-primary-700"
+        :class="`${bem('language')}`"
         @click="() => (locale === 'zh' ? (locale = 'en') : (locale = 'zh'))"
+        :aria-label="`Selected language: ${locale}`"
+        :title="$t('ui.language')"
         >{{ locale === "zh" ? "中" : "English" }}</PButton
       >
       <Divider />
-      <PButton unstyled>
-        <div class="flex items-center justify-center" title="Home">
+      <PButton unstyled :class="`${bem('home')}`">
+        <div class="flex items-center justify-center" title="Edcity home">
           <Icon
             icon="material-symbols:home-outline-rounded"
             width="1.25rem"
             class="text-text-450 hover:text-primary-700"
-            title="Home"
+            title="Edcity home"
           />
-          <!-- <HomeIcon class="hover:text-primary-700" title="Home" /> -->
         </div>
       </PButton>
     </div>

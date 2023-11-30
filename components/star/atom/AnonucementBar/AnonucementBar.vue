@@ -1,6 +1,7 @@
 <template>
   <PMessage
     :severity="props.severity"
+    :autoplayInterval="props.autoplayInterval"
     :pt="{
       wrapper: 'flex-col-reverse flex px-3',
       root: 'm-0 border-0',
@@ -25,7 +26,7 @@
         nextButtonIcon: 'w-4 h-4',
       }"
     >
-      <template #item="{ data, index }">
+      <template #item="{ data }">
         <div v-html="data.html"></div>
       </template>
     </PCarousel>
@@ -34,6 +35,7 @@
 <script setup lang="ts">
 import PCarousel, { type CarouselProps } from "primevue/carousel";
 import PMessage, { type MessageProps } from "primevue/message";
+// import { usePreferredReducedMotion } from "@vueuse/core";
 
 export type MessageItem = {
   html: string;
@@ -47,6 +49,7 @@ export type Props = Omit<CarouselProps, "value"> &
 
 const props = withDefaults(defineProps<Props>(), {
   severity: "warn",
+  // autoplayInterval: () => (usePreferredReducedMotion().value === "reduce" ? 0 : 5000),
 });
 
 // const value: MessageItem[] = [
