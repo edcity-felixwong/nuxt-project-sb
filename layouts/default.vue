@@ -1,6 +1,6 @@
 <template>
   <div :class="`${bem()} h-screen overflow-y-hidden overflow-x-hidden flex flex-col`">
-    <StarAnonucementBar
+    <StarAlert
       :class="`${bem('alert')}`"
       :value="[
         {
@@ -11,7 +11,7 @@
         },
       ]"
     />
-    <StarIdentityBar />
+    <StarIdentityBar :class="`${bem('heading')}`" />
     <StarHeader :class="`${bem('header')}`" :isMobile="!isLaptopOrLarger" />
     <!-- <StarBreadcrumbNav :class="`${bem('breadcrumb-nav')}`" /> -->
     <section :class="`${bem('body')} flex-1 overflow-hidden flex flex-row`">
@@ -34,7 +34,6 @@ import {
   StarSideNav,
   StarBreadcrumbNav,
   StarIdentityBar,
-  StarAnonucementBar,
 } from "#components";
 import { createBEM, useMedia } from "@/composables";
 

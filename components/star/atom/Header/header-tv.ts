@@ -7,6 +7,7 @@ export const header = tv({
     start: "mr-8",
     label: "font-semibold",
     submenu: "rounded-medium",
+    action: "p-5",
   } satisfies MenubarPassThroughOptions,
   variants: {
     isMobile: {

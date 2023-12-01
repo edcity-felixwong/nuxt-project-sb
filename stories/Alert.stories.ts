@@ -1,21 +1,21 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import AnonucementBar from "@/components/star/atom/AnonucementBar/AnonucementBar.vue";
+import Alert from "@/components/star/atom/Alert/Alert.vue";
 
-const meta: Meta<typeof AnonucementBar> = {
-  title: "components/AnnonucementBar",
+const meta: Meta<typeof Alert> = {
+  title: "components/Alert",
   tags: ["autodocs"],
-  component: AnonucementBar,
+  component: Alert,
 };
 
 export default meta;
-type Story = StoryObj<typeof AnonucementBar>;
+type Story = StoryObj<typeof Alert>;
 
 // const render: Story["render"] = (args, { argTypes }) => ({
-//   components: { AnonucementBar },
+//   components: { Alert },
 //   setup() {
 //     return { args };
 //   },
-//   template: '<AnonucementBar v-bind="args">{{ args.default }}</AnonucementBar>',
+//   template: '<Alert v-bind="args">{{ args.default }}</Alert>',
 // });
 
 const multipleMessage = [
@@ -72,5 +72,18 @@ export const Error: Story = {
   args: {
     severity: "error",
     value: multipleMessage,
+  },
+};
+export const withLinks: Story = {
+  name: "With links",
+  args: {
+    // severity: "error",
+    value: [
+      {
+        html: `Version 2 of Chakra UI is only compatible with React 18. If you are still
+      needing to use React 17 or earlier, please use
+      <a href="https://v1.chakra-ui.com/guides/first-steps">version 1 of Chakra UI</a>.`,
+      },
+    ],
   },
 };

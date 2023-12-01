@@ -1,24 +1,27 @@
 <template>
   <StarPage>
     <section class="">
-      <StarBanner :subject="params.subject" />
+      <StarBanner :subject="route.query['subject']" />
       <StarBreadcrumbNav />
-      <div class="h-[300px]"></div>
       <StarFooter />
-
-      <div class="h-[300px]"></div>
     </section>
   </StarPage>
 </template>
 <script setup lang="ts">
 import { useToast } from "primevue/usetoast";
 import { StarFooter, StarPage, StarBanner, StarBreadcrumbNav } from "#components";
-import { ref } from "vue";
-import { useUrlSearchParams } from "@vueuse/core";
+import { ref, watchEffect } from "vue";
+import { useRoute } from "vue-router";
 
-const params = useUrlSearchParams("history");
+const route = useRoute();
 
-fetch("https://e.star.dev.hkedcity.net/jwt.php")
-  .then((r) => r.text)
-  .then((r) => console.log(r));
+watchEffect(() =>
+  fetch("https://e.star.dev.hkedcity.net/jwt.php", {
+    credentials: "include",
+  })
+    .then((r) => r.text())
+    .then((r) => {
+      console.log("🚀 ~ file: index.vue:21 ~ r:", r);
+    })
+);
 </script>
