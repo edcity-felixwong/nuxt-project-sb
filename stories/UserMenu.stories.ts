@@ -21,7 +21,7 @@ type Story = StoryObj<typeof UserMenu>;
 //   template: '<UserMenu v-bind="args">{{ args.default }}</UserMenu>',
 // });
 
-export const Default: Story = {
+export const English: Story = {
   // render,
   args: {
     model: [
@@ -38,6 +38,44 @@ export const Default: Story = {
     user: {
       fullname: "losum ipsum",
       schoolName: "hkedity wqwe school no.2",
+      avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=Felix",
+    },
+  },
+};
+export const Chinese: Story = {
+  // render,
+  args: {
+    model: [
+      {
+        label: "設定",
+        icon: "material-symbols:settings-outline-rounded",
+      },
+      { separator: true },
+      {
+        label: "登出",
+        icon: "material-symbols:logout",
+      },
+    ],
+    user: {
+      fullname: "陳小明",
+      schoolName: "天主小學",
+      avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=Felix",
+    },
+  },
+};
+export const WithCommand: Story = {
+  // render,
+  args: {
+    model: [
+      {
+        label: "print console",
+        icon: "material-symbols:settings-outline-rounded",
+        command: () => console.log("test"),
+      },
+    ],
+    user: {
+      fullname: "陳小明",
+      schoolName: "天主小學",
       avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=Felix",
     },
   },

@@ -5,7 +5,7 @@
     </template>
     <template #itemicon="{ item, class: className }">
       <div v-if="item.icon">
-        <Icon :icon="item.icon" width="20" :class="[className, 'mr-2']" />
+        <Icon :icon="item.icon" width="20" :class="[className, 'mr-2', pt.icon]" />
       </div>
     </template>
   </PMenubar>

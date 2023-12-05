@@ -15,9 +15,9 @@ hr:not(.sb-unstyled) {
   margin-bottom: 48px;
 }
 
-:not(.sb-unstyled) a:hover {
+/* :not(.docs-story) a:hover {
   opacity: 0.8;
-}
+} */
 
 blockquote:not(.sb-anchor, .sb-unstyled, .sb-unstyled blockquote) {
   background-color: hsl(220 25% 98%);

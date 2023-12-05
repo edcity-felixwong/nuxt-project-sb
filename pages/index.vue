@@ -21,7 +21,8 @@ watchEffect(() =>
   })
     .then((r) => r.text())
     .then((r) => {
-      console.log("🚀 ~ file: index.vue:21 ~ r:", r);
+      r;
+      console.log(`🚀 // DEBUG 🍔 ~ file: index.vue:25 ~ .then ~ r:`, r);
     })
 );
 </script>
