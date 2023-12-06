@@ -4,7 +4,7 @@ import { simpleBooleanArg, simpleEnumArg } from "#storybook/blocks";
 // const props = HeaderTemplate.props as unknown as typeof StarButtonProp;
 /* 'boolean' | 'function' | 'number' | 'string' | 'symbol' | SBType */
 const meta: Meta<typeof HeaderTemplate> = {
-  title: "Example/HeaderTemplate",
+  title: "components/Header",
   tags: ["autodocs"],
   component: HeaderTemplate,
 };

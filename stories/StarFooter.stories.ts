@@ -1,12 +1,10 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 import FooterTemplate from "@/components/star/atom/Footer/FooterTemplate.vue";
 import { simpleBooleanArg, simpleEnumArg } from "#storybook/blocks";
-
-console.log("🚀 ~ file: FooterTemplate.stories.ts:3 ~ FooterTemplate:", FooterTemplate);
 // const props = FooterTemplate.props as unknown as typeof StarButtonProp;
 /* 'boolean' | 'function' | 'number' | 'string' | 'symbol' | SBType */
 const meta: Meta<typeof FooterTemplate> = {
-  title: "Example/FooterTemplate",
+  title: "components/Footer",
   tags: ["autodocs"],
   component: FooterTemplate,
   argTypes: {
