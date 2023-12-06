@@ -9,6 +9,14 @@ export const multiSelectPt = tv({
     root: "p-0",
     header: "hidden",
   } satisfies MultiSelectProps["pt"],
+  variants: {
+    disabled: {
+      root: "",
+    },
+  } satisfies MultiSelectProps,
+  defaultVariants: {
+    disabled: false,
+  },
 });
 export const menuPt = tv({
   slots: {
@@ -18,5 +26,7 @@ export const menuPt = tv({
 export const listboxPt = tv({
   slots: {
     root: "",
+    wrapper: "p-2",
+    item: "py-0.5 px-4 data-[p-highlight=true]:bg-default-100",
   } satisfies ListboxProps["pt"],
 });

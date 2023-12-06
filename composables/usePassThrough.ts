@@ -3,20 +3,16 @@ import { type TVReturnType } from "tailwind-variants";
 import { sequence } from "fp-ts/Record";
 import * as IO from "fp-ts/IO";
 import { pipe } from "fp-ts/function";
-import { warn } from "fp-ts/Console";
 import {
   reactive,
-  computed,
   ref,
   watch,
-  watchEffect,
-  toRefs,
   type Ref,
   type WatchOptions,
   type WatchSource,
   ComputedGetter,
 } from "vue";
-import { reactify, reactiveComputed, computedWithControl } from "@vueuse/core";
+import { computedWithControl } from "@vueuse/core";
 
 type BaseTV = TVReturnType<any, any, any, any, any, any, any>;
 
@@ -92,7 +88,7 @@ export function read<
       if (!r) console.warn("your slots is probably empty");
       return r;
     },
-    evaluate // sequence Record<string, IO<string>> into IO<Record<string,string>
+    evaluate // sequence Record<string, IO<string>> into IO<Record<string,string>>
   );
 }
 export function usePassThroughS<
@@ -114,46 +110,16 @@ export function usePassThroughS<
     )
   );
 }
-// export function usePassThrough<
-//   T extends BaseTV,
-//   K extends string | number | symbol = "pt",
-//   P extends PassThroughPropsType<Partial<T["slots"]>, K>
-// >(style: T, props: P, key: K = "pt"): Ref<T["slots"]>;
+
 export function usePassThrough<
   T extends { slots: any },
   K extends string | number | symbol = "pt",
   P extends PassThroughPropsType<Partial<T["slots"]>, K>
 >(style: T, props: P, key: K = "pt"): Ref<T["slots"]> {
-  // const propsRef = toRefs(props);
-  // const pt = ref(read(style, props)());
-  // watch(
-  //   () => props,
-  //   (newProps) => {
-  //     pt.value = read(style, newProps)();
-  //   },
-  //   {
-  //     deep: true,
-  //   }
-  // );
-  // // return pipe(read(style, reactive(props)))();
-  // return pt;
-  // const pt = computedWithControl(props, read(style, props));
-  // watch(
-  //   () => props,
-  //   () => {
-  //     pt.value = read(style, props)();
-  //   },
-  //   {
-  //     deep: true,
-  //   }
-  // );
-  // return pt;
   return computedWithReactive(props, read(style, props, key));
 }
 
 // declare const t:TVReturnType<'variants','slots','base','config','e','f','extend'>
-
-// export function usePsasThroughSlots<>(style);
 
 export function isTv(style: unknown): style is BaseTV {
   return style.constructor === tv({}).constructor;

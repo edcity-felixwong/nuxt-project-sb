@@ -217,3 +217,15 @@ test("handle tv struct with undefined props (with usePassThroughS)", async () =>
     },
   });
 });
+
+test("test computedWithReactive with no watcher options", async () => {
+  const props = reactive({
+    prop1: "prop1",
+  });
+  expect(
+    PT.computedWithReactive(
+      () => props,
+      () => "result"
+    ).value
+  ).toBe("result");
+});
