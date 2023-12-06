@@ -35,7 +35,7 @@ export type Props = {
 };
 const props = withDefaults(defineProps<Props>(), {
   ...footer.defaultVariants,
+  pt: undefined,
 });
-
 const pt = usePassThrough(footer, props);
 </script>

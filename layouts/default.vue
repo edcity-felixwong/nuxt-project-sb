@@ -1,5 +1,6 @@
 <template>
   <div :class="`${bem()} h-screen overflow-y-hidden overflow-x-hidden flex flex-col`">
+    <!-- TODO check if message exists -->
     <StarAlert
       :class="`${bem('alert')}`"
       :value="[

@@ -19,16 +19,26 @@ const myTv = tv({
     },
   },
 });
+const myTv2 = tv({
+  slots: {
+    base: "base-2",
+  },
+  variants: {
+    something: {
+      small: {
+        slot1: "tv2",
+      },
+    },
+  },
+});
+const baseSlot1 = myTv.slots;
+
 test("should give the style if no props provided", async () => {
   const onlyVariant = {
     something: "small",
   };
   const newTv = PT.read(myTv);
-  expect(newTv()).toEqual({
-    base: "base-1",
-    slot1: "slot1",
-    slot2: "slot2",
-  });
+  expect(newTv()).toEqual(baseSlot1);
 });
 
 test("should read variants from props", async () => {
@@ -77,20 +87,21 @@ test("should ignore other props ", async () => {
     other: "other",
   };
   const newTv = PT.read(myTv, props);
-  expect(newTv()).toEqual({
-    base: "base-1",
-    slot1: "slot1",
-    slot2: "slot2",
-  });
+  expect(newTv()).toEqual(baseSlot1);
 });
 
 test("should return base style from empty props", async () => {
   const newTv = PT.read(myTv, {});
-  expect(newTv()).toEqual({
-    base: "base-1",
-    slot1: "slot1",
-    slot2: "slot2",
-  });
+  expect(newTv()).toEqual(baseSlot1);
+});
+
+test("should return base style from empty props (with usePassThrough)", async () => {
+  const slotStyles = PT.usePassThrough(myTv, {}).value;
+  expect(slotStyles).toEqual(baseSlot1);
+});
+test("should return base style from undefined props (with usePassThrough)", async () => {
+  const slotStyles = PT.usePassThrough(myTv, undefined).value;
+  expect(slotStyles).toEqual(baseSlot1);
 });
 
 test("test reactive", async () => {
@@ -123,5 +134,86 @@ test("test reactive", async () => {
     base: "base-1 second-prop",
     slot1: "slot1",
     slot2: "slot2",
+  });
+});
+test("should be fine using different pass through property name, like cx, classNames", async () => {
+  const cx1Props = {
+    cx: {
+      p1: "cx1-p1",
+      p2: "cx1-p2",
+      base: "cx1-base",
+      slot1: "cx1-slot1",
+      slot2: "cx1-slot2",
+    },
+  };
+  const newTv = PT.read(myTv, cx1Props, "cx");
+  expect(newTv()).toEqual({
+    p1: "cx1-p1",
+    p2: "cx1-p2",
+    base: "base-1 cx1-base",
+    slot1: "slot1 cx1-slot1",
+    slot2: "slot2 cx1-slot2",
+  });
+});
+
+test("should handle tv struct", async () => {
+  const struct = {
+    test1: myTv,
+    test2: myTv2,
+  };
+  const props = {
+    somethingElse: "abc",
+    test1: {
+      slot1: "prop-slot1",
+    },
+    test2: {
+      base: "prop-base",
+    },
+  };
+  expect(PT.usePassThroughS(struct, props).value).toEqual({
+    test1: {
+      base: "base-1",
+      slot1: "slot1 prop-slot1",
+      slot2: "slot2",
+    },
+    test2: {
+      base: "base-2 prop-base",
+    },
+  });
+});
+
+test("handle tv struct with empty props (with usePassThroughS)", async () => {
+  const struct = {
+    test1: myTv,
+    test2: myTv2,
+  };
+  const props = {};
+  expect(PT.usePassThroughS(struct, props).value).toEqual({
+    test1: {
+      base: "base-1",
+      slot1: "slot1",
+      slot2: "slot2",
+    },
+    test2: {
+      base: "base-2",
+    },
+  });
+});
+
+test("handle tv struct with undefined props (with usePassThroughS)", async () => {
+  const struct = {
+    test1: myTv,
+    test2: myTv2,
+  };
+  const props = undefined;
+  expect(PT.usePassThroughS(struct, props).value).toEqual({
+    test1: {
+      base: "base-1",
+      slot1: "slot1",
+      slot2: "slot2",
+    },
+    test2: {
+      base: "base-2",
+    },
   });
 });

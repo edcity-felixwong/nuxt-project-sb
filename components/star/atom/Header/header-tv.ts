@@ -12,6 +12,7 @@ export const header = tv({
     content: "rounded-medium",
     // icon: "text-default-700 [.p-menuitem.p-highlight > .p-menuitem-content]:text-primary-900",
     button: "rounded-small focus:border-default-100",
+    menu: "rounded-b-medium",
   } satisfies MenubarPassThroughOptions,
   variants: {
     isMobile: {
