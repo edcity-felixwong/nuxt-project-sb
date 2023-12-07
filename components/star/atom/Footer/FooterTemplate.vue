@@ -1,7 +1,8 @@
 <template>
   <footer :class="`${bem('root')}`">
     <slot name="divider">
-      <PDivider :pt="pt" />
+      <!-- <PDivider :pt="pt" /> -->
+      <StarDivider :isMobile="props.isMobile" />
     </slot>
     <div :class="pt.list">
       <slot name="item">
@@ -18,6 +19,7 @@ import { withDefaults } from "vue";
 import { createBEM } from "@/composables/bem";
 import { usePassThrough } from "@/composables/usePassThrough";
 import { footer } from "./footer-tv";
+import { StarDivider } from "@/components/star/atom/Divider";
 
 const bem = createBEM("footer");
 

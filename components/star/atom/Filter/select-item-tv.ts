@@ -5,22 +5,22 @@ import { type ListboxProps } from "primevue/listbox";
 export type { MultiSelectProps, MenuProps, ListboxProps };
 import { type Item } from "./MultipleSelect.vue";
 export type { Item };
-// export type Item =
-export const selectItemVariant: Item = {
-  disabled: {},
-  focused: {},
-  selected: {},
-  visible: {},
-  separator: {},
-};
-export type Variants = typeof selectItemVariant;
 export const selectItemPt = tv({
   slots: {
     leftIcon: "",
     text: "",
     rightIcon: "",
+    menu: "hidden",
   },
-  variants: selectItemVariant,
+  variants: {
+    disabled: {
+      true: "text-default-500",
+    },
+    focused: {},
+    selected: {},
+    visible: {},
+    separator: {},
+  },
   defaultVariants: {
     disabled: false,
     focused: false,

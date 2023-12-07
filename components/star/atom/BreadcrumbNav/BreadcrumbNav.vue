@@ -1,5 +1,5 @@
 <template>
-  <PBreadcrumb :model="items" :pt="{ root: 'text-lg font-semibold border-0' }">
+  <PBreadcrumb :model="props.model" :pt="{ root: 'p-0 text-lg font-semibold border-0' }">
     <template #item="{ item, props }">
       <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
         <a :href="href" v-bind="props.action" @click="navigate">
@@ -15,7 +15,10 @@
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
+import PBreadcrumb, { type BreadcrumbProps } from "primevue/breadcrumb";
 
+export type Props = BreadcrumbProps;
+const props = withDefaults(defineProps<Props>(), {});
 const items = ref([
   { label: "Components" },
   { label: "Form" },

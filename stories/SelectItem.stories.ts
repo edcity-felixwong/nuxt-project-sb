@@ -26,3 +26,12 @@ export const Default: Story = {
     },
   },
 };
+export const Disabled: Story = {
+  // render,
+  args: {
+    model: {
+      label: "Name",
+      disabled: true,
+    },
+  },
+};

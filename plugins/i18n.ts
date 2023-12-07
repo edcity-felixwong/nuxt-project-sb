@@ -1,20 +1,9 @@
 import { defineNuxtPlugin } from "#app";
-import { createI18n } from "vue-i18n";
-import type { I18n, I18nOptions } from "vue-i18n";
-import { messages } from "@/i18n";
-const options = {
-  locale: "en",
-  legacy: false,
-  // globalInjection: true,
-  messages,
-} as const satisfies I18nOptions;
-export const i18n: I18n<
-  typeof options.messages,
-  {},
-  {},
-  keyof typeof options.messages,
-  typeof options.legacy
-> = createI18n(options);
+import { i18n } from "@/i18n/i18n-instance";
+
+export { i18n } from "@/i18n/i18n-instance";
+
+// export i18n ;
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.use(i18n);
   // return {

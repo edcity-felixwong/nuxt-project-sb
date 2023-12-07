@@ -1,8 +1,8 @@
 import { Preview, setup } from "@storybook/vue3";
 import PrimeVue from "primevue/config";
 import type { PrimeVueConfiguration, PrimeVuePTOptions } from "primevue/config";
-import { messages } from "@/i18n";
-import { i18n } from "@/plugins/i18n";
+// import { messages } from "@/i18n";
+// import { i18n } from "@/plugins/i18n";
 
 import theme from "./theme";
 /* Import tailwind */

@@ -1,6 +1,23 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 import MultipleSelect from "@/components/star/atom/Filter/MultipleSelect.vue";
 
+/**
+ * TODO
+ * 1. focus style by `data-p-highlight` and `data-p-focused`, or `aria-selected`
+ * 2. selected icon
+ * 3. tab
+ * 4. keyboard navigation
+ *    - 1. open dropdown by space/enter/up/down
+ *    - 2. move up/down
+ *    - 3. home/end
+ *    - 4. esc to leave
+ * 5. placeholder
+ * 6. click to un-select on multiple select mode
+ * 7. start content
+ * 8. default select
+ * 9. invalid state
+ *
+ */
 const meta: Meta<typeof MultipleSelect> = {
   title: "Components/MultipleSelect",
   tags: ["autodocs"],
@@ -130,6 +147,29 @@ export const ForceRequired: Story = {
           { label: "Istanbul", code: "IST" },
           { label: "Paris", code: "PRS", disabled: true },
         ],
+      },
+    ],
+  },
+};
+export const Structured: Story = {
+  // name: "Force required",
+  args: {
+    options: [
+      {
+        ariaLabel: "Country",
+        label: "Country",
+        items: [
+          { label: "New York", code: "NY", disabled: true },
+          { label: "Rome", code: "RM", disabled: true },
+          { label: "London", code: "LDN" },
+          { label: "Istanbul", code: "IST" },
+          { label: "Paris", code: "PRS", disabled: true },
+        ],
+      },
+      { separator: true },
+      {
+        label: "Language",
+        items: [{ label: "Chinese" }, { label: "English" }],
       },
     ],
   },
