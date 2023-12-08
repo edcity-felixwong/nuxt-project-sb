@@ -1,8 +1,11 @@
 import type { VariantProps } from "tailwind-variants";
+import { type ButtonPassThroughOptions } from "primevue/button";
 
 import { collapseAdjacentVariantBorders, colorVariants, dataFocusVisibleClasses } from "@/utils";
 import { tv } from "@/utils/tv";
 
+export type qwe = NonNullable<ButtonPassThroughOptions>;
+export type ButtonSlot = Record<keyof ButtonPassThroughOptions, string | string[]>;
 /**
  * Button wrapper **Tailwind Variants** component
  *
@@ -20,75 +23,80 @@ import { tv } from "@/utils/tv";
  * </button>
  */
 const button = tv({
-  base: [
-    "z-0",
-    "group",
-    "relative",
-    "inline-flex",
-    "items-center",
-    "justify-center",
-    "box-border",
-    "appearance-none",
-    "outline-none",
-    "select-none",
-    "whitespace-nowrap",
-    "min-w-max",
-    "font-normal",
-    "subpixel-antialiased",
-    "overflow-hidden",
-    "tap-highlight-transparent",
-    "border-transparent",
-    "font-semibold",
-    // focus ring
-    // ...dataFocusVisibleClasses,
-  ],
+  slots: {
+    root: [
+      "z-0",
+      "group",
+      "relative",
+      "inline-flex",
+      "items-center",
+      "justify-center",
+      "box-border",
+      "appearance-none",
+      "outline-none",
+      "select-none",
+      "whitespace-nowrap",
+      "min-w-max",
+      "font-normal",
+      "subpixel-antialiased",
+      "overflow-hidden",
+      "tap-highlight-transparent",
+      "border-transparent",
+
+      // focus ring
+      // ...dataFocusVisibleClasses,
+    ],
+    label: ["font-semibold", "text-text-1350"],
+    icon: ["w-6", "h-6"],
+  } satisfies ButtonSlot,
   variants: {
     variant: {
-      solid: "",
-      bordered: "border-medium bg-transparent",
-      light: "bg-transparent",
-      flat: "",
-      faded: "border-medium",
-      shadow: "",
-      ghost: "border-medium bg-transparent",
+      solid: { root: "" },
+      bordered: { root: "border-medium bg-transparent" },
+      light: { root: "bg-transparent" },
+      flat: { root: "" },
+      faded: { root: "border-medium" },
+      shadow: { root: "" },
+      ghost: { root: "border-medium bg-transparent" },
     },
     size: {
-      sm: "px-unit-3 min-w-unit-16 h-unit-8 text-tiny gap-unit-2 rounded-small",
-      md: "px-unit-4 min-w-unit-20 h-unit-10 text-small gap-unit-2 rounded-medium",
-      lg: "px-unit-6 min-w-unit-24 h-unit-12 text-medium gap-unit-3 rounded-large",
+      sm: { root: "px-unit-3 min-w-unit-16 h-unit-8 text-tiny gap-unit-2 rounded-small" },
+      md: { root: "px-unit-4 min-w-unit-20 h-unit-10 text-small gap-unit-2 rounded-medium" },
+      lg: { root: "px-unit-6 min-w-unit-24 h-unit-12 text-medium gap-unit-3 rounded-large" },
     },
     color: {
-      default: "",
-      primary: "",
-      secondary: "",
-      success: "",
-      warning: "",
-      danger: "",
+      default: { root: "" },
+      primary: { root: "" },
+      secondary: { root: "" },
+      success: { root: "" },
+      warning: { root: "" },
+      danger: { root: "" },
     },
     radius: {
-      none: "rounded-none",
-      sm: "rounded-small",
-      md: "rounded-medium",
-      lg: "rounded-large",
-      full: "rounded-full",
+      none: { root: "rounded-none" },
+      sm: { root: "rounded-small" },
+      md: { root: "rounded-medium" },
+      lg: { root: "rounded-large" },
+      full: { root: "rounded-full" },
     },
     fullWidth: {
-      true: "w-full",
+      true: { root: "w-full" },
     },
     isDisabled: {
-      true: "opacity-disabled pointer-events-none",
+      true: { root: "opacity-disabled pointer-events-none" },
     },
     isInGroup: {
-      true: "[&:not(:first-child):not(:last-child)]:rounded-none",
+      true: { root: "[&:not(:first-child):not(:last-child)]:rounded-none" },
     },
     isIconOnly: {
-      true: "px-unit-0 !gap-unit-0",
-      false: "[&>svg]:max-w-[theme(spacing.unit-8)]",
+      true: { root: "px-unit-0 !gap-unit-0" },
+      false: { root: "[&>svg]:max-w-[theme(spacing.unit-8)]" },
     },
     disableAnimation: {
-      true: "!transition-none",
-      false:
-        "data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none",
+      true: { root: "!transition-none" },
+      false: {
+        root: "data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none",
+      },
     },
   },
   defaultVariants: {
@@ -105,326 +113,326 @@ const button = tv({
     {
       variant: "solid",
       color: "default",
-      class: colorVariants.solid.default,
+      class: { root: colorVariants.solid.default },
     },
     {
       variant: "solid",
       color: "primary",
-      class: colorVariants.solid.primary,
+      class: { root: colorVariants.solid.primary },
     },
     {
       variant: "solid",
       color: "secondary",
-      class: colorVariants.solid.secondary,
+      class: { root: colorVariants.solid.secondary },
     },
     {
       variant: "solid",
       color: "success",
-      class: colorVariants.solid.success,
+      class: { root: colorVariants.solid.success },
     },
     {
       variant: "solid",
       color: "warning",
-      class: colorVariants.solid.warning,
+      class: { root: colorVariants.solid.warning },
     },
     {
       variant: "solid",
       color: "danger",
-      class: colorVariants.solid.danger,
+      class: { root: colorVariants.solid.danger },
     },
     // shadow / color
     {
       variant: "shadow",
       color: "default",
-      class: colorVariants.shadow.default,
+      class: { root: colorVariants.shadow.default },
     },
     {
       variant: "shadow",
       color: "primary",
-      class: colorVariants.shadow.primary,
+      class: { root: colorVariants.shadow.primary },
     },
     {
       variant: "shadow",
       color: "secondary",
-      class: colorVariants.shadow.secondary,
+      class: { root: colorVariants.shadow.secondary },
     },
     {
       variant: "shadow",
       color: "success",
-      class: colorVariants.shadow.success,
+      class: { root: colorVariants.shadow.success },
     },
     {
       variant: "shadow",
       color: "warning",
-      class: colorVariants.shadow.warning,
+      class: { root: colorVariants.shadow.warning },
     },
     {
       variant: "shadow",
       color: "danger",
-      class: colorVariants.shadow.danger,
+      class: { root: colorVariants.shadow.danger },
     },
     // bordered / color
     {
       variant: "bordered",
       color: "default",
-      class: colorVariants.bordered.default,
+      class: { root: colorVariants.bordered.default },
     },
     {
       variant: "bordered",
       color: "primary",
-      class: colorVariants.bordered.primary,
+      class: { root: colorVariants.bordered.primary },
     },
     {
       variant: "bordered",
       color: "secondary",
-      class: colorVariants.bordered.secondary,
+      class: { root: colorVariants.bordered.secondary },
     },
     {
       variant: "bordered",
       color: "success",
-      class: colorVariants.bordered.success,
+      class: { root: colorVariants.bordered.success },
     },
     {
       variant: "bordered",
       color: "warning",
-      class: colorVariants.bordered.warning,
+      class: { root: colorVariants.bordered.warning },
     },
     {
       variant: "bordered",
       color: "danger",
-      class: colorVariants.bordered.danger,
+      class: { root: colorVariants.bordered.danger },
     },
     // flat / color
     {
       variant: "flat",
       color: "default",
-      class: colorVariants.flat.default,
+      class: { root: colorVariants.flat.default },
     },
     {
       variant: "flat",
       color: "primary",
-      class: colorVariants.flat.primary,
+      class: { root: colorVariants.flat.primary },
     },
     {
       variant: "flat",
       color: "secondary",
-      class: colorVariants.flat.secondary,
+      class: { root: colorVariants.flat.secondary },
     },
     {
       variant: "flat",
       color: "success",
-      class: colorVariants.flat.success,
+      class: { root: colorVariants.flat.success },
     },
     {
       variant: "flat",
       color: "warning",
-      class: colorVariants.flat.warning,
+      class: { root: colorVariants.flat.warning },
     },
     {
       variant: "flat",
       color: "danger",
-      class: colorVariants.flat.danger,
+      class: { root: colorVariants.flat.danger },
     },
     // faded / color
     {
       variant: "faded",
       color: "default",
-      class: colorVariants.faded.default,
+      class: { root: colorVariants.faded.default },
     },
     {
       variant: "faded",
       color: "primary",
-      class: colorVariants.faded.primary,
+      class: { root: colorVariants.faded.primary },
     },
     {
       variant: "faded",
       color: "secondary",
-      class: colorVariants.faded.secondary,
+      class: { root: colorVariants.faded.secondary },
     },
     {
       variant: "faded",
       color: "success",
-      class: colorVariants.faded.success,
+      class: { root: colorVariants.faded.success },
     },
     {
       variant: "faded",
       color: "warning",
-      class: colorVariants.faded.warning,
+      class: { root: colorVariants.faded.warning },
     },
     {
       variant: "faded",
       color: "danger",
-      class: colorVariants.faded.danger,
+      class: { root: colorVariants.faded.danger },
     },
     // light / color
     {
       variant: "light",
       color: "default",
-      class: [colorVariants.light.default, "data-[hover=true]:bg-default/40"],
+      class: { root: [colorVariants.light.default, "data-[hover=true]:bg-default/40"] },
     },
     {
       variant: "light",
       color: "primary",
-      class: [colorVariants.light.primary, "data-[hover=true]:bg-primary/20"],
+      class: { root: [colorVariants.light.primary, "data-[hover=true]:bg-primary/20"] },
     },
     {
       variant: "light",
       color: "secondary",
-      class: [colorVariants.light.secondary, "data-[hover=true]:bg-secondary/20"],
+      class: { root: [colorVariants.light.secondary, "data-[hover=true]:bg-secondary/20"] },
     },
     {
       variant: "light",
       color: "success",
-      class: [colorVariants.light.success, "data-[hover=true]:bg-success/20"],
+      class: { root: [colorVariants.light.success, "data-[hover=true]:bg-success/20"] },
     },
     {
       variant: "light",
       color: "warning",
-      class: [colorVariants.light.warning, "data-[hover=true]:bg-warning/20"],
+      class: { root: [colorVariants.light.warning, "data-[hover=true]:bg-warning/20"] },
     },
     {
       variant: "light",
       color: "danger",
-      class: [colorVariants.light.danger, "data-[hover=true]:bg-danger/20"],
+      class: { root: [colorVariants.light.danger, "data-[hover=true]:bg-danger/20"] },
     },
     // ghost / color
     {
       variant: "ghost",
       color: "default",
-      class: colorVariants.ghost.default,
+      class: { root: colorVariants.ghost.default },
     },
     {
       variant: "ghost",
       color: "primary",
-      class: colorVariants.ghost.primary,
+      class: { root: colorVariants.ghost.primary },
     },
     {
       variant: "ghost",
       color: "secondary",
-      class: colorVariants.ghost.secondary,
+      class: { root: colorVariants.ghost.secondary },
     },
     {
       variant: "ghost",
       color: "success",
-      class: colorVariants.ghost.success,
+      class: { root: colorVariants.ghost.success },
     },
     {
       variant: "ghost",
       color: "warning",
-      class: colorVariants.ghost.warning,
+      class: { root: colorVariants.ghost.warning },
     },
     {
       variant: "ghost",
       color: "danger",
-      class: colorVariants.ghost.danger,
+      class: { root: colorVariants.ghost.danger },
     },
     // isInGroup / radius / size <-- radius not provided
     {
       isInGroup: true,
-      class: "rounded-none first:rounded-s-medium last:rounded-e-medium",
+      class: { root: "rounded-none first:rounded-s-medium last:rounded-e-medium" },
     },
     {
       isInGroup: true,
       size: "sm",
-      class: "rounded-none first:rounded-s-small last:rounded-e-small",
+      class: { root: "rounded-none first:rounded-s-small last:rounded-e-small" },
     },
     {
       isInGroup: true,
       size: "md",
-      class: "rounded-none first:rounded-s-medium last:rounded-e-medium",
+      class: { root: "rounded-none first:rounded-s-medium last:rounded-e-medium" },
     },
     {
       isInGroup: true,
       size: "lg",
-      class: "rounded-none first:rounded-s-large last:rounded-e-large",
+      class: { root: "rounded-none first:rounded-s-large last:rounded-e-large" },
     },
     {
       isInGroup: true,
       isRounded: true,
-      class: "rounded-none first:rounded-s-full last:rounded-e-full",
+      class: { root: "rounded-none first:rounded-s-full last:rounded-e-full" },
     },
     // isInGroup / radius <-- radius provided
     {
       isInGroup: true,
       radius: "none",
-      class: "rounded-none first:rounded-s-none last:rounded-e-none",
+      class: { root: "rounded-none first:rounded-s-none last:rounded-e-none" },
     },
     {
       isInGroup: true,
       radius: "sm",
-      class: "rounded-none first:rounded-s-small last:rounded-e-small",
+      class: { root: "rounded-none first:rounded-s-small last:rounded-e-small" },
     },
     {
       isInGroup: true,
       radius: "md",
-      class: "rounded-none first:rounded-s-medium last:rounded-e-medium",
+      class: { root: "rounded-none first:rounded-s-medium last:rounded-e-medium" },
     },
     {
       isInGroup: true,
       radius: "lg",
-      class: "rounded-none first:rounded-s-large last:rounded-e-large",
+      class: { root: "rounded-none first:rounded-s-large last:rounded-e-large" },
     },
     {
       isInGroup: true,
       radius: "full",
-      class: "rounded-none first:rounded-s-full last:rounded-e-full",
+      class: { root: "rounded-none first:rounded-s-full last:rounded-e-full" },
     },
     // isInGroup / bordered / ghost
     {
       isInGroup: true,
       variant: ["ghost", "bordered"],
-      color: "default",
+      color: { root: "default" },
       // className: collapseAdjacentVariantBorders.default,
     },
     {
       isInGroup: true,
       variant: ["ghost", "bordered"],
-      color: "primary",
+      color: { root: "primary" },
       // className: collapseAdjacentVariantBorders.primary,
     },
     {
       isInGroup: true,
       variant: ["ghost", "bordered"],
-      color: "secondary",
+      color: { root: "secondary" },
       // className: collapseAdjacentVariantBorders.secondary,
     },
     {
       isInGroup: true,
       variant: ["ghost", "bordered"],
-      color: "success",
+      color: { root: "success" },
       // className: collapseAdjacentVariantBorders.success,
     },
     {
       isInGroup: true,
       variant: ["ghost", "bordered"],
-      color: "warning",
+      color: { root: "warning" },
       // className: collapseAdjacentVariantBorders.warning,
     },
     {
       isInGroup: true,
       variant: ["ghost", "bordered"],
-      color: "danger",
+      color: { root: "danger" },
       // className: collapseAdjacentVariantBorders.danger,
     },
     {
       isIconOnly: true,
       size: "sm",
-      class: "min-w-unit-8 w-unit-8 h-unit-8",
+      class: { root: "min-w-unit-8 w-unit-8 h-unit-8" },
     },
     {
       isIconOnly: true,
       size: "md",
-      class: "min-w-unit-10 w-unit-10 h-unit-10",
+      class: { root: "min-w-unit-10 w-unit-10 h-unit-10" },
     },
     {
       isIconOnly: true,
       size: "lg",
-      class: "min-w-unit-12 w-unit-12 h-unit-12",
+      class: { root: "min-w-unit-12 w-unit-12 h-unit-12" },
     },
     // variant / hover
     {
       variant: ["solid", "faded", "flat", "bordered", "shadow"],
-      class: "data-[hover=true]:opacity-hover",
+      class: { root: "data-[hover=true]:opacity-hover" },
     },
   ],
 });

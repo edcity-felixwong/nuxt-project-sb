@@ -20,7 +20,7 @@ type Story = StoryObj<typeof StarButton>;
 export const Default: Story = {
   // render,
   args: {
-    default: "Button",
+    label: "Button",
   },
 };
 
@@ -32,86 +32,95 @@ const ListTemplate: Story = {
     },
     template: `
         <div class="flex gap-4">
-          <div v-for="item in items">
+          <template v-for="item in items">
             <StarButton v-bind="item"/>
-          </div>
+          </template>
         </div>
     `,
   }),
 };
+const colors = [
+  "default", //
+  "primary",
+  "secondary",
+  "success",
+  "warning",
+  "danger",
+];
+const sizes = [
+  "sm", //
+  "md",
+  "lg",
+];
+const radii = [
+  "full", //
+  "lg",
+  "md",
+  "sm",
+  "none",
+];
+const variants = ["solid", "faded", "bordered", "light", "flat", "ghost", "shadow"];
 
 export const Colors: Story = {
   ...ListTemplate,
   args: {
-    items: [
-      { color: "default" }, //
-      { color: "primary" }, //
-      { color: "secondary" },
-      { color: "success" },
-      { color: "warning" },
-      { color: "danger" },
-    ] satisfies Story["args"][],
+    items: colors.map((color) => ({ color, label: color })) satisfies Story["args"][],
   },
 };
 export const Disabled: Story = {
   ...ListTemplate,
   args: {
-    items: [
-      { color: "default", isDisabled: true }, //
-      { color: "primary", isDisabled: true }, //
-      { color: "secondary", isDisabled: true },
-      { color: "success", isDisabled: true },
-      { color: "warning", isDisabled: true },
-      { color: "danger", isDisabled: true },
-    ] satisfies Story["args"][],
+    items: colors.map((color) => ({
+      color,
+      label: color,
+      isDisabled: true,
+    })) satisfies Story["args"][],
   },
 };
 
 export const Sizes: Story = {
   ...ListTemplate,
   args: {
-    items: [
-      { size: "sm" }, //
-      { size: "md" }, //
-      { size: "lg" },
-    ] satisfies Story["args"][],
+    items: sizes.map((size) => ({ size, label: size })) satisfies Story["args"][],
   },
 };
 
 export const Radius: Story = {
   ...ListTemplate,
   args: {
-    items: [
-      { radius: "full" }, //
-      { radius: "lg" },
-      { radius: "md" }, //
-      { radius: "sm" }, //
-      { radius: "none" },
-    ] satisfies Story["args"][],
+    items: radii.map((radius) => ({ radius, label: radius })) satisfies Story["args"][],
   },
 };
 
 export const Variants: Story = {
   ...ListTemplate,
   args: {
-    items: [
-      { variant: "solid" }, //
-      { variant: "faded" },
-      { variant: "bordered" }, //
-      { variant: "light" }, //
-      { variant: "flat" },
-      { variant: "ghost" },
-      { variant: "shadow" },
-    ] satisfies Story["args"][],
+    items: variants.map((variant) => ({ variant, label: variant })) satisfies Story["args"][],
   },
 };
 
 export const IconOnly: Story = {
   ...ListTemplate,
+  // render: (args) => ({
+  //   components: { StarButton },
+  //   setup() {
+  //     return { ...args };
+  //   },
+  //   template: `
+  //       <div class="flex gap-4">
+  //         <template v-for="item in items">
+  //           <StarButton v-bind="item"/>
+  //         </template>
+  //       </div>
+  //   `,
+  // }),
   args: {
     items: [
-      { isIconOnly: true }, //
-    ] satisfies Story["args"][],
+      {
+        // isIconOnly: true,
+        icon: "material-symbols:10mp-rounded",
+      },
+    ],
   },
 };
 

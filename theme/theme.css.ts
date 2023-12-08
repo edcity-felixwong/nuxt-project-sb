@@ -206,6 +206,7 @@ export const lightTheme = {
       disabled: primary[500],
       default: primary[700],
       emphasized: primary[800],
+      foreground: primary[700],
     },
     /** Text palette is designed by contrast ratios,
      * Unlike Open Color, which is designed for UI views.
@@ -230,6 +231,15 @@ export const lightTheme = {
       900: "#414a53",
       950: "#3e474f",
       1000: "#3c434b",
+      1050: "#394047",
+      1100: "#363d44",
+      1150: "#333a41",
+      1200: "#31373e",
+      1250: "#2f343a",
+      1300: "#2c3137",
+      1350: "#2a2f34",
+      1400: "#282c31",
+      1450: "#25292e",
     },
     success: {
       ...success,
