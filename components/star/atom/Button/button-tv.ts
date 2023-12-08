@@ -6,6 +6,15 @@ import { tv } from "@/utils/tv";
 
 export type qwe = NonNullable<ButtonPassThroughOptions>;
 export type ButtonSlot = Record<keyof ButtonPassThroughOptions, string | string[]>;
+
+export const dataFocusVisibleClasses = [
+  "outline-none",
+  "enabled:focus:z-10",
+  "enabled:focus:outline-2",
+  "enabled:focus:outline-focus",
+  "enabled:focus:outline-offset-2",
+] as const;
+
 /**
  * Button wrapper **Tailwind Variants** component
  *
@@ -44,7 +53,7 @@ const button = tv({
       "border-transparent",
 
       // focus ring
-      // ...dataFocusVisibleClasses,
+      ...dataFocusVisibleClasses,
     ],
     label: ["font-semibold", "text-text-1350"],
     icon: ["w-6", "h-6"],

@@ -7,7 +7,8 @@
         <StarDivider />
         <div class="flex justify-between">
           <div class="flex">
-            <PButton>New</PButton>
+            <StarButton>New</StarButton>
+            <StarButton label="New" class="enabled:focus:outline-offset-2" />
             <div class="card justify-content-center flex flex-wrap gap-3">
               <span class="p-input-icon-left">
                 <i class="pi pi-search" />

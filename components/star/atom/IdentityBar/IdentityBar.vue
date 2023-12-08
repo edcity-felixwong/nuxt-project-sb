@@ -61,6 +61,7 @@
     </div>
   </div>
 </template>
+
 <script setup lang="tsx">
 import { ref, defineComponent } from "vue";
 import { createBEM } from "@/composables";

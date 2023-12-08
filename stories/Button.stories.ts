@@ -46,19 +46,19 @@ const colors = [
   "success",
   "warning",
   "danger",
-];
+] as const;
 const sizes = [
   "sm", //
   "md",
   "lg",
-];
+] as const;
 const radii = [
   "full", //
   "lg",
   "md",
   "sm",
   "none",
-];
+] as const;
 const variants = ["solid", "faded", "bordered", "light", "flat", "ghost", "shadow"];
 
 export const Colors: Story = {
@@ -95,6 +95,35 @@ export const Radius: Story = {
 export const Variants: Story = {
   ...ListTemplate,
   args: {
+    items: variants.map((variant) => ({ variant, label: variant })) satisfies Story["args"][],
+  },
+};
+export const Chinese: Story = {
+  ...ListTemplate,
+  args: {
+    items: variants.map((variant) => ({
+      variant,
+      label: ["天地玄黃", "宇宙洪荒", "蓋此身髮", "四大五常"][Math.floor(Math.random() * 4)],
+      color: colors[Math.floor(Math.random() * colors.length)],
+    })) satisfies Story["args"][],
+  },
+};
+export const VariantsColors: Story = {
+  render: (args) => ({
+    components: { StarButton },
+    setup() {
+      return { ...args };
+    },
+    template: `
+        <div class="flex gap-4" v-for="r in rows">
+          <div v-for="item in items" class="mb-1">
+            <StarButton v-bind="item" v-bind="r"/>
+          </div>
+        </div>
+    `,
+  }),
+  args: {
+    rows: colors.map((color) => ({ color })),
     items: variants.map((variant) => ({ variant, label: variant })) satisfies Story["args"][],
   },
 };

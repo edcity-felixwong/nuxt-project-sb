@@ -1,12 +1,20 @@
 <template>
-  <PButton :pt="pt" :label="props.label" v-bind="$attrs" :disabled="isDisabled">
+  <PButton v-ripple="{}" :pt="pt" :label="props.label" v-bind="$attrs" :disabled="isDisabled">
     <template #icon>
       <slot name="icon">
         <Icon v-if="props.icon" :icon="props.icon" :class="pt.icon" />
       </slot>
     </template>
+    <template #default>
+      <slot />
+    </template>
   </PButton>
 </template>
+<script lang="ts">
+export default {
+  name: "StarButton",
+};
+</script>
 <script setup lang="ts">
 import PButton, { type ButtonProps, type ButtonPassThroughOptions } from "primevue/button";
 import { button } from "./button-tv";
@@ -44,7 +52,7 @@ export type Props = {
   link?: boolean;
   pt?: ButtonProps["pt"];
   ptOptions?: ButtonProps["ptOptions"];
-  unstyled: boolean;
+  unstyled?: boolean;
 };
 type qrw12 = Props["ic"];
 console.log(
