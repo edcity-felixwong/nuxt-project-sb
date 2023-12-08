@@ -17,34 +17,115 @@ type Story = StoryObj<typeof StarButton>;
 //   },
 //   template: '<SelectItem v-bind="args">{{ args.default }}</SelectItem>',
 // });
-
 export const Default: Story = {
   // render,
   args: {
     default: "Button",
   },
 };
-export const Disabled: Story = {
-  // render,
-  args: {
-    isDisabled: true,
-  },
-};
-export const Primary: Story = {
-  // render,
-  args: {
-    color: "primary",
-  },
-};
-export const Size: Story = {
-  render: (args, { argTypes }) => ({
+
+const ListTemplate: Story = {
+  render: (args) => ({
     components: { StarButton },
     setup() {
-      return { args };
+      return { ...args };
     },
-    template: '<StarButton size="sm">{{ args.default }}</StarButton>',
+    template: `
+        <div class="flex gap-4">
+          <div v-for="item in items">
+            <StarButton v-bind="item"/>
+          </div>
+        </div>
+    `,
+  }),
+};
+
+export const Colors: Story = {
+  ...ListTemplate,
+  args: {
+    items: [
+      { color: "default" }, //
+      { color: "primary" }, //
+      { color: "secondary" },
+      { color: "success" },
+      { color: "warning" },
+      { color: "danger" },
+    ] satisfies Story["args"][],
+  },
+};
+export const Disabled: Story = {
+  ...ListTemplate,
+  args: {
+    items: [
+      { color: "default", isDisabled: true }, //
+      { color: "primary", isDisabled: true }, //
+      { color: "secondary", isDisabled: true },
+      { color: "success", isDisabled: true },
+      { color: "warning", isDisabled: true },
+      { color: "danger", isDisabled: true },
+    ] satisfies Story["args"][],
+  },
+};
+
+export const Sizes: Story = {
+  ...ListTemplate,
+  args: {
+    items: [
+      { size: "sm" }, //
+      { size: "md" }, //
+      { size: "lg" },
+    ] satisfies Story["args"][],
+  },
+};
+
+export const Radius: Story = {
+  ...ListTemplate,
+  args: {
+    items: [
+      { radius: "full" }, //
+      { radius: "lg" },
+      { radius: "md" }, //
+      { radius: "sm" }, //
+      { radius: "none" },
+    ] satisfies Story["args"][],
+  },
+};
+
+export const Variants: Story = {
+  ...ListTemplate,
+  args: {
+    items: [
+      { variant: "solid" }, //
+      { variant: "faded" },
+      { variant: "bordered" }, //
+      { variant: "light" }, //
+      { variant: "flat" },
+      { variant: "ghost" },
+      { variant: "shadow" },
+    ] satisfies Story["args"][],
+  },
+};
+
+export const IconOnly: Story = {
+  ...ListTemplate,
+  args: {
+    items: [
+      { isIconOnly: true }, //
+    ] satisfies Story["args"][],
+  },
+};
+
+export const Custom: Story = {
+  render: (args) => ({
+    components: { StarButton },
+    setup() {
+      return { ...args };
+    },
+    template: `
+            <StarButton v-bind="{class:args.className}"/>
+    `,
   }),
   args: {
-    size: ["primary"],
+    className: "bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg",
   },
 };

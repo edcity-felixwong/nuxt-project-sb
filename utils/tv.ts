@@ -5,7 +5,6 @@ import {
   type TVReturnType,
   type VariantProps,
   type TVVariantKeys,
-  type TVVariantKeys,
 } from "tailwind-variants";
 
 // import { mappedSpacingScaleKeys } from "../types";
