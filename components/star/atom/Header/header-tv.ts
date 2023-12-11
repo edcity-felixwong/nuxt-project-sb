@@ -6,7 +6,7 @@ export const indicatorClass = [
   "after:h-1",
   "after:w-full",
   "after:block",
-  "after:bg-[--sui-color-warning-800]",
+  "after:bg-secondary",
   "after:absolute",
   "after:bottom-1",
   "after:duration-300",

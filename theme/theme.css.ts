@@ -62,6 +62,30 @@ export const primaryTw = {
   800: "18deg 90% 49%",
   900: "12deg 87% 45%",
 };
+export const secondary = {
+  50: "#fff9db",
+  100: "#fff3bf",
+  200: "#ffec99",
+  300: "#ffe066",
+  400: "#ffd43b",
+  500: "#fcc419",
+  600: "#fab005",
+  700: "#f59f00",
+  800: "#f08c00",
+  900: "#e67700",
+};
+export const secondaryTw = {
+  50: "50deg 100% 93%",
+  100: "49deg 100% 87%",
+  200: "49deg 100% 80%",
+  300: "48deg 100% 70%",
+  400: "47deg 100% 62%",
+  500: "45deg 97% 54%",
+  600: "42deg 96% 50%",
+  700: "39deg 100% 48%",
+  800: "35deg 100% 47%",
+  900: "31deg 100% 45%",
+};
 export const gray = {
   0: "#ffffff",
   50: "#f8f9fa",
@@ -191,7 +215,7 @@ export const lightTheme = {
   color: {
     primary: {
       ...primary,
-      tw: { ...primaryTw },
+      tw: { ...primaryTw, default: primaryTw[700] },
       default: primary[500],
       ring: "#ffc195",
       hover: "test",
@@ -200,11 +224,16 @@ export const lightTheme = {
         focus: "#FFE2D6", // 50 with lightness -4
       },
     },
+    secondary: {
+      ...secondary,
+      tw: { ...secondaryTw, default: secondaryTw[500] },
+      default: secondary[500],
+    },
     default: {
       ...gray,
-      tw: { ...grayTw },
+      tw: { ...grayTw, default: grayTw[200] },
+      // default: primary[700],
       disabled: primary[500],
-      default: primary[700],
       emphasized: primary[800],
       foreground: primary[700],
     },
@@ -240,18 +269,21 @@ export const lightTheme = {
       1350: "#2a2f34",
       1400: "#282c31",
       1450: "#25292e",
+      1500: "#23272c",
+      1550: gray[900],
+      1600: "#1e2226",
     },
     success: {
       ...success,
-      tw: { ...successTw },
+      tw: { ...successTw, default: successTw[500] },
     },
     warning: {
       ...warning,
-      tw: { ...warningTw },
+      tw: { ...warningTw, default: warningTw[500] },
     },
     danger: {
       ...danger,
-      tw: { ...dangerTw },
+      tw: { ...dangerTw, default: dangerTw[500] },
     },
     surface: {
       ground: "not done",

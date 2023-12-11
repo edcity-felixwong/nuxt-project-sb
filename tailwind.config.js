@@ -22,7 +22,7 @@ export default {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "hsl(var(--sui-color-primary-tw-600) / <alpha-value>)",
+          DEFAULT: "hsl(var(--sui-color-primary-tw-default) / <alpha-value>)",
           50: "hsl(var(--sui-color-primary-tw-50) / <alpha-value>)",
           100: "hsl(var(--sui-color-primary-tw-100) / <alpha-value>)",
           200: "hsl(var(--sui-color-primary-tw-200) / <alpha-value>)",
@@ -34,8 +34,21 @@ export default {
           800: "hsl(var(--sui-color-primary-tw-800) / <alpha-value>)",
           900: "hsl(var(--sui-color-primary-tw-900) / <alpha-value>)",
         },
+        secondary: {
+          DEFAULT: "hsl(var(--sui-color-secondary-tw-default) / <alpha-value>)",
+          50: "hsl(var(--sui-color-secondary-tw-50) / <alpha-value>)",
+          100: "hsl(var(--sui-color-secondary-tw-100) / <alpha-value>)",
+          200: "hsl(var(--sui-color-secondary-tw-200) / <alpha-value>)",
+          300: "hsl(var(--sui-color-secondary-tw-300) / <alpha-value>)",
+          400: "hsl(var(--sui-color-secondary-tw-400) / <alpha-value>)",
+          500: "hsl(var(--sui-color-secondary-tw-500) / <alpha-value>)",
+          600: "hsl(var(--sui-color-secondary-tw-600) / <alpha-value>)",
+          700: "hsl(var(--sui-color-secondary-tw-700) / <alpha-value>)",
+          800: "hsl(var(--sui-color-secondary-tw-800) / <alpha-value>)",
+          900: "hsl(var(--sui-color-secondary-tw-900) / <alpha-value>)",
+        },
         default: {
-          DEFAULT: "hsl(var(--sui-color-default-tw-200) / <alpha-value>)",
+          DEFAULT: "hsl(var(--sui-color-default-tw-default) / <alpha-value>)",
           50: "hsl(var(--sui-color-default-tw-50) / <alpha-value>)",
           100: "hsl(var(--sui-color-default-tw-100) / <alpha-value>)",
           200: "hsl(var(--sui-color-default-tw-200) / <alpha-value>)",
@@ -48,7 +61,7 @@ export default {
           900: "hsl(var(--sui-color-default-tw-900) / <alpha-value>)",
         },
         text: {
-          DEFAULT: "var(--sui-color-text-800)",
+          DEFAULT: "var(--sui-color-text-700)",
           300: "var(--sui-color-text-300)",
           350: "var(--sui-color-text-350)",
           400: "var(--sui-color-text-400)",
@@ -72,9 +85,13 @@ export default {
           1300: "var(--sui-color-text-1300)",
           1350: "var(--sui-color-text-1350)",
           1400: "var(--sui-color-text-1400)",
+          1450: "var(--sui-color-text-1450)",
+          1500: "var(--sui-color-text-1500)",
+          1550: "var(--sui-color-text-1550)",
+          1600: "var(--sui-color-text-1600)",
         },
         success: {
-          DEFAULT: "hsl(var(--sui-color-success-tw-500) / <alpha-value>)",
+          DEFAULT: "hsl(var(--sui-color-success-tw-default) / <alpha-value>)",
           50: "hsl(var(--sui-color-success-tw-50) / <alpha-value>)",
           100: "hsl(var(--sui-color-success-tw-100) / <alpha-value>)",
           200: "hsl(var(--sui-color-success-tw-200) / <alpha-value>)",
@@ -87,7 +104,7 @@ export default {
           900: "hsl(var(--sui-color-success-tw-900) / <alpha-value>)",
         },
         warning: {
-          DEFAULT: "hsl(var(--sui-color-warning-tw-500) / <alpha-value>)",
+          DEFAULT: "hsl(var(--sui-color-warning-tw-default) / <alpha-value>)",
           50: "hsl(var(--sui-color-warning-tw-50) / <alpha-value>)",
           100: "hsl(var(--sui-color-warning-tw-100) / <alpha-value>)",
           200: "hsl(var(--sui-color-warning-tw-200) / <alpha-value>)",
@@ -100,7 +117,7 @@ export default {
           900: "hsl(var(--sui-color-warning-tw-900) / <alpha-value>)",
         },
         danger: {
-          DEFAULT: "hsl(var(--sui-color-danger-tw-500) / <alpha-value>)",
+          DEFAULT: "hsl(var(--sui-color-danger-tw-default) / <alpha-value>)",
           50: "hsl(var(--sui-color-danger-tw-50) / <alpha-value>)",
           100: "hsl(var(--sui-color-danger-tw-100) / <alpha-value>)",
           200: "hsl(var(--sui-color-danger-tw-200) / <alpha-value>)",
