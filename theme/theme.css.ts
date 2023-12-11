@@ -189,7 +189,7 @@ export const lightTheme = {
   breakpoint,
   font: {
     family: {
-      system: `-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"`,
+      system: `-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,Microsoft JhengHei, "微軟正黑體", sans-serif,"Apple Color Emoji","Segoe UI Emoji"`,
       monospace: `ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace`,
     },
     body: {
@@ -245,6 +245,7 @@ export const lightTheme = {
      * @see {@link https://leonardocolor.io/theme.html?name=Untitled&config=%7B%22baseScale%22%3A%22Gray%22%2C%22colorScales%22%3A%5B%7B%22name%22%3A%22Gray%22%2C%22colorKeys%22%3A%5B%22%23212529%22%2C%22%23f8f9fa%22%5D%2C%22colorspace%22%3A%22HSL%22%2C%22ratios%22%3A%5B%221.05%22%2C%221.11%22%2C%221.19%22%2C%221.3%22%2C%221.49%22%2C%222.07%22%2C%223.02%22%2C%223.32%22%2C%223.5%22%2C%224%22%2C%224.54%22%2C%225%22%2C%225.5%22%2C%226%22%2C%226.5%22%2C%227%22%2C%227.5%22%2C%228%22%2C%228.5%22%2C%229%22%2C%229.5%22%2C%2210%22%2C%2210.5%22%2C%2210.86%22%2C%2211%22%2C%2211.5%22%2C%2215.43%22%5D%2C%22smooth%22%3Afalse%7D%5D%2C%22lightness%22%3A100%2C%22contrast%22%3A1%2C%22saturation%22%3A100%2C%22formula%22%3A%22wcag2%22%7D}
      */
     text: {
+      default: gray[700],
       300: "#8796a4",
       350: gray[600],
       400: "#708192",

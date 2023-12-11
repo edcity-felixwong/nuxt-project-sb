@@ -15,8 +15,6 @@ import { header } from "./header-tv";
 import { usePassThrough } from "@/composables/usePassThrough";
 import { Icon } from "@iconify/vue";
 import PMenubar, { type MenubarPassThroughOptions, type MenubarProps } from "primevue/menubar";
-import PMenu, { type MenuProps } from "primevue/menu";
-import { ref, reactive } from "vue";
 import logo from "@/assets/logo.png";
 
 type MenuItem = NonNullable<MenubarProps["model"]>[number];
@@ -30,7 +28,7 @@ export type Props = {
 };
 const props = withDefaults(defineProps<Props>(), {
   /** "teacher" | "student" */
-  role: "teacher",
+  // role: "teacher",
   ...header.defaultVariants,
 });
 const pt = usePassThrough(header, props);

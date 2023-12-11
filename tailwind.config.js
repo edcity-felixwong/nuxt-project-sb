@@ -61,7 +61,7 @@ export default {
           900: "hsl(var(--sui-color-default-tw-900) / <alpha-value>)",
         },
         text: {
-          DEFAULT: "var(--sui-color-text-700)",
+          DEFAULT: "var(--sui-color-text-default)",
           300: "var(--sui-color-text-300)",
           350: "var(--sui-color-text-350)",
           400: "var(--sui-color-text-400)",

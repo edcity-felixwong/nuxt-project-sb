@@ -5,6 +5,7 @@
   ::before,
   ::after {
     border-color: var(--sui-border-color-default);
+    color: var(--sui-color-text-default);
   }
 }
 

@@ -5,6 +5,7 @@
       <div class="max-w-[1680px] px-5 m-auto">
         <StarBreadcrumbNav :model="[{ label: 'My Papers' }, { label: '中文' }]" />
         <StarDivider />
+        <TabOption />
         <div class="flex justify-between">
           <div class="flex">
             <StarButton>New</StarButton>
@@ -110,6 +111,7 @@ import {
   StarDivider,
   StarFilterMultipleSelect,
 } from "#components";
+import { TabOption } from "@/components/star/atom/Option";
 import { ref, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 

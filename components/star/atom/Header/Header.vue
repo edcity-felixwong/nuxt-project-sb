@@ -2,14 +2,12 @@
   <HeaderTemplate :model="props.role === 'teacher' ? teacherItems : studentItems" />
 </template>
 <script setup lang="ts">
-import HeaderTemplate, { type Props as HeaderProps } from "./HeaderTemplate.vue";
-import { header } from "./header-tv";
-import { Icon } from "@iconify/vue";
-import PMenubar, { type MenubarPassThroughOptions } from "primevue/menubar";
+import HeaderTemplate from "./HeaderTemplate.vue";
+// import { type Props as HeaderProps } from "./HeaderTemplate.vue";
 import { ref, type Ref } from "vue";
-import logo from "@/assets/logo.png";
 import { useI18n } from "vue-i18n";
 import { computedWithControl } from "@vueuse/core";
+import { useRouter } from "vue-router";
 
 const { t, locale } = useI18n();
 const { push } = useRouter();
@@ -20,12 +18,12 @@ type Props = {
   //   isMobile?: boolean;
   //   pt?: MenubarPassThroughOptions;
 };
-// // const { root, start } = header();
+// // // const { root, start } = header();
 const props = withDefaults(defineProps<Props>(), {
   role: "teacher",
   //   ...header.defaultVariants,
 });
-// const pt = usePassThrough(header, props);
+// // const pt = usePassThrough(header, props);
 const subjects: HeaderProps["model"] = [
   {
     label: "中文",

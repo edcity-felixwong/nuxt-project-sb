@@ -160,10 +160,11 @@ export const Custom: Story = {
       return { ...args };
     },
     template: `
-            <StarButton v-bind="{class:args.className}"/>
+            <StarButton :class="args.cls"/>
     `,
   }),
   args: {
-    className: "bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg",
+    cls: "bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg",
+    label: "Button",
   },
 };
