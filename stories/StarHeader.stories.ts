@@ -142,3 +142,31 @@ export const StudentC: Story = {
     ],
   },
 };
+export const Mobile: Story = {
+  args: {
+    isMobile: true,
+    model: [
+      {
+        label: t("header.my_papers"),
+        // label: "My Paper",
+        icon: "material-symbols:article-outline-rounded",
+        items: subjects,
+      },
+      {
+        label: t("header.presest_papers"),
+        icon: "material-symbols:book-4-outline-rounded",
+        items: subjects,
+      },
+      {
+        label: t("header.students_corner"),
+        icon: "material-symbols:play-shapes-outline-rounded",
+        items: subjects,
+      },
+      {
+        label: t("header.report"),
+        icon: "material-symbols:timeline",
+        items: subjects,
+      },
+    ],
+  },
+};

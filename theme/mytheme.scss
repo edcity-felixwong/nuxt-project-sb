@@ -4,11 +4,17 @@ $primaryLightColor: var(--sui-color-primary-100) !default;
 $primaryDarkColor: var(--sui-color-primary-700) !default;
 $primaryDarkerColor: var(--sui-color-primary-900) !default;
 $primaryTextColor: #ffffff !default;
-$highlightBg: var(--sui-color-primary-50) !default;
-$hightlightDarkerColor: var(--sui-color-primary-300) !default; // lightness -25%
+$highlightBg: var(--sui-color-default-100) !default;
+$highlightDarkerColor: var(--sui-color-primary-300) !default; // lightness -25%
 
-$highlightTextColor: $primaryDarkerColor !default;
-$highlightFocusBg: var(--sui-color-primary-highlight-focus) !default;
+$highlightTextColor: var(--sui-color-text-1450) !default;
+$highlightFocusBg: var(--sui-color-default-200) !default;
+
+//menu (e.g. menu, menubar, tieredmenu)
+$menuitemTextColor: var(--sui-color-text-500) !default;
+$menuitemIconColor: var(--sui-color-text-500) !default;
+$menuitemTextHoverColor: var(--sui-color-text-1450) !default;
+$menuitemIconHoverColor: var(--sui-color-text-1450) !default;
 
 $borderRadius: var(--sui-radius-default) !default;
 $checkboxRadius: var(--sui-radius-checkbox) !default;
