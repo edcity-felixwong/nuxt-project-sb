@@ -15,7 +15,7 @@ export const chip = tv({
       "box-border",
       "whitespace-nowrap",
     ],
-    icon: [""],
+    icon: ["[&>*]:text-inherit", "text-inherit"],
     startlabel: "",
     endlabel: "",
     dot: ["w-2", "h-2", "ml-1", "rounded-full"],

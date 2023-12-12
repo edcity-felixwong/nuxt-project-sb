@@ -94,10 +94,15 @@
         </div>
         <StarBreadcrumbNav :model="[{ label: '未完成' }]" />
         <section class="grid gap-8 grid-cols-[repeat(auto-fill,minmax(320px,1fr))]">
+          <!-- <a href="" class="rounded-medium border min-h-[320px] bg-default-100"></a>
           <a href="" class="rounded-medium border min-h-[320px] bg-default-100"></a>
           <a href="" class="rounded-medium border min-h-[320px] bg-default-100"></a>
-          <a href="" class="rounded-medium border min-h-[320px] bg-default-100"></a>
-          <a href="" class="rounded-medium border min-h-[320px] bg-default-100"></a>
+          <a href="" class="rounded-medium border min-h-[320px] bg-default-100"></a> -->
+          <StarCardPaperCard ownerName="John Doe" status="ready" />
+          <StarCardPaperCard ownerName="John Doe" status="ready" />
+          <StarCardPaperCard ownerName="John Doe" status="ready" />
+          <StarCardPaperCard ownerName="John Doe" status="ready" />
+          <StarCardPaperCard ownerName="John Doe" status="ready" />
         </section>
         <StarFooter />
       </div>
@@ -113,6 +118,7 @@ import {
   StarBreadcrumbNav,
   StarDivider,
   StarFilterMultipleSelect,
+  StarCardPaperCard,
 } from "#components";
 import { TabOption } from "@/components/star/atom/Option";
 import { ref, watchEffect } from "vue";
