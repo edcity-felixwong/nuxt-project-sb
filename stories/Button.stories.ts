@@ -10,17 +10,23 @@ const meta: Meta<typeof StarButton> = {
 export default meta;
 type Story = StoryObj<typeof StarButton>;
 
-// const render: Story["render"] = (args, { argTypes }) => ({
-//   components: { SelectItem },
-//   setup() {
-//     return { args };
-//   },
-//   template: '<SelectItem v-bind="args">{{ args.default }}</SelectItem>',
-// });
 export const Default: Story = {
   // render,
   args: {
     label: "Button",
+  },
+};
+export const WithIcon: Story = {
+  render: (args, { argTypes }) => ({
+    components: { StarButton },
+    setup() {
+      return { ...args };
+    },
+    template: '<StarButton v-bind="args" />',
+  }),
+  args: {
+    label: "Button",
+    icon: "material-symbols:edit-square",
   },
 };
 
@@ -43,9 +49,12 @@ const colors = [
   "default", //
   "primary",
   "secondary",
+  "accent",
   "success",
   "warning",
   "danger",
+  "info",
+  "help",
 ] as const;
 const sizes = [
   "sm", //
@@ -144,12 +153,7 @@ export const IconOnly: Story = {
   //   `,
   // }),
   args: {
-    items: [
-      {
-        // isIconOnly: true,
-        icon: "material-symbols:10mp-rounded",
-      },
-    ],
+    items: variants.map((variant) => ({ variant, icon: "material-symbols:10mp-rounded" })),
   },
 };
 

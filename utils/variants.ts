@@ -5,6 +5,9 @@ const solid = {
   success: "bg-success text-success-foreground",
   warning: "bg-warning text-warning-foreground",
   danger: "bg-danger text-danger-foreground",
+  accent: "bg-accent text-accent-foreground",
+  info: "bg-info text-info-foreground",
+  help: "bg-help text-help-foreground",
   foreground: "bg-foreground text-background",
 };
 
@@ -15,6 +18,9 @@ const shadow = {
   success: "shadow-lg shadow-success/40 bg-success text-success-foreground",
   warning: "shadow-lg shadow-warning/40 bg-warning text-warning-foreground",
   danger: "shadow-lg shadow-danger/40 bg-danger text-danger-foreground",
+  accent: "shadow-lg shadow-accent/40 bg-accent text-accent-foreground",
+  info: "shadow-lg shadow-info/40 bg-info text-info-foreground",
+  help: "shadow-lg shadow-help/40 bg-help text-help-foreground",
   foreground: "shadow-lg shadow-foreground/40 bg-foreground text-background",
 };
 
@@ -25,6 +31,9 @@ const bordered = {
   success: "bg-transparent border-success text-success",
   warning: "bg-transparent border-warning text-warning",
   danger: "bg-transparent border-danger text-danger",
+  accent: "bg-transparent border-accent text-accent",
+  info: "bg-transparent border-info text-info",
+  help: "bg-transparent border-help text-help",
   foreground: "bg-transparent border-foreground text-foreground",
 };
 
@@ -35,6 +44,9 @@ const flat = {
   success: "bg-success/20 text-success-600 dark:text-success",
   warning: "bg-warning/20 text-warning-600 dark:text-warning",
   danger: "bg-danger/20 text-danger dark:text-danger-500",
+  accent: "bg-accent/20 text-accent dark:text-accent-500",
+  info: "bg-info/20 text-info dark:text-info-500",
+  help: "bg-help/20 text-help dark:text-help-500",
   foreground: "bg-foreground/10 text-foreground",
 };
 
@@ -45,6 +57,9 @@ const faded = {
   success: "border-default bg-default-100 text-success",
   warning: "border-default bg-default-100 text-warning",
   danger: "border-default bg-default-100 text-danger",
+  accent: "border-default bg-default-100 text-accent",
+  info: "border-default bg-default-100 text-info",
+  help: "border-default bg-default-100 text-help",
   foreground: "border-default bg-default-100 text-foreground",
 };
 
@@ -55,6 +70,9 @@ const light = {
   success: "bg-transparent text-success",
   warning: "bg-transparent text-warning",
   danger: "bg-transparent text-danger",
+  accent: "bg-transparent text-accent",
+  info: "bg-transparent text-info",
+  help: "bg-transparent text-help",
   foreground: "bg-transparent text-foreground",
 };
 
@@ -65,6 +83,9 @@ const ghost = {
   success: "border-success text-success hover:!text-success-foreground hover:!bg-success",
   warning: "border-warning text-warning hover:!text-warning-foreground hover:!bg-warning",
   danger: "border-danger text-danger hover:!text-danger-foreground hover:!bg-danger",
+  accent: "border-accent text-accent hover:!text-accent-foreground hover:!bg-accent",
+  info: "border-info text-info hover:!text-info-foreground hover:!bg-info",
+  help: "border-help text-help hover:!text-help-foreground hover:!bg-help",
   foreground: "border-foreground text-foreground hover:!bg-foreground",
 };
 

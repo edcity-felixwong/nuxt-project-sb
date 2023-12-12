@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { OptionItem } from "@/components/star/atom/Option";
+import { PaperCard } from "@/components/star/atom/Card";
 
-const meta: Meta<typeof OptionItem> = {
-  title: "Components/Tab/OptionItem",
+const meta: Meta<typeof PaperCard> = {
+  title: "Components/Card",
   tags: ["autodocs"],
-  component: OptionItem,
+  component: PaperCard,
 };
 
 export default meta;
-type Story = StoryObj<typeof OptionItem>;
+type Story = StoryObj<typeof PaperCard>;
 
 // const render: Story["render"] = (args, { argTypes }) => ({
 //   components: { SelectItem },
@@ -20,11 +20,8 @@ type Story = StoryObj<typeof OptionItem>;
 export const Default: Story = {
   // render,
   args: {
-    model: {
-      icon: "material-symbols:crossword",
-      title: "lorem ipsum",
-      description: "lorem ipsum",
-    },
+    ownerName: "John Doe",
+    status: "ready",
   },
 };
 export const WithCommand: Story = {

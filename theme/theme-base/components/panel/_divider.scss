@@ -9,6 +9,7 @@
 
         &:before {
             border-top: $dividerSize $dividerColor;
+            border-style: var(--divider-style);
         }
 
         .p-divider-content {
@@ -22,10 +23,21 @@
 
         &:before {
             border-left: $dividerSize $dividerColor;
+            border-style: var(--divider-style);
         }
 
         .p-divider-content {
             padding: $inlineSpacing 0;
         }
+    }
+
+    &-solid {
+        --divider-style: solid;
+    }
+    &-dashed {
+        --divider-style: dashed;
+    }
+    &-dotted {
+        --divider-style: dotted;
     }
 }

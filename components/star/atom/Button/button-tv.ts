@@ -7,13 +7,7 @@ import { tv } from "@/utils/tv";
 export type qwe = NonNullable<ButtonPassThroughOptions>;
 export type ButtonSlot = Record<keyof ButtonPassThroughOptions, string | string[]>;
 
-export const dataFocusVisibleClasses = [
-  "outline-none",
-  "enabled:focus:z-10",
-  "enabled:focus:outline-2",
-  "enabled:focus:outline-focus",
-  "enabled:focus:outline-offset-2",
-] as const;
+const textColorClass = "text-text-1350";
 
 /**
  * Button wrapper **Tailwind Variants** component
@@ -53,10 +47,10 @@ const button = tv({
       "border-transparent",
 
       // focus ring
-      ...dataFocusVisibleClasses,
+      // ...dataFocusVisibleClasses,
     ],
-    label: ["font-semibold", "text-text-1350"],
-    icon: ["w-6", "h-6"],
+    label: ["font-semibold", "text-inherit"],
+    icon: ["w-6", "h-6", "mr-1"],
   } satisfies ButtonSlot,
   variants: {
     variant: {
@@ -74,12 +68,15 @@ const button = tv({
       lg: { root: "px-unit-6 min-w-unit-24 h-unit-12 text-medium gap-unit-3 rounded-large" },
     },
     color: {
-      default: { root: "" },
+      default: { root: "", label: textColorClass },
       primary: { root: "" },
       secondary: { root: "" },
       success: { root: "" },
       warning: { root: "" },
       danger: { root: "" },
+      accent: { root: "" },
+      info: { root: "" },
+      help: { root: "" },
     },
     radius: {
       none: { root: "rounded-none" },
@@ -104,7 +101,7 @@ const button = tv({
     disableAnimation: {
       true: { root: "!transition-none" },
       false: {
-        root: "data-[pressed=true]:scale-[0.97] transition-transform-colors-opacity motion-reduce:transition-none",
+        root: "transition-transform-colors-opacity motion-reduce:transition-none",
       },
     },
   },
@@ -122,187 +119,385 @@ const button = tv({
     {
       variant: "solid",
       color: "default",
-      class: { root: colorVariants.solid.default },
+      class: {
+        root: colorVariants.solid.default,
+      },
     },
     {
       variant: "solid",
       color: "primary",
-      class: { root: colorVariants.solid.primary },
+      class: {
+        root: colorVariants.solid.primary,
+      },
     },
     {
       variant: "solid",
       color: "secondary",
-      class: { root: colorVariants.solid.secondary },
+      class: {
+        root: colorVariants.solid.secondary,
+      },
     },
     {
       variant: "solid",
       color: "success",
-      class: { root: colorVariants.solid.success },
+      class: {
+        root: colorVariants.solid.success,
+      },
     },
     {
       variant: "solid",
       color: "warning",
-      class: { root: colorVariants.solid.warning },
+      class: {
+        root: colorVariants.solid.warning,
+      },
     },
     {
       variant: "solid",
       color: "danger",
-      class: { root: colorVariants.solid.danger },
+      class: {
+        root: colorVariants.solid.danger,
+      },
+    },
+    {
+      variant: "solid",
+      color: "accent",
+      class: {
+        root: colorVariants.solid.accent,
+      },
+    },
+    {
+      variant: "solid",
+      color: "info",
+      class: {
+        root: colorVariants.solid.info,
+      },
+    },
+    {
+      variant: "solid",
+      color: "help",
+      class: {
+        root: colorVariants.solid.help,
+      },
     },
     // shadow / color
     {
       variant: "shadow",
       color: "default",
-      class: { root: colorVariants.shadow.default },
+      class: {
+        root: colorVariants.shadow.default,
+      },
     },
     {
       variant: "shadow",
       color: "primary",
-      class: { root: colorVariants.shadow.primary },
+      class: {
+        root: colorVariants.shadow.primary,
+      },
     },
     {
       variant: "shadow",
       color: "secondary",
-      class: { root: colorVariants.shadow.secondary },
+      class: {
+        root: colorVariants.shadow.secondary,
+      },
     },
     {
       variant: "shadow",
       color: "success",
-      class: { root: colorVariants.shadow.success },
+      class: {
+        root: colorVariants.shadow.success,
+      },
     },
     {
       variant: "shadow",
       color: "warning",
-      class: { root: colorVariants.shadow.warning },
+      class: {
+        root: colorVariants.shadow.warning,
+      },
     },
     {
       variant: "shadow",
       color: "danger",
-      class: { root: colorVariants.shadow.danger },
+      class: {
+        root: colorVariants.shadow.danger,
+      },
+    },
+    {
+      variant: "shadow",
+      color: "accent",
+      class: {
+        root: colorVariants.shadow.accent,
+      },
+    },
+    {
+      variant: "shadow",
+      color: "info",
+      class: {
+        root: colorVariants.shadow.info,
+      },
+    },
+    {
+      variant: "shadow",
+      color: "help",
+      class: {
+        root: colorVariants.shadow.help,
+      },
     },
     // bordered / color
     {
       variant: "bordered",
       color: "default",
-      class: { root: colorVariants.bordered.default },
+      class: {
+        root: colorVariants.bordered.default,
+      },
     },
     {
       variant: "bordered",
       color: "primary",
-      class: { root: colorVariants.bordered.primary },
+      class: {
+        root: colorVariants.bordered.primary,
+      },
     },
     {
       variant: "bordered",
       color: "secondary",
-      class: { root: colorVariants.bordered.secondary },
+      class: {
+        root: colorVariants.bordered.secondary,
+      },
     },
     {
       variant: "bordered",
       color: "success",
-      class: { root: colorVariants.bordered.success },
+      class: {
+        root: colorVariants.bordered.success,
+      },
     },
     {
       variant: "bordered",
       color: "warning",
-      class: { root: colorVariants.bordered.warning },
+      class: {
+        root: colorVariants.bordered.warning,
+      },
     },
     {
       variant: "bordered",
       color: "danger",
-      class: { root: colorVariants.bordered.danger },
+      class: {
+        root: colorVariants.bordered.danger,
+      },
+    },
+    {
+      variant: "bordered",
+      color: "accent",
+      class: {
+        root: colorVariants.bordered.accent,
+      },
+    },
+    {
+      variant: "bordered",
+      color: "info",
+      class: {
+        root: colorVariants.bordered.info,
+      },
+    },
+    {
+      variant: "bordered",
+      color: "help",
+      class: {
+        root: colorVariants.bordered.help,
+      },
     },
     // flat / color
     {
       variant: "flat",
       color: "default",
-      class: { root: colorVariants.flat.default },
+      class: {
+        root: colorVariants.flat.default,
+      },
     },
     {
       variant: "flat",
       color: "primary",
-      class: { root: colorVariants.flat.primary },
+      class: {
+        root: colorVariants.flat.primary,
+      },
     },
     {
       variant: "flat",
       color: "secondary",
-      class: { root: colorVariants.flat.secondary },
+      class: {
+        root: colorVariants.flat.secondary,
+      },
     },
     {
       variant: "flat",
       color: "success",
-      class: { root: colorVariants.flat.success },
+      class: {
+        root: colorVariants.flat.success,
+      },
     },
     {
       variant: "flat",
       color: "warning",
-      class: { root: colorVariants.flat.warning },
+      class: {
+        root: colorVariants.flat.warning,
+      },
     },
     {
       variant: "flat",
       color: "danger",
-      class: { root: colorVariants.flat.danger },
+      class: {
+        root: colorVariants.flat.danger,
+      },
+    },
+    {
+      variant: "flat",
+      color: "accent",
+      class: {
+        root: colorVariants.flat.accent,
+      },
+    },
+    {
+      variant: "flat",
+      color: "info",
+      class: {
+        root: colorVariants.flat.info,
+      },
+    },
+    {
+      variant: "flat",
+      color: "help",
+      class: {
+        root: colorVariants.flat.help,
+      },
     },
     // faded / color
     {
       variant: "faded",
       color: "default",
-      class: { root: colorVariants.faded.default },
+      class: {
+        root: colorVariants.faded.default,
+      },
     },
     {
       variant: "faded",
       color: "primary",
-      class: { root: colorVariants.faded.primary },
+      class: {
+        root: colorVariants.faded.primary,
+      },
     },
     {
       variant: "faded",
       color: "secondary",
-      class: { root: colorVariants.faded.secondary },
+      class: {
+        root: colorVariants.faded.secondary,
+      },
     },
     {
       variant: "faded",
       color: "success",
-      class: { root: colorVariants.faded.success },
+      class: {
+        root: colorVariants.faded.success,
+      },
     },
     {
       variant: "faded",
       color: "warning",
-      class: { root: colorVariants.faded.warning },
+      class: {
+        root: colorVariants.faded.warning,
+      },
     },
     {
       variant: "faded",
       color: "danger",
-      class: { root: colorVariants.faded.danger },
+      class: {
+        root: colorVariants.faded.danger,
+      },
+    },
+    {
+      variant: "faded",
+      color: "accent",
+      class: {
+        root: colorVariants.faded.accent,
+      },
+    },
+    {
+      variant: "faded",
+      color: "info",
+      class: {
+        root: colorVariants.faded.info,
+      },
+    },
+    {
+      variant: "faded",
+      color: "help",
+      class: {
+        root: colorVariants.faded.help,
+      },
     },
     // light / color
     {
       variant: "light",
       color: "default",
-      class: { root: [colorVariants.light.default, "data-[hover=true]:bg-default/40"] },
+      class: {
+        root: colorVariants.light.default,
+      },
     },
     {
       variant: "light",
       color: "primary",
-      class: { root: [colorVariants.light.primary, "data-[hover=true]:bg-primary/20"] },
+      class: {
+        root: colorVariants.light.primary,
+      },
     },
     {
       variant: "light",
       color: "secondary",
-      class: { root: [colorVariants.light.secondary, "data-[hover=true]:bg-secondary/20"] },
+      class: {
+        root: colorVariants.light.secondary,
+      },
     },
     {
       variant: "light",
       color: "success",
-      class: { root: [colorVariants.light.success, "data-[hover=true]:bg-success/20"] },
+      class: {
+        root: colorVariants.light.success,
+      },
     },
     {
       variant: "light",
       color: "warning",
-      class: { root: [colorVariants.light.warning, "data-[hover=true]:bg-warning/20"] },
+      class: {
+        root: colorVariants.light.warning,
+      },
     },
     {
       variant: "light",
       color: "danger",
-      class: { root: [colorVariants.light.danger, "data-[hover=true]:bg-danger/20"] },
+      class: {
+        root: colorVariants.light.danger,
+      },
+    },
+    {
+      variant: "light",
+      color: "accent",
+      class: {
+        root: colorVariants.light.accent,
+      },
+    },
+    {
+      variant: "light",
+      color: "info",
+      class: {
+        root: colorVariants.light.info,
+      },
+    },
+    {
+      variant: "light",
+      color: "help",
+      class: {
+        root: colorVariants.light.help,
+      },
     },
     // ghost / color
     {
@@ -334,6 +529,21 @@ const button = tv({
       variant: "ghost",
       color: "danger",
       class: { root: colorVariants.ghost.danger },
+    },
+    {
+      variant: "ghost",
+      color: "accent",
+      class: { root: colorVariants.ghost.accent },
+    },
+    {
+      variant: "ghost",
+      color: "info",
+      class: { root: colorVariants.ghost.info },
+    },
+    {
+      variant: "ghost",
+      color: "help",
+      class: { root: colorVariants.ghost.help },
     },
     // isInGroup / radius / size <-- radius not provided
     {
@@ -441,7 +651,7 @@ const button = tv({
     // variant / hover
     {
       variant: ["solid", "faded", "flat", "bordered", "shadow"],
-      class: { root: "data-[hover=true]:opacity-hover" },
+      class: { root: "hover:opacity-hover" },
     },
   ],
 });

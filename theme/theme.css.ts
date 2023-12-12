@@ -217,6 +217,7 @@ export const lightTheme = {
       ...primary,
       tw: { ...primaryTw, default: primaryTw[700] },
       default: primary[500],
+      foreground: "#ffffff",
       ring: "#ffc195",
       hover: "test",
       active: "test",
@@ -228,14 +229,20 @@ export const lightTheme = {
       ...secondary,
       tw: { ...secondaryTw, default: secondaryTw[500] },
       default: secondary[500],
+      foreground: `var(--${prefix}-color-text-1600)`,
+    },
+    accent: {
+      tw: { default: "250deg 59% 30%" },
+      default: "#2E1F7A",
+      foreground: "#ffffff",
     },
     default: {
       ...gray,
       tw: { ...grayTw, default: grayTw[200] },
-      // default: primary[700],
-      disabled: primary[500],
-      emphasized: primary[800],
-      foreground: primary[700],
+      default: gray[200],
+      disabled: gray[500],
+      emphasized: gray[800],
+      foreground: gray[700],
     },
     /** Text palette is designed by contrast ratios,
      * Unlike Open Color, which is designed for UI views.
@@ -277,14 +284,30 @@ export const lightTheme = {
     success: {
       ...success,
       tw: { ...successTw, default: successTw[500] },
+      default: success[500],
+      foreground: `var(--${prefix}-color-text-1600)`,
     },
     warning: {
       ...warning,
       tw: { ...warningTw, default: warningTw[500] },
+      default: warning[500],
+      foreground: `var(--${prefix}-color-text-1600)`,
     },
     danger: {
       ...danger,
       tw: { ...dangerTw, default: dangerTw[500] },
+      default: danger[500],
+      foreground: "#ffffff",
+    },
+    info: {
+      tw: { default: "224deg 76% 48%" },
+      default: "#1D4ED8",
+      foreground: "#ffffff",
+    },
+    help: {
+      tw: { default: "270deg 67% 47%" },
+      default: "#7828C8",
+      foreground: "#ffffff",
     },
     surface: {
       ground: "not done",

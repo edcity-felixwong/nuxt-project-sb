@@ -1,8 +1,9 @@
 <template>
-  <PChip v-bind="props">
+  <PChip v-bind="props" :pt="pt">
     <template #icon>
       <slot name="icon">
         <Icon v-if="props.icon" :icon="props.icon" :class="pt.icon" />
+        <span v-else-if="props.variant === 'dot'" :class="pt.dot" />
       </slot>
     </template>
   </PChip>
@@ -14,18 +15,29 @@ import { chip } from "./chip-tv";
 import { usePassThrough } from "@/composables";
 
 /** Hand written again as vue can't parse types */
-export type Props = ChipProps & {
+export type StarChipProps = ChipProps & {
   icon?: string;
   /** @default false */
   disabled?: boolean;
   /** @default medium */
   radius?: "small" | "medium" | "large" | "full";
   /** @default default */
-  color?: "default" | "primary" | "secondary" | "accent" | "success" | "warning" | "danger";
+  color?:
+    | "default"
+    | "primary"
+    | "secondary"
+    | "accent"
+    | "success"
+    | "warning"
+    | "danger"
+    | "info"
+    | "help";
   /** @default medium */
   size?: "small" | "medium" | "large";
+  label: string;
+  variant?: "solid" | "bordered" | "light" | "flat" | "faded" | "shadow" | "dot";
 };
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<StarChipProps>(), {
   ...chip.defaultVariants,
 });
 const pt = usePassThrough(chip, props);

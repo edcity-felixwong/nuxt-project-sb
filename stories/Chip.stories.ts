@@ -35,6 +35,21 @@ const ListTemplate: Story = {
     `,
   }),
 };
+const Matrix: Story = {
+  render: (args) => ({
+    components: { StarChip },
+    setup() {
+      return { ...args };
+    },
+    template: `
+        <div class="flex gap-4" v-for="r in rows">
+          <div v-for="item in items" class="mb-1">
+            <StarChip v-bind="item" v-bind="r"/>
+          </div>
+        </div>
+    `,
+  }),
+};
 const colors = [
   "default",
   "primary",
@@ -46,6 +61,7 @@ const colors = [
   "info",
   "help",
 ];
+const variants = ["solid", "bordered", "light", "flat", "faded", "shadow", "dot"];
 
 export const Default: Story = {
   // render,
@@ -56,9 +72,19 @@ export const Default: Story = {
 };
 export const WithIcon: Story = {
   render,
+  ...Matrix,
+  // args: {
+  //   label: "Ready",
+  //   icon: "material-symbols:translate",
+
+  // },
   args: {
-    label: "Ready",
-    icon: "material-symbols:translate",
+    rows: colors.map((color) => ({ color })),
+    items: variants.map((variant) => ({
+      variant,
+      label: variant,
+      icon: "material-symbols:translate",
+    })) satisfies Story["args"][],
   },
 };
 export const Removable: Story = {
@@ -69,11 +95,30 @@ export const Removable: Story = {
     removable: true,
   },
 };
-export const Disabled: Story = {
-  // render,
+export const WithAvatar: Story = {
+  ...ListTemplate,
   args: {
-    label: "Ready",
-    disabled: true,
+    items: [
+      {
+        label: "Onyama Limba",
+        removable: true,
+        image: "https://primefaces.org/cdn/primevue/images/avatar/onyamalimba.png",
+      },
+      {
+        label: "Xuxue Feng",
+        image: "https://primefaces.org/cdn/primevue/images/avatar/xuxuefeng.png",
+      },
+    ],
+  },
+};
+export const Disabled: Story = {
+  ...ListTemplate,
+  args: {
+    items: colors.map((color) => ({
+      label: "Ready",
+      disabled: true,
+      color,
+    })),
   },
 };
 export const Sizes: Story = {
@@ -83,6 +128,16 @@ export const Sizes: Story = {
       { size: "small", label: "small" }, //
       { size: "medium", label: "medium" },
       { size: "large", label: "large" },
+    ] satisfies Story["args"][],
+  },
+};
+export const SizesWithIcon: Story = {
+  ...ListTemplate,
+  args: {
+    items: [
+      { size: "small", label: "small", icon: "material-symbols:translate" }, //
+      { size: "medium", label: "medium", icon: "material-symbols:translate" },
+      { size: "large", label: "large", icon: "material-symbols:translate" },
     ] satisfies Story["args"][],
   },
 };
@@ -117,14 +172,33 @@ export const Variants: Story = {
   ...ListTemplate,
   args: {
     items: [
-      { variant: "full", label: "solid" }, //
-      { variant: "large", label: "bordered" },
-      { variant: "medium", label: "light" },
-      { variant: "small", label: "flat" },
-      { variant: "full", label: "faded" }, //
-      { variant: "large", label: "shadow" },
-      { variant: "medium", label: "dot" },
+      { variant: "solid", label: "solid" }, //
+      { variant: "bordered", label: "bordered" },
+      { variant: "light", label: "light" },
+      { variant: "flat", label: "flat" },
+      { variant: "faded", label: "faded" }, //
+      { variant: "shadow", label: "shadow" },
+      { variant: "dot", label: "dot" },
     ] satisfies Story["args"][],
+  },
+};
+export const VariantsColors: Story = {
+  render: (args) => ({
+    components: { StarChip },
+    setup() {
+      return { ...args };
+    },
+    template: `
+        <div class="flex gap-4" v-for="r in rows">
+          <div v-for="item in items" class="mb-1">
+            <StarChip v-bind="item" v-bind="r"/>
+          </div>
+        </div>
+    `,
+  }),
+  args: {
+    rows: colors.map((color) => ({ color })),
+    items: variants.map((variant) => ({ variant, label: variant })) satisfies Story["args"][],
   },
 };
 export const Custom: Story = {

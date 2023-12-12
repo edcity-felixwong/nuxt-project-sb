@@ -4,12 +4,15 @@
       <StarBanner :subject="route.query['subject']" />
       <div class="max-w-[1680px] px-5 m-auto">
         <StarBreadcrumbNav :model="[{ label: 'My Papers' }, { label: '中文' }]" />
-        <StarDivider />
         <TabOption />
+        <PDivider />
         <div class="flex justify-between">
           <div class="flex">
-            <StarButton>New</StarButton>
-            <StarButton label="New" class="enabled:focus:outline-offset-2" />
+            <StarButton label="New" icon="material-symbols:edit-square" />
+            <StarButton
+              label="lorem"
+              class="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"
+            />
             <div class="card justify-content-center flex flex-wrap gap-3">
               <span class="p-input-icon-left">
                 <i class="pi pi-search" />

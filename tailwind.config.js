@@ -23,6 +23,7 @@ export default {
       colors: {
         primary: {
           DEFAULT: "hsl(var(--sui-color-primary-tw-default) / <alpha-value>)",
+          foreground: "var(--sui-color-primary-foreground)",
           50: "hsl(var(--sui-color-primary-tw-50) / <alpha-value>)",
           100: "hsl(var(--sui-color-primary-tw-100) / <alpha-value>)",
           200: "hsl(var(--sui-color-primary-tw-200) / <alpha-value>)",
@@ -36,6 +37,7 @@ export default {
         },
         secondary: {
           DEFAULT: "hsl(var(--sui-color-secondary-tw-default) / <alpha-value>)",
+          foreground: "var(--sui-color-secondary-foreground)",
           50: "hsl(var(--sui-color-secondary-tw-50) / <alpha-value>)",
           100: "hsl(var(--sui-color-secondary-tw-100) / <alpha-value>)",
           200: "hsl(var(--sui-color-secondary-tw-200) / <alpha-value>)",
@@ -47,8 +49,13 @@ export default {
           800: "hsl(var(--sui-color-secondary-tw-800) / <alpha-value>)",
           900: "hsl(var(--sui-color-secondary-tw-900) / <alpha-value>)",
         },
+        accent: {
+          DEFAULT: "hsl(var(--sui-color-accent-tw-default) / <alpha-value>)",
+          foreground: "var(--sui-color-accent-foreground)",
+        },
         default: {
           DEFAULT: "hsl(var(--sui-color-default-tw-default) / <alpha-value>)",
+          foreground: "var(--sui-color-default-foreground)",
           50: "hsl(var(--sui-color-default-tw-50) / <alpha-value>)",
           100: "hsl(var(--sui-color-default-tw-100) / <alpha-value>)",
           200: "hsl(var(--sui-color-default-tw-200) / <alpha-value>)",
@@ -92,6 +99,7 @@ export default {
         },
         success: {
           DEFAULT: "hsl(var(--sui-color-success-tw-default) / <alpha-value>)",
+          foreground: "var(--sui-color-success-foreground)",
           50: "hsl(var(--sui-color-success-tw-50) / <alpha-value>)",
           100: "hsl(var(--sui-color-success-tw-100) / <alpha-value>)",
           200: "hsl(var(--sui-color-success-tw-200) / <alpha-value>)",
@@ -105,6 +113,7 @@ export default {
         },
         warning: {
           DEFAULT: "hsl(var(--sui-color-warning-tw-default) / <alpha-value>)",
+          foreground: "var(--sui-color-warning-foreground)",
           50: "hsl(var(--sui-color-warning-tw-50) / <alpha-value>)",
           100: "hsl(var(--sui-color-warning-tw-100) / <alpha-value>)",
           200: "hsl(var(--sui-color-warning-tw-200) / <alpha-value>)",
@@ -118,6 +127,7 @@ export default {
         },
         danger: {
           DEFAULT: "hsl(var(--sui-color-danger-tw-default) / <alpha-value>)",
+          foreground: "var(--sui-color-danger-foreground)",
           50: "hsl(var(--sui-color-danger-tw-50) / <alpha-value>)",
           100: "hsl(var(--sui-color-danger-tw-100) / <alpha-value>)",
           200: "hsl(var(--sui-color-danger-tw-200) / <alpha-value>)",
@@ -129,6 +139,14 @@ export default {
           800: "hsl(var(--sui-color-danger-tw-800) / <alpha-value>)",
           900: "hsl(var(--sui-color-danger-tw-900) / <alpha-value>)",
         },
+        info: {
+          DEFAULT: "hsl(var(--sui-color-info-tw-default) / <alpha-value>)",
+          foreground: "var(--sui-color-info-foreground)",
+        },
+        help: {
+          DEFAULT: "hsl(var(--sui-color-help-tw-default) / <alpha-value>)",
+          foreground: "var(--sui-color-help-foreground)",
+        },
       },
       borderWidth: {
         DEFAULT: "var(--sui-border-width-small)",
@@ -138,6 +156,9 @@ export default {
       },
       opacity: {
         disabled: "var(--sui-opacity-disabled)",
+        focus: "var(--sui-opacity-focus)",
+        hover: "var(--sui-opacity-hover)",
+        overlay: "var(--sui-opacity-overlay)",
       },
       borderRadius: {
         small: "var(--sui-radius-small)",
