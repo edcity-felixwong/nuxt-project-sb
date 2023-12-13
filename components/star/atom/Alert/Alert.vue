@@ -12,7 +12,7 @@
       text: 'w-full',
     }"
   >
-    <template #messageicon></template>
+    <template #messageicon />
     <PCarousel
       :showNavigators="props.value.length > 1"
       :showIndicators="false"
@@ -27,7 +27,7 @@
       }"
     >
       <template #item="{ data }">
-        <div v-html="data.html"></div>
+        <div v-html="data.html" />
       </template>
     </PCarousel>
   </PMessage>
@@ -35,7 +35,6 @@
 <script setup lang="ts">
 import PCarousel, { type CarouselProps } from "primevue/carousel";
 import PMessage, { type MessageProps } from "primevue/message";
-// import { usePreferredReducedMotion } from "@vueuse/core";
 
 export type MessageItem = {
   html: string;
