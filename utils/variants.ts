@@ -25,7 +25,7 @@ const shadow = {
 };
 
 const bordered = {
-  default: "bg-transparent border-default text-foreground",
+  default: "bg-transparent border-default text-default-foreground",
   primary: "bg-transparent border-primary text-primary",
   secondary: "bg-transparent border-secondary text-secondary",
   success: "bg-transparent border-success text-success",
@@ -34,7 +34,7 @@ const bordered = {
   accent: "bg-transparent border-accent text-accent",
   info: "bg-transparent border-info text-info",
   help: "bg-transparent border-help text-help",
-  foreground: "bg-transparent border-foreground text-foreground",
+  foreground: "bg-transparent border-foreground text-default-foreground",
 };
 
 const flat = {
@@ -47,7 +47,7 @@ const flat = {
   accent: "bg-accent/20 text-accent dark:text-accent-500",
   info: "bg-info/20 text-info dark:text-info-500",
   help: "bg-help/20 text-help dark:text-help-500",
-  foreground: "bg-foreground/10 text-foreground",
+  foreground: "bg-foreground/10 text-default-foreground",
 };
 
 const faded = {
@@ -60,7 +60,7 @@ const faded = {
   accent: "border-default bg-default-100 text-accent",
   info: "border-default bg-default-100 text-info",
   help: "border-default bg-default-100 text-help",
-  foreground: "border-default bg-default-100 text-foreground",
+  foreground: "border-default bg-default-100 text-default-foreground",
 };
 
 const light = {
@@ -73,7 +73,7 @@ const light = {
   accent: "bg-transparent text-accent",
   info: "bg-transparent text-info",
   help: "bg-transparent text-help",
-  foreground: "bg-transparent text-foreground",
+  foreground: "bg-transparent text-default-foreground",
 };
 
 const ghost = {
@@ -86,7 +86,7 @@ const ghost = {
   accent: "border-accent text-accent hover:!text-accent-foreground hover:!bg-accent",
   info: "border-info text-info hover:!text-info-foreground hover:!bg-info",
   help: "border-help text-help hover:!text-help-foreground hover:!bg-help",
-  foreground: "border-foreground text-foreground hover:!bg-foreground",
+  foreground: "border-foreground text-default-foreground hover:!bg-foreground",
 };
 
 export const colorVariants = {

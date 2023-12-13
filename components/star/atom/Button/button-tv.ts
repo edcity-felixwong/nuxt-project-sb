@@ -10,7 +10,8 @@ export type ButtonSlot = Record<keyof ButtonPassThroughOptions, string | string[
 const textColorClass = "text-text-1350";
 const transitionClass = ["duration-200"];
 const colorClass = ["[&>*]:text-inherit", "text-inherit"];
-const iconClass = [...transitionClass, ...colorClass];
+/** The icon size will follow the font */
+const iconClass = ["shrink-0", ...transitionClass, ...colorClass];
 
 /**
  * Button wrapper **Tailwind Variants** component
@@ -54,7 +55,8 @@ const button = tv({
       // ...dataFocusVisibleClasses,
     ],
     label: ["font-semibold", ...transitionClass, ...colorClass],
-    icon: ["w-6", "h-6", "mr-1", "shrink-0", ...iconClass],
+    icon: ["mr-1", ...iconClass],
+    loadingIcon: [...iconClass],
   } satisfies ButtonSlot,
   variants: {
     variant: {
@@ -67,9 +69,9 @@ const button = tv({
       ghost: { root: "border-medium bg-transparent" },
     },
     size: {
-      sm: { root: "px-unit-3 min-w-unit-16 h-unit-8 text-tiny gap-unit-2 rounded-small" },
-      md: { root: "px-unit-4 min-w-unit-20 h-unit-10 text-small gap-unit-2 rounded-medium" },
-      lg: { root: "px-unit-6 min-w-unit-24 h-unit-12 text-medium gap-unit-3 rounded-large" },
+      sm: { root: "px-unit-3 min-w-unit-16 h-unit-8 text-sm gap-unit-2 rounded-small" },
+      md: { root: "px-unit-4 min-w-unit-20 h-unit-10 text-md gap-unit-2 rounded-medium" },
+      lg: { root: "px-unit-6 min-w-unit-24 h-unit-12 text-lg gap-unit-3 rounded-large" },
     },
     color: {
       default: { root: "", label: textColorClass },

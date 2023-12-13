@@ -14,4 +14,14 @@ export default {
     marked: "已評改",
     submission: "提交",
   },
+  action: {
+    accept: "接受",
+    attempt: "進行評估",
+    edit: "編輯",
+    preview: "預覽",
+    reject: "拒絕",
+    report: "報告",
+    retry: "重試",
+    share: "分享",
+  },
 };

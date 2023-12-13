@@ -1,5 +1,7 @@
 <template>
-  <div class="border min-w-[320px] min-h-[240px] text-default-700 p-3 rounded-large">
+  <div
+    class="[&>.p-submenu-icon]:hover:translate-y-2 border min-w-[320px] min-h-[240px] text-default-700 p-3 rounded-large"
+  >
     <div class="mb-2">
       <div>{{ props.ownerName }}</div>
       <div class="gap-1 flex text-sm items-center">
@@ -15,17 +17,18 @@
         <div>2023-04-23 16:30</div>
         <div>2023-04-23 16:30</div>
       </div>
-      <MarkingTag status="submission" label="Submission 20/20" />
-      <MarkingTag status="automatedMarking" />
+      <div class="gap-1 flex items-center">
+        <MarkingTag status="submission" label="Submission 20/20" />
+        <MarkingTag status="automatedMarking" />
+      </div>
     </div>
-    <CardButton />
+    <CardButtonBar :actions="['edit', 'retry', 'attempt']" />
   </div>
 </template>
 <script setup lang="ts">
 import { StatusTag, StarChip, MarkingTag } from "@/components/star";
 import type { StatusTagProps } from "@/components/star";
-import CardButton from "./CardButton.vue";
-// paper.ownerInfo.fullnameC
+import CardButtonBar from "./CardButtonBar.vue";
 
 export type PaperCardProps = {
   ownerName?: string;

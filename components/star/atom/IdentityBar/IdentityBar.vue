@@ -6,36 +6,38 @@
     aria-label="Account menu"
   >
     <div class="flex items-center gap-4 leading-4" :class="`${bem('function-menu')}`">
-      <div class="flex-none" :class="`${bem('avatar')}`">
-        <img
-          src="https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=50&user_id=200000150"
-          class="w-5 h-5 rounded-full"
-          alt="user-avatar"
-          aria-label="user-avatar"
-          :class="`${bem('avatar', 'img')}`"
-        />
-      </div>
-      <div :class="`${bem('account')}`">
-        <PButton
-          v-ripple="{
-            unstyled: true,
-          }"
-          class="hover:text-primary-700 focus-visible:outline-4"
-          :class="`${bem('account', 'username')}`"
-          @click="toggle"
-          unstyled
-          label="Jhon qweqw123 qweasdq tew(qweqw-teacher-tr)"
-        />
-        <UserMenu
-          ref="menu"
-          :class="`${bem('account', 'user-menu')}`"
-          :user="{
-            fullname: 'losum ipsum summe(abc-qwere-weq-tr)',
-            schoolName: 'hkedity wqwe school no.2(very long name)',
-            avatar:
-              'https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=80&user_id=200000150',
-          }"
-        />
+      <div :class="`${bem('account')} flex space-x-1 items-center`">
+        <div class="flex-none" :class="`${bem('avatar')}`">
+          <img
+            src="https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=50&user_id=200000150"
+            class="w-4 h-4 rounded-full"
+            alt="user-avatar"
+            aria-label="user-avatar"
+            :class="`${bem('avatar', 'img')}`"
+          />
+        </div>
+        <div>
+          <PButton
+            v-ripple="{
+              unstyled: true,
+            }"
+            class="hover:text-primary-700 focus-visible:outline-4"
+            :class="`${bem('account', 'username')}`"
+            @click="toggle"
+            unstyled
+            label="Jhon qweqw123 qweasdq tew(qweqw-teacher-tr)"
+          />
+          <UserMenu
+            ref="menu"
+            :class="`${bem('account', 'user-menu')}`"
+            :user="{
+              fullname: 'losum ipsum summe(abc-qwere-weq-tr)',
+              schoolName: 'hkedity wqwe school no.2(very long name)',
+              avatar:
+                'https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=80&user_id=200000150',
+            }"
+          />
+        </div>
       </div>
       <Divider />
       <PButton

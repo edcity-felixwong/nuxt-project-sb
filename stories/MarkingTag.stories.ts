@@ -5,7 +5,7 @@ import type { MarkingTagProps } from "@/components/star";
 /**
  * The default size for a marking tag is `small`,
  * which is different from `Chip`
- *
+ * reference https://www.figma.com/file/1LUbDzxZclW9y1DWXXbJvk/wireframe?type=design&node-id=295-32552&mode=design&t=lImzgrTlXc4sxgxj-4
  */
 const meta: Meta<typeof MarkingTag> = {
   title: "Components/Tag/MarkingTag",

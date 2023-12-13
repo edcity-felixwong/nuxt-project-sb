@@ -405,7 +405,7 @@ export const t = {
       tw: palette,
     },
     surface: {
-      ground: "not done",
+      ground: "#ffffff",
       section: "not done",
       card: "not done",
       border: "not done",

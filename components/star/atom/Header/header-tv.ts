@@ -24,12 +24,15 @@ const showClass = [
   "hover:after:scale-x-100",
   "hover:after:opacity-100",
 ];
+/** sync the children svg color */
+const svgColorClass = ["[&_svg_*]:text-inherit", "text-inherit"];
 export const selectedClass = [
-  "[&>.p-menuitem-text]:data-[p-highlight=true]:text-blue-900", //
-  "[&>.p-menuitem-link]:data-[p-highlight=true]:bg-[--sui-color-default-100]",
-  "[&>.p-menuitem-icon]:data-[p-highlight=true]:text-blue-900",
-  "[&>.p-submenu-icon]:data-[p-highlight=true]:text-blue-900",
+  // "[&>.p-menuitem-text]:data-[p-highlight=true]:text-blue-900", //
+  // "[&>.p-menuitem-link]:data-[p-highlight=true]:bg-[--sui-color-default-100]",
+  // "[&>.p-menuitem-icon]:data-[p-highlight=true]:text-blue-900",
+  // "[&>.p-submenu-icon]:data-[p-highlight=true]:text-blue-900",
 ];
+const chevronClass = ["[&>.p-submenu-icon]:hover:translate-y-2"];
 
 export const header = tv({
   slots: {
@@ -48,7 +51,7 @@ export const header = tv({
     // icon: "text-default-700 [.p-menuitem.p-highlight > .p-menuitem-content]:text-primary-900",
     button: "rounded-small focus:border-default-100",
     menu: ["rounded-b-medium"],
-    menuitem: ["h-full", "items-center", ...selectedClass],
+    menuitem: ["h-full", "items-center", ...selectedClass, ...chevronClass, ...svgColorClass],
   } satisfies MenubarPassThroughOptions,
   variants: {
     isMobile: {

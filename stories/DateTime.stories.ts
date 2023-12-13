@@ -1,25 +1,28 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import CardButton from "@/components/star/atom/Card/CardButton.vue";
+import DateTime from "@/components/star/atom/Card/DateTime.vue";
 
-const meta: Meta<typeof CardButton> = {
-  title: "Components/Card/CardButton",
+/**
+ * This address the layout and order of the buttons.
+ */
+const meta: Meta<typeof DateTime> = {
+  title: "Components/Card/DateTime",
   tags: ["autodocs"],
-  component: CardButton,
+  component: DateTime,
 };
 
 export default meta;
-type Story = StoryObj<typeof CardButton>;
+type Story = StoryObj<typeof DateTime>;
 
 const ListTemplate: Story = {
   render: (args) => ({
-    components: { CardButton },
+    components: { DateTime },
     setup() {
       return { ...args };
     },
     template: `
         <div class="flex gap-4">
           <template v-for="item in items">
-            <CardButton v-bind="item"/>
+            <DateTime v-bind="item"/>
           </template>
         </div>
     `,
@@ -37,10 +40,15 @@ const actions: NonNullable<Story["args"]>["action"][] = [
   "share",
 ];
 
+// export const Default: Story = {
+//   ...ListTemplate,
+//   args: {
+//     items: actions.map((action) => ({ action })) satisfies Story["args"][],
+//   },
+// };
 export const Default: Story = {
-  ...ListTemplate,
   args: {
-    items: actions.map((action) => ({ action })) satisfies Story["args"][],
+    actions: ["accept", "attempt", "edit"],
   },
 };
 export const Chinese: Story = {

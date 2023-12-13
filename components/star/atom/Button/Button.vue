@@ -8,9 +8,6 @@
     <template #default>
       <slot />
     </template>
-    <template #loadingicon>
-      <Icon v-if="props.icon && props.iconPos === 'right'" :icon="props.icon" :class="pt.icon" />
-    </template>
   </PButton>
 </template>
 <script lang="ts">
@@ -22,9 +19,9 @@ export default {
 import PButton, { type ButtonProps, type ButtonPassThroughOptions } from "primevue/button";
 import { button } from "./button-tv";
 import { usePassThrough } from "@/composables";
-import { Icon } from "@iconify/vue";
+import { Icon } from "@/components/star";
 
-export type Props = {
+export type StarButtonProps = {
   variant?: "solid" | "bordered" | "light" | "flat" | "faded" | "shadow" | "ghost";
   size?: "sm" | "md" | "lg";
   color?: "default" | "primary" | "secondary" | "success" | "warning" | "danger";
@@ -49,7 +46,7 @@ export type Props = {
   ptOptions?: ButtonProps["ptOptions"];
   unstyled?: boolean;
 };
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<StarButtonProps>(), {
   ...button.defaultVariants,
 });
 const pt = usePassThrough(button, props);

@@ -1,12 +1,37 @@
 <template>
-  <div class="flex space-x-2">
-    <StarButton label="Attempt" icon="material-symbols:edit-square-outline-rounded" />
-    <StarButton label="Attempt" icon="material-symbols:edit-square-outline-rounded" />
-    <StarButton label="Attempt" icon="material-symbols:edit-square-outline-rounded" />
-  </div>
+  <StarButton v-bind="{ ...props, ...getProps(props.action) }" :label="props.label ?? label" />
 </template>
 <script setup lang="ts">
 import { StarButton } from "@/components/star";
+import type { StarButtonProps } from "@/components/star";
+import { useI18n } from "vue-i18n";
+import { computedWithReactive } from "@/composables";
 
-export type CardButtonProps = {};
+const { t, locale } = useI18n();
+
+export type CardButtonProps = StarButtonProps & {
+  action: "edit" | "preview" | "share" | "report" | "accept" | "reject" | "attempt" | "retry";
+  locale?: "zh" | "en";
+};
+const props = withDefaults(defineProps<CardButtonProps>(), {});
+const label = computedWithReactive([props, locale], () => {
+  const localeFallback = props.locale ?? locale.value;
+  return t(`paper.action.${props.action}`, null, { locale: localeFallback });
+});
+function getProps(action: CardButtonProps["action"]): StarButtonProps {
+  const propMap: Record<CardButtonProps["action"], StarButtonProps> = {
+    accept: {
+      icon: "material-symbols:thumb-up-outline-rounded",
+    },
+    attempt: { icon: "material-symbols:edit-outline-rounded", color: "primary", variant: "flat" },
+
+    edit: { icon: "material-symbols:edit-square-outline-rounded" },
+    preview: { icon: "material-symbols:visibility-outline-rounded" },
+    reject: { icon: "material-symbols:thumb-down-outline-rounded" },
+    report: { icon: "material-symbols:timeline" },
+    retry: { icon: "material-symbols:replay-rounded" },
+    share: { icon: "material-symbols:share-outline" },
+  };
+  return propMap[action];
+}
 </script>

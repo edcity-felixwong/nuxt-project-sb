@@ -14,4 +14,14 @@ export default {
     marked: "Marked",
     submission: "Submission",
   },
+  action: {
+    accept: "Accept",
+    attempt: "Attempt",
+    edit: "Edit",
+    preview: "Preview",
+    reject: "Reject",
+    report: "Report",
+    retry: "Retry",
+    share: "Share",
+  },
 };

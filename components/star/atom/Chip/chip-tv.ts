@@ -49,7 +49,7 @@ export const chip = tv({
       },
       shadow: {},
       dot: {
-        root: "border-medium border-default text-foreground bg-transparent",
+        root: "border-medium border-default text-default-foreground bg-transparent",
       },
     },
     disabled: {
