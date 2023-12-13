@@ -44,7 +44,7 @@ export const config: NuxtConfig = {
       // unstyled: true,
       pt: {
         // menu: { menu: "p-2", action: "py-2.5 px-2" },
-        button: { root: "focus:active:scale-95 duration-300 ease-in-out" },
+        // button: { root: "" },
         // menubar: {
         //   submenu: "",
         // },

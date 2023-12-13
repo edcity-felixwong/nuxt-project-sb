@@ -3,7 +3,7 @@
     <div class="mb-2">
       <div>{{ props.ownerName }}</div>
       <div class="gap-1 flex text-sm items-center">
-        <StatusTag :status="props.status" size="small" />
+        <StatusTag :status="props.status" />
         <div>Published at 2023-04-23 16:30</div>
       </div>
     </div>
@@ -15,25 +15,14 @@
         <div>2023-04-23 16:30</div>
         <div>2023-04-23 16:30</div>
       </div>
-      <StarChip
-        color="default"
-        label="Submission 20/20"
-        icon="material-symbols:task-outline-rounded"
-        size="small"
-      />
-      <StarChip
-        color="help"
-        label="Automated marking"
-        icon="material-symbols:done-all-rounded"
-        size="small"
-        variant="flat"
-      />
+      <MarkingTag status="submission" label="Submission 20/20" />
+      <MarkingTag status="automatedMarking" />
     </div>
     <CardButton />
   </div>
 </template>
 <script setup lang="ts">
-import { StatusTag, StarChip } from "@/components/star";
+import { StatusTag, StarChip, MarkingTag } from "@/components/star";
 import type { StatusTagProps } from "@/components/star";
 import CardButton from "./CardButton.vue";
 // paper.ownerInfo.fullnameC

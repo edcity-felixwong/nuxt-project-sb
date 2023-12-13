@@ -8,4 +8,10 @@ export default {
     ready: "Ready",
     upcoming: "Upcoming",
   },
+  marking: {
+    manualMarking: "Manual marking",
+    automatedMarking: "Automated marking",
+    marked: "Marked",
+    submission: "Submission",
+  },
 };

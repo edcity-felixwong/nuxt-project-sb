@@ -4,7 +4,7 @@
     :autoplayInterval="props.autoplayInterval"
     :pt="{
       wrapper: 'flex-col-reverse flex px-3',
-      root: 'm-0 border-0',
+      root: 'm-0 border-0 [&_a]:font-semibold hover:[&_a]:underline',
       /** This has specificity problem...,
        * p-icon is not in layer `primevue`,
        * so it overwrites tailwind-utilities */
@@ -49,25 +49,5 @@ export type Props = Omit<CarouselProps, "value"> &
 
 const props = withDefaults(defineProps<Props>(), {
   severity: "warn",
-  // autoplayInterval: () => (usePreferredReducedMotion().value === "reduce" ? 0 : 5000),
 });
-
-// const value: MessageItem[] = [
-//   {
-//     html: `On Tuesday November 28th from 9:00AM PT - 12PM PT (5:00PM UTC - 8PM UTC), we will be
-//       performing system maintenance on support.mozilla.org. During the maintenance period, users
-//       will not be able to sign in to the website, and all users signed in at the start of the
-//       maintenance period will be signed out.`,
-//   },
-//   {
-//     html: `2023 HKDSE Questions are NOW available! Please review to equip yourself and strengthen your learning.
-// ※※ HKEAA is now carrying out system enhancement from 10:00am to 11:00am, 4 December 2023 (Mon). The DFS reports will be temporarily unavailable. We apologise for the inconvenience caused.`,
-//   },
-//   {
-//     html: `lorem ipsum`,
-//   },
-//   {
-//     html: `third message`,
-//   },
-// ];
 </script>

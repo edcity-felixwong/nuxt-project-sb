@@ -1,0 +1,35 @@
+<template>
+  <StarChip
+    v-bind="{ ...props, ...propMap[props.status] }"
+    :label="props.label ?? label"
+    variant="flat"
+  />
+</template>
+<script setup lang="ts">
+import StarChip from "./Chip.vue";
+import type { StarChipProps } from "./Chip.vue";
+import { useI18n } from "vue-i18n";
+import { computedWithReactive } from "@/composables";
+
+const { t, locale } = useI18n();
+
+export type MarkingTagProps = StarChipProps & {
+  status: "manualMarking" | "automatedMarking" | "marked" | "submission";
+  /** Use global locale if no locale specified */
+  locale?: "zh" | "en";
+  label?: string;
+};
+const props = withDefaults(defineProps<MarkingTagProps>(), {
+  size: "small",
+});
+const label = computedWithReactive(props, () => {
+  const localeFallback = props.locale ?? locale.value;
+  return t(`paper.marking.${props.status}`, null, { locale: localeFallback });
+});
+const propMap: Record<MarkingTagProps["status"], Partial<StarChipProps>> = {
+  manualMarking: { color: "primary", icon: "material-symbols:exclamation-rounded" },
+  automatedMarking: { color: "help", icon: "material-symbols:verified-user-outline-rounded" },
+  marked: { color: "success", icon: "material-symbols:done-all-rounded" },
+  submission: { color: "default", icon: "material-symbols:task-outline-rounded" },
+};
+</script>

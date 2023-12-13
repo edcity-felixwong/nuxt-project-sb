@@ -24,10 +24,8 @@ export type StatusTagProps = StarChipProps & {
   label?: string;
 };
 const props = withDefaults(defineProps<StatusTagProps>(), {
-  // status: "pending",
-  // locale: "en",
+  size: "small",
 });
-// const pt = usePassThrough(chip, props);
 const label = computedWithReactive(props, () => {
   const localeFallback = props.locale ?? locale.value;
   return t(`paper.status.${props.status}`, null, { locale: localeFallback });

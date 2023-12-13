@@ -8,6 +8,9 @@ export type qwe = NonNullable<ButtonPassThroughOptions>;
 export type ButtonSlot = Record<keyof ButtonPassThroughOptions, string | string[]>;
 
 const textColorClass = "text-text-1350";
+const transitionClass = ["duration-200"];
+const colorClass = ["[&>*]:text-inherit", "text-inherit"];
+const iconClass = [...transitionClass, ...colorClass];
 
 /**
  * Button wrapper **Tailwind Variants** component
@@ -45,12 +48,13 @@ const button = tv({
       "overflow-hidden",
       "tap-highlight-transparent",
       "border-transparent",
-
+      "focus:active:scale-95",
+      ...transitionClass,
       // focus ring
       // ...dataFocusVisibleClasses,
     ],
-    label: ["font-semibold", "text-inherit"],
-    icon: ["w-6", "h-6", "mr-1"],
+    label: ["font-semibold", ...transitionClass, ...colorClass],
+    icon: ["w-6", "h-6", "mr-1", "shrink-0", ...iconClass],
   } satisfies ButtonSlot,
   variants: {
     variant: {
@@ -103,6 +107,12 @@ const button = tv({
       false: {
         root: "transition-transform-colors-opacity motion-reduce:transition-none",
       },
+    },
+    iconPos: {
+      left: {},
+      right: { icon: "order-2 mx-0 ml-1" },
+      top: { root: "flex-col", icon: "m-0 mb-1" },
+      bottom: { root: "flex-col", icon: "order-2 m-0 mt-1" },
     },
   },
   defaultVariants: {

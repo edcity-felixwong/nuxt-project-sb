@@ -1,5 +1,5 @@
 <template>
-  <PButton v-ripple="{}" :pt="pt" :label="props.label" v-bind="$attrs" :disabled="isDisabled">
+  <PButton v-bind="props" :pt="pt" :label="props.label" :disabled="isDisabled">
     <template #icon>
       <slot name="icon">
         <Icon v-if="props.icon" :icon="props.icon" :class="pt.icon" />
@@ -7,6 +7,9 @@
     </template>
     <template #default>
       <slot />
+    </template>
+    <template #loadingicon>
+      <Icon v-if="props.icon && props.iconPos === 'right'" :icon="props.icon" :class="pt.icon" />
     </template>
   </PButton>
 </template>

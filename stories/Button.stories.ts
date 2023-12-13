@@ -45,6 +45,21 @@ const ListTemplate: Story = {
     `,
   }),
 };
+const Matrix: Story = {
+  render: (args) => ({
+    components: { StarButton },
+    setup() {
+      return { ...args };
+    },
+    template: `
+        <div class="flex gap-4" v-for="r in rows">
+          <div v-for="item in items" class="mb-1">
+            <StarButton v-bind="item" v-bind="r"/>
+          </div>
+        </div>
+    `,
+  }),
+};
 const colors = [
   "default", //
   "primary",
@@ -117,23 +132,61 @@ export const Chinese: Story = {
     })) satisfies Story["args"][],
   },
 };
+export const IconPositions: Story = {
+  ...ListTemplate,
+  args: {
+    items: [
+      {
+        iconPos: "left",
+        label: "text",
+        icon: "material-symbols:edit-square-outline-rounded",
+      },
+      {
+        iconPos: "right",
+        label: "text",
+        icon: "material-symbols:edit-square-outline-rounded",
+      },
+      {
+        iconPos: "top",
+        label: "text",
+        icon: "material-symbols:edit-square-outline-rounded",
+      },
+      {
+        iconPos: "bottom",
+        label: "text",
+        icon: "material-symbols:edit-square-outline-rounded",
+      },
+    ] satisfies Story["args"][],
+  },
+};
 export const VariantsColors: Story = {
-  render: (args) => ({
-    components: { StarButton },
-    setup() {
-      return { ...args };
-    },
-    template: `
-        <div class="flex gap-4" v-for="r in rows">
-          <div v-for="item in items" class="mb-1">
-            <StarButton v-bind="item" v-bind="r"/>
-          </div>
-        </div>
-    `,
-  }),
+  ...Matrix,
   args: {
     rows: colors.map((color) => ({ color })),
     items: variants.map((variant) => ({ variant, label: variant })) satisfies Story["args"][],
+  },
+};
+export const VariantsWithIcon: Story = {
+  ...Matrix,
+  args: {
+    rows: colors.map((color) => ({ color })),
+    items: variants.map((variant) => ({
+      variant,
+      label: variant,
+      icon: "material-symbols:edit-square-outline-rounded",
+    })) satisfies Story["args"][],
+  },
+};
+export const VariantsWithIconAtTheEnd: Story = {
+  ...Matrix,
+  args: {
+    rows: colors.map((color) => ({ color })),
+    items: variants.map((variant) => ({
+      variant,
+      label: variant,
+      icon: "material-symbols:edit-square-outline-rounded",
+      iconPos: "right",
+    })) satisfies Story["args"][],
   },
 };
 

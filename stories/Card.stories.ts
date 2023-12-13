@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3";
 import { PaperCard } from "@/components/star/atom/Card";
 
 const meta: Meta<typeof PaperCard> = {
-  title: "Components/Card",
+  title: "Components/PaperCard",
   tags: ["autodocs"],
   component: PaperCard,
 };
@@ -28,10 +28,28 @@ export const WithCommand: Story = {
   // render,
   args: {
     model: {
+      ownerName: "John Doe",
       icon: "material-symbols:crossword",
       title: "lorem ipsum",
       description: "lorem ipsum",
       command: () => console.log("yyy"),
+    },
+  },
+};
+export const Mobile: Story = {
+  // render,
+  args: {
+    model: {
+      ownerName: "John Doe",
+      icon: "material-symbols:crossword",
+      title: "lorem ipsum",
+      description: "lorem ipsum",
+      command: () => console.log("yyy"),
+    },
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: "iphone14",
     },
   },
 };

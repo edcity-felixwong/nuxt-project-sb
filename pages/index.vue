@@ -7,8 +7,21 @@
         <TabOption />
         <PDivider />
         <div class="flex justify-between">
-          <div class="flex">
+          <div class="flex space-x-1">
             <StarButton label="New" icon="material-symbols:edit-square" />
+            <StarButton
+              label="New"
+              icon="material-symbols:edit-square"
+              variant="ghost"
+              color="secondary"
+            />
+            <StarButton
+              label="New"
+              icon="material-symbols:edit-square"
+              variant="ghost"
+              color="secondary"
+              :pt="{ root: 'border-default text-default' }"
+            />
             <StarButton
               label="lorem"
               class="bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg"

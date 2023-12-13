@@ -3,7 +3,7 @@ import { StatusTag } from "@/components/star";
 import type { StatusTagProps } from "@/components/star";
 
 const meta: Meta<typeof StatusTag> = {
-  title: "Components/StatusTag",
+  title: "Components/Tag/StatusTag",
   tags: ["autodocs"],
   component: StatusTag,
 };
@@ -44,7 +44,7 @@ const statuses: StatusTagProps["status"][] = [
 ];
 export const Default: Story = {
   args: {
-    locale: "en",
+    // locale: "en",
     status: "ready",
   },
 };

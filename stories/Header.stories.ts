@@ -11,6 +11,9 @@ const meta: Meta<typeof HeaderTemplate> = {
   title: "components/Header",
   tags: ["autodocs"],
   component: HeaderTemplate,
+  parameters: {
+    layout: "fullscreen",
+  },
 };
 
 export default meta;
@@ -168,5 +171,10 @@ export const Mobile: Story = {
         items: subjects,
       },
     ],
+  },
+  parameters: {
+    viewport: {
+      defaultViewport: "iphone14",
+    },
   },
 };

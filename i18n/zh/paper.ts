@@ -8,4 +8,10 @@ export default {
     ready: "就緒",
     upcoming: "未就緒",
   },
+  marking: {
+    manualMarking: "需評改",
+    automatedMarking: "不用評改",
+    marked: "已評改",
+    submission: "提交",
+  },
 };
