@@ -5,4 +5,10 @@
 </template>
 <script setup lang="ts">
 import Fieldset from "primevue/fieldset";
+/**
+ * letter-spacing: 0.1em;
+    font-size: 14px;
+    font-variant: all-petite-caps;
+    line-height:20px;
+ */
 </script>
