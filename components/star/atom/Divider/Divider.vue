@@ -4,24 +4,14 @@
 <script setup lang="ts">
 import PDivider, { type DividerPassThroughOptions } from "primevue/divider";
 import { withDefaults } from "vue";
-import { createBEM } from "@/composables/bem";
-import { usePassThrough } from "@/composables/usePassThrough";
+import { usePassThrough } from "@/composables";
 import { divider } from "./divider-tv";
 
-const bem = createBEM("divider");
-
-export interface Item {
-  label: string;
-  href: string;
-}
-/** Variants can be exposed from tv, like VariantProps<footer>,
- * but vue is too lame to parse complex types 🥴
- */
-export type Props = {
+export type StarDividerProps = {
   isMobile?: boolean;
   pt?: DividerPassThroughOptions;
 };
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<StarDividerProps>(), {
   ...divider.defaultVariants,
 });
 const pt = usePassThrough(divider, props);
