@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import DateTime from "@/components/star/atom/Card/DateTime.vue";
+import DateTime from "~/components/star/atom/Card/CardDateTime.vue";
 
 /**
  * This address the layout and order of the buttons.
  */
 const meta: Meta<typeof DateTime> = {
-  title: "Components/Card/DateTime",
+  title: "Components/Card/CardDateTime",
   tags: ["autodocs"],
   component: DateTime,
 };

@@ -12,6 +12,10 @@
 @layer tailwind-utilities {
   @tailwind components;
   @tailwind utilities;
+
+  .all-petite-caps {
+    font-variant-caps: all-petite-caps;
+  }
 }
 
 /* * ::-webkit-scrollbar-track {
