@@ -15,6 +15,6 @@ export default {
   copyright_link: "https://www.hkedcity.net/home/en/notices#s2",
   disclaimer: "Disclaimer",
   disclaimer_link: "https://www.hkedcity.net/home/en/notices#s3",
-  contact: "Contact us",
+  contact: "Contact Us",
   contact_link: "https://www.hkedcity.net/contactus/?chg_lang=1",
 };

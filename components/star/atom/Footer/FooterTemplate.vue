@@ -6,7 +6,7 @@
     </slot>
     <div :class="pt.list">
       <slot name="item">
-        <template v-for="item in model">
+        <template v-for="item in model" :key="item.label">
           <a :href="item.href" target="_blank" :class="pt.item">{{ item.label }}</a>
         </template>
       </slot>
@@ -14,28 +14,27 @@
   </footer>
 </template>
 <script setup lang="ts">
-import PDivider, { type DividerPassThroughOptions } from "primevue/divider";
+import { StarDivider } from "@/components/star";
+import { createBEM, usePassThrough } from "@/composables";
+import type { DividerPassThroughOptions, pro } from "primevue/divider";
 import { withDefaults } from "vue";
-import { createBEM } from "@/composables/bem";
-import { usePassThrough } from "@/composables/usePassThrough";
 import { footer } from "./footer-tv";
-import { StarDivider } from "@/components/star/atom/Divider";
 
 const bem = createBEM("footer");
 
-export interface Item {
+export interface FooterItem {
   label: string;
   href: string;
 }
 /** Variants can be exposed from tv, like VariantProps<footer>,
  * but vue is too lame to parse complex types 🥴
  */
-export type Props = {
-  model: Item[];
+export type StarFooterProps = {
+  model: FooterItem[];
   isMobile?: boolean;
   pt?: DividerPassThroughOptions;
 };
-const props = withDefaults(defineProps<Props>(), {
+const props = withDefaults(defineProps<StarFooterProps>(), {
   ...footer.defaultVariants,
   pt: undefined,
 });
