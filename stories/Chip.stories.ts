@@ -125,6 +125,7 @@ export const Sizes: Story = {
   ...ListTemplate,
   args: {
     items: [
+      { size: "xs", label: "xs" }, //
       { size: "small", label: "small" }, //
       { size: "medium", label: "medium" },
       { size: "large", label: "large" },
@@ -135,6 +136,7 @@ export const SizesWithIcon: Story = {
   ...ListTemplate,
   args: {
     items: [
+      { size: "xs", label: "xs", icon: "material-symbols:translate" }, //
       { size: "small", label: "small", icon: "material-symbols:translate" }, //
       { size: "medium", label: "medium", icon: "material-symbols:translate" },
       { size: "large", label: "large", icon: "material-symbols:translate" },

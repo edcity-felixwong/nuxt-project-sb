@@ -1,16 +1,23 @@
 <template>
-  <PFieldset
-    legend="start"
-    :pt="{
-      root: 'p-3 pt-0',
-      legend:
-        'px-1 text-sm tracking-widest p-0 mb-2 border-none bg-transparent uppercase font-normal all-petite-caps',
-      content: 'px-1 p-0',
-    }"
-  >
-    <slot />
-  </PFieldset>
+  <div class="flex space-x-2 text-sm">
+    <StarFieldSet :legend="locale === 'en' ? 'start' : '開始'">
+      <p>{{ starDateFormat(props.startTime) }}</p>
+    </StarFieldSet>
+    <StarFieldSet :legend="locale === 'en' ? 'end' : '完結'">
+      <p>{{ starDateFormat(props.endTime) }}</p>
+    </StarFieldSet>
+  </div>
 </template>
 <script setup lang="ts">
-import PFieldset from "primevue/fieldset";
+import { StarFieldSet } from "@/components/star";
+import { useI18n } from "vue-i18n";
+import { starDateFormat } from "@/composables";
+import type { DateLike } from "@/composables";
+
+const { locale } = useI18n();
+export type CardDateTimeProps = {
+  startTime: DateLike;
+  endTime: DateLike;
+};
+const props = withDefaults(defineProps<CardDateTimeProps>(), {});
 </script>

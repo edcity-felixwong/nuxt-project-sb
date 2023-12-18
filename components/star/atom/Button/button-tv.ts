@@ -54,7 +54,7 @@ const button = tv({
       // focus ring
       // ...dataFocusVisibleClasses,
     ],
-    label: ["font-semibold", ...transitionClass, ...colorClass],
+    label: ["font-semibold", "flex-none", ...transitionClass, ...colorClass],
     icon: ["mr-1", ...iconClass],
     loadingIcon: [...iconClass],
   } satisfies ButtonSlot,

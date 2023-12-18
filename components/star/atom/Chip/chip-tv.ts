@@ -103,6 +103,13 @@ export const chip = tv({
       },
     },
     size: {
+      xs: {
+        root: "px-1 h-5 text-xs",
+        label: "px-1",
+        icon: "ml-1",
+        removeIcon: "text-medium",
+        avatar: "w-4 h-4",
+      },
       small: {
         root: "px-1 h-6 text-sm",
         label: "px-1",

@@ -24,15 +24,12 @@ export type StatusTagProps = StarChipProps & {
   label?: string;
 };
 const props = withDefaults(defineProps<StatusTagProps>(), {
-  size: "small",
+  size: "xs",
 });
-const label = computedWithReactive(
-  () => props,
-  () => {
-    const localeFallback = props.locale ?? locale.value;
-    return t(`paper.status.${props.status}`, null, { locale: localeFallback });
-  }
-);
+const label = computedWithReactive([props, locale], () => {
+  const localeFallback = props.locale ?? locale.value;
+  return t(`paper.status.${props.status}`, null, { locale: localeFallback });
+});
 const colorMap: Record<StatusTagProps["status"], StarChipProps["color"]> = {
   pending: "danger",
   ready: "success",

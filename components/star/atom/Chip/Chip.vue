@@ -33,7 +33,7 @@ export type StarChipProps = ChipProps & {
     | "info"
     | "help";
   /** @default medium */
-  size?: "small" | "medium" | "large";
+  size?: "xs" | "small" | "medium" | "large";
   label: string;
   variant?: "solid" | "bordered" | "light" | "flat" | "faded" | "shadow" | "dot";
 };
