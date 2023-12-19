@@ -6,8 +6,11 @@ export type { MultiSelectProps, MenuProps, ListboxProps };
 
 export const multiSelectPt = tv({
   slots: {
-    root: "p-0",
+    root: "px-3 border-none focus:shadow-[0_0_2px_0_#fff,0_0_4px_0_var(--sui-color-primary-400)]",
     header: "hidden",
+    trigger: "w-fit pl-1",
+    label: "p-0",
+    labelContainer: "flex items-center",
   } satisfies MultiSelectProps["pt"],
   variants: {
     disabled: {

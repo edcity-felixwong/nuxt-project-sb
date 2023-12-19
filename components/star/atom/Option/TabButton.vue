@@ -35,13 +35,8 @@ const options = [
   },
   {
     icon: "material-symbols:crossword",
-    title: "222222222",
-    description: "23333333",
-  },
-  {
-    icon: "material-symbols:crossword",
-    title: "222222222",
-    // description: "23333333",
+    title: "lorem ipsum",
+    description: "lorem ipsum",
   },
   {
     icon: "material-symbols:crossword",
@@ -50,13 +45,8 @@ const options = [
   },
   {
     icon: "material-symbols:crossword",
-    title: "222222222",
-    description: "23333333",
-  },
-  {
-    icon: "material-symbols:crossword",
-    title: "222222222",
-    // description: "23333333",
+    title: "lorem ipsum",
+    description: "lorem ipsum",
   },
   {
     icon: "material-symbols:crossword",
@@ -65,13 +55,23 @@ const options = [
   },
   {
     icon: "material-symbols:crossword",
-    title: "222222222",
-    description: "23333333",
+    title: "lorem ipsum",
+    description: "lorem ipsum",
   },
   {
     icon: "material-symbols:crossword",
-    title: "222222222",
-    // description: "23333333",
+    title: "lorem ipsum",
+    description: "lorem ipsum",
+  },
+  {
+    icon: "material-symbols:crossword",
+    title: "lorem ipsum",
+    description: "lorem ipsum",
+  },
+  {
+    icon: "material-symbols:crossword",
+    title: "lorem ipsum",
+    description: "lorem ipsum",
   },
 ];
 const first = ref(0);

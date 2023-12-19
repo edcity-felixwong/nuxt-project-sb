@@ -7,7 +7,7 @@
       optionLabel="label"
       optionGroupLabel="label"
       optionGroupChildren="items"
-      placeholder="Select Cities"
+      :placeholder="props.placeholder"
       :maxSelectedLabels="props.options.length"
       :pt="pt.multiSelectPt"
       :disabled="props.disabled"
@@ -71,6 +71,7 @@ export type Props = {
   options: Item[];
   /** @default false */
   disabled?: boolean;
+  placeholder?: string;
 };
 const props = withDefaults(defineProps<Props>(), {
   // multiSelectPt: () => {},
@@ -87,10 +88,17 @@ const toggle = (event) => {
   menu.value.toggle(event);
 };
 
+// const models = reactive(
+//   Array(props.options.length).map(() => reactive<NonNullable<Props["options"]>[number]>({}))
+// );
 const models = reactive(
-  Array(props.options.length).map(() => reactive<NonNullable<Props["options"]>[number]>({}))
+  props.options.flatMap((r) =>
+    reactive<NonNullable<Props["options"]>[number]>(r.items?.filter((x) => x.default))
+  )
 );
 
-const show = computedWithReactive(models, () => models.map(reactive));
+const show = computedWithReactive(models, () =>
+  models.every((_) => !_) ? undefined : models.filter((_) => _).map(reactive)
+);
 const pt = usePassThroughS({ listboxPt, menuPt, multiSelectPt }, props);
 </script>

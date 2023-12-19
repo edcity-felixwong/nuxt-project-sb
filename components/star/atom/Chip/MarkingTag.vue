@@ -20,7 +20,7 @@ export type MarkingTagProps = StarChipProps & {
   label?: string;
 };
 const props = withDefaults(defineProps<MarkingTagProps>(), {
-  size: "small",
+  size: "xs",
 });
 const label = computedWithReactive([props, locale], () => {
   const localeFallback = props.locale ?? locale.value;
