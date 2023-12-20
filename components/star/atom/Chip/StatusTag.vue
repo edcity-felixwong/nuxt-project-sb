@@ -18,7 +18,8 @@ export type StatusTagProps = Omit<StarChipProps, "label"> & {
     | "attempted"
     | "upcoming"
     | "inProgress"
-    | "finished";
+    | "finished"
+    | "not_attempted";
   /** Use global locale if no locale specified */
   locale?: "zh" | "en";
   label?: string;
@@ -38,6 +39,7 @@ const colorMap: Record<StatusTagProps["status"], StarChipProps["color"]> = {
   upcoming: "info",
   inProgress: "secondary",
   finished: "default",
+  not_attempted: "info",
 };
 const color = computedWithReactive(props, () => colorMap[props.status]);
 </script>

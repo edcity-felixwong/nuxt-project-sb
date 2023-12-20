@@ -3,7 +3,10 @@ import type { INITIAL_VIEWPORTS, DEFAULT_VIEWPORT } from "@storybook/addon-viewp
 
 import PrimeVue from "primevue/config";
 import type { PrimeVueConfiguration, PrimeVuePTOptions } from "primevue/config";
+import { createI18n, I18nInjectionKey, useI18n } from "vue-i18n";
+import { defineComponent, provide } from "vue";
 import { i18n } from "@/i18n";
+import { messages } from "@/i18n/messages";
 
 import theme from "./theme";
 /* Import tailwind */
@@ -108,10 +111,50 @@ const preview: Preview = {
       viewports,
     },
   },
+  globalTypes: {
+    locale: {
+      description: "Internationalization locale",
+      defaultValue: "en",
+      toolbar: {
+        icon: "globe",
+        items: [
+          { value: "en", right: "en", title: "English" },
+          { value: "zh", right: "zh", title: "中文" },
+        ],
+      },
+    },
+  },
   decorators: [
-    (story) => ({
+    (story, context) => ({
+      name: "StorybookPreviewDecorator",
       components: { StarThemeProvider, story },
-      template: `<StarThemeProvider><story /></StarThemeProvider>`,
+      setup(props, ctx) {
+        const sbLocale = context.globals.locale || "en";
+        console.log(`🚀 // DEBUG 🍔 ~ file: preview.ts:132 ~ setup ~ sbLocale:`, sbLocale);
+        const { t, locale } = useI18n();
+        locale.value = sbLocale;
+        console.log(`🚀 // DEBUG 🍔 ~ file: preview.ts:135 ~ setup ~ locale.value:`, locale.value);
+        console.log(`🚀 // DEBUG 🍔 ~ file: preview.ts:135 ~ setup ~ locale:`, locale);
+        i18n.global.locale.value = sbLocale;
+        console.log(`🚀 // DEBUG 🍔 ~ file: preview.ts:139 ~ setup ~ i18n:`, i18n);
+        console.log(
+          `🚀 // DEBUG 🍔 ~ file: preview.ts:139 ~ setup ~  i18n.global.locale.value:`,
+          i18n.global.locale.value
+        );
+
+        // provide(
+        //   I18nInjectionKey,
+        //   createI18n({
+        //     locale: "zh",
+        //     // legacy: false,
+        //     fallbackLocale: "en",
+        //     // globalInjection
+        //     messages,
+        //   })
+        // );
+        return { locale, sbLocale };
+      },
+      template: `<StarThemeProvider :key="sbLocale"><story /></StarThemeProvider>`,
     }),
   ],
 };

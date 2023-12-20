@@ -25,3 +25,9 @@ blockquote:not(.sb-anchor, .sb-unstyled, .sb-unstyled blockquote) {
   border-width: 0;
   border-radius: 12px;
 }
+
+ol,
+ul,
+menu {
+  list-style: auto;
+}

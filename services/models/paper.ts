@@ -7,6 +7,8 @@ export type ReportMode = "last";
 export type Mode = "sequential";
 export type SerializedJsonString = string;
 export type SchType = "SEC";
+export type CompiledBy = "myself" | "others";
+export type Submission = "not_attempted" | "finished" | "attempted";
 
 export interface School {
   nameE: string;
@@ -27,6 +29,14 @@ export interface Status {
   canReport: boolean;
   reportSharedNum: number;
   reportSharedAccepted: boolean;
+  canPublish: boolean;
+  canRecall: boolean;
+  canSharePaper: boolean;
+  canShareReport: boolean;
+  canAccept: boolean;
+  canReject: boolean;
+  compiledBy: CompiledBy;
+  submission: Submission;
 }
 
 export interface OwnerInfo {

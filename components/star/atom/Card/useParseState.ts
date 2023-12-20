@@ -6,9 +6,16 @@ import { computedWithControl } from "@vueuse/core";
 /** Shitty function to tell what buttons should be shown from a paper object. */
 export function parseState(paper: Paper, role: "teacher" | "student"): State {
   if (role === "teacher") {
-    if (paper.status.canModify && paper.status.canPreview) return "teacherDraft";
-    if (paper.status.canReport && paper.status.canPreview) return "teacherPublished";
-    if (paper.status.canPreview) return "teacherShared";
+    /** Seem like shareReport is separated */
+    if (paper.status.canModify && paper.status.canPreview && paper.status.canSharePaper) {
+      return "teacherDraft";
+    }
+    if (paper.published && paper.status.canReport && paper.status.canPreview) {
+      return "teacherPublished";
+    }
+    if (paper.status.canPreview && paper.status.canAccept && paper.status.canReject) {
+      return "teacherShared";
+    }
   }
   if (role === "student") {
     if (paper.status.canStart) return "studentPublished";

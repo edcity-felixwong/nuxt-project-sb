@@ -8,7 +8,7 @@
       </div>
       <div class="flex items-center gap-1 text-sm">
         <div>Published at {{ starDateFormat(props.paper.publishDate) }}</div>
-        <StatusTag :status="props.paper.feedbackStatus" />
+        <StatusTag :status="props.paper.status.submission" />
         <!-- <CardMoreOption /> -->
       </div>
     </div>
@@ -24,7 +24,7 @@
         <!-- <MarkingTag status="submission" label="20/20" size="small" /> -->
       </div>
     </div>
-    <CardButtonBar :state="buttonState" />
+    <CardButtonBar :state="buttonState" :role="props.role" />
   </div>
 </template>
 <script setup lang="ts">
@@ -49,8 +49,9 @@ export type PaperCardProps = {
   title?: string;
   // startTime?: Date;
   // endTime?: Date;
+  role: "teacher" | "student";
 };
 const props = withDefaults(defineProps<PaperCardProps>(), {});
 
-const buttonState = useParseState(props.paper, "teacher");
+const buttonState = useParseState(props.paper, props.role);
 </script>

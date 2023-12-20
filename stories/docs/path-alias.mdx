@@ -7,9 +7,11 @@ import { EditThisPage, LastModified } from "#storybook/blocks";
 
 # Path Alias
 
-{/* <StoryWithLocale /> */}
+The following path aliases are provided to provided better code structure, and share the same path resolution accross different environment, like testing, storybook, etc.
 
-<div>{JSON.stringify(JSON.parse(import.meta.env.SB_PATH_ALIAS))}</div>
+<ul>
+  {Object.entries(JSON.parse(import.meta.env.SB_PATH_ALIAS)).map(([key, value]) => <li key={key}><code>{key}</code>: {value}</li>)}
+</ul>
 
 > This is evaluated at build time.
 

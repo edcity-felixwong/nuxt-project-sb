@@ -4,6 +4,7 @@ export default {
     finished: "Finished",
     inProgress: "In progress",
     notAttempted: "Not attempted",
+    not_attempted: "Not attempted",
     pending: "Pending",
     ready: "Ready",
     upcoming: "Upcoming",

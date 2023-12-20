@@ -1,85 +1,63 @@
 import { EditThisPage, LastModified } from "#storybook/blocks";
 
-{JSON.stringify(import.meta.env)}
 
-Thanks for showing interest to contribute to Chakra UI 💖, you rock!
 
-When it comes to open source, there are different ways you can contribute, all
-of which are valuable. Here's a few guidelines that should help you as you
+Thanks for contributing to STAR UI 💖
+
+Here's a few guidelines that should help you as you
 prepare your contribution.
 
 ## Setup the Project
 
 The following steps will get you up and running to contribute to Chakra UI:
 
-1. Fork the repo (click the <kbd>Fork</kbd> button at the top right of
-   [this page](https://github.com/chakra-ui/chakra-ui))
+1. Clone the repo locally
 
-2. Clone your fork locally
-
-```sh
-git clone https://github.com/<your_github_username>/chakra-ui.git
-cd chakra-ui
-```
-
-3. Setup all the dependencies and packages by running `pnpm install`. This
+2. Setup all the dependencies and packages by running `npm install`. This
    command will install dependencies.
 
-> If you run into any issues during this step, kindly reach out to the Chakra UI
-> React team here: https://discord.gg/chakra-ui
+> If you run into any issues during this step, kindly reach out to the team.
 
 ## Development
 
-To improve our development process, we've set up tooling and systems. Chakra UI
-uses a monorepo structure and we treat each component as an independent package
-that can be consumed in isolation.
+
 
 ### Tooling
 
-- [PNPM](https://pnpm.io/) to manage packages and dependencies
-- [Tsup](https://tsup.egoist.dev/) to bundle packages
+
+
 - [Storybook](https://storybook.js.org/) for rapid UI component development and
   testing
-- [Testing Library](https://testing-library.com/) for testing components and
-  hooks
-- [Changeset](https://github.com/atlassian/changesets) for changes
-  documentation, changelog generation, and release management.
+
+
 
 ### Commands
 
-**`pnpm install`**: bootstraps the entire project, symlinks all dependencies for
+**`npm install`**: bootstraps the entire project, symlinks all dependencies for
 cross-component development and builds all components.
 
-**`pnpm storybook`**: starts storybook server and loads stories in files that
-end with `.stories.tsx`.
+**`npm run storybook`**: starts storybook server.
 
-**`pnpm build`**: run build for all component packages.
+**`npm run build`**: run build for all component packages.
 
-**`pnpm test`**: run test for all component packages.
+**`npm run test`**: run test for all component packages.
 
-**`pnpm release`**: publish changed packages.
+**`npm run dev`**: run a development server.
+
+
 
 ## Think you found a bug?
 
 Please conform to the issue template and provide a clear path to reproduction
-with a code example. The best way to show a bug is by sending a CodeSandbox
-link.
+with any photo, video, log, network record. It would be great to have the API response like HAR or plain text, so the reproduction would be easiler.
 
-You may wish to use our starters to help you get going:
+You may wish to file a bug report via [github](https://github.com/eclhk/star-website-home-client/issues/new).
 
-- JavaScript Starter: https://codesandbox.io/s/chakra-ui-javascript-lzzg9
-- TypeScript Starter: https://codesandbox.io/s/chakra-ui-typescript-pomi8
 
-## Proposing new or changed API?
-
-Please provide thoughtful comments and some sample API code. Proposals that
-don't line up with our roadmap or don't have a thoughtful explanation will be
-closed.
-
-## Making a Pull Request?
+{/* ## Making a Pull Request?
 
 Pull requests need only the :+1: of two or more collaborators to be merged; when
-the PR author is a collaborator, that counts as one.
+the PR author is a collaborator, that counts as one. */}
 
 ### Commit Convention
 
@@ -90,10 +68,10 @@ When you create a commit we kindly ask you to follow the convention
 `category(scope or module): message` in your commit message while using one of
 the following categories:
 
-- `feat / feature`: all changes that introduce completely new code or new
+- `feat`: all changes that introduce completely new code or new
   features
 - `fix`: changes that fix a bug (ideally you will additionally reference an
-  issue if present)
+  issue if present). like `fix(something): #234 ...`.
 - `refactor`: any code related change that is not a fix nor a feature
 - `docs`: changing existing or creating new documentation (i.e. README, docs for
   usage of a lib or cli usage)
@@ -107,62 +85,35 @@ the following categories:
   categories
 
 If you are interested in the detailed specification you can visit
-https://www.conventionalcommits.org/ or check out the
+[https://www.conventionalcommits.org/](https://www.conventionalcommits.org/) or check out the
 [Angular Commit Message Guidelines](https://github.com/angular/angular/blob/22b96b9/CONTRIBUTING.md#-commit-message-guidelines).
 
 ### Steps to PR
 
-1. Fork of the chakra-ui repository and clone your fork
+1. PRs should come from a issue, a issue should have name like `[Bug]: ...` or `[Feat]: ...`, so the branch created from that issue will automatically have a name like `bug-XX-...` or `feat-XX-...`.
 
-2. Create a new branch out of the `main` branch. We follow the convention
-   `[type/scope]`. For example `fix/accordion-hook` or `docs/menu-typo`. `type`
+2. Create a new branch out of the `main` branch, which should attach to the issue. We follow the convention `[type-<issue name>]`. For example `fix-23-class-display` or `docs-234-menu-typo`. `type`
    can be either `docs`, `fix`, `feat`, `build`, or any other conventional
-   commit type. `scope` is just a short id that describes the scope of work.
+   commit type.
 
-3. Make and commit your changes following the
-   [commit convention](https://github.com/chakra-ui/chakra-ui/blob/main/CONTRIBUTING.md#commit-convention).
-   As you develop, you can run `pnpm pkg <module> build` and
-   `pnpm pkg <module> test` to make sure everything works as expected. Please
-   note that you might have to run `pnpm boot` first in order to build all
-   dependencies.
+3. Make and commit your changes following the commit convention.
 
-4. Run `pnpm changeset` to create a detailed description of your changes. This
-   will be used to generate a changelog when we publish an update.
-   [Learn more about Changeset](https://github.com/atlassian/changesets/tree/master/packages/cli).
-   Please note that you might have to run `git fetch origin main:master` (where
-   origin will be your fork on GitHub) before `pnpm changeset` works.
-5. Also, if you provide `jsx` snippets to the changeset, please turn off the
-   live preview by doing the following at the beginning of the snippet:
-   ` ```jsx live=false`
-
-> If you made minor changes like CI config, prettier, etc, you can run
-> `pnpm changeset add --empty` to generate an empty changeset file to document
-> your changes.
 
 ### Tests
 
-All commits that fix bugs or add features need a test.
-
-> **Dear Chakra team:** Please do not merge code without tests
-
-## Want to write a blog post or tutorial
-
-That would be amazing! Reach out to the core team here:
-https://discord.gg/chakra-ui. We would love to support you any way we can.
+All commits that fix bugs or add features need a test. We leverage vitest, cypress and storybook for unit test, component test, visual test and end-to-end test.
 
 ## Want to help improve the docs?
 
-Our docsite lives in a
-[separate repo](https://github.com/chakra-ui/chakra-ui-docs). If you're
-interested in contributing to the documentation, check out the
-[docsite contribution guide](https://github.com/chakra-ui/chakra-ui-docs/blob/main/CONTRIBUTING.md).
+This docs lives in `/stories/docs`, any change in the docs will be automatically deployed through CICD, with the latest commit time updated. Great to have you 🍔.
 
 ## License
 
-By contributing your code to the chakra-ui GitHub repository, you agree to
-license your contribution under the MIT license.
+Most of the libraries we used are under the MIT license. We should provide license in the code base, and by contributing to the code, you agree to license your contribution under the license.
 
-https://flank.github.io/flank/pr_titles/
+## Acknowledge
+
+This contributing guidelines referenced a lots from [Chakra UI](https://chakra-ui.com/).
 
 ---
 

@@ -47,7 +47,7 @@ const props = withDefaults(defineProps<CardButtonBarProps>(), {});
 /** This maps the finite states into list of button props */
 function stateToButtonProps(state: State): CardButtonProps[] {
   const map: Record<State, CardButtonProps[]> = {
-    teacherDraft: [{ action: "report" }, { action: "preview" }, { action: "share" }],
+    teacherDraft: [{ action: "edit" }, { action: "preview" }, { action: "share" }],
     teacherPublished: [{ action: "report" }, { action: "preview" }, { action: "share" }],
     teacherShared: [{ action: "preview" }, { action: "accept" }, { action: "reject" }],
     studentPublished: [{ action: "attempt" }],
