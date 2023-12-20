@@ -103,18 +103,18 @@
           <div>
             <StarBreadcrumbNav :model="[{ label: '未完成' }]" />
             <section class="grid gap-8 grid-cols-[repeat(auto-fill,minmax(320px,1fr))]">
+              <!-- <StarCardPaperCard ownerName="John Doe" status="ready" />
               <StarCardPaperCard ownerName="John Doe" status="ready" />
               <StarCardPaperCard ownerName="John Doe" status="ready" />
               <StarCardPaperCard ownerName="John Doe" status="ready" />
-              <StarCardPaperCard ownerName="John Doe" status="ready" />
-              <StarCardPaperCard ownerName="John Doe" status="ready" />
+              <StarCardPaperCard ownerName="John Doe" status="ready" /> -->
             </section>
           </div>
           <div>
             <StarBreadcrumbNav :model="[{ label: '已完成' }]" />
             <section class="grid gap-8 grid-cols-[repeat(auto-fill,minmax(320px,1fr))]">
-              <StarCardPaperCard ownerName="John Doe" status="ready" />
-              <StarCardPaperCard ownerName="John Doe" status="ready" />
+              <!-- <StarCardPaperCard ownerName="John Doe" status="ready" />
+              <StarCardPaperCard ownerName="John Doe" status="ready" /> -->
             </section>
           </div>
           <StarButton

@@ -190,8 +190,9 @@ export const VariantsWithIconAtTheEnd: Story = {
   },
 };
 
+/** FIXME */
 export const IconOnly: Story = {
-  ...ListTemplate,
+  // ...ListTemplate,
   // render: (args) => ({
   //   components: { StarButton },
   //   setup() {
@@ -206,22 +207,23 @@ export const IconOnly: Story = {
   //   `,
   // }),
   args: {
-    items: variants.map((variant) => ({ variant, icon: "material-symbols:10mp-rounded" })),
+    // items: variants.map((variant) => ({ variant, icon: "material-symbols:10mp-rounded" })),
+    icon: "material-symbols:10mp-rounded",
   },
 };
 
-export const Custom: Story = {
-  render: (args) => ({
-    components: { StarButton },
-    setup() {
-      return { ...args };
-    },
-    template: `
-            <StarButton :class="args.cls"/>
-    `,
-  }),
-  args: {
-    cls: "bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg",
-    label: "Button",
-  },
-};
+// export const Custom: Story = {
+//   render: (args) => ({
+//     components: { StarButton },
+//     setup() {
+//       return { ...args };
+//     },
+//     template: `
+//             <StarButton :class="args.cls"/>
+//     `,
+//   }),
+//   args: {
+//     cls: "bg-gradient-to-tr from-pink-500 to-yellow-500 text-white shadow-lg",
+//     label: "Button",
+//   },
+// };

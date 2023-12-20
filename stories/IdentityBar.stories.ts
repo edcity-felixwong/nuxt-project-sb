@@ -1,25 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import UserMenu from "@/components/star/atom/IdentityBar/UserMenu.vue";
+import { IdentityBar } from "@/components/star";
 
-const meta: Meta<typeof UserMenu> = {
-  title: "Components/IdentityBar/UserMenu",
+/** Hard coded, will change. */
+const meta: Meta<typeof IdentityBar> = {
+  title: "Components/IdentityBar/IdentityBar",
   tags: ["autodocs"],
-  component: UserMenu,
-  args: {
-    popup: false,
-  },
+  component: IdentityBar,
 };
 
 export default meta;
-type Story = StoryObj<typeof UserMenu>;
-
-// const render: Story["render"] = (args, { argTypes }) => ({
-//   components: { UserMenu },
-//   setup() {
-//     return { args };
-//   },
-//   template: '<UserMenu v-bind="args">{{ args.default }}</UserMenu>',
-// });
+type Story = StoryObj<typeof IdentityBar>;
 
 export const English: Story = {
   // render,
@@ -28,7 +18,6 @@ export const English: Story = {
       {
         label: "Settings",
         icon: "material-symbols:settings-outline-rounded",
-        externalLink: true,
       },
       { separator: true },
       {
@@ -64,6 +53,7 @@ export const Chinese: Story = {
     },
   },
 };
+
 export const WithCommand: Story = {
   // render,
   args: {
@@ -79,5 +69,14 @@ export const WithCommand: Story = {
       schoolName: "天主小學",
       avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=Felix",
     },
+  },
+};
+
+export const Mobile: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: "iphone14",
+    },
+    layout: "fullscreen",
   },
 };

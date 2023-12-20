@@ -45,18 +45,17 @@
         class="hover:text-primary-700"
         :class="`${bem('language')}`"
         @click="() => (locale === 'zh' ? (locale = 'en') : (locale = 'zh'))"
-        :aria-label="`Selected language: ${locale}`"
+        :aria-label="`Current language: ${locale}`"
         :title="$t('ui.language')"
         >{{ locale === "zh" ? "中" : "English" }}</PButton
       >
       <Divider />
       <PButton unstyled :class="`${bem('home')}`">
-        <div class="flex items-center justify-center" title="Edcity home">
+        <div class="flex items-center justify-center" :title="$t('ui.identityBar.homePage')">
           <Icon
             icon="material-symbols:home-outline-rounded"
             width="1.25rem"
             class="text-text-450 hover:text-primary-700"
-            title="Edcity home"
           />
         </div>
       </PButton>
@@ -77,10 +76,9 @@ const { locale } = useI18n();
 
 const bem = createBEM("identity-bar");
 
-const Divider = defineComponent(
-  () => () => <PDivider layout="vertical" pt={{ root: "m-0   before:border-solid " }} />,
-  { name: "Divider" }
-);
+const Divider = defineComponent(() => () => <PDivider layout="vertical" pt={{ root: "m-0" }} />, {
+  name: "Divider",
+});
 const EdcityHomeIcon = defineComponent(
   () => () =>
     (

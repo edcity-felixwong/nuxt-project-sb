@@ -10,7 +10,7 @@ import { computedWithControl } from "@vueuse/core";
 
 const { t, locale } = useI18n();
 
-export type StatusTagProps = StarChipProps & {
+export type StatusTagProps = Omit<StarChipProps, "label"> & {
   status:
     | "pending"
     | "ready"

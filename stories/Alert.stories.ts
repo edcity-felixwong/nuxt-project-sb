@@ -31,9 +31,7 @@ const multipleMessage = [
   },
 ];
 
-export const Default: Story = {
-  // render,
-  name: "Single message",
+export const SingleMessage: Story = {
   args: {
     value: [
       {
@@ -43,39 +41,50 @@ export const Default: Story = {
     ],
   },
 };
-export const Multiple: Story = {
-  // render,
-  name: "Multiple message",
+export const MultipleMessages: Story = {
   args: {
     value: multipleMessage,
   },
 };
 export const Info: Story = {
   args: {
-    severity: "info",
     value: multipleMessage,
   },
 };
 export const Warn: Story = {
   args: {
-    severity: "warn",
     value: multipleMessage,
   },
 };
 export const Success: Story = {
   args: {
-    severity: "success",
     value: multipleMessage,
   },
 };
 export const Error: Story = {
   args: {
-    severity: "error",
     value: multipleMessage,
   },
 };
 export const withLinks: Story = {
-  name: "With links",
+  args: {
+    // severity: "error",
+    value: [
+      {
+        html: `Version 2 of Chakra UI is only compatible with React 18. If you are still
+      needing to use React 17 or earlier, please use
+      <a href="https://v1.chakra-ui.com/guides/first-steps">version 1 of Chakra UI</a>.`,
+      },
+    ],
+  },
+};
+export const Mobile: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: "iphone14",
+    },
+    layout: "fullscreen",
+  },
   args: {
     // severity: "error",
     value: [

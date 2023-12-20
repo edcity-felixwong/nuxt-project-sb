@@ -6,3 +6,4 @@ export * from "./Card";
 export * from "./Divider";
 export * from "./Footer";
 export * from "./FieldSet";
+export * from "./IdentityBar";

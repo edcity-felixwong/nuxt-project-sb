@@ -49,100 +49,60 @@ const actions: NonNullable<Story["args"]>["action"][] = [
   "share",
 ];
 
-// export const DraftT: Story = {
-//   name: "Teacher/Draft",
-//   args: {
-//     actions: ["edit", "preview", "share"],
-//   },
-// };
-// export const PublishedT: Story = {
-//   name: "Teacher/Published",
-//   args: {
-//     actions: ["report", "preview", "share"],
-//   },
-// };
-// export const SharedT: Story = {
-//   name: "Teacher/Shared",
-//   args: {
-//     actions: ["preview", "accept", "reject"],
-//   },
-// };
-// export const PublishedS: Story = {
-//   name: "Student/Published",
-//   args: {
-//     actions: ["attempt"],
-//   },
-// };
-// export const ReportReadyS: Story = {
-//   name: "Student/ReportReady",
-//   args: {
-//     actions: ["preview", "report"],
-//   },
-// };
-// export const ReportUnReadyS: Story = {
-//   name: "Student/ReportUnReady",
-//   args: {
-//     actions: ["preview", "report"],
-//   },
-// };
-// export const ReportReadyRetryS: Story = {
-//   name: "Student/ReportReadyRetry",
-//   args: {
-//     actions: ["preview", "report", "retry"],
-//   },
-// };
-// export const ReportUnReadyRetryS: Story = {
-//   name: "Student/ReportUnReadyRetry",
-//   args: {
-//     actions: ["preview", "report", "retry"],
-//   },
-// };
-export const DraftT: Story = {
+export const TeacherDraft: Story = {
   name: "Teacher/Draft",
   args: {
-    actions: ["edit", "preview", "share"],
+    // model: [{ action: "edit" }, { action: "preview" }, { action: "share" }],
+    state: "teacherDraft",
   },
 };
-export const PublishedT: Story = {
+export const TeacherPublished: Story = {
   name: "Teacher/Published",
   args: {
-    actions: ["report", "preview", "share"],
+    // model: ["report", "preview", "share"],
+    state: "teacherPublished",
   },
 };
-export const SharedT: Story = {
+export const TeacherShared: Story = {
   name: "Teacher/Shared",
   args: {
-    actions: ["preview", "accept", "reject"],
+    // model: ["preview", "accept", "reject"],
+    state: "teacherShared",
   },
 };
-export const PublishedS: Story = {
+export const StudentPublished: Story = {
   name: "Student/Published",
   args: {
-    actions: ["attempt"],
+    // model: ["attempt"],
+    state: "studentPublished",
   },
 };
-export const ReportReadyS: Story = {
+export const StudentReportReady: Story = {
   name: "Student/ReportReady",
   args: {
-    actions: ["preview", "report"],
+    // model: ["preview", "report"],
+    state: "studentReportReady",
   },
 };
-export const ReportUnReadyS: Story = {
+export const StudentReportUnReady: Story = {
   name: "Student/ReportUnReady",
   args: {
-    actions: ["preview", "report"],
+    // model: ["preview", "report"],
+    state: "studentReportUnReady",
   },
 };
-export const ReportReadyRetryS: Story = {
+export const StudentReportReadyRetry: Story = {
   name: "Student/ReportReadyRetry",
   args: {
-    actions: ["preview", "report", "retry"],
+    // model: ["preview", "report", "retry"],
+    state: "studentReportReadyRetry",
   },
 };
-export const ReportUnReadyRetryS: Story = {
+export const StudentReportUnReadyRetry: Story = {
   name: "Student/ReportUnReadyRetry",
   args: {
-    actions: ["preview", "report", "retry"],
+    // model: ["preview", "report", "retry"],
+    state: "studentReportUnReadyRetry",
   },
 };
 export const Chinese: Story = {

@@ -8,10 +8,18 @@ export default {
     ready: "Ready",
     upcoming: "Upcoming",
   },
+  /** Marking directly linked to paper.feedbackStatus,
+   * But some alias is kept, which is early idea.
+   */
   marking: {
     manualMarking: "Manual marking",
     automatedMarking: "Automated marking",
     marked: "Marked",
+
+    pending: "Manual marking",
+    none: "Automated marking",
+    required: "Marked",
+
     submission: "Submission",
   },
   action: {

@@ -30,16 +30,22 @@
         </div>
       </section>
     </template>
-    <!-- <template #item="{ item, label,props }">{{ label }}</template> -->
     <template #itemicon="{ item }">
       <div v-if="item.icon" class="mr-1">
         <Icon :icon="item.icon" width="1.25rem" />
       </div>
+      <Icon
+        v-if="item.externalLink"
+        icon="mynaui:arrow-up-right"
+        width="1.25rem"
+        class="order-last"
+      />
     </template>
   </PMenu>
 </template>
 <script lang="ts">
-import PMenu, { type MenuProps } from "primevue/menu";
+import PMenu from "primevue/menu";
+import type { MenuProps } from "primevue/menu";
 import { defineExpose, ref } from "vue";
 import { Icon } from "@iconify/vue";
 
@@ -50,16 +56,21 @@ export type User = {
   email?: string;
   cityId?: string;
 };
-export type MenuItem = NonNullable<MenuProps["model"]>[number];
+export type UserMenuItem = NonNullable<MenuProps["model"]>[number] & {
+  externalLink?: boolean;
+};
+
 /** vue can't parse props type with "-" ... 🤡 */
-export type ValidMenuProps = Omit<MenuProps, "aria-label" | "aria-labelledby">;
+export type ValidMenuProps = Omit<MenuProps, "aria-label" | "aria-labelledby" | "model">;
 export type Props = ValidMenuProps & {
   user: User;
+  model: UserMenuItem[];
 };
-const items: MenuItem = [
+const items: UserMenuItem[] = [
   {
     label: "Settings",
     icon: "material-symbols:settings-outline-rounded",
+    externalLink: true,
   },
   { separator: true },
   {
