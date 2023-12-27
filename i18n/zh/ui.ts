@@ -4,5 +4,7 @@ export default {
   showMore: "顯示更多",
   identityBar: {
     homePage: "教城主頁",
+    settings: "設定",
+    signOut: "登出",
   },
 };

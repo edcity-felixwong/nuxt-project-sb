@@ -1,5 +1,6 @@
 import { type DefineNuxtConfig } from "nuxt/config";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
+import { visualizer } from "rollup-plugin-visualizer";
 import type { PrimeVueConfiguration, PrimeVuePTOptions } from "primevue/config";
 
 type NuxtConfig = Parameters<DefineNuxtConfig>[0];
@@ -85,7 +86,7 @@ export const config: NuxtConfig = {
     cssPath: "./styles/global.css",
   },
   vite: {
-    plugins: [vanillaExtractPlugin()],
+    plugins: [vanillaExtractPlugin(), visualizer({ gzipSize: true, emitFile: true })],
     build: {
       rollupOptions: {
         output: {

@@ -6,10 +6,10 @@
     aria-label="Account menu"
   >
     <div class="flex items-center gap-4 leading-4" :class="`${bem('function-menu')}`">
-      <div :class="`${bem('account')} flex space-x-1 items-center`">
+      <div v-if="!loading" :class="`${bem('account')} flex space-x-1 items-center`">
         <div class="flex-none" :class="`${bem('avatar')}`">
           <img
-            src="https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=50&user_id=200000150"
+            :src="`https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=50&user_id=${props.user.userId}`"
             class="w-4 h-4 rounded-full"
             alt="user-avatar"
             aria-label="user-avatar"
@@ -25,17 +25,13 @@
             :class="`${bem('account', 'username')}`"
             @click="toggle"
             unstyled
-            label="Jhon qweqw123 qweasdq tew(qweqw-teacher-tr)"
+            :label="locale === 'en' ? props.user.efullname : props.user.cfullname"
           />
           <UserMenu
             ref="menu"
             :class="`${bem('account', 'user-menu')}`"
-            :user="{
-              fullname: 'losum ipsum summe(abc-qwere-weq-tr)',
-              schoolName: 'hkedity wqwe school no.2(very long name)',
-              avatar:
-                'https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=80&user_id=200000150',
-            }"
+            :user="props.user"
+            :school="props.school"
           />
         </div>
       </div>
@@ -69,8 +65,10 @@ import { createBEM } from "@/composables";
 import PDivider from "primevue/divider";
 import { useI18n } from "vue-i18n";
 import UserMenu from "./UserMenu.vue";
+import type { UserMenuProps } from "./UserMenu.vue";
 import { Icon } from "@iconify/vue";
 import PButton from "primevue/button";
+// import { User } from "@/services/models";
 
 const { locale } = useI18n();
 
@@ -97,6 +95,13 @@ const EdcityHomeIcon = defineComponent(
     ),
   { name: "HomeIcon" }
 );
+
+export type IdentityBarProps = UserMenuProps & {
+  loading?: boolean;
+};
+const props = withDefaults(defineProps<IdentityBarProps>(), {
+  loading: false,
+});
 
 const menu = ref();
 /** No direct reference to menu.toggle as it is null at start */

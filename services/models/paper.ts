@@ -1,3 +1,5 @@
+import type { School } from "./common";
+
 export type Project = "star";
 export type BcVer = "bc_2000" | "";
 export type BcaCode = "" | "nsp2020";
@@ -9,13 +11,6 @@ export type SerializedJsonString = string;
 export type SchType = "SEC";
 export type CompiledBy = "myself" | "others";
 export type Submission = "not_attempted" | "finished" | "attempted";
-
-export interface School {
-  nameE: string;
-  nameC: string;
-  schType: SchType;
-  schoolCode: string;
-}
 
 export interface Status {
   isFrozen: boolean;
@@ -40,7 +35,7 @@ export interface Status {
 }
 
 export interface OwnerInfo {
-  cityID: string;
+  cityId: string;
   schoolCode: string | null;
   gradeLevel: null | string;
   schoolClass: null | string;
@@ -51,8 +46,8 @@ export interface OwnerInfo {
   nickname: null | string;
   emailAddress: string;
   status: number;
-  schLevelID: number;
-  userID: number;
+  schLevelId: number;
+  userId: number;
   roles: string[];
 }
 
@@ -63,7 +58,7 @@ export interface Section {
   modifyAt: Date;
   modifyBy: string;
   objectErrorList: any[];
-  paperID: number;
+  paperId: number;
   seq: number;
   title: string;
   content: string;
@@ -84,7 +79,7 @@ export interface ACL {
   objectErrorList: any[];
   project: Project;
   entityType: string;
-  entityID: number;
+  entityId: number;
   functionType: string;
   ruleSet: string;
   ruleType: string;
@@ -104,10 +99,10 @@ export interface Paper {
   modifyBy: string;
   objectErrorList: any[];
   project: Project;
-  userID: number;
+  userId: number;
   schoolCode: string;
   acayear: Acayear;
-  packageID: number;
+  packageId: number;
   source: number;
   title: string;
   content: string;

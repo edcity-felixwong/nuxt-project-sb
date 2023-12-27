@@ -3,5 +3,7 @@ export default {
   showMore: "Show more",
   identityBar: {
     homePage: "Edcity home",
+    settings: "Settings",
+    signOut: "Sign out",
   },
 };

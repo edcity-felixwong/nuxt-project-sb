@@ -21,49 +21,53 @@ type Story = StoryObj<typeof UserMenu>;
 //   template: '<UserMenu v-bind="args">{{ args.default }}</UserMenu>',
 // });
 
-export const English: Story = {
+const data = {
+  user: {
+    efullname: "losum ipsum",
+    cfullname: "陳小明",
+  },
+  school: {
+    nameE: "hkedity wqwe school no.2",
+    nameC: "天主小學",
+  },
+  avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=Felix",
+};
+
+export const Default: Story = {
   // render,
   args: {
-    model: [
-      {
-        label: "Settings",
-        icon: "material-symbols:settings-outline-rounded",
-        externalLink: true,
-      },
-      { separator: true },
-      {
-        label: "Sign out",
-        icon: "material-symbols:logout",
-      },
-    ],
-    user: {
-      fullname: "losum ipsum",
-      schoolName: "hkedity wqwe school no.2",
-      avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=Felix",
-    },
+    // model: [
+    //   {
+    //     label: "Settings",
+    //     icon: "material-symbols:settings-outline-rounded",
+    //     externalLink: true,
+    //   },
+    //   { separator: true },
+    //   {
+    //     label: "Sign out",
+    //     icon: "material-symbols:logout",
+    //   },
+    // ],
+    ...data,
   },
 };
-export const Chinese: Story = {
-  // render,
-  args: {
-    model: [
-      {
-        label: "設定",
-        icon: "material-symbols:settings-outline-rounded",
-      },
-      { separator: true },
-      {
-        label: "登出",
-        icon: "material-symbols:logout",
-      },
-    ],
-    user: {
-      fullname: "陳小明",
-      schoolName: "天主小學",
-      avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=Felix",
-    },
-  },
-};
+// export const Chinese: Story = {
+//   // render,
+//   args: {
+//     model: [
+//       {
+//         label: "設定",
+//         icon: "material-symbols:settings-outline-rounded",
+//       },
+//       { separator: true },
+//       {
+//         label: "登出",
+//         icon: "material-symbols:logout",
+//       },
+//     ],
+//     ...data,
+//   },
+// };
 export const WithCommand: Story = {
   // render,
   args: {
@@ -74,10 +78,6 @@ export const WithCommand: Story = {
         command: () => console.log("test"),
       },
     ],
-    user: {
-      fullname: "陳小明",
-      schoolName: "天主小學",
-      avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=Felix",
-    },
+    ...data,
   },
 };

@@ -12,7 +12,12 @@
         },
       ]"
     />
-    <StarIdentityBar :class="`${bem('heading')}`" />
+    <StarIdentityBar
+      :class="`${bem('heading')}`"
+      :user="user"
+      :school="school"
+      :loading="isLoading"
+    />
     <StarHeader :class="`${bem('header')}`" :isMobile="!isLaptopOrLarger" />
     <!-- <StarBreadcrumbNav :class="`${bem('breadcrumb-nav')}`" /> -->
     <section :class="`${bem('body')} flex-1 overflow-hidden flex flex-row`">
@@ -37,8 +42,12 @@ import {
   StarIdentityBar,
 } from "#components";
 import { createBEM, useMedia } from "@/composables";
+import { useUser, useSchool } from "@/services/api";
 
 const { isLaptopOrLarger } = useMedia();
 
 const bem = createBEM("layout");
+
+const { data: user, isLoading } = useUser();
+const { data: school } = useSchool();
 </script>

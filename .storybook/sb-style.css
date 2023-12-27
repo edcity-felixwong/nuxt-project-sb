@@ -26,8 +26,10 @@ blockquote:not(.sb-anchor, .sb-unstyled, .sb-unstyled blockquote) {
   border-radius: 12px;
 }
 
-ol,
-ul,
-menu {
-  list-style: auto;
+@layer tailwind-base {
+  ol,
+  ul,
+  menu {
+    list-style: auto;
+  }
 }
