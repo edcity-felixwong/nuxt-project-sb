@@ -8,6 +8,7 @@ export default {
     pending: "Pending",
     ready: "Ready",
     upcoming: "Upcoming",
+    not_submitted: "Not submitted",
   },
   /** Marking directly linked to paper.feedbackStatus,
    * But some alias is kept, which is early idea.
@@ -32,5 +33,6 @@ export default {
     report: "Report",
     retry: "Retry",
     share: "Share",
+    review: "Review",
   },
 };

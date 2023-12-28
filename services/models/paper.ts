@@ -1,16 +1,16 @@
 import type { School } from "./common";
 
 export type Project = "star";
-export type BcVer = "bc_2000" | "";
+export type BcVer = "bc_2000" | "bc_2017" | "";
 export type BcaCode = "" | "nsp2020";
 export type FeedbackStatus = "none" | "required" | "pending";
-export type Acayear = "" | "2023/24";
+export type Acayear = string;
 export type ReportMode = "last";
 export type Mode = "sequential";
 export type SerializedJsonString = string;
 export type SchType = "SEC";
 export type CompiledBy = "myself" | "others";
-export type Submission = "not_attempted" | "finished" | "attempted";
+export type Submission = "submitted" | "not_attempted" | "finished" | "attempted";
 
 export interface Status {
   isFrozen: boolean;
@@ -53,9 +53,9 @@ export interface OwnerInfo {
 
 export interface Section {
   id: number;
-  createAt: Date;
+  createAt: string;
   createBy: string;
-  modifyAt: Date;
+  modifyAt: string;
   modifyBy: string;
   objectErrorList: any[];
   paperId: number;
@@ -136,7 +136,7 @@ export interface Paper {
   trialsTotal: number;
   sections: Section[];
   trials: any[];
-  ownerModifyAt: Date;
+  ownerModifyAt: string;
   ownerInfo: OwnerInfo;
   feedbackStatus: FeedbackStatus;
   bcaCode: BcaCode;

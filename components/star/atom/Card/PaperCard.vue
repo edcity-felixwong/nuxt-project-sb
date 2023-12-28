@@ -4,11 +4,11 @@
   >
     <div class="mb-4 relative">
       <div>
-        {{ locale === "en" ? props.paper.ownerInfo.fullnameE : props.paper.ownerInfo.fullnameC }}
+        {{ locale === "en" ? props.paper.ownerInfo?.fullnameE : props.paper.ownerInfo?.fullnameC }}
       </div>
       <div class="flex items-center gap-1 text-sm">
         <div>Published at {{ starDateFormat(props.paper.publishDate) }}</div>
-        <StatusTag :status="props.paper.status.submission" />
+        <StatusTag :status="props.paper.status?.submission" />
         <!-- <CardMoreOption /> -->
       </div>
     </div>

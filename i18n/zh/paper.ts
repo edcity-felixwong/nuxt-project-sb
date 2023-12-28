@@ -8,6 +8,7 @@ export default {
     pending: "未就緒",
     ready: "就緒",
     upcoming: "未就緒",
+    not_submitted: "未遞交",
   },
   marking: {
     manualMarking: "需評改",
@@ -24,5 +25,6 @@ export default {
     report: "報告",
     retry: "重試",
     share: "分享",
+    review: "閱卷",
   },
 };

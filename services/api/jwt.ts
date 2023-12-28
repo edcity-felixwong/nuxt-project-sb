@@ -16,15 +16,15 @@ export function useJwtQuery<TOption extends UseQueryOptions<jwtResult, Error, jw
 ) {
   return useQuery(["jwt"], jwtQuery, options);
 }
-export function isTeacher(user: User): boolean {
-  return pipe(
-    user?.roles,
-    O.fromNullable,
-    O.map((_) => _ === "100000005"),
-    O.getOrElse(() => false)
-  );
-}
-export function useJwt() {
+// export function isTeacher(user: User): boolean {
+//   return pipe(
+//     user?.roles,
+//     O.fromNullable,
+//     O.map((_) => _ === "100000005"),
+//     O.getOrElse(() => false)
+//   );
+// }
+export function useJwt(): UseQueryReturnType<string, Error> {
   return useJwtQuery({ select: (_) => _.token });
 }
 export function useUser(): UseQueryReturnType<User, Error> {

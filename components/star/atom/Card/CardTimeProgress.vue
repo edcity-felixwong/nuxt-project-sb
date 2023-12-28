@@ -1,9 +1,9 @@
 <template>
   <div class="pl-2 text-xs">{{ locale === "en" ? "start" : "開始" }}</div>
 
-  <div class="flex space-x-2 text-sm relative rounded-small overflow-hidden bg-default-50">
+  <div class="flex text-sm relative rounded-small overflow-hidden bg-default-50">
     <div class="absolute top-0 left-0 bg-warning-400 w-2/4 h-full rounded-md"></div>
-    <div class="p-2">
+    <div class="p-2 flex-1">
       <p>{{ starDateFormat(props.startTime) }}</p>
     </div>
     <div class="p-2">

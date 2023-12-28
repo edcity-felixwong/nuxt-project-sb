@@ -7,6 +7,7 @@ import { computedWithControl } from "@vueuse/core";
 export function parseState(paper: Paper, role: "teacher" | "student"): State {
   if (role === "teacher") {
     /** Seem like shareReport is separated */
+
     if (paper.status.canModify && paper.status.canPreview && paper.status.canSharePaper) {
       return "teacherDraft";
     }
@@ -19,15 +20,15 @@ export function parseState(paper: Paper, role: "teacher" | "student"): State {
   }
   if (role === "student") {
     if (paper.status.canStart) return "studentPublished";
-    if (paper.published && paper.status.canPreview && paper.status.canReport) {
+    if (paper.status.canReview && paper.status.canReport) {
       return "studentReportReady";
     }
-    if (paper.mySubmmitedTrialNo && paper.status.canPreview && !paper.status.canReport) {
-      return "studentReportReady";
+    if (paper.status.canReview && !paper.status.canReport) {
+      return "studentReportUnReady";
     }
     if (
       paper.mySubmmitedTrialNo &&
-      paper.status.canPreview &&
+      paper.status.canReview &&
       paper.status.canStart &&
       paper.status.canReport
     ) {
@@ -35,7 +36,7 @@ export function parseState(paper: Paper, role: "teacher" | "student"): State {
     }
     if (
       paper.mySubmmitedTrialNo &&
-      paper.status.canPreview &&
+      paper.status.canReview &&
       paper.status.canStart &&
       !paper.status.canReport
     ) {

@@ -10,7 +10,16 @@ import { computedWithReactive } from "@/composables";
 const { t, locale } = useI18n();
 
 export type CardButtonProps = StarButtonProps & {
-  action: "edit" | "preview" | "share" | "report" | "accept" | "reject" | "attempt" | "retry";
+  action:
+    | "edit"
+    | "preview"
+    | "share"
+    | "report"
+    | "accept"
+    | "reject"
+    | "attempt"
+    | "retry"
+    | "review";
   locale?: "zh" | "en";
 };
 const props = withDefaults(defineProps<CardButtonProps>(), {});
@@ -27,6 +36,7 @@ function getProps(action: CardButtonProps["action"]): StarButtonProps {
 
     edit: { icon: "material-symbols:edit-square-outline-rounded" },
     preview: { icon: "material-symbols:visibility-outline-rounded" },
+    review: { icon: "material-symbols:visibility-outline-rounded" },
     reject: { icon: "material-symbols:thumb-down-outline-rounded" },
     report: { icon: "material-symbols:timeline" },
     retry: { icon: "material-symbols:replay-rounded" },

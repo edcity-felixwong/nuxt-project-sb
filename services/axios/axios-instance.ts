@@ -12,8 +12,6 @@ export const $http = axios.create({
   ],
   transformRequest: [
     (_) => {
-      console.log(`🚀 // DEBUG 🍔 ~ file: axios-instance.ts:15 ~ changeKey:`, changeCaseKeys);
-      console.log(`🚀 // DEBUG 🍔 ~ file: axios-instance.ts:17 ~ _:`, _);
       return _;
     },
     (_) => changeCaseKeys.snakeCase(_, Number.MAX_SAFE_INTEGER),

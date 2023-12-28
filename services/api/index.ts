@@ -1,4 +1,4 @@
 /** Following the api routes would be nice. */
 export * from "./jwt";
-export * from "./loadMeta";
-export * from "./loadTeacherPaper";
+export * from "./load-meta";
+export * from "./load-teacher-paper";

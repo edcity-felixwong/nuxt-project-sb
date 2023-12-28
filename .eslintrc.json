@@ -85,7 +85,7 @@
     "import/prefer-default-export": "off",
     "import/no-unresolved": "error",
     "no-undef": "warn",
-    "sort-imports": "warn",
+    "sort-imports": "off",
     "no-console": "error",
     "vue/attribute-hyphenation": "off"
   }

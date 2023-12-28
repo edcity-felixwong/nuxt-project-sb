@@ -35,6 +35,7 @@ const actions: NonNullable<Story["args"]>["action"][] = [
   "report",
   "retry",
   "share",
+  "review",
 ];
 
 export const Default: Story = {

@@ -130,18 +130,9 @@ const preview: Preview = {
       components: { StarThemeProvider, story },
       setup(props, ctx) {
         const sbLocale = context.globals.locale || "en";
-        console.log(`🚀 // DEBUG 🍔 ~ file: preview.ts:132 ~ setup ~ sbLocale:`, sbLocale);
         const { t, locale } = useI18n();
         locale.value = sbLocale;
-        console.log(`🚀 // DEBUG 🍔 ~ file: preview.ts:135 ~ setup ~ locale.value:`, locale.value);
-        console.log(`🚀 // DEBUG 🍔 ~ file: preview.ts:135 ~ setup ~ locale:`, locale);
         i18n.global.locale.value = sbLocale;
-        console.log(`🚀 // DEBUG 🍔 ~ file: preview.ts:139 ~ setup ~ i18n:`, i18n);
-        console.log(
-          `🚀 // DEBUG 🍔 ~ file: preview.ts:139 ~ setup ~  i18n.global.locale.value:`,
-          i18n.global.locale.value
-        );
-
         // provide(
         //   I18nInjectionKey,
         //   createI18n({
