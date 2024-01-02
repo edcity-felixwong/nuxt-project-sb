@@ -19,3 +19,41 @@ export interface Teacher {
   emailAddressHash: string;
   loginEmailHash: string;
 }
+
+/** Subject 🤡,
+ * 13: Chinese,
+ * 14: English,
+ * 15: Chinese math,
+ * 16: English math
+ * */
+export type PackageId = 13 | 14 | 15 | 16;
+export type AcademicYear =
+  | "2016/17"
+  | "2017/18"
+  | "2018/19"
+  | "2019/20"
+  | "2020/21"
+  | "2021/22"
+  | "2022/23"
+  | "2023/24";
+
+/**
+ * api
+ */
+
+export interface BasicApiParams {
+  token: string;
+}
+export interface BasicApiResponse<R> {
+  success: boolean;
+  result: R;
+}
+
+export interface SuccessResponse<R> extends BasicApiResponse<R> {
+  success: true;
+  result: R;
+}
+export interface WithTimeStamp {
+  timestamp: Date;
+}
+export interface SuccessResponseWithTimeStamp<R> extends SuccessResponse<R>, WithTimeStamp {}

@@ -1,2 +1,2 @@
-export { default as IdentityBar } from "./IdentityBar.vue";
-export { default as UserMenu } from "./UserMenu.vue";
+export { default as StarIdentityBar } from "./IdentityBar.vue";
+export { default as StarUserMenu } from "./UserMenu.vue";

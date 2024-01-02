@@ -1,4 +1,13 @@
-import type { School, Teacher } from "./common";
+import type {
+  School,
+  Teacher,
+  AcademicYear,
+  PackageId,
+  SuccessResponseWithTimeStamp,
+} from "./common";
+
+export type aseRole = "Teacher" | "Student";
+export type Language = "zh" | "en";
 
 export interface PackageConfig {
   periodStart: string;
@@ -11,7 +20,7 @@ export interface Notice {
 }
 
 export interface SearchFieldsAllowedValues {
-  lang?: ("zh" | "en")[];
+  lang?: Language[];
   difficulty?: ("low" | "medium" | "high")[];
   skill?: string[];
   keyStage?: ("KS1" | "KS2" | "KS3")[];
@@ -23,11 +32,12 @@ export interface SearchField {
 }
 
 export interface UserPreference {
-  lang: string;
-  packageId: number;
+  lang: Language;
+  packageId: PackageId;
   uiVersion: string;
   needTourAcayear: boolean;
-  acceptTos: boolean;
+  /** Only teacher have this, student didn't  */
+  acceptTos?: boolean;
 }
 
 export interface Package {
@@ -53,7 +63,7 @@ export interface Package {
 export interface PermittedEntities {
   package: { [key: string]: Package };
 }
-interface Paper {
+interface PaperPermittedFunctions {
   create: boolean;
   assign: boolean;
   attempt: boolean;
@@ -61,7 +71,7 @@ interface Paper {
   report: boolean;
 }
 export interface PermittedFunctions {
-  paper: Paper;
+  paper: PaperPermittedFunctions;
 }
 
 export interface Category {
@@ -80,22 +90,15 @@ export interface Bca {
   [name: string]: Category;
   // blocked: number;
 }
+type QuestionContentDoc = {
+  [key: string]: {
+    count: number;
+  };
+};
 export interface BcCodesQuestionContentDoc {
-  bc2000: {
-    [key: string]: {
-      count: number;
-    };
-  };
-  bc2017: {
-    [key: string]: {
-      count: number;
-    };
-  };
-  cr2017: {
-    [key: string]: {
-      count: number;
-    };
-  };
+  bc2000: QuestionContentDoc;
+  bc2017: QuestionContentDoc;
+  cr2017: QuestionContentDoc;
 }
 export interface ProjectMeta {
   bcCodesQuestionContentDoc: BcCodesQuestionContentDoc;
@@ -107,15 +110,14 @@ export interface MetadataSet {
   starMath: SearchField;
   starUser: SearchField;
 }
-
-export interface LoadMetaResult {
-  academicYears: string[];
+export interface Meta {
+  academicYears: AcademicYear[];
   groupHost: string;
-  lastAccessAcademicYear: string;
+  lastAccessAcademicYear: AcademicYear;
   userPreference: UserPreference;
   permittedFunctions: PermittedFunctions;
   permittedEntities: PermittedEntities;
-  aseRole: string[];
+  aseRole: aseRole[];
   bca: Bca;
   teachers?: { [key: string]: Teacher };
   notice: Notice[];
@@ -125,8 +127,4 @@ export interface LoadMetaResult {
   bookmarkedQuestions?: any[];
 }
 
-export interface LoadMetaSuccessResponse {
-  success: boolean;
-  result: LoadMetaResult;
-  timestamp: Date;
-}
+export interface LoadMetaSuccessResponse extends SuccessResponseWithTimeStamp<Meta> {}

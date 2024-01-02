@@ -1,5 +1,5 @@
 import * as O from "fp-ts/Option";
-import type { Error, LoadMetaResult } from "../models";
+import type { Error, Meta } from "../models";
 import { pipe } from "fp-ts/function";
 import { $http } from "../axios";
 import { useQuery, useQueryClient } from "vue-query";
@@ -12,7 +12,7 @@ type FetchParams = {
   pageParam: any;
   queryKey: any[];
 };
-export function loadMetaQuery({ token }: { token: string }): Promise<LoadMetaResult> {
+export function loadMetaQuery({ token }: { token: string }): Promise<Meta> {
   return $http
     .post("/api.php?action=load_meta", {
       token,
@@ -20,9 +20,9 @@ export function loadMetaQuery({ token }: { token: string }): Promise<LoadMetaRes
     .then((_) => _.data)
     .then((_) => (_.success ? Promise.resolve(_.result) : Promise.reject(_.error)));
 }
-export function useLoadMetaQuery<
-  TOption extends UseQueryOptions<LoadMetaResult, Error, LoadMetaResult, string[]>
->(options?: TOption) {
+export function useLoadMetaQuery<TOption extends UseQueryOptions<Meta, Error, Meta, string[]>>(
+  options?: TOption
+) {
   const { data: token } = useJwt();
   return useQuery(["loadMeta"], () => loadMetaQuery({ token: token.value }), {
     enabled: computed(() => !!token.value),
@@ -49,8 +49,6 @@ type Role = Ref<
 >;
 /** Tell if the user is a teacher, a student, or other */
 export function useRole(): UseQueryReturnType<Role, Error> {
-  // const queryClient = useQueryClient();
-  // queryClient.getQueryState(["loadMeta"])
   return useLoadMetaQuery({
     select: (meta) => {
       return pipe(
@@ -71,54 +69,11 @@ export function useRole(): UseQueryReturnType<Role, Error> {
       );
     },
   });
-  // return computed(() => {
-  //   console.log(
-  //     `🚀 // DEBUG 🍔 ~ file: load-meta.ts:55 ~ returncomputedWithControl ~ meta:`,
-  //     meta.value
-  //   );
-  //   return pipe(
-  //     O.fromNullable(meta.value),
-  //     O.bind("isTeacher", (_) => O.some(_.aseRole.includes("Teacher"))),
-  //     O.bind("isStudent", (_) => O.some(_.aseRole.includes("Student"))),
-  //     O.bind("isOther", ({ isTeacher, isStudent }) => O.some(!isTeacher && !isStudent)),
-  //     O.bind("role", ({ isTeacher, isStudent }) =>
-  //       O.some(isTeacher ? "teacher" : isStudent ? "student" : "other")
-  //     ),
-  //     O.map(({ isTeacher, isStudent, isOther, role }) => ({
-  //       isTeacher,
-  //       isStudent,
-  //       isOther,
-  //       role,
-  //     })),
-  //     O.getOrElse(() => undefined)
-  //   );
-  // });
-  // const isTeacher = meta.aseRole.includes("Teacher");
-  // const isStudent = meta.aseRole.includes("Student");
-  // const flag = {
-  //   isTeacher,
-  //   isStudent,
-  //   isOther: !isTeacher && !isStudent,
-  // };
-  // const role = flag.isTeacher ? "teacher" : flag.isStudent ? "student" : "other";
-  // return {
-  //   ...flag,
-  //   role,
-  // };
-  // return useLoadMetaQuery({
-  //   select: (_) => {
-  //     const isTeacher = _.aseRole.includes("Teacher");
-  //     const isStudent = _.aseRole.includes("Student");
-  //     const flag = {
-  //       isTeacher,
-  //       isStudent,
-  //       isOther: !isTeacher && !isStudent,
-  //     };
-  //     const role = flag.isTeacher ? "teacher" : flag.isStudent ? "student" : "other";
-  //     return {
-  //       ..._,
-  //       role,
-  //     };
-  //   },
-  // });
+}
+export function useNoticeQuery(): UseQueryReturnType<Meta["notice"], Error> {
+  return useLoadMetaQuery({
+    select: (meta) => {
+      return meta.notice;
+    },
+  });
 }

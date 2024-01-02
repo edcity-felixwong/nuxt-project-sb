@@ -37,10 +37,12 @@ const statuses: StatusTagProps["status"][] = [
   "attempted",
   "finished",
   "inProgress",
-  "notAttempted",
+  "not_attempted",
   "pending",
   "ready",
   "upcoming",
+  "not_submitted",
+  "submitted",
 ];
 export const Default: Story = {
   args: {

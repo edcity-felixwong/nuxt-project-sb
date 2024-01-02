@@ -1,16 +1,19 @@
-import type { School } from "./common";
+import type { School, AcademicYear } from "./common";
 
+export type FunctionType = "attempt";
+export type RuleSet = "user";
+export type RuleType = "user_id" | "group" | "school_level_class";
 export type Project = "star";
-export type BcVer = "bc_2000" | "bc_2017" | "";
-export type BcaCode = "" | "nsp2020";
+export type BcVer = "bc_2000" | "bc_2017" | "cr_2017" | "";
+export type BcaCode = "" | "bca2021" | "bca2022" | "shared" | "nsp2020";
 export type FeedbackStatus = "none" | "required" | "pending";
-export type Acayear = string;
 export type ReportMode = "last";
 export type Mode = "sequential";
 export type SerializedJsonString = string;
 export type SchType = "SEC";
 export type CompiledBy = "myself" | "others";
 export type Submission = "submitted" | "not_attempted" | "finished" | "attempted";
+export type EntityType = "paper";
 
 export interface Status {
   isFrozen: boolean;
@@ -70,6 +73,24 @@ export interface Section {
   sectionQuestions: any[];
 }
 
+export interface Trial {
+  paperId: number;
+  userId: number;
+  schoolCode: string;
+  submitted: number;
+  marked: number;
+  timeElapsed: number;
+  submitTime: string;
+  forceSubmit: number;
+  score: number;
+  scoreBasic: number;
+  token: string;
+  resourceLinkPk: number;
+  ltiUserId: string;
+  state: string;
+  id: number;
+}
+
 export interface ACL {
   id: number;
   createAt: Date;
@@ -91,17 +112,20 @@ export interface ACL {
   remarks: string;
 }
 
+/**
+ * @abstract Basic type, use `TeacherPaper` or `StudentPaper` instead.
+ */
 export interface Paper {
   id: number;
-  createAt: Date;
-  createBy: string;
-  modifyAt: Date;
-  modifyBy: string;
+  // createAt: Date;
+  // createBy: string;
+  // modifyAt: Date;
+  // modifyBy: string;
   objectErrorList: any[];
   project: Project;
   userId: number;
   schoolCode: string;
-  acayear: Acayear;
+  acayear: AcademicYear;
   packageId: number;
   source: number;
   title: string;
@@ -135,16 +159,23 @@ export interface Paper {
   trialsMarked: number;
   trialsTotal: number;
   sections: Section[];
-  trials: any[];
+  trials: Trial[];
   ownerModifyAt: string;
   ownerInfo: OwnerInfo;
-  feedbackStatus: FeedbackStatus;
   bcaCode: BcaCode;
   mySubmmitedTrialNo: number;
-  acl: ACL[];
   status: Status;
+  tab: BcaCode;
   school?: School;
   isBca?: number;
   isBcaMock?: number;
-  isBriefReport?: boolean;
+}
+export interface StudentPaper extends Paper {
+  mySubmmitedTrialNo: number;
+  bcaBlocked: number;
+}
+export interface TeacherPaper extends Paper {
+  isBriefReport: boolean;
+  feedbackStatus: FeedbackStatus;
+  acl: ACL[];
 }

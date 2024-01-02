@@ -65,7 +65,7 @@ export type ValidMenuProps = Omit<MenuProps, "aria-label" | "aria-labelledby" | 
 export type UserMenuProps = ValidMenuProps & {
   user: User;
   school?: School;
-  model: UserMenuItem[];
+  model?: UserMenuItem[];
   avatar?: string;
 };
 </script>

@@ -9,6 +9,7 @@ export default {
     ready: "Ready",
     upcoming: "Upcoming",
     not_submitted: "Not submitted",
+    submitted: "Submitted",
   },
   /** Marking directly linked to paper.feedbackStatus,
    * But some alias is kept, which is early idea.

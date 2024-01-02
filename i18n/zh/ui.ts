@@ -7,4 +7,6 @@ export default {
     settings: "設定",
     signOut: "登出",
   },
+  start: "開始",
+  end: "結束",
 };

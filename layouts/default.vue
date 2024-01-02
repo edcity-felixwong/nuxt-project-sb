@@ -1,17 +1,7 @@
 <template>
   <div :class="`${bem()} h-screen overflow-y-hidden overflow-x-hidden flex flex-col`">
     <!-- TODO check if message exists -->
-    <StarAlert
-      :class="`${bem('alert')}`"
-      :value="[
-        {
-          html: `On Tuesday November 28th from 9:00AM PT - 12PM PT (5:00PM UTC - 8PM UTC), we will be
-      performing system maintenance on support.mozilla.org. During the maintenance period, users
-      will not be able to sign in to the website, and all users signed in at the start of the
-      maintenance period will be signed out.`,
-        },
-      ]"
-    />
+    <StarAlert v-if="notice?.length" :class="`${bem('alert')}`" :value="notice" />
     <StarIdentityBar
       :class="`${bem('heading')}`"
       :user="user"
@@ -33,15 +23,8 @@
   </div>
 </template>
 <script setup lang="ts">
-import {
-  StarHeader,
-  StarAlert,
-  StarFooter,
-  StarSideNav,
-  StarBreadcrumbNav,
-  StarIdentityBar,
-} from "#components";
-import { createBEM, useMedia } from "@/composables";
+import { StarAlert, StarIdentityBar, StarHeader } from "@/components/star";
+import { createBEM, useMedia, useNotice } from "@/composables";
 import { useUser, useSchool } from "@/services/api";
 
 const { isLaptopOrLarger } = useMedia();
@@ -50,4 +33,5 @@ const bem = createBEM("layout");
 
 const { data: user, isLoading } = useUser();
 const { data: school } = useSchool();
+const notice = useNotice();
 </script>

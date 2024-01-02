@@ -1,5 +1,6 @@
 <template>
   <PMessage
+    v-if="$props.value"
     :severity="props.severity"
     :autoplayInterval="props.autoplayInterval"
     :pt="{
@@ -14,10 +15,10 @@
   >
     <template #messageicon />
     <PCarousel
-      :showNavigators="props.value.length > 1"
+      :showNavigators="props.value?.length > 1"
       :showIndicators="false"
       :value="props.value"
-      :circular="props.value.length > 1"
+      :circular="props.value?.length > 1"
       :pt="{
         container: 'gap-3',
         previousButton: 'm-0 hover:bg-white/50 text-[unset]',

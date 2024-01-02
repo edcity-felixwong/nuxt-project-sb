@@ -1,1 +1,1 @@
-export { default } from "./Header.vue";
+export { default as StarHeader } from "./Header.vue";

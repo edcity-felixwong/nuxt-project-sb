@@ -6,4 +6,6 @@ export default {
     settings: "Settings",
     signOut: "Sign out",
   },
+  start: "start",
+  end: "end",
 };

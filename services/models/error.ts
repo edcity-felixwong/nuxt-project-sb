@@ -1,3 +1,5 @@
+import { WithTimeStamp, BasicApiResponse } from "./common";
+
 /** The error body.
  * @example
  * {
@@ -11,7 +13,7 @@ export interface Error {
   name: string;
   message: string;
 }
-/** The api response if fail. 
+/** The api response if fail.
  * @example
  * {
     "success": false,
@@ -23,14 +25,9 @@ export interface Error {
     "result": null
   }
 */
-export interface ErrorResponse {
+export interface ErrorResponse extends BasicApiResponse<null> {
   success: false;
   error: Error;
   result: null;
 }
-export interface ErrorResponseWithTimeStamp {
-  success: false;
-  error: Error;
-  result: null;
-  timestamp: string;
-}
+export interface ErrorResponseWithTimeStamp extends ErrorResponse, WithTimeStamp {}
