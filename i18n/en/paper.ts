@@ -36,4 +36,10 @@ export default {
     share: "Share",
     review: "Review",
   },
+  subject: {
+    chinese: "中文科",
+    english: "English Language",
+    mathC: "數學科",
+    mathE: "數學科",
+  },
 };

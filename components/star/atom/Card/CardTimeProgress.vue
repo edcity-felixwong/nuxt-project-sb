@@ -9,16 +9,16 @@
       <div>{{ $t("ui.end") }}</div>
       <!-- </div> -->
     </div>
-    <div class="flex text-sm relative rounded-small overflow-hidden bg-default-50">
+    <div class="rounded-small bg-default-50 relative flex overflow-hidden text-sm">
       <div
-        class="z-10 absolute top-0 left-0 bg-warning-400 h-full rounded-md"
+        class="bg-warning-400 absolute top-0 left-0 z-10 h-full rounded-md"
         :style="{ width: barWidth }"
         aria-label=""
       ></div>
-      <div class="p-2 flex-1 z-20 text-black/60">
+      <div class="text-black/60 z-20 flex-1 p-2">
         <p>{{ starDateFormat(props.startTime) }}</p>
       </div>
-      <div class="p-2 z-20 text-black/60">
+      <div class="text-black/60 z-20 p-2">
         <p>{{ starDateFormat(props.endTime) }}</p>
       </div>
     </div>
@@ -30,7 +30,7 @@ import { useI18n } from "vue-i18n";
 import { starDateFormat } from "@/composables";
 import type { DateLike } from "@/composables";
 import dayjs from "dayjs";
-import { watchEffect, computed } from "vue";
+import { computed } from "vue";
 
 // const { locale } = useI18n();
 export type CardDateTimeProps = {
@@ -42,15 +42,5 @@ const barWidth = computed(() => {
   return `${
     (dayjs().diff(dayjs(props.startTime)) / dayjs(props.endTime).diff(dayjs(props.startTime))) * 100
   }%`;
-});
-watchEffect(() => {
-  // console.log(
-  //   `🚀 // DEBUG 🍔 ~ file: CardTimeProgress.vue:42 ~ watchEffect ~ dayjs( ).diff(dayjs(props.startTime)):`,
-  //   dayjs().diff(dayjs(props.startTime))
-  // );
-  console.log(
-    `🚀 // DEBUG 🍔 ~ file: CardTimeProgress.vue:42 ~ watchEffect ~ dayjs( ).diff(dayjs(props.startTime)):`,
-    dayjs().diff(dayjs(props.startTime)) / dayjs(props.endTime).diff(dayjs(props.startTime))
-  );
 });
 </script>

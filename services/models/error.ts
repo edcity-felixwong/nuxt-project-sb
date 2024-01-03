@@ -31,3 +31,13 @@ export interface ErrorResponse extends BasicApiResponse<null> {
   result: null;
 }
 export interface ErrorResponseWithTimeStamp extends ErrorResponse, WithTimeStamp {}
+
+export interface LoginExpiredError extends Error {
+  code: 101;
+}
+export interface MissingTokenError extends Error {
+  code: 102;
+}
+export interface AuthenticationError extends Error {
+  code: 103;
+}

@@ -229,3 +229,16 @@ test("test computedWithReactive with no watcher options", async () => {
     ).value
   ).toBe("result");
 });
+
+test("should treat passthorugh classes over the variants", async () => {
+  const props = reactive({
+    prop1: "prop1",
+    something: "small",
+  });
+  expect(
+    PT.computedWithReactive(
+      () => props,
+      () => "result"
+    ).value
+  ).toBe("result");
+});

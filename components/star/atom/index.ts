@@ -8,3 +8,4 @@ export * from "./Footer";
 export * from "./FieldSet";
 export * from "./IdentityBar";
 export * from "./Alert";
+export * from "./Tabs";

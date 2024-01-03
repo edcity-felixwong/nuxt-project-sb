@@ -5,7 +5,9 @@ export type RuleSet = "user";
 export type RuleType = "user_id" | "group" | "school_level_class";
 export type Project = "star";
 export type BcVer = "bc_2000" | "bc_2017" | "cr_2017" | "";
+export type Type = "teacher_preset" | "my" | "student_preset";
 export type BcaCode = "" | "bca2021" | "bca2022" | "shared" | "nsp2020";
+export type Tab = BcaCode | Exclude<Type, "my">;
 export type FeedbackStatus = "none" | "required" | "pending";
 export type ReportMode = "last";
 export type Mode = "sequential";
@@ -163,9 +165,8 @@ export interface Paper {
   ownerModifyAt: string;
   ownerInfo: OwnerInfo;
   bcaCode: BcaCode;
-  mySubmmitedTrialNo: number;
   status: Status;
-  tab: BcaCode;
+  tab: Tab;
   school?: School;
   isBca?: number;
   isBcaMock?: number;
@@ -178,4 +179,19 @@ export interface TeacherPaper extends Paper {
   isBriefReport: boolean;
   feedbackStatus: FeedbackStatus;
   acl: ACL[];
+}
+/**
+ * There would be a `type` field if fetching with `para[type]` 🤡.
+ */
+export interface TypedPaper extends Paper {
+  type: Type;
+}
+export interface TeacherPresetPaper extends TypedPaper {
+  type: "teacher_preset";
+}
+export interface StudentPresetPaper extends TypedPaper {
+  type: "student_preset";
+}
+export interface MyPaper extends TypedPaper {
+  type: "my";
 }

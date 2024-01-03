@@ -1,47 +1,70 @@
 import type { State } from "./CardButtonBar.vue";
-import type { Status, Paper } from "@/services/models";
+import type { Status, TeacherPaper, StudentPaper } from "@/services/models";
 import type { Ref } from "vue";
 import { computedWithControl } from "@vueuse/core";
 
-/** Shitty function to tell what buttons should be shown from a paper object. */
-export function parseState(paper: Paper, role: "teacher" | "student"): State {
-  if (role === "teacher") {
-    /** Seem like shareReport is separated */
+function parseStudentPaper(paper: StudentPaper): State {
+  if (
+    paper.mySubmmitedTrialNo &&
+    paper.status.canReview &&
+    paper.status.canStart &&
+    paper.status.canReport
+  ) {
+    return "studentReportReadyRetry";
+  }
+  if (
+    paper.mySubmmitedTrialNo &&
+    paper.status.canReview &&
+    paper.status.canStart &&
+    !paper.status.canReport
+  ) {
+    return "studentReportUnReadyRetry";
+  }
+  if (paper.status.canStart) return "studentPublished";
+  if (paper.status.canReview && paper.status.canReport) {
+    return "studentReportReady";
+  }
+  if (paper.status.canReview && !paper.status.canReport) {
+    return "studentReportUnReady";
+  }
+}
+function parseTeacherPaper(paper: TeacherPaper): State {
+  /** Seem like shareReport is separated */
 
-    if (paper.status.canModify && paper.status.canPreview && paper.status.canSharePaper) {
-      return "teacherDraft";
-    }
-    if (paper.published && paper.status.canReport && paper.status.canPreview) {
-      return "teacherPublished";
-    }
-    if (paper.status.canPreview && paper.status.canAccept && paper.status.canReject) {
-      return "teacherShared";
-    }
+  if (paper.status.canModify && paper.status.canPreview && paper.status.canSharePaper) {
+    return "teacherDraft";
+  }
+  if (
+    paper.tab !== "student_preset" &&
+    paper.published &&
+    paper.status.canReport &&
+    paper.status.canPreview
+  ) {
+    return "teacherPublished";
+  }
+  /** For NSP, it magically has `canAccept` and `canReject` set */
+  if (paper.tab !== "shared" && paper.status.canView && paper.status.canPreview) {
+    return "teacherEditPreview";
+  }
+  if (paper.tab === "student_preset" && paper.status.canView && paper.status.canPreview) {
+    return "teacherEditPreview";
+  }
+  if (
+    paper.tab === "shared" &&
+    paper.status.canPreview &&
+    paper.status.canAccept &&
+    paper.status.canReject
+  ) {
+    return "teacherShared";
+  }
+}
+/** Shitty function to tell what buttons should be shown from a paper object. */
+export function parseState(paper: TeacherPaper | StudentPaper, role: "teacher" | "student"): State {
+  if (role === "teacher") {
+    return parseTeacherPaper(paper as TeacherPaper);
   }
   if (role === "student") {
-    if (paper.status.canStart) return "studentPublished";
-    if (paper.status.canReview && paper.status.canReport) {
-      return "studentReportReady";
-    }
-    if (paper.status.canReview && !paper.status.canReport) {
-      return "studentReportUnReady";
-    }
-    if (
-      paper.mySubmmitedTrialNo &&
-      paper.status.canReview &&
-      paper.status.canStart &&
-      paper.status.canReport
-    ) {
-      return "studentReportReadyRetry";
-    }
-    if (
-      paper.mySubmmitedTrialNo &&
-      paper.status.canReview &&
-      paper.status.canStart &&
-      !paper.status.canReport
-    ) {
-      return "studentReportUnReadyRetry";
-    }
+    return parseStudentPaper(paper as StudentPaper);
   }
 }
 export function useParseState(paper: Paper, role: "teacher" | "student"): Ref<State> {

@@ -63,6 +63,13 @@ export const TeacherPublished: Story = {
     state: "teacherPublished",
   },
 };
+export const TeacherEditPreview: Story = {
+  name: "Teacher/EditPreview",
+  args: {
+    // model: ["edit", "preview"],
+    state: "teacherEditPreview",
+  },
+};
 export const TeacherShared: Story = {
   name: "Teacher/Shared",
   args: {

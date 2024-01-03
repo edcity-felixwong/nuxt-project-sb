@@ -33,4 +33,10 @@ export default {
     share: "分享",
     review: "閱卷",
   },
+  subject: {
+    chinese: "中文科",
+    english: "English Language",
+    mathC: "數學科",
+    mathE: "數學科",
+  },
 };

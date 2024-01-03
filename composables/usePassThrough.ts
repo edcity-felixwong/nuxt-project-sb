@@ -1,5 +1,5 @@
 import { tv } from "@/utils/tv";
-import { type TVReturnType } from "tailwind-variants";
+import type { TVReturnType } from "tailwind-variants";
 import { sequence } from "fp-ts/Record";
 import * as IO from "fp-ts/IO";
 import { pipe } from "fp-ts/function";
@@ -81,8 +81,10 @@ export function read<
    * */
   key: K = "pt"
 ): IO.IO<T["slots"]> {
+  /** variants should be read before the props,
+   *  as the passthrough props is the most utilizable */
   return pipe(
-    extend(style, props, key),
+    extend(style, props, key), // read the passthrough props
     (fn) => fn(props) as Record<string, IO.IO<string>>, // apply variants from props
     (r) => {
       if (!r) console.warn("your slots is probably empty");

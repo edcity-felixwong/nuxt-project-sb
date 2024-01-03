@@ -4,6 +4,7 @@
       <StarBanner :subject="route.query['subject']" />
       <div class="max-w-[1680px] px-5 m-auto">
         <StarBreadcrumbNav :model="[{ label: 'My Papers' }, { label: '中文' }]" />
+        <StarPaperTabs />
         <TabOption />
         <PDivider />
         <div class="flex justify-between h-12">
@@ -145,7 +146,7 @@ import {
   StarFooter,
   StarPage,
 } from "#components";
-import { Icon, PaperCard } from "@/components/star";
+import { Icon, PaperCard, StarPaperTabs } from "@/components/star";
 import { TabOption } from "@/components/star/atom/Option";
 import { ref } from "vue";
 import { useRoute } from "vue-router";

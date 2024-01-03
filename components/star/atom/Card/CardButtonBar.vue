@@ -16,6 +16,7 @@ export type State =
   | "teacherDraft"
   | "teacherPublished"
   | "teacherShared"
+  | "teacherEditPreview"
   | "studentPublished"
   | "studentReportReady"
   | "studentReportUnReady"
@@ -49,6 +50,7 @@ function stateToButtonProps(state: State): CardButtonProps[] {
   const map: Record<State, CardButtonProps[]> = {
     teacherDraft: [{ action: "edit" }, { action: "preview" }, { action: "share" }],
     teacherPublished: [{ action: "report" }, { action: "preview" }, { action: "share" }],
+    teacherEditPreview: [{ action: "edit" }, { action: "preview" }],
     teacherShared: [{ action: "preview" }, { action: "accept" }, { action: "reject" }],
     studentPublished: [{ action: "attempt" }],
     studentReportReady: [{ action: "review" }, { action: "report" }],
