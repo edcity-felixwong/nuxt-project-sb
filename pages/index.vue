@@ -3,11 +3,13 @@
     <section class="">
       <StarBanner :subject="route.query['subject']" />
       <div class="max-w-[1680px] px-5 m-auto">
-        <StarBreadcrumbNav :model="[{ label: 'My Papers' }, { label: '中文' }]" />
+        <StarBreadcrumbNav
+          :model="[{ label: 'My Papers' }, { label: '中文' }, { label: 'Preset Papers' }]"
+        />
         <StarPaperTabs />
-        <TabOption />
-        <PDivider />
-        <div class="flex justify-between h-12">
+        <!-- <TabOption />
+        <PDivider /> -->
+        <div class="flex justify-between h-12 my-medium">
           <div class="flex space-x-2">
             <StarButton label="New" icon="material-symbols:add-rounded" variant="ghost" />
 

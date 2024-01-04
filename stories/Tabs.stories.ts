@@ -2,7 +2,7 @@ import { StoryObj, Meta } from "@storybook/vue3";
 import { StarTabs } from "@/components/star";
 
 const meta: Meta<typeof StarTabs> = {
-  title: "components/Tabs",
+  title: "components/Tabs/Tabs",
   component: StarTabs,
   args: {},
   tags: ["autodocs"],

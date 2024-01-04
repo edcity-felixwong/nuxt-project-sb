@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from "@storybook/vue3";
 import { TabOption } from "@/components/star/atom/Option";
 
 const meta: Meta<typeof TabOption> = {
-  title: "Components/Tab/TabOption",
+  title: "Components/Tabs/TabOption",
   tags: ["autodocs"],
   component: TabOption,
 };

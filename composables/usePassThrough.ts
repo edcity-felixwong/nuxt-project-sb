@@ -118,7 +118,10 @@ export function usePassThrough<
   K extends string | number | symbol = "pt",
   P extends PassThroughPropsType<Partial<T["slots"]>, K>
 >(style: T, props: P, key: K = "pt"): Ref<T["slots"]> {
-  return computedWithReactive(props, read(style, props, key));
+  // return computedWithReactive(props, read(style, props, key));
+  return computedWithReactive(props, () => {
+    return read(style, props, key)();
+  });
 }
 
 // declare const t:TVReturnType<'variants','slots','base','config','e','f','extend'>

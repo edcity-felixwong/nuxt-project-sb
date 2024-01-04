@@ -1,22 +1,20 @@
 <template>
-  <div
-    class="h-20 w-64 border p-5 rounded-medium"
-    data-sui-section="root"
-    @click="props.model.command"
-  >
+  <div :class="pt.root" data-sui-section="root" @click="props.model.command">
     <slot name="wrapper">
-      <div class="flex gap-4" data-sui-section="wrapper">
+      <div :class="pt.wrapper" data-sui-section="wrapper">
         <slot name="iconWrapper">
-          <div
-            class="w-10 h-10 flex items-center justify-center brightness-75 bg-[rgba(0,0,0,0)] rounded-medium"
-            data-sui-section="iconWrapper"
-          >
-            <Icon v-if="props.model.icon" :icon="props.model.icon" width="1.5rem" height="1.5rem" />
+          <div :class="pt.iconWrapper" data-sui-section="iconWrapper">
+            <Icon
+              v-if="props.model.icon"
+              data-sui-section="icon"
+              :class="pt.icon"
+              :icon="props.model.icon"
+            />
           </div>
         </slot>
-        <div data-sui-section="body" class="flex justify-center flex-col">
+        <div data-sui-section="body" :class="pt.body">
           <slot name="title">
-            <div v-if="props.model.title" data-sui-section="title" class="font-semibold">
+            <div v-if="props.model.title" data-sui-section="title" :class="pt.title">
               {{ props.model.title }}
             </div>
           </slot>
@@ -24,7 +22,7 @@
             <div
               v-if="props.model.description"
               data-sui-section="description"
-              class="leading-4 text-base"
+              :class="pt.description"
             >
               {{ props.model.description }}
             </div>
@@ -36,19 +34,50 @@
 </template>
 <script setup lang="ts">
 import { Icon } from "@/components/star";
+import { optionItem } from "./option-item-tv";
+import { usePassThrough } from "@/composables";
+import { watch } from "vue";
 
-export interface Item {
+import { twMerge } from "tailwind-merge";
+import * as S from "fp-ts/Semigroup";
+import * as R from "fp-ts/Record";
+
+const twMergeSemigroup: S.Semigroup<string> = {
+  concat: (x, y) => twMerge(x, y),
+};
+const twMergeMonoidS = R.getMonoid(twMergeSemigroup);
+
+export interface IStarOptionItem {
   icon?: string;
   title?: string;
   description?: string;
   command?: () => void;
-  selected?: boolean;
+  // selected?: boolean;
 }
-export type Props = {
-  model: Item;
+export type StarOptionItemProps = {
+  model: IStarOptionItem;
   background?: string;
   foreground?: string;
   textColor?: string;
+  pt?: Partial<(typeof optionItem)["slots"]>;
+  // isSelected?: boolean;
 };
-const props = withDefaults(defineProps<Props>(), {});
+const props = withDefaults(defineProps<StarOptionItemProps>(), {
+  // pt: () => undefined,
+  ...optionItem.defaultVariants,
+});
+// const pt = usePassThrough(optionItem, props);
+const pt = usePassThrough(optionItem, props);
+// watch(pt, () => {
+//   console.log(`🚀 // DEBUG 🍔 ~ file: OptionItem.vue:63 ~ watch ~ newValue:`, pt.value);
+//   // twMergeMonoidS.concat(pt.value,props.pt)
+//   console.log(
+//     `🚀 // DEBUG 🍔 ~ file: OptionItem.vue:72 ~ watch ~ twMergeMonoidS.concat(pt.value,props.pt):`,
+//     twMergeMonoidS.concat(pt.value, props.pt)
+//   );
+//   console.log(
+//     `🚀 // DEBUG 🍔 ~ file: OptionItem.vue:77 ~ watch ~ twMergeMonoidS.concat(props.pt,pt.value, ):`,
+//     twMergeMonoidS.concat(props.pt, pt.value)
+//   );
+// });
 </script>

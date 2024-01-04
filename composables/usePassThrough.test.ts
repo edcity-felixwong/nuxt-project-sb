@@ -242,3 +242,104 @@ test("should treat passthorugh classes over the variants", async () => {
     ).value
   ).toBe("result");
 });
+test("should be able to inject/overwrite classes", async () => {
+  const _tv = tv({
+    slots: {
+      root: "h-20 w-64 p-5 border rounded-medium",
+      wrapper: "flex gap-4",
+      iconWrapper: "w-10 h-10 flex items-center justify-center bg-default-100 rounded-medium",
+      icon: "w-6 h-6",
+      body: "flex justify-center flex-col",
+      title: "font-semibold",
+      description: "text-base",
+    },
+    variants: {
+      variant: {
+        default: {},
+      },
+    },
+  });
+  const props = {
+    pt: {
+      root: "border-none",
+      iconWrapper: "bg-red-900",
+      wrapper: "[&_*]:text-inherit text-default-600",
+    } satisfies Partial<(typeof _tv)["slots"]>,
+  };
+  const classFn = PT.read(_tv, props);
+  expect(classFn()).toEqual<(typeof _tv)["slots"]>({
+    root: "h-20 w-64 p-5 border rounded-medium border-none",
+    wrapper: "flex gap-4 [&_*]:text-inherit text-default-600", // just join
+    iconWrapper: "w-10 h-10 flex items-center justify-center rounded-medium bg-red-900", // overwritten background
+    icon: "w-6 h-6",
+    body: "flex justify-center flex-col",
+    title: "font-semibold",
+    description: "text-base",
+  });
+});
+test("should response to props change", async () => {
+  const optionItem = tv({
+    slots: {
+      root: "h-20 min-w-[256px] p-5 border rounded-medium",
+      wrapper: "flex gap-4",
+      iconWrapper:
+        "min-w-[40px] min-h-[40px] w-10 h-10 flex items-center justify-center bg-default-100 rounded-medium",
+      icon: "w-6 h-6",
+      body: "flex justify-center flex-col",
+      title: "font-semibold text-left",
+      description: "text-sm text-left",
+    },
+    variants: {
+      variant: {
+        default: {},
+      },
+    },
+  });
+
+  const paperTabItem = tv({
+    extend: optionItem,
+    variants: {
+      isSelected: {
+        true: {
+          root: "border-none",
+        },
+        false: {
+          root: "border-none",
+          iconWrapper: "bg-default-200",
+          wrapper: "[&_*]:text-inherit text-default-600",
+        },
+      },
+    },
+    defaultVariants: {
+      isSelected: false,
+    },
+  });
+  const props = reactive({
+    isSelected: false,
+  });
+  const pt = PT.usePassThrough(paperTabItem, props);
+  expect(pt.value).toStrictEqual({
+    base: undefined,
+    body: "flex justify-center flex-col",
+    description: "text-sm text-left",
+    icon: "w-6 h-6",
+    iconWrapper:
+      "min-w-[40px] min-h-[40px] w-10 h-10 flex items-center justify-center rounded-medium bg-default-200",
+    root: "h-20 min-w-[256px] p-5 border rounded-medium border-none",
+    title: "font-semibold text-left",
+    wrapper: "flex gap-4 [&_*]:text-inherit text-default-600", // this should change
+  });
+  // Changing of the property of props should trigger the pt change.
+  props.isSelected = true;
+  expect(pt.value).toStrictEqual({
+    base: undefined,
+    body: "flex justify-center flex-col",
+    description: "text-sm text-left",
+    icon: "w-6 h-6",
+    iconWrapper:
+      "min-w-[40px] min-h-[40px] w-10 h-10 flex items-center justify-center bg-default-100 rounded-medium",
+    root: "h-20 min-w-[256px] p-5 border rounded-medium border-none",
+    title: "font-semibold text-left",
+    wrapper: "flex gap-4",
+  });
+});

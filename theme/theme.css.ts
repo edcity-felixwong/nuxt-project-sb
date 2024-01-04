@@ -349,6 +349,11 @@ export const lightTheme = {
     header: {
       height: "88px",
     },
+    margin: {
+      small: "12px",
+      medium: "20px",
+      large: "32px",
+    },
   },
   padding: {
     footer: "1.25rem",

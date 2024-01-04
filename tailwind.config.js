@@ -165,6 +165,11 @@ export default {
         medium: "var(--sui-radius-medium)",
         large: "var(--sui-radius-large)",
       },
+      margin: {
+        small: "var(--sui-size-margin-small)",
+        medium: "var(--sui-size-margin-medium)",
+        large: "var(--sui-size-margin-large)",
+      },
     },
   },
   plugins: [],

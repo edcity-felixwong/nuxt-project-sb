@@ -7,12 +7,13 @@
         {{ locale === "en" ? props.paper.ownerInfo?.fullnameE : props.paper.ownerInfo?.fullnameC }}
       </div>
       <div class="flex items-center gap-1 text-sm">
-        <div>Published at {{ starDateFormat(props.paper.publishDate) }}</div>
+        <PublishDate :paper="props.paper" />
+        <!-- <div>Published at {{ starDateFormat(props.paper.publishDate) }}</div> -->
         <StatusTag v-if="props.paper.status" :status="props.paper.status?.submission" />
         <!-- <CardMoreOption /> -->
       </div>
     </div>
-    <div class="flex flex-col flex-1 mb-3">
+    <div class="flex flex-col flex-1">
       <MarkingTag v-if="props.paper.feedbackStatus" :status="props.paper.feedbackStatus" />
 
       <h2 class="text-default-800 flex-1 mb-4 font-semibold">
@@ -24,7 +25,7 @@
         <MarkingTag status="submission" label="20/20" size="small" />
       </div> -->
     </div>
-    <CardButtonBar :state="buttonState" :role="props.role" />
+    <CardButtonBar :state="buttonState" :role="props.role" class="mt-3 empty:mt-0" />
   </div>
 </template>
 <script setup lang="ts">
@@ -40,6 +41,7 @@ import CardDateTime from "./CardDateTime.vue";
 import CardMoreOption from "./CardMoreOption.vue";
 import { useParseState } from "./useParseState";
 import CardTimeProgress from "./CardTimeProgress.vue";
+import PublishDate from "./PublishDate.vue";
 
 const { t, locale } = useI18n();
 

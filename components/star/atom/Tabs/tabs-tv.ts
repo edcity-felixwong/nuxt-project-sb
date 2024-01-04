@@ -23,9 +23,9 @@ export const tabs = tv({
         content: "grow p-5 bg-white rounded-b-md outline-none",
       },
       card: {
-        root: "bg-default",
+        root: "bg-default-100",
         trigger: ["relative", "bg-transparent", ...disabledClass],
-        indicator: "h-full bg-white shadow-md",
+        indicator: "h-full bg-white shadow-sm",
       },
     },
   },
