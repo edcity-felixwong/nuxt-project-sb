@@ -2,8 +2,8 @@
   <StarButton v-bind="{ ...props, ...getProps(props.action) }" :label="props.label ?? label" />
 </template>
 <script setup lang="ts">
-import { StarButton } from "@/components/star";
-import type { StarButtonProps } from "@/components/star";
+import { StarButton } from "@/components/star/atom/Button";
+import type { StarButtonProps } from "@/components/star/atom/Button";
 import { useI18n } from "vue-i18n";
 import { computedWithReactive } from "@/composables";
 

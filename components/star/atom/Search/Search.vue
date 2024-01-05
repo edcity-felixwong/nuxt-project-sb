@@ -20,7 +20,7 @@
       <PInputText
         placeholder="Search"
         v-model="model"
-        class="text-inherit focus:ring focus:ring-offset-2 focus:ring-primary-200 focus:border-primary-400 border-default w-full h-full"
+        class="text-inherit focus:ring focus:ring-offset-2 focus:ring-primary-200 focus:border-primary-400 border-default hover:border-primary-300 w-full h-full"
         data-sui-section="input"
       />
       <slot name="iconRight">
@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from "@/components/star";
+import { Icon } from "@/components/star/atom/Icon";
 import PInputText from "primevue/inputtext";
 import { ref } from "vue";
 

@@ -1,11 +1,11 @@
 <template>
   <div role="navigation">
     <div class="bg-default-100 rounded-t-medium flex justify-between px-3 py-2">
-      <span class="text-sm font-semibold">選取需要的項目類別</span>
+      <span class="text-sm">選取需要的項目類別</span>
       <span class="text-text-500 text-sm">查看全部</span>
     </div>
     <Tabs
-      v-model="test"
+      v-model="data"
       :model="tabs"
       variant="card"
       ariaLabel="Select paper category"
@@ -14,25 +14,21 @@
         indicator: 'rounded-medium',
       }"
     >
-      <!-- <template #indicator>
-        <div class="w-full h-full p-2 bg-red-800"></div>
-      </template> -->
       <template #trigger="{ item, isSelected }">
         <PaperTabItem :model="item" :isSelected="isSelected" />
-        <!-- <div class="min-w-[300px] min-h-[150px]">{{ JSON.stringify(item) }}</div> -->
       </template>
     </Tabs>
   </div>
 </template>
 <script setup lang="ts">
-import Tabs from "./Tabs.vue";
-// import type {} from "./Tabs.vue";
-import PaperTabItem from "./PaperTabItem.vue";
-import type { StarTabsProps } from "./Tabs.vue";
-import { ref, watch } from "vue";
-import { usePaperTabs } from "@/services";
 import type { Tab } from "@/services";
-import { OptionItem } from "../Option";
+import { ref } from "vue";
+import { useVModel } from "@vueuse/core";
+
+import Tabs from "./Tabs.vue";
+import type { StarTabsProps } from "./Tabs.vue";
+import PaperTabItem from "./PaperTabItem.vue";
+
 import type { StarOptionItemProps } from "../Option";
 
 const tabMap: Record<Tab, StarTabsProps["model"]> = {};
@@ -83,7 +79,10 @@ const tabs: Ref<ExtendedTabModel[]> = ref<ExtendedTabModel[]>([
     // description: "lorem ipsum",
   },
 ]);
-
+export type PaperTabsProps = {
+  modelValue?: StarTabsProps["modelValue"];
+};
+const props = withDefaults(defineProps<PaperTabsProps>(), {});
 // export type PaperTabsProps = Pick<StarTabsProps, >;
 // const props = withDefaults(defineProps<PaperTabsProps>(), {});
 // const { data: tab } = usePaperTabs();
@@ -91,4 +90,6 @@ const tabs: Ref<ExtendedTabModel[]> = ref<ExtendedTabModel[]>([
 //   console.log(`🚀 // DEBUG 🍔 ~ file: PaperTabs.vue:40 ~ tab.value:`, tab.value);
 // });
 const test = ref();
+const emit = defineEmits(["update:modelValue"]);
+const data = useVModel(props, "modelValue", emit);
 </script>

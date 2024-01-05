@@ -25,7 +25,6 @@
   </TabsRoot>
 </template>
 <script setup lang="ts">
-import { tabs } from "./tabs-tv";
 import { TabsContent, TabsIndicator, TabsList, TabsRoot, TabsTrigger } from "radix-vue";
 import type {
   TabsContentProps,
@@ -36,7 +35,10 @@ import type {
   TabsTriggerProps,
 } from "radix-vue";
 import { usePassThrough } from "@/composables";
-import { ref } from "vue";
+import { ref, type Ref } from "vue";
+import { useVModel } from "@vueuse/core";
+
+import { tabs } from "./tabs-tv";
 
 export type StarTabsModel = {
   trigger: string;
@@ -48,16 +50,17 @@ export type StarTabsProps = {
   pt?: Partial<(typeof tabs)["slots"]>;
   variant?: "default" | "card";
   model: StarTabsModel[];
-  modelValue: TabsRootProps["modelValue"];
+  modelValue: Ref<TabsRootProps["modelValue"]>;
   ariaLabel?: string;
 };
 const props = withDefaults(defineProps<StarTabsProps>(), {
   pt: undefined,
   ...tabs.defaultVariants,
 });
+const emit = defineEmits(["update:modelValue"]);
+const data = useVModel(props, "modelValue", emit);
 
 const pt = usePassThrough(tabs, props);
 
 const t = ref(props.model.find((_) => _.default)?.trigger);
-const model: string = defineModel();
 </script>

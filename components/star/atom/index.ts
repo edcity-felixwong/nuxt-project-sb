@@ -10,3 +10,4 @@ export * from "./IdentityBar";
 export * from "./Alert";
 export * from "./Tabs";
 export * from "./Search";
+export * from "./Filter";

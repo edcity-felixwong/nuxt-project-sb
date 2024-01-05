@@ -9,7 +9,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { StarFieldSet } from "@/components/star";
+import { StarFieldSet } from "@/components/star/atom/FieldSet";
 import { useI18n } from "vue-i18n";
 import { starDateFormat } from "@/composables";
 import type { DateLike } from "@/composables";

@@ -14,9 +14,9 @@
   </footer>
 </template>
 <script setup lang="ts">
-import { StarDivider } from "@/components/star";
+import { StarDivider } from "@/components/star/atom/Divider";
 import { createBEM, usePassThrough } from "@/composables";
-import type { DividerPassThroughOptions, pro } from "primevue/divider";
+import type { DividerPassThroughOptions } from "primevue/divider";
 import { withDefaults } from "vue";
 import { footer } from "./footer-tv";
 

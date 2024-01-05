@@ -1,5 +1,5 @@
 <template>
-  <PBreadcrumb :model="props.model" :pt="{ root: 'my-5 p-0 text-sm font-semibold border-0' }">
+  <PBreadcrumb :model="props.model" :pt="{ root: 'my-5 p-0 text-sm border-0' }">
     <template #item="{ item, props: p }">
       <router-link v-if="item.route" v-slot="{ href, navigate }" :to="item.route" custom>
         <a :href="href" v-bind="p.action" @click="navigate">

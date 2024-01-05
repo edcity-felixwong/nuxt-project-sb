@@ -25,7 +25,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Icon } from "@/components/star";
+import { Icon } from "@/components/star/atom/Icon";
 import { useI18n } from "vue-i18n";
 import { starDateFormat } from "@/composables";
 import type { DateLike } from "@/composables";

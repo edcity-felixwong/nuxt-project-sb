@@ -14,16 +14,11 @@ export default meta;
 type Story = StoryObj<typeof StarTabs>;
 
 export const Default: Story = {
-  args: {
-    // variant: "default",
-  },
+  args: {},
 };
-// export const Card: Story = {
-//   args: {
-//     // variant: "card",
-//     // pt: {
-//     //   trigger: "bg-red-900",
-//     //   content: "text-red-900",
-//     // },
-//   },
-// };
+export const HasNothing: Story = {
+  args: {},
+};
+export const HasALot: Story = {
+  args: {},
+};

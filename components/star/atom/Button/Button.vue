@@ -16,10 +16,11 @@ export default {
 };
 </script>
 <script setup lang="ts">
-import PButton, { type ButtonProps, type ButtonPassThroughOptions } from "primevue/button";
-import { button } from "./button-tv";
+import { Icon } from "@/components/star/atom/Icon";
 import { usePassThrough } from "@/composables";
-import { Icon } from "@/components/star";
+import PButton, { type ButtonProps } from "primevue/button";
+
+import { button } from "./button-tv";
 
 export type StarButtonProps = {
   variant?: "solid" | "bordered" | "light" | "flat" | "faded" | "shadow" | "ghost";

@@ -33,19 +33,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { Icon } from "@/components/star";
-import { optionItem } from "./option-item-tv";
+import { Icon } from "@/components/star/atom/Icon";
 import { usePassThrough } from "@/composables";
-import { watch } from "vue";
-
-import { twMerge } from "tailwind-merge";
-import * as S from "fp-ts/Semigroup";
-import * as R from "fp-ts/Record";
-
-const twMergeSemigroup: S.Semigroup<string> = {
-  concat: (x, y) => twMerge(x, y),
-};
-const twMergeMonoidS = R.getMonoid(twMergeSemigroup);
+import { optionItem } from "./option-item-tv";
 
 export interface IStarOptionItem {
   icon?: string;

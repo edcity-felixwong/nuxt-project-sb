@@ -25,20 +25,20 @@
         <MarkingTag status="submission" label="20/20" size="small" />
       </div> -->
     </div>
-    <CardButtonBar :state="buttonState" :role="props.role" class="mt-3 empty:mt-0" />
+    <CardButtonBar :state="buttonState" :role="props.role" class="empty:mt-0 mt-3" />
   </div>
 </template>
 <script setup lang="ts">
-import { StatusTag, StarChip, MarkingTag } from "@/components/star";
-import type { StatusTagProps } from "@/components/star";
+import { StatusTag, MarkingTag } from "@/components/star/atom/Chip";
+// import type { StatusTagProps } from "@/components/star/atom/Chip";
 import type { Paper } from "@/services/models";
 import { useI18n } from "vue-i18n";
-import { starDateFormat } from "@/composables";
+// import { starDateFormat } from "@/composables";
 
 // Internal components
 import CardButtonBar from "./CardButtonBar.vue";
-import CardDateTime from "./CardDateTime.vue";
-import CardMoreOption from "./CardMoreOption.vue";
+// import CardDateTime from "./CardDateTime.vue";
+// import CardMoreOption from "./CardMoreOption.vue";
 import { useParseState } from "./useParseState";
 import CardTimeProgress from "./CardTimeProgress.vue";
 import PublishDate from "./PublishDate.vue";
