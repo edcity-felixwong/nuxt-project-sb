@@ -29,13 +29,13 @@ export function useLoadMetaQuery<TOption extends UseQueryOptions<Meta, Error, Me
     ...options,
   });
 }
-export function useIsTeacher() {
+export function useIsTeacher(): UseQueryReturnType<boolean, Error> {
   return useLoadMetaQuery({ select: (_) => _.aseRole.includes("Teacher") });
 }
-export function useIsStudent() {
+export function useIsStudent(): UseQueryReturnType<boolean, Error> {
   return useLoadMetaQuery({ select: (_) => _.aseRole.includes("Student") });
 }
-export function useSchool() {
+export function useSchool(): UseQueryReturnType<Meta["school"], Error> {
   return useLoadMetaQuery({ select: (_) => _.school });
 }
 type Role = Ref<

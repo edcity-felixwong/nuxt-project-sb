@@ -1,12 +1,15 @@
 import type { School, AcademicYear } from "./common";
+import { z } from "zod";
 
 export type FunctionType = "attempt";
 export type RuleSet = "user";
 export type RuleType = "user_id" | "group" | "school_level_class";
 export type Project = "star";
 export type BcVer = "bc_2000" | "bc_2017" | "cr_2017" | "";
-export type Type = "teacher_preset" | "my" | "student_preset";
-export type BcaCode = "" | "bca2021" | "bca2022" | "shared" | "nsp2020";
+export const typeZ = z.enum(["teacher_preset", "my", "student_preset"]);
+export type Type = z.infer<typeof typeZ>;
+export const bcaCodeZ = z.enum(["", "bca2021", "bca2022", "shared", "nsp2020"]);
+export type BcaCode = z.infer<typeof bcaCodeZ>;
 export type Tab = BcaCode | Exclude<Type, "my">;
 export type FeedbackStatus = "none" | "required" | "pending";
 export type ReportMode = "last";

@@ -5,7 +5,7 @@
     :class="pt.root"
     data-sui-section="root"
   >
-    <TabsList ariaLabel="tabs example" :class="pt.list" data-sui-section="list">
+    <TabsList :ariaLabel="$props.ariaLabel" :class="pt.list" data-sui-section="list">
       <TabsIndicator :class="pt.indicator" data-sui-section="indicator">
         <slot name="indicator" />
       </TabsIndicator>
@@ -49,6 +49,7 @@ export type StarTabsProps = {
   variant?: "default" | "card";
   model: StarTabsModel[];
   modelValue: TabsRootProps["modelValue"];
+  ariaLabel?: string;
 };
 const props = withDefaults(defineProps<StarTabsProps>(), {
   pt: undefined,

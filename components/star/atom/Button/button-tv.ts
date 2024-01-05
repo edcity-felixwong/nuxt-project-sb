@@ -61,12 +61,12 @@ const button = tv({
   variants: {
     variant: {
       solid: { root: "" },
-      bordered: { root: "border-medium bg-transparent" },
+      bordered: { root: "border-small bg-transparent" },
       light: { root: "bg-transparent" },
       flat: { root: "" },
-      faded: { root: "border-medium" },
+      faded: { root: "border-small" },
       shadow: { root: "" },
-      ghost: { root: "border-medium bg-transparent" },
+      ghost: { root: "border-small bg-transparent" },
     },
     size: {
       sm: { root: "px-unit-3 min-w-unit-16 h-unit-8 text-sm gap-unit-2 rounded-small" },

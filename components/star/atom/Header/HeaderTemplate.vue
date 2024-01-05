@@ -11,24 +11,23 @@
   </PMenubar>
 </template>
 <script setup lang="ts">
-import { header } from "./header-tv";
-import { usePassThrough } from "@/composables/usePassThrough";
+import { usePassThrough } from "@/composables";
 import { Icon } from "@iconify/vue";
 import PMenubar, { type MenubarPassThroughOptions, type MenubarProps } from "primevue/menubar";
 import logo from "@/assets/logo.png";
 
-type MenuItem = NonNullable<MenubarProps["model"]>[number];
-export interface Item extends MenuItem {}
+import { header } from "./header-tv";
 
-export type Props = {
-  model: Item[];
+type MenuItem = NonNullable<MenubarProps["model"]>[number];
+export interface StarHeaderItem extends MenuItem {}
+
+export type StarHeaderProps = {
+  model: StarHeaderItem[];
   /** @default false */
   isMobile?: boolean;
   pt?: MenubarPassThroughOptions;
 };
-const props = withDefaults(defineProps<Props>(), {
-  /** "teacher" | "student" */
-  // role: "teacher",
+const props = withDefaults(defineProps<StarHeaderProps>(), {
   ...header.defaultVariants,
 });
 const pt = usePassThrough(header, props);

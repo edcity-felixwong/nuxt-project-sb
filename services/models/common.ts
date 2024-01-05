@@ -1,3 +1,5 @@
+import { z } from "zod";
+
 export interface School {
   nameE: string;
   nameC: string;
@@ -26,17 +28,29 @@ export interface Teacher {
  * 15: Chinese math,
  * 16: English math
  * */
-export type PackageId = 13 | 14 | 15 | 16;
-export type AcademicYear =
-  | "2016/17"
-  | "2017/18"
-  | "2018/19"
-  | "2019/20"
-  | "2020/21"
-  | "2021/22"
-  | "2022/23"
-  | "2023/24";
+export const packageIdZ = z.enum(["13", "14", "15", "16"]);
+export type PackageId = z.infer<typeof packageIdZ>;
 
+// export type AcademicYear =
+//   | "2016/17"
+//   | "2017/18"
+//   | "2018/19"
+//   | "2019/20"
+//   | "2020/21"
+//   | "2021/22"
+//   | "2022/23"
+//   | "2023/24";
+export const academicYearZ = z.enum([
+  "2016/17",
+  "2017/18",
+  "2018/19",
+  "2019/20",
+  "2020/21",
+  "2021/22",
+  "2022/23",
+  "2023/24",
+]);
+export type AcademicYear = z.infer<typeof academicYearZ>;
 /**
  * api
  */

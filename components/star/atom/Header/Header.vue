@@ -2,29 +2,25 @@
   <HeaderTemplate :model="props.role === 'teacher' ? teacherItems : studentItems" />
 </template>
 <script setup lang="ts">
-import HeaderTemplate from "./HeaderTemplate.vue";
-// import { type Props as HeaderProps } from "./HeaderTemplate.vue";
+import { computedWithControl } from "@vueuse/core";
 import { ref, type Ref } from "vue";
 import { useI18n } from "vue-i18n";
-import { computedWithControl } from "@vueuse/core";
 import { useRouter } from "vue-router";
+
+import type { StarHeaderProps } from "./HeaderTemplate.vue";
+import HeaderTemplate from "./HeaderTemplate.vue";
 
 const { t, locale } = useI18n();
 const { push } = useRouter();
 
 type Props = {
-  //   /** @default teacher */
   role?: "teacher" | "student";
-  //   isMobile?: boolean;
-  //   pt?: MenubarPassThroughOptions;
 };
-// // // const { root, start } = header();
 const props = withDefaults(defineProps<Props>(), {
   role: "teacher",
-  //   ...header.defaultVariants,
 });
-// // const pt = usePassThrough(header, props);
-const subjects: HeaderProps["model"] = [
+
+const subjects: StarHeaderProps["model"] = [
   {
     label: "中文",
     command: () => push("/?subject=chinese"),
@@ -42,7 +38,7 @@ const subjects: HeaderProps["model"] = [
     command: () => push("/?subject=emath"),
   },
 ];
-const teacherItems: Ref<HeaderProps["model"]> = computedWithControl(locale, () => [
+const teacherItems: Ref<StarHeaderProps["model"]> = computedWithControl(locale, () => [
   {
     label: t("header.my_papers"),
     icon: "material-symbols:article-outline-rounded",
@@ -98,21 +94,21 @@ const teacherItems: Ref<HeaderProps["model"]> = computedWithControl(locale, () =
     ],
   },
 ]);
-const studentItems = ref([
+const studentItems: Ref<StarHeaderProps["model"]> = ref([
   {
     label: t("header.my_papers"),
     icon: "material-symbols:article-outline-rounded",
-    items: subjects,
+    // items: subjects,
   },
   {
     label: t("header.students_corner"),
     icon: "material-symbols:play-shapes-outline-rounded",
-    items: subjects,
+    // items: subjects,
   },
   {
     label: t("header.report"),
     icon: "material-symbols:timeline",
-    items: subjects,
+    // items: subjects,
   },
 ]);
 </script>

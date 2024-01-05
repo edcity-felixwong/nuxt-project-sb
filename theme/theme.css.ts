@@ -334,7 +334,7 @@ export const lightTheme = {
       large: "3px",
     },
     color: {
-      default: gray[300],
+      default: gray[200],
     },
   },
   /** Opacity */

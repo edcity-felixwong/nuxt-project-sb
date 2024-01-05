@@ -8,7 +8,7 @@
       :school="school"
       :loading="isLoading"
     />
-    <StarHeader :class="`${bem('header')}`" :isMobile="!isLaptopOrLarger" />
+    <StarHeader :class="`${bem('header')}`" :isMobile="!isLaptopOrLarger" :role="role?.role" />
     <!-- <StarBreadcrumbNav :class="`${bem('breadcrumb-nav')}`" /> -->
     <section :class="`${bem('body')} flex-1 overflow-hidden flex flex-row`">
       <!-- <StarSideNav :class="`${bem('side-nav')}`" /> -->
@@ -25,7 +25,7 @@
 <script setup lang="ts">
 import { StarAlert, StarIdentityBar, StarHeader } from "@/components/star";
 import { createBEM, useMedia, useNotice } from "@/composables";
-import { useUser, useSchool } from "@/services/api";
+import { useUser, useSchool, useRole } from "@/services/api";
 
 const { isLaptopOrLarger } = useMedia();
 
@@ -33,5 +33,6 @@ const bem = createBEM("layout");
 
 const { data: user, isLoading } = useUser();
 const { data: school } = useSchool();
+const { data: role } = useRole();
 const notice = useNotice();
 </script>

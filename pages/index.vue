@@ -9,21 +9,10 @@
         <StarPaperTabs />
         <!-- <TabOption />
         <PDivider /> -->
-        <div class="flex justify-between h-12 my-medium">
-          <div class="flex space-x-2">
+        <div class="my-medium flex justify-between h-12 space-x-2">
+          <div class="flex flex-1 space-x-2">
             <StarButton label="New" icon="material-symbols:add-rounded" variant="ghost" />
-
-            <div class="card justify-content-center flex flex-wrap gap-3">
-              <span class="p-input-icon-left">
-                <Icon
-                  icon="mynaui:search"
-                  width="24px"
-                  color="currentColor"
-                  class="top-1/2 left-3 [&_*]:text-text-300 absolute m-0 -translate-y-1/2"
-                />
-                <PInputText v-model="value1" placeholder="Search" class="h-full border-none" />
-              </span>
-            </div>
+            <StarSearch v-model="value1" class="flex-1" />
           </div>
           <div class="flex justify-end space-x-1">
             <StarFilterMultipleSelect
@@ -148,7 +137,7 @@ import {
   StarFooter,
   StarPage,
 } from "#components";
-import { Icon, PaperCard, StarPaperTabs } from "@/components/star";
+import { Icon, PaperCard, StarPaperTabs, StarSearch } from "@/components/star";
 import { TabOption } from "@/components/star/atom/Option";
 import { ref } from "vue";
 import { useRoute } from "vue-router";

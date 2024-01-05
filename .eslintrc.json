@@ -87,6 +87,7 @@
     "no-undef": "warn",
     "sort-imports": "off",
     "no-console": "error",
-    "vue/attribute-hyphenation": "off"
+    "vue/attribute-hyphenation": "off",
+    "arrow-body-style": "off"
   }
 }

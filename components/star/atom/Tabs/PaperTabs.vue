@@ -1,15 +1,16 @@
 <template>
-  <div>
-    <div class="py-2 px-3 bg-default-100 flex justify-between rounded-t-medium">
+  <div role="navigation">
+    <div class="bg-default-100 rounded-t-medium flex justify-between px-3 py-2">
       <span class="text-sm font-semibold">選取需要的項目類別</span>
-      <span class="text-sm text-text-500">查看全部</span>
+      <span class="text-text-500 text-sm">查看全部</span>
     </div>
     <Tabs
       v-model="test"
       :model="tabs"
       variant="card"
+      ariaLabel="Select paper category"
       :pt="{
-        root: 'border-none rounded-b-medium overflow-auto py-2 px-3 bg-default-100',
+        root: 'border-none rounded-b-medium overflow-auto p-3 pt-2 bg-default-100',
         indicator: 'rounded-medium',
       }"
     >
@@ -41,27 +42,28 @@ const tabs: Ref<ExtendedTabModel[]> = ref<ExtendedTabModel[]>([
     trigger: "My Papers",
     icon: "material-symbols:crossword",
     title: "My Papers",
-    // description: "lorem ipsum",
-  },
-  {
-    trigger: "Preset Papers",
     default: true,
-    icon: "material-symbols:crossword",
-    title: "Preset Papers",
     // description: "lorem ipsum",
   },
+  // {
+  //   trigger: "Preset Papers",
+  //   default: true,
+  //   icon: "material-symbols:crossword",
+  //   title: "Preset Papers",
+  //   // description: "lorem ipsum",
+  // },
   {
     trigger: "Shared Papers",
     icon: "material-symbols:crossword",
     title: "Shared Papers",
     // description: "lorem ipsum",
   },
-  {
-    trigger: "Student Corner",
-    icon: "material-symbols:crossword",
-    title: "Student Corner",
-    // description: "lorem ipsum",
-  },
+  // {
+  //   trigger: "Student Corner",
+  //   icon: "material-symbols:crossword",
+  //   title: "Student Corner",
+  //   // description: "lorem ipsum",
+  // },
   {
     trigger: "Assessment Material 2022",
     icon: "material-symbols:crossword",
