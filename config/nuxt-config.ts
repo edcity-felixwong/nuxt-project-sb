@@ -78,6 +78,7 @@ export const config: NuxtConfig = {
         "Carousel",
         "MultiSelect",
         "Fieldset",
+        "DynamicDialog",
       ],
       // exclude: ["editor", "chart"],
     },

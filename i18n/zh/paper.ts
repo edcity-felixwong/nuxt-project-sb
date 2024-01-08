@@ -39,4 +39,11 @@ export default {
     mathC: "數學科",
     mathE: "數學科",
   },
+  tab: {
+    empty: "我的評估",
+    shared: "分享評估",
+    bca2022: "評估材料 2022",
+    bca2021: "評估材料 2021",
+    nsp2020: "STAR 網絡學校計劃",
+  },
 };

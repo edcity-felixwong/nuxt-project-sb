@@ -22,7 +22,9 @@
 </template>
 <script setup lang="ts">
 import type { Tab } from "@/services";
-import { ref, defineModel } from "vue";
+import { ref, defineModel, type Ref } from "vue";
+import { useI18n } from "vue-i18n";
+import { computedWithControl } from "@vueuse/core";
 
 import Tabs from "./Tabs.vue";
 import type { StarTabsProps } from "./Tabs.vue";
@@ -30,18 +32,20 @@ import PaperTabItem from "./PaperTabItem.vue";
 
 import type { StarOptionItemProps } from "../Option";
 
+const { t, locale } = useI18n();
+
 const tabMap: Record<Tab, StarTabsProps["model"]> = {};
 type StarPaperTab = StarTabsProps["model"][number] & {
   trigger: Tab;
   default?: boolean;
 };
 type ExtendedTabModel = StarPaperTab & StarOptionItemProps["model"];
-const tabs: Ref<ExtendedTabModel[]> = ref<ExtendedTabModel[]>([
+const tabs: Ref<ExtendedTabModel[]> = computedWithControl(locale, () => [
   {
     trigger: "",
     icon: "material-symbols:crossword",
-    title: "My Papers",
-    default: true,
+    title: t("paper.tab.empty"),
+    // default: true,
   },
   // {
   //   trigger: "Preset Papers",
@@ -53,7 +57,7 @@ const tabs: Ref<ExtendedTabModel[]> = ref<ExtendedTabModel[]>([
   {
     trigger: "shared",
     icon: "material-symbols:crossword",
-    title: "Shared Papers",
+    title: t("paper.tab.shared"),
   },
   // {
   //   trigger: "Student Corner",
@@ -64,17 +68,17 @@ const tabs: Ref<ExtendedTabModel[]> = ref<ExtendedTabModel[]>([
   {
     trigger: "bca2022",
     icon: "material-symbols:crossword",
-    title: "Assessment Material 2022",
+    title: t("paper.tab.bca2022"),
   },
   {
     trigger: "bca2021",
     icon: "material-symbols:crossword",
-    title: "Assessment Material 2021",
+    title: t("paper.tab.bca2021"),
   },
   {
     trigger: "nsp2020",
     icon: "material-symbols:crossword",
-    title: "STAR Network School Programme",
+    title: t("paper.tab.nsp2020"),
   },
 ]);
 export type PaperTabsProps = {};

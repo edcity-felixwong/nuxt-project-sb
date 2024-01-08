@@ -9,7 +9,7 @@
       <div v-if="!isLoading" :class="`${bem('account')} flex space-x-1 items-center`">
         <div class="flex-none" :class="`${bem('avatar')}`">
           <img
-            :src="`https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=50&user_id=${props.user.userId}`"
+            :src="`https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=50&user_id=${props.user?.userId}`"
             class="w-4 h-4 rounded-full"
             alt="user-avatar"
             aria-label="user-avatar"
@@ -28,10 +28,12 @@
             :label="locale === 'en' ? props.user.efullname : props.user.cfullname"
           />
           <UserMenu
+            v-if="!isLoading && props.user"
             ref="menu"
             :class="`${bem('account', 'user-menu')}`"
             :user="props.user"
             :school="props.school"
+            :avatar="`https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=80&user_id=${props.user?.userId}`"
           />
         </div>
       </div>

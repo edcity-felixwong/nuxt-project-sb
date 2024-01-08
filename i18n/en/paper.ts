@@ -44,7 +44,7 @@ export default {
   },
   /** Follow the API */
   tab: {
-    "": "My Papers",
+    empty: "My Papers",
     shared: "Shared Papers",
     bca2022: "Assessment Material 2022",
     bca2021: "Assessment Material 2021",

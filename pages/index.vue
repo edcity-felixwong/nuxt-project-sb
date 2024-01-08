@@ -7,7 +7,7 @@
           :model="[
             { label: 'My Papers' },
             { label: $t(`paper.subject.${subject}`) },
-            { label: $t(`paper.tab.${tab}`) },
+            { label: $t(tab ? `paper.tab.${tab}` : 'paper.tab.empty') },
           ]"
         />
         <StarPaperTabs v-model="tab" />

@@ -66,7 +66,7 @@ export type UserMenuProps = ValidMenuProps & {
   user: User;
   school?: School;
   model?: UserMenuItem[];
-  avatar?: string;
+  avatar: string;
 };
 </script>
 <script setup lang="ts">
@@ -98,7 +98,7 @@ const items: Ref<UserMenuItem[]> = computedWithControl(
 const props = withDefaults(defineProps<UserMenuProps>(), {
   popup: true,
   // model: () => items,
-  avatar: (_) =>
-    `https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=80&user_id=${_.user.userId}`,
+  // avatar: (_) =>
+  //   `https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=80&user_id=${_.user?.userId}`,
 });
 </script>

@@ -11,3 +11,4 @@ export * from "./Alert";
 export * from "./Tabs";
 export * from "./Search";
 export * from "./Filter";
+export * from "./Dialog";

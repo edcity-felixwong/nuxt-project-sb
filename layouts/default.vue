@@ -5,7 +5,7 @@
       :class="`${bem('heading')}`"
       :user="user"
       :school="school"
-      :is-loading="isLoading"
+      :isLoading="status === 'idle' || status === 'loading' || status === 'error'"
     />
     <StarHeader :class="`${bem('header')}`" :isMobile="!isLaptopOrLarger" :role="role?.role" />
     <section :class="`${bem('body')} flex-1 overflow-hidden flex flex-row`">
@@ -15,10 +15,15 @@
         </section>
       </main>
     </section>
+    <DynamicDialog />
   </div>
 </template>
 <script setup lang="ts">
-import { StarAlert, StarIdentityBar, StarHeader } from "@/components/star";
+import { markRaw, defineAsyncComponent, defineComponent } from "vue";
+import { useDialog } from "primevue/usedialog";
+import DynamicDialog from "primevue/dynamicdialog";
+
+import { StarAlert, StarIdentityBar, StarHeader, StarButton, ErrorDialog } from "@/components/star";
 import { createBEM, useMedia, useNotice } from "@/composables";
 import { useUser, useSchool, useRole } from "@/services/api";
 
@@ -26,7 +31,28 @@ const { isLaptopOrLarger } = useMedia();
 
 const bem = createBEM("layout");
 
-const { data: user, isLoading } = useUser();
+const dialog = useDialog();
+
+/** jwt */
+const { data: user, isLoading, isError, status } = useUser();
+watch(isError, () => {
+  console.log(`🚀 // DEBUG 🍔 ~ file: default.vue:33 ~ watch ~ isError:`, isError.value);
+  if (!isError.value) return;
+  dialog.open(ErrorDialog, {
+    onClose: () => {
+      console.log(`🚀 // DEBUG 🍔 ~ file: default.vue:43 ~ dialog.open ~ 'close':`, "close");
+    },
+    props: {
+      blockScroll: true,
+      draggable: false,
+      // header: "header",
+      // footer: "footer",
+      modal: true,
+      closable: false,
+    },
+  });
+});
+/** meta */
 const { data: school } = useSchool();
 const { data: role } = useRole();
 const notice = useNotice();
