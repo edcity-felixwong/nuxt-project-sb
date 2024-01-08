@@ -46,7 +46,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 import { PaperCard, StarButton } from "@/components/star/atom";
-import type { Paper } from "@/services/models";
+import type { Paper, Tab } from "@/services/models";
 import { triage } from "@/services/composites/load-paper/useTriagePaper";
 import { groupByTab } from "@/services/composites/load-paper/usePaperGroupByTab";
 import { pipe } from "fp-ts/function";
@@ -61,11 +61,13 @@ export type MyPapersTabContentProps = {
   role: "teacher" | "student";
   isLoading?: boolean;
   isError?: boolean;
-  state?: "error" | "idle" | "loading" | "success";
+  tab?: Tab;
+  // state?: "error" | "idle" | "loading" | "success";
 };
 const props = withDefaults(defineProps<MyPapersTabContentProps>(), {
   isLoading: false,
-  state: "success",
+  isError: false,
+  // state: "success",
 });
 
 const finalPapers = computed(() => {
@@ -73,7 +75,7 @@ const finalPapers = computed(() => {
     props.papers, //
     isValidPaper,
     O.map(groupByTab),
-    O.map((_) => _[""]),
+    O.chain((_) => O.fromNullable(_[props.tab])),
     O.map(triage),
     O.getOrElse(() => ({} as ReturnType<typeof triage>))
   );

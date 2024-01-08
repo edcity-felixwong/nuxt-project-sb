@@ -39,7 +39,15 @@ export default {
   subject: {
     chinese: "中文科",
     english: "English Language",
-    mathC: "數學科",
-    mathE: "數學科",
+    cmath: "數學科",
+    emath: "Mathematics",
+  },
+  /** Follow the API */
+  tab: {
+    "": "My Papers",
+    shared: "Shared Papers",
+    bca2022: "Assessment Material 2022",
+    bca2021: "Assessment Material 2021",
+    nsp2020: "STAR Network School Programme",
   },
 };

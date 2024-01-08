@@ -23,7 +23,7 @@ type BaseTV = TVReturnType<any, any, any, any, any, any, any>;
  * @param options watcher options
  */
 export function computedWithReactive<G, P>(
-  source: WatchSource<P> | WatchSource<P>[],
+  source: WatchSource<P> | WatchSource<P>[] | P | P[],
   f: ComputedGetter<G>,
   options?: WatchOptions
 ): Ref<G> {

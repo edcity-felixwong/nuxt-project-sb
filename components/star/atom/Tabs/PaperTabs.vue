@@ -5,7 +5,7 @@
       <span class="text-text-500 text-sm">查看全部</span>
     </div>
     <Tabs
-      v-model="data"
+      v-model="model"
       :model="tabs"
       variant="card"
       ariaLabel="Select paper category"
@@ -22,8 +22,7 @@
 </template>
 <script setup lang="ts">
 import type { Tab } from "@/services";
-import { ref } from "vue";
-import { useVModel } from "@vueuse/core";
+import { ref, defineModel } from "vue";
 
 import Tabs from "./Tabs.vue";
 import type { StarTabsProps } from "./Tabs.vue";
@@ -32,64 +31,53 @@ import PaperTabItem from "./PaperTabItem.vue";
 import type { StarOptionItemProps } from "../Option";
 
 const tabMap: Record<Tab, StarTabsProps["model"]> = {};
-type ExtendedTabModel = StarTabsProps["model"][number] & StarOptionItemProps["model"];
+type StarPaperTab = StarTabsProps["model"][number] & {
+  trigger: Tab;
+  default?: boolean;
+};
+type ExtendedTabModel = StarPaperTab & StarOptionItemProps["model"];
 const tabs: Ref<ExtendedTabModel[]> = ref<ExtendedTabModel[]>([
   {
-    trigger: "My Papers",
+    trigger: "",
     icon: "material-symbols:crossword",
     title: "My Papers",
     default: true,
-    // description: "lorem ipsum",
   },
   // {
   //   trigger: "Preset Papers",
   //   default: true,
   //   icon: "material-symbols:crossword",
   //   title: "Preset Papers",
-  //   // description: "lorem ipsum",
+  //
   // },
   {
-    trigger: "Shared Papers",
+    trigger: "shared",
     icon: "material-symbols:crossword",
     title: "Shared Papers",
-    // description: "lorem ipsum",
   },
   // {
   //   trigger: "Student Corner",
   //   icon: "material-symbols:crossword",
   //   title: "Student Corner",
-  //   // description: "lorem ipsum",
+  //
   // },
   {
-    trigger: "Assessment Material 2022",
+    trigger: "bca2022",
     icon: "material-symbols:crossword",
     title: "Assessment Material 2022",
-    // description: "lorem ipsum",
   },
   {
-    trigger: "Assessment Material 2021",
+    trigger: "bca2021",
     icon: "material-symbols:crossword",
     title: "Assessment Material 2021",
-    // description: "lorem ipsum",
   },
   {
-    trigger: "STAR Network School Programme",
+    trigger: "nsp2020",
     icon: "material-symbols:crossword",
     title: "STAR Network School Programme",
-    // description: "lorem ipsum",
   },
 ]);
-export type PaperTabsProps = {
-  modelValue?: StarTabsProps["modelValue"];
-};
+export type PaperTabsProps = {};
 const props = withDefaults(defineProps<PaperTabsProps>(), {});
-// export type PaperTabsProps = Pick<StarTabsProps, >;
-// const props = withDefaults(defineProps<PaperTabsProps>(), {});
-// const { data: tab } = usePaperTabs();
-// watch(tab, () => {
-//   console.log(`🚀 // DEBUG 🍔 ~ file: PaperTabs.vue:40 ~ tab.value:`, tab.value);
-// });
-const test = ref();
-const emit = defineEmits(["update:modelValue"]);
-const data = useVModel(props, "modelValue", emit);
+const model = defineModel<string>();
 </script>

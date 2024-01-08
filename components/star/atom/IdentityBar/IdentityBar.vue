@@ -6,7 +6,7 @@
     aria-label="Account menu"
   >
     <div class="flex items-center gap-4 leading-4" :class="`${bem('function-menu')}`">
-      <div v-if="!loading" :class="`${bem('account')} flex space-x-1 items-center`">
+      <div v-if="!isLoading" :class="`${bem('account')} flex space-x-1 items-center`">
         <div class="flex-none" :class="`${bem('avatar')}`">
           <img
             :src="`https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=50&user_id=${props.user.userId}`"
@@ -97,10 +97,10 @@ const EdcityHomeIcon = defineComponent(
 );
 
 export type IdentityBarProps = UserMenuProps & {
-  loading?: boolean;
+  isLoading?: boolean;
 };
 const props = withDefaults(defineProps<IdentityBarProps>(), {
-  loading: false,
+  isLoading: false,
 });
 
 const menu = ref();

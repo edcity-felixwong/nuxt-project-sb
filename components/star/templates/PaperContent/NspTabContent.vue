@@ -45,12 +45,13 @@
 </template>
 <script setup lang="ts">
 import { computed } from "vue";
+
 import { PaperCard, StarButton } from "@/components/star/atom";
-import type { Paper } from "@/services/models";
-import { triage } from "@/services/composites/load-paper/useTriagePaper";
 import { groupByTab } from "@/services/composites/load-paper/usePaperGroupByTab";
-import { pipe } from "fp-ts/function";
+import { triage } from "@/services/composites/load-paper/useTriagePaper";
+import type { Paper } from "@/services/models";
 import * as O from "fp-ts/Option";
+import { pipe } from "fp-ts/function";
 // import {  } from "fp-ts/Array";
 
 import ControlBar from "./ControlBar.vue";
@@ -73,7 +74,7 @@ const finalPapers = computed(() => {
     props.papers, //
     isValidPaper,
     O.map(groupByTab),
-    O.map((_) => _[""]),
+    O.chain((_) => O.fromNullable(_.nsp2020)),
     O.map(triage),
     O.getOrElse(() => ({} as ReturnType<typeof triage>))
   );

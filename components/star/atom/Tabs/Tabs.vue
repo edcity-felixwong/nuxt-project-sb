@@ -1,6 +1,6 @@
 <template>
   <TabsRoot
-    v-model="t"
+    v-model="model"
     :defaultValue="$props.model.find((_) => _.default)?.trigger"
     :class="pt.root"
     data-sui-section="root"
@@ -11,17 +11,12 @@
       </TabsIndicator>
       <template v-for="item in props.model" :key="item.trigger">
         <TabsTrigger :value="item.trigger" :class="pt.trigger" data-sui-section="trigger">
-          <slot name="trigger" v-bind="{ item, isSelected: item.trigger === t }">
+          <slot name="trigger" v-bind="{ item, isSelected: item.trigger === model }">
             {{ item.trigger }}
           </slot>
         </TabsTrigger>
       </template>
-      <!-- <TabsTrigger value="tab2" :class="pt.trigger"> Two </TabsTrigger>
-      <TabsTrigger value="tab3" :class="pt.trigger"> Three </TabsTrigger> -->
     </TabsList>
-    <!-- <TabsContent value="tab1" :class="pt.content"> Tab one content </TabsContent>
-    <TabsContent value="tab2" :class="pt.content"> Tab two content </TabsContent>
-    <TabsContent value="tab3" :class="pt.content"> Tab three content </TabsContent> -->
   </TabsRoot>
 </template>
 <script setup lang="ts">
@@ -35,8 +30,7 @@ import type {
   TabsTriggerProps,
 } from "radix-vue";
 import { usePassThrough } from "@/composables";
-import { ref, type Ref } from "vue";
-import { useVModel } from "@vueuse/core";
+import { ref, defineModel, onMounted, type Ref } from "vue";
 
 import { tabs } from "./tabs-tv";
 
@@ -50,17 +44,40 @@ export type StarTabsProps = {
   pt?: Partial<(typeof tabs)["slots"]>;
   variant?: "default" | "card";
   model: StarTabsModel[];
-  modelValue: Ref<TabsRootProps["modelValue"]>;
   ariaLabel?: string;
 };
 const props = withDefaults(defineProps<StarTabsProps>(), {
   pt: undefined,
   ...tabs.defaultVariants,
 });
-const emit = defineEmits(["update:modelValue"]);
-const data = useVModel(props, "modelValue", emit);
 
 const pt = usePassThrough(tabs, props);
 
-const t = ref(props.model.find((_) => _.default)?.trigger);
+const model = defineModel<string>({
+  local: true,
+  // default: props?.model?.find((_) => _.default)?.trigger,
+});
+
+/**
+ * This handle the default of the `modelValue`,
+ * Without this, the default will not feedback to the top parents.
+ * Don't use `local: true` in `defineModel` in the parents,
+ * otherwise the modelValue wouldn't bubble up well.
+ *
+ * Hopefully, if no value is passing down,
+ * this `emit` will bubble up so the whole tree will get this default value.
+ * But if any value is given from parent,
+ * these value should be used instead,
+ * so the whole two-way-bind tree is in-sync.
+ *
+ * example:
+ * For component tree, A -> B -> C,
+ * if no value is passed, `modelValue` should be the default in C.
+ * if B passed a value `defaultB`, `modelValue` should be `defaultB` instead.
+ * And so for A.
+ */
+const emit = defineEmits(["update:model-value"]);
+onMounted(async () => {
+  emit("update:model-value", model.value);
+});
 </script>

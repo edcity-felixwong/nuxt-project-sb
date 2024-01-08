@@ -98,4 +98,7 @@ export const config: NuxtConfig = {
   piniaPersistedstate: {
     storage: "localStorage",
   },
+  vue: {
+    defineModel: true,
+  },
 };
