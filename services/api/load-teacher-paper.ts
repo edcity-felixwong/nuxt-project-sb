@@ -1,5 +1,5 @@
 import * as O from "fp-ts/Option";
-import { academicYearZ, packageIdZ, typeZ } from "../models";
+import { academicYearZ, packageIdZ, teacherPaperTypeZ } from "../models";
 import type { TeacherPaper, Error } from "../models";
 import { pipe } from "fp-ts/function";
 import { $http } from "../axios";
@@ -15,7 +15,7 @@ const loadTeacherPaperParams = z
     id: z.number().array().optional(),
     packageId: packageIdZ.array().optional(),
     acayear: academicYearZ.array().optional(),
-    type: typeZ.default("my"),
+    type: teacherPaperTypeZ.default("my"),
   })
   .optional();
 export type LoadTeacherPaperParams = z.infer<typeof loadTeacherPaperParams>;

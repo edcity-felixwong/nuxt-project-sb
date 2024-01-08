@@ -6,11 +6,13 @@ export type RuleSet = "user";
 export type RuleType = "user_id" | "group" | "school_level_class";
 export type Project = "star";
 export type BcVer = "bc_2000" | "bc_2017" | "cr_2017" | "";
-export const typeZ = z.enum(["teacher_preset", "my", "student_preset"]);
-export type Type = z.infer<typeof typeZ>;
+export const teacherPaperTypeZ = z.enum(["teacher_preset", "my", "student_preset"]);
+export const studentPaperTypeZ = z.enum(["self_study", "teacher", "student_preset"]);
+export type TeacherPaperType = z.infer<typeof teacherPaperTypeZ>;
+export type StudentPaperType = z.infer<typeof studentPaperTypeZ>;
 export const bcaCodeZ = z.enum(["", "bca2021", "bca2022", "shared", "nsp2020"]);
 export type BcaCode = z.infer<typeof bcaCodeZ>;
-export type Tab = BcaCode | Exclude<Type, "my">;
+export type Tab = BcaCode;
 export type FeedbackStatus = "none" | "required" | "pending";
 export type ReportMode = "last";
 export type Mode = "sequential";
@@ -187,7 +189,7 @@ export interface TeacherPaper extends Paper {
  * There would be a `type` field if fetching with `para[type]` 🤡.
  */
 export interface TypedPaper extends Paper {
-  type: Type;
+  type: TeacherPaperType | StudentPaperType;
 }
 export interface TeacherPresetPaper extends TypedPaper {
   type: "teacher_preset";
