@@ -1,15 +1,15 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { IdentityBar } from "@/components/star";
+import { StarIdentityBar } from "@/components/star";
 
 /** Hard coded, will change. */
-const meta: Meta<typeof IdentityBar> = {
-  title: "Components/IdentityBar/IdentityBar",
+const meta: Meta<typeof StarIdentityBar> = {
+  title: "Components/IdentityBar/StarIdentityBar",
   tags: ["autodocs"],
-  component: IdentityBar,
+  component: StarIdentityBar,
 };
 
 export default meta;
-type Story = StoryObj<typeof IdentityBar>;
+type Story = StoryObj<typeof StarIdentityBar>;
 
 export const English: Story = {
   // render,
