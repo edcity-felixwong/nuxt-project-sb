@@ -3,11 +3,9 @@
     <div
       class="pl-2 py-1 text-xs uppercase tracking-widest flex items-center [&_*]:text-inherit text-text-450"
     >
-      <!-- <div class=""> -->
-      <div>{{ $t("ui.start") }}</div>
+      <div>{{ $t("ui.time.start") }}</div>
       <Icon icon="material-symbols:arrow-right-alt-rounded" />
-      <div>{{ $t("ui.end") }}</div>
-      <!-- </div> -->
+      <div>{{ $t("ui.time.end") }}</div>
     </div>
     <div class="rounded-small bg-default-50 relative flex overflow-hidden text-sm">
       <div
@@ -16,10 +14,20 @@
         aria-label=""
       ></div>
       <div class="text-black/60 z-20 flex-1 p-2">
-        <p>{{ starDateFormat(props.startTime) }}</p>
+        <p>
+          {{
+            dayjs(props.startTime).isValid()
+              ? starDateFormat(props.startTime)
+              : $t("ui.time.invalid")
+          }}
+        </p>
       </div>
       <div class="text-black/60 z-20 p-2">
-        <p>{{ starDateFormat(props.endTime) }}</p>
+        <p>
+          {{
+            dayjs(props.endTime).isValid() ? starDateFormat(props.endTime) : $t("ui.time.invalid")
+          }}
+        </p>
       </div>
     </div>
   </div>

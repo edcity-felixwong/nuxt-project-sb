@@ -32,6 +32,7 @@ export type StarButtonProps = {
   isInGroup?: boolean;
   isIconOnly?: boolean;
   disableAnimation?: boolean;
+  block?: boolean;
 } & {
   label?: string;
   icon?: string;

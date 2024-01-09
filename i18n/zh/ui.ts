@@ -7,6 +7,9 @@ export default {
     settings: "設定",
     signOut: "登出",
   },
-  start: "開始",
-  end: "結束",
+  time: {
+    start: "開始",
+    end: "結束",
+    invalid: "未設定",
+  },
 };

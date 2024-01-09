@@ -35,6 +35,7 @@ export type StarChipProps = ChipProps & {
   /** @default medium */
   size?: "xs" | "small" | "medium" | "large";
   label: string;
+  /** @default solid */
   variant?: "solid" | "bordered" | "light" | "flat" | "faded" | "shadow" | "dot";
 };
 const props = withDefaults(defineProps<StarChipProps>(), {

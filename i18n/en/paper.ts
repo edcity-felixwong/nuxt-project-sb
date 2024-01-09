@@ -42,6 +42,12 @@ export default {
     cmath: "數學科",
     emath: "Mathematics",
   },
+  packageId: {
+    13: "@:paper.subject.chinese",
+    14: "@:paper.subject.english",
+    15: "@:paper.subject.cmath",
+    16: "@:paper.subject.emath",
+  },
   /** Follow the API */
   tab: {
     empty: "My Papers",

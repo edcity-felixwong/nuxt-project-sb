@@ -11,9 +11,6 @@ export const $http = axios.create({
     (_) => changeCaseKeys.camelCase(_, Number.MAX_SAFE_INTEGER),
   ],
   transformRequest: [
-    (_) => {
-      return _;
-    },
     (_) => changeCaseKeys.snakeCase(_, Number.MAX_SAFE_INTEGER),
     ...axios.defaults.transformRequest,
   ],

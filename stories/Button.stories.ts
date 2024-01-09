@@ -108,6 +108,18 @@ export const Sizes: Story = {
     items: sizes.map((size) => ({ size, label: size })) satisfies Story["args"][],
   },
 };
+export const Block: Story = {
+  args: {
+    block: true,
+    label: "Block",
+  },
+};
+export const BlockFalse: Story = {
+  args: {
+    block: false,
+    label: "Block",
+  },
+};
 
 export const Radius: Story = {
   ...ListTemplate,
@@ -132,6 +144,9 @@ export const Chinese: Story = {
     })) satisfies Story["args"][],
   },
 };
+/** The padding is like that because its not a block button.
+ *
+ */
 export const IconPositions: Story = {
   ...ListTemplate,
   args: {
@@ -155,6 +170,37 @@ export const IconPositions: Story = {
         iconPos: "bottom",
         label: "text",
         icon: "material-symbols:edit-square-outline-rounded",
+      },
+    ] satisfies Story["args"][],
+  },
+};
+export const IconPositionsV2: Story = {
+  ...ListTemplate,
+  args: {
+    items: [
+      {
+        iconPos: "left",
+        label: "text",
+        icon: "material-symbols:edit-square-outline-rounded",
+        block: true,
+      },
+      {
+        iconPos: "right",
+        label: "text",
+        icon: "material-symbols:edit-square-outline-rounded",
+        block: true,
+      },
+      {
+        iconPos: "top",
+        label: "text",
+        icon: "material-symbols:edit-square-outline-rounded",
+        block: true,
+      },
+      {
+        iconPos: "bottom",
+        label: "text",
+        icon: "material-symbols:edit-square-outline-rounded",
+        block: true,
       },
     ] satisfies Story["args"][],
   },
@@ -190,25 +236,20 @@ export const VariantsWithIconAtTheEnd: Story = {
   },
 };
 
-/** FIXME */
+/** A icon-only button should have `aria-label` so that screen readers can read it properly. */
 export const IconOnly: Story = {
-  // ...ListTemplate,
-  // render: (args) => ({
-  //   components: { StarButton },
-  //   setup() {
-  //     return { ...args };
-  //   },
-  //   template: `
-  //       <div class="flex gap-4">
-  //         <template v-for="item in items">
-  //           <StarButton v-bind="item"/>
-  //         </template>
-  //       </div>
-  //   `,
-  // }),
+  ...ListTemplate,
   args: {
-    // items: variants.map((variant) => ({ variant, icon: "material-symbols:10mp-rounded" })),
-    icon: "material-symbols:10mp-rounded",
+    items: sizes.map((size) => ({ isIconOnly: true, icon: "material-symbols:10mp-rounded", size })),
+  },
+};
+/** Primevue will add a `.p-button-icon-only` class to it.
+ * So you might not need to tell the component it is icon-only if things go well.
+ */
+export const IconOnlyWithoutTelling: Story = {
+  ...ListTemplate,
+  args: {
+    items: sizes.map((size) => ({ icon: "material-symbols:10mp-rounded", size })),
   },
 };
 

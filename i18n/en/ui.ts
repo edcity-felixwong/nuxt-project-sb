@@ -6,8 +6,11 @@ export default {
     settings: "Settings",
     signOut: "Sign out",
   },
-  start: "start",
-  end: "end",
+  time: {
+    start: "start",
+    end: "end",
+    invalid: "Unset",
+  },
   /** Should follow the routes */
   page: {
     myPapers: "My Papers",

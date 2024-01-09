@@ -1,6 +1,6 @@
 <template>
   <TabsRoot
-    v-model="model"
+    v-model="modelValue"
     :defaultValue="$props.model.find((_) => _.default)?.trigger"
     :class="pt.root"
     data-sui-section="root"
@@ -11,7 +11,7 @@
       </TabsIndicator>
       <template v-for="item in props.model" :key="item.trigger">
         <TabsTrigger :value="item.trigger" :class="pt.trigger" data-sui-section="trigger">
-          <slot name="trigger" v-bind="{ item, isSelected: item.trigger === model }">
+          <slot name="trigger" v-bind="{ item, isSelected: item.trigger === modelValue }">
             {{ item.trigger }}
           </slot>
         </TabsTrigger>
@@ -53,7 +53,7 @@ const props = withDefaults(defineProps<StarTabsProps>(), {
 
 const pt = usePassThrough(tabs, props);
 
-const model = defineModel<string>({
+const modelValue = defineModel<string>({
   local: true,
   // default: props?.model?.find((_) => _.default)?.trigger,
 });
@@ -78,6 +78,6 @@ const model = defineModel<string>({
  */
 const emit = defineEmits(["update:model-value"]);
 onMounted(async () => {
-  emit("update:model-value", model.value);
+  emit("update:model-value", modelValue.value);
 });
 </script>

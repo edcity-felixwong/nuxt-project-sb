@@ -13,6 +13,12 @@ const colorClass = ["[&>*]:text-inherit", "text-inherit"];
 /** The icon size will follow the font */
 const iconClass = ["shrink-0", ...transitionClass, ...colorClass];
 
+/** Let leverage the primevue's iconOnly detection,
+ * `p-button-icon-only`,
+ * otherwise a `isIconOnly` prop should be used.
+ */
+const iconOnlyClass = ["[&.p-button-icon-only>svg]:m-0"];
+
 /**
  * Button wrapper **Tailwind Variants** component
  *
@@ -51,6 +57,7 @@ const button = tv({
       "border-transparent",
       "focus:active:scale-95",
       ...transitionClass,
+      ...iconOnlyClass,
       // focus ring
       // ...dataFocusVisibleClasses,
     ],
@@ -69,9 +76,9 @@ const button = tv({
       ghost: { root: "border-small bg-transparent" },
     },
     size: {
-      sm: { root: "px-unit-3 min-w-unit-16 h-unit-8 text-sm gap-unit-2 rounded-small" },
-      md: { root: "px-unit-4 min-w-unit-20 h-unit-10 text-md gap-unit-2 rounded-medium" },
-      lg: { root: "px-unit-6 min-w-unit-24 h-unit-12 text-lg gap-unit-3 rounded-large" },
+      sm: { root: "text-sm rounded-small" },
+      md: { root: "text-md rounded-medium" },
+      lg: { root: "text-lg rounded-large" },
     },
     color: {
       default: { root: "", label: textColorClass },
@@ -101,8 +108,8 @@ const button = tv({
       true: { root: "[&:not(:first-child):not(:last-child)]:rounded-none" },
     },
     isIconOnly: {
-      true: { root: "px-unit-0 !gap-unit-0" },
-      false: { root: "[&>svg]:max-w-[theme(spacing.unit-8)]" },
+      true: { root: "px-0 !gap-0 [&>svg]:m-0" },
+      // false: { root: "[&>svg]:max-w-8 " },
     },
     disableAnimation: {
       true: { root: "!transition-none" },
@@ -116,6 +123,10 @@ const button = tv({
       top: { root: "flex-col", icon: "m-0 mb-1" },
       bottom: { root: "flex-col", icon: "order-2 m-0 mt-1" },
     },
+    block: {
+      true: { root: "w-full h-full" },
+      false: {},
+    },
   },
   defaultVariants: {
     size: "md",
@@ -125,6 +136,7 @@ const button = tv({
     isDisabled: false,
     isInGroup: false,
     disableAnimation: false,
+    block: false,
   },
   compoundVariants: [
     // solid / color
@@ -648,31 +660,41 @@ const button = tv({
     {
       isIconOnly: true,
       size: "sm",
-      class: { root: "min-w-unit-8 w-unit-8 h-unit-8" },
+      class: { root: "min-w-8 w-8 h-8" },
     },
     {
       isIconOnly: true,
       size: "md",
-      class: { root: "min-w-unit-10 w-unit-10 h-unit-10" },
+      class: { root: "min-w-10 w-12 h-12 [&>svg]:w-6 [&>svg]:h-6" },
     },
     {
       isIconOnly: true,
       size: "lg",
-      class: { root: "min-w-unit-12 w-unit-12 h-unit-12" },
+      class: { root: "min-w-12 w-14 h-14 [&>svg]:w-8 [&>svg]:h-8" },
     },
     // variant / hover
     {
       variant: ["solid", "faded", "flat", "bordered", "shadow"],
       class: { root: "hover:opacity-hover" },
     },
+    // size / block
+    {
+      size: "sm",
+      block: false,
+      class: { root: "px-3 min-w-16 h-8" },
+    },
+    {
+      size: "md",
+      block: false,
+      class: { root: "px-5 min-w-20 h-12" },
+    },
+    {
+      size: "lg",
+      block: false,
+      class: { root: "px-6 min-w-24 h-14" },
+    },
   ],
 });
-
-// size: {
-//   sm: "px-3 h-8 text-small",
-//   md: "px-4 h-10 text-medium",
-//   lg: "px-6 h-12 text-medium",
-// },
 
 /**
  * ButtonGroup wrapper **Tailwind Variants** component

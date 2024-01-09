@@ -33,6 +33,9 @@ const meta: Meta<typeof PaperCard> = {
         New buttons for shred paper
         ![](${newButton})
         
+        Tab order:
+        1. ButtonBar (ltr)
+        2. ActionBar (ltr)
       `,
       },
     },
