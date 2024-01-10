@@ -1,5 +1,9 @@
+const animate = require("tailwindcss-animate");
+
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: ["class"],
+
   content: [
     "./components/**/*.{vue,js,ts,jsx,tsx}",
     "./layouts/**/*.{vue,js,ts,jsx,tsx}",
@@ -21,6 +25,11 @@ export default {
     screens: { tablet: "768px", laptop: "1024px", desktop: "1200px" },
     extend: {
       colors: {
+        border: "var(--sui-border-color-default)",
+        input: "var(--sui-color-input)",
+        ring: "hsl(var(--sui-color-primary-ring) / <alpha-value>)",
+        background: "var(--sui-surface-ground)",
+        foreground: "var(--sui-color-default-foreground)",
         primary: {
           DEFAULT: "hsl(var(--sui-color-primary-tw-default) / <alpha-value>)",
           foreground: "var(--sui-color-primary-foreground)",
@@ -147,6 +156,23 @@ export default {
           DEFAULT: "hsl(var(--sui-color-help-tw-default) / <alpha-value>)",
           foreground: "var(--sui-color-help-foreground)",
         },
+        /** For shadcn */
+        muted: {
+          DEFAULT: "var(--sui-color-muted-default)",
+          foreground: "var(--sui-color-muted-foreground)",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--sui-color-danger-tw-default) / <alpha-value>)",
+          foreground: "var(--sui-color-danger-foreground)",
+        },
+        popover: {
+          DEFAULT: "var(--sui-surface-ground)",
+          foreground: "var(--sui-color-default-foreground)",
+        },
+        card: {
+          DEFAULT: "var(--sui-surface-ground)",
+          foreground: "var(--sui-color-default-foreground)",
+        },
       },
       borderWidth: {
         DEFAULT: "var(--sui-border-width-small)",
@@ -164,13 +190,40 @@ export default {
         small: "var(--sui-radius-small)",
         medium: "var(--sui-radius-medium)",
         large: "var(--sui-radius-large)",
+        sm: "var(--sui-radius-small)",
+        md: "var(--sui-radius-medium)",
+        lg: "var(--sui-radius-large)",
       },
       margin: {
         small: "var(--sui-size-margin-small)",
         medium: "var(--sui-size-margin-medium)",
         large: "var(--sui-size-margin-large)",
       },
+      keyframes: {
+        "accordion-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: 0 },
+        },
+        "collapsible-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-collapsible-content-height)" },
+        },
+        "collapsible-up": {
+          from: { height: "var(--radix-collapsible-content-height)" },
+          to: { height: 0 },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+        "collapsible-down": "collapsible-down 0.2s ease-in-out",
+        "collapsible-up": "collapsible-up 0.2s ease-in-out",
+      },
     },
   },
-  plugins: [],
+  plugins: [animate],
 };

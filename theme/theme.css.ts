@@ -184,6 +184,43 @@ export const dangerTw = {
   800: "348deg 70% 52%",
   900: "346deg 65% 48%",
 };
+/** Text palette is designed by contrast ratios,
+ * Unlike Open Color, which is designed for UI views.
+ * It start from 300, which means 3.0 contrast for icons,
+ * And it passthrough the original gray palette,
+ * so conceptually this and the gray palette is inter-changeable.
+ * @see {@link https://leonardocolor.io/theme.html?name=Untitled&config=%7B%22baseScale%22%3A%22Gray%22%2C%22colorScales%22%3A%5B%7B%22name%22%3A%22Gray%22%2C%22colorKeys%22%3A%5B%22%23212529%22%2C%22%23f8f9fa%22%5D%2C%22colorspace%22%3A%22HSL%22%2C%22ratios%22%3A%5B%221.05%22%2C%221.11%22%2C%221.19%22%2C%221.3%22%2C%221.49%22%2C%222.07%22%2C%223.02%22%2C%223.32%22%2C%223.5%22%2C%224%22%2C%224.54%22%2C%225%22%2C%225.5%22%2C%226%22%2C%226.5%22%2C%227%22%2C%227.5%22%2C%228%22%2C%228.5%22%2C%229%22%2C%229.5%22%2C%2210%22%2C%2210.5%22%2C%2210.86%22%2C%2211%22%2C%2211.5%22%2C%2215.43%22%5D%2C%22smooth%22%3Afalse%7D%5D%2C%22lightness%22%3A100%2C%22contrast%22%3A1%2C%22saturation%22%3A100%2C%22formula%22%3A%22wcag2%22%7D}
+ */
+export const text = {
+  default: gray[700],
+  300: "#8796a4",
+  350: gray[600],
+  400: "#708192",
+  450: "#687887",
+  500: "#627180",
+  550: "#5d6a78",
+  600: "#586471",
+  650: "#545f6b",
+  700: "#4f5a66",
+  750: "#4b5660",
+  800: gray[700],
+  850: "#444d57",
+  900: "#414a53",
+  950: "#3e474f",
+  1000: "#3c434b",
+  1050: "#394047",
+  1100: "#363d44",
+  1150: "#333a41",
+  1200: "#31373e",
+  1250: "#2f343a",
+  1300: "#2c3137",
+  1350: "#2a2f34",
+  1400: "#282c31",
+  1450: "#25292e",
+  1500: "#23272c",
+  1550: gray[900],
+  1600: "#1e2226",
+};
 
 export const lightTheme = {
   breakpoint,
@@ -213,6 +250,11 @@ export const lightTheme = {
     // size: {},
   },
   color: {
+    input: gray[200],
+    muted: {
+      DEFAULT: gray[100],
+      foreground: text[500],
+    },
     primary: {
       ...primary,
       tw: { ...primaryTw, default: primaryTw[700] },
@@ -244,43 +286,7 @@ export const lightTheme = {
       emphasized: gray[800],
       foreground: gray[700],
     },
-    /** Text palette is designed by contrast ratios,
-     * Unlike Open Color, which is designed for UI views.
-     * It start from 300, which means 3.0 contrast for icons,
-     * And it passthrough the original gray palette,
-     * so conceptually this and the gray palette is inter-changeable.
-     * @see {@link https://leonardocolor.io/theme.html?name=Untitled&config=%7B%22baseScale%22%3A%22Gray%22%2C%22colorScales%22%3A%5B%7B%22name%22%3A%22Gray%22%2C%22colorKeys%22%3A%5B%22%23212529%22%2C%22%23f8f9fa%22%5D%2C%22colorspace%22%3A%22HSL%22%2C%22ratios%22%3A%5B%221.05%22%2C%221.11%22%2C%221.19%22%2C%221.3%22%2C%221.49%22%2C%222.07%22%2C%223.02%22%2C%223.32%22%2C%223.5%22%2C%224%22%2C%224.54%22%2C%225%22%2C%225.5%22%2C%226%22%2C%226.5%22%2C%227%22%2C%227.5%22%2C%228%22%2C%228.5%22%2C%229%22%2C%229.5%22%2C%2210%22%2C%2210.5%22%2C%2210.86%22%2C%2211%22%2C%2211.5%22%2C%2215.43%22%5D%2C%22smooth%22%3Afalse%7D%5D%2C%22lightness%22%3A100%2C%22contrast%22%3A1%2C%22saturation%22%3A100%2C%22formula%22%3A%22wcag2%22%7D}
-     */
-    text: {
-      default: gray[700],
-      300: "#8796a4",
-      350: gray[600],
-      400: "#708192",
-      450: "#687887",
-      500: "#627180",
-      550: "#5d6a78",
-      600: "#586471",
-      650: "#545f6b",
-      700: "#4f5a66",
-      750: "#4b5660",
-      800: gray[700],
-      850: "#444d57",
-      900: "#414a53",
-      950: "#3e474f",
-      1000: "#3c434b",
-      1050: "#394047",
-      1100: "#363d44",
-      1150: "#333a41",
-      1200: "#31373e",
-      1250: "#2f343a",
-      1300: "#2c3137",
-      1350: "#2a2f34",
-      1400: "#282c31",
-      1450: "#25292e",
-      1500: "#23272c",
-      1550: gray[900],
-      1600: "#1e2226",
-    },
+    text: { ...text },
     success: {
       ...success,
       tw: { ...successTw, default: successTw[500] },
@@ -310,7 +316,7 @@ export const lightTheme = {
       foreground: "#ffffff",
     },
     surface: {
-      ground: "not done",
+      ground: "#ffffff",
       section: "not done",
       card: "not done",
       border: "not done",

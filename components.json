@@ -1,0 +1,14 @@
+{
+  "style": "default",
+  "typescript": true,
+  "tailwind": {
+    "config": "tailwind.config.js",
+    "css": "styles/global.css",
+    "baseColor": "gray",
+    "cssVariables": true
+  },
+  "framework": "nuxt",
+  "aliases": {
+    "components": "@/components/atom"
+  }
+}

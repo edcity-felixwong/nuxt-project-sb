@@ -681,16 +681,19 @@ const button = tv({
     {
       size: "sm",
       block: false,
+      isIconOnly: false,
       class: { root: "px-3 min-w-16 h-8" },
     },
     {
       size: "md",
       block: false,
+      isIconOnly: false,
       class: { root: "px-5 min-w-20 h-12" },
     },
     {
       size: "lg",
       block: false,
+      isIconOnly: false,
       class: { root: "px-6 min-w-24 h-14" },
     },
   ],

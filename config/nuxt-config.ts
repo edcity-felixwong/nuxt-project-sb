@@ -37,8 +37,10 @@ export const config: NuxtConfig = {
     "nuxt-primevue",
     "@pinia/nuxt",
     "@pinia-plugin-persistedstate/nuxt",
+    "shadcn-nuxt",
   ],
   components: [{ path: "./components/star/atom", prefix: "Star" }],
+  // Plugins
   primevue: {
     options: {
       ripple: true,
@@ -86,6 +88,12 @@ export const config: NuxtConfig = {
   tailwindcss: {
     cssPath: "./styles/global.css",
   },
+  piniaPersistedstate: {
+    storage: "localStorage",
+  },
+  shadcn: {
+    componentDir: "./components/atom/ui",
+  },
   vite: {
     plugins: [vanillaExtractPlugin(), visualizer({ gzipSize: true, emitFile: true })],
     build: {
@@ -96,10 +104,10 @@ export const config: NuxtConfig = {
       },
     },
   },
-  piniaPersistedstate: {
-    storage: "localStorage",
-  },
   vue: {
+    /** Enable defineModel marco,
+     * which is an experimental feature for 3.3,
+     * but officially launched in 3.4 (with some API changes) */
     defineModel: true,
   },
 };
