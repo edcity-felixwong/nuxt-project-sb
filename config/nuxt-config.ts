@@ -30,6 +30,8 @@ export const config: NuxtConfig = {
     "#storybook": "../.storybook",
     "#storybook/*": "../.storybook/*",
     "#stories": "../stories",
+    "#star": "../components/star",
+    "#star/*": "../components/star/*",
   },
   modules: [
     "@nuxtjs/tailwindcss",

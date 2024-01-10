@@ -11,5 +11,6 @@ export default {
     start: "開始",
     end: "結束",
     invalid: "未設定",
+    publishedAt: "發佈於 %{time}",
   },
 };

@@ -1,6 +1,6 @@
 <template>
-  <div v-if="$props.paper.published">
-    Published at {{ starDateFormat(props.paper.publishDate) }}
+  <div v-if="props.paper.published">
+    {{ $t("ui.time.publishedAt", { time: starDateFormat(props.paper.publishDate) }) }}
   </div>
   <div v-else>Not published</div>
 </template>

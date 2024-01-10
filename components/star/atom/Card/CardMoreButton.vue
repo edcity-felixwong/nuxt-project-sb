@@ -1,6 +1,6 @@
 <template>
   <StarButton
-    icon="material-symbols:more-vert"
+    icon="material-symbols:more-horiz"
     size="sm"
     variant="light"
     radius="full"

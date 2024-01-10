@@ -252,7 +252,7 @@ export const lightTheme = {
   color: {
     input: gray[200],
     muted: {
-      DEFAULT: gray[100],
+      default: gray[100],
       foreground: text[500],
     },
     primary: {
@@ -271,7 +271,7 @@ export const lightTheme = {
       ...secondary,
       tw: { ...secondaryTw, default: secondaryTw[500] },
       default: secondary[500],
-      foreground: `var(--${prefix}-color-text-1600)`,
+      foreground: text[1600],
     },
     accent: {
       tw: { default: "250deg 59% 30%" },
@@ -291,13 +291,13 @@ export const lightTheme = {
       ...success,
       tw: { ...successTw, default: successTw[500] },
       default: success[500],
-      foreground: `var(--${prefix}-color-text-1600)`,
+      foreground: text[1600],
     },
     warning: {
       ...warning,
       tw: { ...warningTw, default: warningTw[500] },
       default: warning[500],
-      foreground: `var(--${prefix}-color-text-1600)`,
+      foreground: text[1600],
     },
     danger: {
       ...danger,
@@ -318,7 +318,7 @@ export const lightTheme = {
     surface: {
       ground: "#ffffff",
       section: "not done",
-      card: "not done",
+      card: "#ffffff",
       border: "not done",
       overlay: "not done",
     },

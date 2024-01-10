@@ -41,7 +41,11 @@ const config: StorybookConfig = {
       .then(setEnvDir(resolveRoot(".storybook")))
       .then(addPlugins(vanillaExtractPlugin()))
       .then(addViteJsxCompiler)
-      .then(addTailwind);
+      .then(addTailwind)
+      .then(_=>{
+        console.log(`🚀 // DEBUG 🍔 ~ viteFinal: ~ _:`, _);
+        return _
+      })
   },
   env: (config) => ({
     ...config,

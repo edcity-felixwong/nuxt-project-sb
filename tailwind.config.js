@@ -28,7 +28,7 @@ export default {
         border: "var(--sui-border-color-default)",
         input: "var(--sui-color-input)",
         ring: "hsl(var(--sui-color-primary-ring) / <alpha-value>)",
-        background: "var(--sui-surface-ground)",
+        background: "var(--sui-color-surface-ground)",
         foreground: "var(--sui-color-default-foreground)",
         primary: {
           DEFAULT: "hsl(var(--sui-color-primary-tw-default) / <alpha-value>)",
@@ -166,11 +166,11 @@ export default {
           foreground: "var(--sui-color-danger-foreground)",
         },
         popover: {
-          DEFAULT: "var(--sui-surface-ground)",
+          DEFAULT: "var(--sui-color-surface-ground)",
           foreground: "var(--sui-color-default-foreground)",
         },
         card: {
-          DEFAULT: "var(--sui-surface-ground)",
+          DEFAULT: "var(--sui-color-surface-card)",
           foreground: "var(--sui-color-default-foreground)",
         },
       },

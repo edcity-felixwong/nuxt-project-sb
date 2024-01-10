@@ -10,6 +10,7 @@ export default {
     start: "start",
     end: "end",
     invalid: "Unset",
+    publishedAt: "Published at %{time}",
   },
   /** Should follow the routes */
   page: {

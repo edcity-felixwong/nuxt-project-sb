@@ -51,6 +51,7 @@ import { triage } from "@/services/composites/load-paper/useTriagePaper";
 import { groupByTab } from "@/services/composites/load-paper/usePaperGroupByTab";
 import { pipe } from "fp-ts/function";
 import * as O from "fp-ts/Option";
+import * as R from "fp-ts/Record";
 // import {  } from "fp-ts/Array";
 
 import ControlBar from "./ControlBar.vue";
@@ -73,7 +74,7 @@ const finalPapers = computed(() => {
     props.papers, //
     isValidPaper,
     O.map(groupByTab),
-    O.map((_) => _[""]),
+    O.chain(R.lookup("")),
     O.map(triage),
     O.getOrElse(() => ({} as ReturnType<typeof triage>))
   );

@@ -30,5 +30,6 @@ function getState(paper: Paper): TriageState {
 }
 
 export function triage(papers: Paper[]): Partial<Record<TriageState, Paper[]>> {
+  console.log(`🚀 // DEBUG 🍔 ~ triage ~ papers:`, papers);
   return pipe(papers, groupBy(getState));
 }

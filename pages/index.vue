@@ -48,24 +48,43 @@ import {
   BcaTabContent,
 } from "@/components/star";
 // import { TabOption } from "@/components/star/atom/Option";
-import { ref, type Component } from "vue";
+import { ref, type Component, isReactive, computed } from "vue";
 import { useRoute } from "vue-router";
 // import { useI18n } from "vue-i18n";
 import { createBEM, computedWithReactive } from "@/composables";
-import { useRole, useUser, type Tab } from "@/services";
+import { useRole, useUser, useJwt, type Tab } from "@/services";
+import { getPackageId } from "@/services/api/utils";
 import { useLoadPaperQuery } from "@/services/composites";
 // import { triage } from "@/services/composites/load-paper/useTriagePaper";
 // import { groupByTab } from "@/services/composites/load-paper/usePaperGroupByTab";
 // import { pipe } from "fp-ts/function";
+import { useUrlSearchParams, toRefs, reactiveComputed, reactivePick } from "@vueuse/core";
+import { useRouteQuery } from "@vueuse/router";
+
+// : ReturnType<typeof useUrlSearchParams> & { subject?: string }
+const params = useUrlSearchParams("history", { initialValue: { subject: "chinese" } });
+// params.subject ??= "chinese";
+
+const route = useRoute();
+route.query.subject = "chinese";
+// Reflect.set(route.query, key, value);
+console.log(`🚀 // DEBUG 🍔 ~ route:`, isReactive(route));
+const query = reactivePick(route.query, "subject");
+const { subject } = toRefs(computedWithReactive(route, () => route.query));
 
 const bem = createBEM("my-papers");
 
-const route = useRoute();
-const subject = computedWithReactive(route, () => route.query.subject ?? "chinese");
-
-const papers = useLoadPaperQuery();
-
 const { data: role } = useRole();
+const papers = useLoadPaperQuery(
+  computed(() => ({
+    /** An array is needed */
+    packageId: role.value?.isTeacher ? [getPackageId(subject.value)] : undefined,
+  }))
+);
+
+const { data: token } = useJwt();
+
+// const papers=role.value?.isTeacher?
 
 const tab = ref<string>("");
 
