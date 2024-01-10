@@ -1,0 +1,71 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "NPM run dev",
+      "request": "launch",
+      "runtimeArgs": [
+        "run",
+        "dev"
+      ],
+      "runtimeExecutable": "npm",
+      "type": "node",
+      "console": "externalTerminal",
+      "serverReadyAction": {
+        "pattern": "https?:\/\/\\S+|([0-9]+)",
+        "uriFormat": "http://localhost:%s",
+        "action": "openExternally"
+      }
+    },
+    {
+      "name": "NPM run storybook",
+      "request": "launch",
+      "runtimeArgs": [
+        "run",
+        "storybook"
+      ],
+      "runtimeExecutable": "npm",
+      "type": "node",
+      "console": "externalTerminal"
+    },
+    {
+      "name": "NPM run test",
+      "request": "launch",
+      "runtimeArgs": [
+        "run",
+        "test"
+      ],
+      "runtimeExecutable": "npm",
+      "type": "node",
+      "console": "externalTerminal"
+    },
+    {
+      "name": "NPM run build",
+      "request": "launch",
+      "runtimeArgs": [
+        "run",
+        "build"
+      ],
+      "runtimeExecutable": "npm",
+      "type": "node",
+      "console": "externalTerminal"
+    },
+    {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Launch Edge against localhost",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    },
+  ]
+}

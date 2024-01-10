@@ -5,30 +5,39 @@ const meta: Meta<typeof StarButton> = {
   title: "Components/StarButton",
   tags: ["autodocs"],
   component: StarButton,
+  argTypes: {
+    icon: { control: "text" },
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof StarButton>;
 
 export const Default: Story = {
-  // render,
   args: {
     label: "Button",
   },
 };
-export const WithIcon: Story = {
-  render: (args, { argTypes }) => ({
+export const WithSlotChildren: Story = {
+  render: (args) => ({
     components: { StarButton },
-    setup() {
-      return { ...args };
-    },
-    template: '<StarButton v-bind="args" />',
+    setup: () => ({ args }),
+    template: `
+      <StarButton v-bind="item">
+        {{ args.default }}
+      </StarButton>
+    `,
   }),
   args: {
-    label: "Button",
-    icon: "material-symbols:edit-square",
+    default: "Button",
   },
 };
+// export const WithIcon: Story = {
+//   args: {
+//     label: "Button",
+//     icon: "material-symbols:edit-square",
+//   },
+// };
 
 const ListTemplate: Story = {
   render: (args) => ({
@@ -251,6 +260,10 @@ export const IconOnlyWithoutTelling: Story = {
   args: {
     items: sizes.map((size) => ({ icon: "material-symbols:10mp-rounded", size })),
   },
+};
+/** //TODO Loading: disable+spinner */
+export const Loading: Story = {
+  args: {},
 };
 
 // export const Custom: Story = {

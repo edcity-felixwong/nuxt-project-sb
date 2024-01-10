@@ -4,7 +4,11 @@
     v-bind="props"
     :model="props.model ?? items"
     :pt="{
-      root: 'p-2 w-fit max-w-[-moz-available] max-w-[-webkit-fill-available] max-w-[fill-available]',
+      /** `stretch` limits the menu size within the view,
+       * in case the name is too long and cased overflow,
+       * If it didn't work (may be browser compatibility), try fill-available,
+       * Ignore the error: `Replace fill-available to stretch, because spec had been changed` */
+      root: 'p-2 w-fit max-w-[stretch]',
       action: 'p-2 text-sm text-default-700',
       content: 'rounded-small',
       label: 'text-sm leading-5',

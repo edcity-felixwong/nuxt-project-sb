@@ -30,7 +30,14 @@
     </div>
     <CardButtonBar :state="buttonState" :role="props.role" class="empty:mt-0 mt-3" />
     <div class="absolute right-0 top-0 pt-[inherit] pr-[inherit]">
-      <StarButton icon="material-symbols:more-horiz" size="sm" variant="light" :isIconOnly="true" />
+      <StarButton
+        icon="material-symbols:more-vert"
+        size="sm"
+        variant="light"
+        radius="full"
+        :isIconOnly="true"
+        class="text-text-300"
+      />
     </div>
   </div>
 </template>
