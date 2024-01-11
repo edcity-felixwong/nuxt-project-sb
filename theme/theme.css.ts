@@ -328,6 +328,8 @@ export const lightTheme = {
   radius: {
     checkbox: "6px",
     default: "12px",
+    xxs: "6px",
+    xs: "8px",
     small: "12px",
     medium: "14px",
     large: "16px",

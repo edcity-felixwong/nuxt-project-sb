@@ -10,7 +10,7 @@
        * Ignore the error: `Replace fill-available to stretch, because spec had been changed` */
       root: 'p-2 w-fit max-w-[stretch]',
       action: 'p-2 text-sm text-default-700',
-      content: 'rounded-small',
+      content: 'rounded-xs',
       label: 'text-sm leading-5',
       separator: 'my-2',
     }"
@@ -41,24 +41,19 @@
       <div v-if="item.icon" class="mr-1">
         <Icon :icon="item.icon" width="1.25rem" />
       </div>
-      <Icon
-        v-if="item.externalLink"
-        icon="mynaui:arrow-up-right"
-        width="1.25rem"
-        class="order-last"
-      />
+      <Icon v-if="item.externalLink" icon="mynaui:arrow-up-right" class="order-last w-4 h-4" />
     </template>
   </PMenu>
 </template>
 <script lang="ts">
-import PMenu from "primevue/menu";
-import type { MenuProps } from "primevue/menu";
-import { defineExpose, ref } from "vue";
-import type { Ref } from "vue";
-import { Icon } from "@iconify/vue";
-import { User, School } from "@/services/models";
-import { useI18n } from "vue-i18n";
+import { Icon } from "#star/atom/Icon";
+import { School, User } from "@/services/models";
 import { computedWithControl } from "@vueuse/core";
+import type { MenuProps } from "primevue/menu";
+import PMenu from "primevue/menu";
+import type { Ref } from "vue";
+import { defineExpose, ref } from "vue";
+import { useI18n } from "vue-i18n";
 
 export type UserMenuItem = NonNullable<MenuProps["model"]>[number] & {
   externalLink?: boolean;

@@ -48,7 +48,7 @@ watch(isError, () => {
       // header: "header",
       // footer: "footer",
       modal: true,
-      closable: false,
+      closable: true,
     },
   });
 });

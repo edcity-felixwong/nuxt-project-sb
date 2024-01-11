@@ -1,5 +1,6 @@
 import type { School, AcademicYear } from "./common";
 import { z } from "zod";
+import { PackageId } from "./common";
 
 export type FunctionType = "attempt";
 export type RuleSet = "user";
@@ -133,7 +134,7 @@ export interface Paper {
   userId: number;
   schoolCode: string;
   acayear: AcademicYear;
-  packageId: number;
+  packageId: PackageId;
   source: number;
   title: string;
   content: string;

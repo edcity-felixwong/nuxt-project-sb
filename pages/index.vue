@@ -51,7 +51,7 @@ import {
 import { ref, type Component, isReactive, computed } from "vue";
 import { useRoute } from "vue-router";
 // import { useI18n } from "vue-i18n";
-import { createBEM, computedWithReactive } from "@/composables";
+import { createBEM, computedWithReactive, useSearchParams } from "@/composables";
 import { useRole, useUser, useJwt, type Tab } from "@/services";
 import { getPackageId } from "@/services/api/utils";
 import { useLoadPaperQuery } from "@/services/composites";
@@ -61,20 +61,23 @@ import { useLoadPaperQuery } from "@/services/composites";
 import { useUrlSearchParams, toRefs, reactiveComputed, reactivePick } from "@vueuse/core";
 import { useRouteQuery } from "@vueuse/router";
 
-// : ReturnType<typeof useUrlSearchParams> & { subject?: string }
-const params = useUrlSearchParams("history", { initialValue: { subject: "chinese" } });
-// params.subject ??= "chinese";
+// // : ReturnType<typeof useUrlSearchParams> & { subject?: string }
+// const params = useUrlSearchParams("history", { initialValue: { subject: "chinese" } });
+// // params.subject ??= "chinese";
 
-const route = useRoute();
-route.query.subject = "chinese";
-// Reflect.set(route.query, key, value);
-console.log(`🚀 // DEBUG 🍔 ~ route:`, isReactive(route));
-const query = reactivePick(route.query, "subject");
-const { subject } = toRefs(computedWithReactive(route, () => route.query));
+// // const route = useRoute();
+// // route.query.subject = "chinese";
+// // // Reflect.set(route.query, key, value);
+// // console.log(`🚀 // DEBUG 🍔 ~ route:`, isReactive(route));
+// // const query = reactivePick(route.query, "subject");
+// // const { subject } = toRefs(computedWithReactive(route, () => route.query));
+const { data: role } = useRole();
+const { subject } = useSearchParams({
+  subject: computed(() => (role.value?.isTeacher ? "chinese" : undefined)),
+});
 
 const bem = createBEM("my-papers");
 
-const { data: role } = useRole();
 const papers = useLoadPaperQuery(
   computed(() => ({
     /** An array is needed */

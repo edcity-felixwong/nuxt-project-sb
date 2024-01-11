@@ -190,6 +190,8 @@ export default {
         small: "var(--sui-radius-small)",
         medium: "var(--sui-radius-medium)",
         large: "var(--sui-radius-large)",
+        xxs: "var(--sui-radius-xxs)",
+        xs: "var(--sui-radius-xs)",
         sm: "var(--sui-radius-small)",
         md: "var(--sui-radius-medium)",
         lg: "var(--sui-radius-large)",

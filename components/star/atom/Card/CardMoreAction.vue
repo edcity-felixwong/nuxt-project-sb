@@ -3,27 +3,59 @@
   <DropdownMenu v-model:open="open">
     <DropdownMenuTrigger />
     <DropdownMenuContent align="end" class="w-[200px]">
-      <DropdownMenuLabel>Actions</DropdownMenuLabel>
+      <DropdownMenuLabel>{{ $t("ui.action") }}</DropdownMenuLabel>
       <DropdownMenuGroup>
         <DropdownMenuItem>
           <Icon icon="material-symbols:user-attributes-outline-rounded" class="mr-2 h-4 w-4" />
-          Assign to...
+          編輯
+          <DropdownMenuShortcut>
+            <Icon icon="material-symbols:arrow-outward-rounded" class="w-4 h-4" />
+          </DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Icon icon="material-symbols:calendar-add-on" class="mr-2 h-4 w-4" />
-          Set due date...
+          <Icon icon="material-symbols:calendar-add-on" class="w-4 h-4 mr-2" />
+          預覽
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Icon icon="material-symbols:calendar-add-on" class="w-4 h-4 mr-2" />
+          派發
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Icon icon="material-symbols:calendar-add-on" class="w-4 h-4 mr-2" />
+          回收
+        </DropdownMenuItem>
+        <!-- <DropdownMenuItem>
+          <Icon icon="material-symbols:calendar-add-on" class="mr-2" />
+          刪除
+        </DropdownMenuItem> -->
+        <DropdownMenuItem>
+          <Icon icon="material-symbols:calendar-add-on" class="w-4 h-4 mr-2" />
+          報告
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuSub>
+        <DropdownMenuItem>
+          <Icon icon="material-symbols:calendar-add-on" class="w-4 h-4 mr-2" />
+          分享評估
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Icon icon="material-symbols:calendar-add-on" class="w-4 h-4 mr-2" />
+          分享報告
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <!-- <DropdownMenuItem>
+          <Icon icon="material-symbols:calendar-add-on" class="mr-2" />
+          分享連結
+        </DropdownMenuItem> -->
+        <!-- <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <Icon icon="material-symbols:calendar-add-on" class="mr-2 h-4 w-4" />
-            Apply label
+            派發
           </DropdownMenuSubTrigger>
-        </DropdownMenuSub>
-        <DropdownMenuSeparator />
+        </DropdownMenuSub> -->
+        <!-- <DropdownMenuSeparator /> -->
         <DropdownMenuItem class="text-red-600">
           <Icon icon="material-symbols:delete-outline-rounded" class="mr-2 h-4 w-4" />
-          Delete
+          刪除
           <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuGroup>

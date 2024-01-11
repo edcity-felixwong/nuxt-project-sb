@@ -18,4 +18,5 @@ export default {
     presetPapers: "Preset Papers",
     // "St"
   },
+  action: "Actions",
 };

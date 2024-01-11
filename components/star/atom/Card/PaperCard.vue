@@ -34,7 +34,7 @@
 </template>
 <script setup lang="ts">
 import { StatusTag, MarkingTag, SubjectTag } from "#star/atom/Chip";
-import type { Paper } from "@/services/models";
+import type { Paper, TeacherPaper } from "@/services/models";
 import { useI18n } from "vue-i18n";
 // import { starDateFormat } from "@/composables";
 
@@ -47,7 +47,7 @@ import CardMoreAction from "./CardMoreAction.vue";
 const { locale } = useI18n();
 
 export type PaperCardProps = {
-  paper: Paper;
+  paper: Paper | TeacherPaper;
   role: "teacher" | "student";
 };
 const props = withDefaults(defineProps<PaperCardProps>(), {});

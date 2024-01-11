@@ -13,4 +13,5 @@ export default {
     invalid: "未設定",
     publishedAt: "發佈於 %{time}",
   },
+  action: "操作",
 };

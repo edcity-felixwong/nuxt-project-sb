@@ -1,12 +1,16 @@
+import type { INITIAL_VIEWPORTS } from "@storybook/addon-viewport";
 import { Preview, setup } from "@storybook/vue3";
-import type { INITIAL_VIEWPORTS, DEFAULT_VIEWPORT } from "@storybook/addon-viewport";
 
-import PrimeVue from "primevue/config";
-import type { PrimeVueConfiguration, PrimeVuePTOptions } from "primevue/config";
-import { createI18n, I18nInjectionKey, useI18n } from "vue-i18n";
-import { defineComponent, provide } from "vue";
 import { i18n } from "@/i18n";
-import { messages } from "@/i18n/messages";
+import { pt } from "@/theme";
+import type { PrimeVueConfiguration } from "primevue/config";
+import PrimeVue from "primevue/config";
+import Badge from "primevue/badge";
+import Tooltip from "primevue/tooltip";
+import StyleClass from "primevue/styleclass";
+import FocusTrap from "primevue/focustrap";
+import Ripple from "primevue/ripple";
+import { useI18n } from "vue-i18n";
 
 import theme from "./theme";
 /* Import tailwind */
@@ -155,11 +159,15 @@ export default preview;
 setup((app) => {
   app.use(PrimeVue, {
     prefix: "P",
-    // pt: { menu: { root: "bg-red-900" } },
+    pt,
     ptOptions: {
       mergeProps: true,
       mergeSections: true,
     },
   } as PrimeVueConfiguration);
+  app.directive("tooltip", Tooltip);
+  app.directive("styleclass", StyleClass);
+  app.directive("focustrap", FocusTrap);
+  app.directive("ripple", Ripple);
   app.use(i18n);
 });

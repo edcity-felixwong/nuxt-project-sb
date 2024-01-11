@@ -2,6 +2,7 @@ import { type DefineNuxtConfig } from "nuxt/config";
 import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 import { visualizer } from "rollup-plugin-visualizer";
 import type { PrimeVueConfiguration, PrimeVuePTOptions } from "primevue/config";
+import { primevue } from "../theme";
 
 type NuxtConfig = Parameters<DefineNuxtConfig>[0];
 /* Lift this config up to distribute to other config like vite, storybook, vitest, etc */
@@ -43,50 +44,7 @@ export const config: NuxtConfig = {
   ],
   components: [{ path: "./components/star/atom", prefix: "Star" }],
   // Plugins
-  primevue: {
-    options: {
-      ripple: true,
-      // unstyled: true,
-      pt: {
-        // menu: { menu: "p-2", action: "py-2.5 px-2" },
-        // button: { root: "" },
-        // menubar: {
-        //   submenu: "",
-        // },
-      },
-      ptOptions: {
-        /** Merge the custom class with pre-set style */
-        mergeProps: true,
-        /** Merge with primevue default if the section is missed
-         * @see https://primevue.org/passthrough/#usepassthrough
-         */
-        mergeSections: true,
-      },
-    } as PrimeVueConfiguration,
-    components: {
-      prefix: "P",
-      include: [
-        "InputText",
-        "Button",
-        "Checkbox",
-        "Dropdown",
-        "InputSwitch",
-        "Message",
-        "Sidebar",
-        "Menu",
-        "OverlayPanel",
-        "Menubar",
-        "Toast",
-        "Breadcrumb",
-        "Divider",
-        "Carousel",
-        "MultiSelect",
-        "Fieldset",
-        "DynamicDialog",
-      ],
-      // exclude: ["editor", "chart"],
-    },
-  },
+  primevue,
   tailwindcss: {
     cssPath: "./styles/global.css",
   },

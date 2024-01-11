@@ -1,7 +1,7 @@
-import type { State } from "./CardButtonBar.vue";
-import type { Status, TeacherPaper, StudentPaper } from "@/services/models";
-import type { Ref } from "vue";
+import type { StudentPaper, TeacherPaper } from "@/services/models";
 import { computedWithControl } from "@vueuse/core";
+import type { Ref } from "vue";
+import type { State } from "./CardButtonBar.vue";
 
 function parseStudentPaper(paper: StudentPaper): State {
   if (
@@ -66,6 +66,7 @@ export function parseState(paper: TeacherPaper | StudentPaper, role: "teacher" |
   if (role === "student") {
     return parseStudentPaper(paper as StudentPaper);
   }
+  return;
 }
 export function useParseState(paper: Paper, role: "teacher" | "student"): Ref<State> {
   return computedWithControl(

@@ -88,6 +88,16 @@
     "sort-imports": "off",
     "no-console": "error",
     "vue/attribute-hyphenation": "off",
-    "arrow-body-style": "off"
+    "arrow-body-style": "off",
+    "operator-linebreak": "off",
+    "vue/html-self-closing": [
+      "error",
+      {
+        "html": {
+          "normal": "never",
+          "void": "always"
+        }
+      }
+    ]
   }
 }

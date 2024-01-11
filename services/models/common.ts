@@ -23,10 +23,10 @@ export interface Teacher {
 }
 
 export const packageIdZ = z.enum(["13", "14", "15", "16"]);
-/** Subject 🤡,
- * 13: Chinese,
- * 14: English,
- * 15: Chinese math,
+/** Subject 🤡\
+ * 13: Chinese\
+ * 14: English\
+ * 15: Chinese math\
  * 16: English math
  * */
 export type PackageId = z.infer<typeof packageIdZ>;

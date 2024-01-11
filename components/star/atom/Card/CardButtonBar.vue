@@ -1,27 +1,16 @@
 <template>
   <div class="flex space-x-2">
-    <template v-for="prop in stateToButtonProps($props.state)">
+    <template v-for="prop in stateToButtonProps($props.state)" :key="prop.action">
       <CardButton v-bind="prop" class="flex-1" />
     </template>
   </div>
 </template>
 <script setup lang="ts">
-import CardButton from "./CardButton.vue";
+import type { Status } from "@/services/models";
 import type { CardButtonProps } from "./CardButton.vue";
-import type { Status, Paper } from "@/services/models";
-import { pipe } from "fp-ts/function";
-import { map } from "fp-ts/Array";
+import CardButton from "./CardButton.vue";
 
-export type State =
-  | "teacherDraft"
-  | "teacherPublished"
-  | "teacherShared"
-  | "teacherEditPreview"
-  | "studentPublished"
-  | "studentReportReady"
-  | "studentReportUnReady"
-  | "studentReportReadyRetry"
-  | "studentReportUnReadyRetry";
+import { State, stateButtonPropsMap } from "./utils";
 
 export type CardButtonBarProps = {
   // model: CardButtonProps[];
@@ -47,21 +36,6 @@ const props = withDefaults(defineProps<CardButtonBarProps>(), {});
 
 /** This maps the finite states into list of button props */
 function stateToButtonProps(state: State): CardButtonProps[] {
-  const map: Record<State, CardButtonProps[]> = {
-    teacherDraft: [{ action: "edit" }, { action: "preview" }, { action: "share" }],
-    teacherPublished: [{ action: "report" }, { action: "preview" }, { action: "share" }],
-    teacherEditPreview: [{ action: "edit" }, { action: "preview" }],
-    teacherShared: [{ action: "preview" }, { action: "accept" }, { action: "reject" }],
-    studentPublished: [{ action: "attempt" }],
-    studentReportReady: [{ action: "review" }, { action: "report" }],
-    studentReportUnReady: [{ action: "review" }, { action: "report", isDisabled: true }],
-    studentReportReadyRetry: [{ action: "review" }, { action: "report" }, { action: "retry" }],
-    studentReportUnReadyRetry: [
-      { action: "review" },
-      { action: "report", isDisabled: true },
-      { action: "retry" },
-    ],
-  };
-  return map[state];
+  return stateButtonPropsMap[state];
 }
 </script>

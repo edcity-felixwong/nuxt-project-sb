@@ -1,37 +1,29 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
-import { CardButtonBar } from "@/components/star";
+import CardMoreAction from "~/components/star/atom/Card/CardMoreAction.vue";
+import { Status } from "@/services/models";
 
 /**
  * This address the layout and order of the buttons.
- *
- * Types:
- * Draft (Teacher)
- * Published (Teacher)
- * Shared (Teacher, `published` required?)
- * Report-ready [(Teacher, `published` and answered) & (Student and finished)]
- * Report-unready [(Teacher, `published` and not answered) & (Student and un-finished)]
- * |- Retry (Student)
- * Published (Student, ie attempt)
  */
-const meta: Meta<typeof CardButtonBar> = {
-  title: "Components/Card/CardButtonBar",
+const meta: Meta<typeof CardMoreAction> = {
+  title: "Components/Card/CardCardMoreAction",
   tags: ["autodocs"],
-  component: CardButtonBar,
+  component: CardMoreAction,
 };
 
 export default meta;
-type Story = StoryObj<typeof CardButtonBar>;
+type Story = StoryObj<typeof CardMoreAction>;
 
 const ListTemplate: Story = {
   render: (args) => ({
-    components: { CardButtonBar },
+    components: { CardMoreAction },
     setup() {
       return { ...args };
     },
     template: `
         <div class="flex gap-4">
           <template v-for="item in items">
-            <CardButtonBar v-bind="item"/>
+            <CardMoreAction v-bind="item"/>
           </template>
         </div>
     `,
@@ -48,6 +40,24 @@ const actions: NonNullable<Story["args"]>["action"][] = [
   "retry",
   "share",
 ];
+const s1: Status = {
+  canAccept: "",
+  canAssign: "",
+  canDelete: "",
+  canModify: "",
+  canPreview: "",
+  canPublish: "",
+  canRecall: "",
+  canReject: "",
+  canReport: "",
+  canReview: "",
+  canSharePaper: "",
+  canShareReport: "",
+  canStart: "",
+  canView: "",
+  isFrozen: "",
+  reportSharedAccepted: "",
+};
 
 export const TeacherDraft: Story = {
   name: "Teacher/Draft",
@@ -98,6 +108,7 @@ export const StudentReportUnReady: Story = {
     state: "studentReportUnReady",
   },
 };
+/** 進行評估/閱卷/報告 */
 export const StudentReportReadyRetry: Story = {
   name: "Student/ReportReadyRetry",
   args: {

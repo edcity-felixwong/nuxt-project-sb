@@ -6,6 +6,7 @@
     radius="full"
     :isIconOnly="true"
     class="text-text-300"
+    v-tooltip.bottom="$t('ui.action')"
   />
 </template>
 <script setup lang="ts">

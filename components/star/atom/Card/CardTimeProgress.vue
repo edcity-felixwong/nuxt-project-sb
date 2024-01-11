@@ -9,7 +9,7 @@
     </div>
     <div class="rounded-small bg-default-50 relative flex overflow-hidden text-sm">
       <div
-        class="bg-warning-400 absolute top-0 left-0 z-10 h-full rounded-md"
+        class="bg-secondary-200 absolute top-0 left-0 z-10 h-full rounded-md"
         :style="{ width: barWidth }"
         aria-label=""
       ></div>
