@@ -1,10 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/vue3";
 import { StarButton } from "~/components/star";
-import { Status } from "@/services/models";
 
-/**
- * This address the layout and order of the buttons.
- */
 const meta: Meta<typeof StarButton> = {
   title: "Components/Tooltip",
   tags: ["autodocs"],
@@ -49,7 +45,7 @@ const Comp: Story = {
     </div>`,
   }),
 };
-export const Default: Story = {
+export const Template: Story = {
   render: (args) => ({
     setup: () => {
       args;
@@ -71,4 +67,67 @@ export const Try: Story = {
     //   text: "bg-red-900",
     // },
   },
+};
+export const Try2: Story = {
+  render: (args) => ({
+    components: { StarButton },
+    setup() {
+      return { ...args };
+    },
+    template: `
+
+            <StarButton v-tooltip="{value: 'lorem ipsum', hideDelay: 999999}" label="Button" />
+            
+    `,
+  }),
+  args: {
+    // pt: {
+    //   text: "bg-red-900",
+    // },
+  },
+};
+export const Default: Story = {
+  render: (args) => ({
+    components: { StarButton },
+    setup: () => args,
+    template: `
+            <StarButton v-tooltip="'lorem ipsum'" label="Button" />
+    `,
+  }),
+};
+export const Top: Story = {
+  render: (args) => ({
+    components: { StarButton },
+    setup: () => args,
+    template: `
+            <StarButton v-tooltip.top="'lorem ipsum'" label="Button" />
+    `,
+  }),
+};
+export const Bottom: Story = {
+  render: (args) => ({
+    components: { StarButton },
+    setup: () => args,
+    template: `
+            <StarButton v-tooltip.bottom="'lorem ipsum'" label="Button" />
+    `,
+  }),
+};
+export const Left: Story = {
+  render: (args) => ({
+    components: { StarButton },
+    setup: () => args,
+    template: `
+            <StarButton v-tooltip.left="'lorem ipsum'" label="Button" />
+    `,
+  }),
+};
+export const Right: Story = {
+  render: (args) => ({
+    components: { StarButton },
+    setup: () => args,
+    template: `
+            <StarButton v-tooltip.right="'lorem ipsum'" label="Button" />
+    `,
+  }),
 };

@@ -10,7 +10,10 @@ export const pt: PrimeVuePTOptions = {
       // arrow: {
 
       // },
-      arrow: { class: "border-b-gray-950" },
+      arrow: {
+        class:
+          "[.p-tooltip-right_&]:border-r-gray-950 [.p-tooltip-left_&]:border-l-gray-950 [.p-tooltip-top_&]:border-t-gray-950 [.p-tooltip-bottom_&]:border-b-gray-950",
+      },
       text: { class: "text-sm bg-gray-950 px-3 py-1.5 rounded-[8px]" },
     },
   },

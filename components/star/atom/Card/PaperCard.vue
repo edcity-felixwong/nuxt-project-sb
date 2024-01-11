@@ -14,14 +14,33 @@
     <div class="flex flex-col flex-1">
       <div class="space-x-1">
         <SubjectTag :packageId="props.paper.packageId" />
-        <MarkingTag v-if="props.paper.feedbackStatus" :status="props.paper.feedbackStatus" />
+        <template v-if="$props.role === 'teacher'">
+          <MarkingTag
+            v-if="(props.paper as TeacherPaper).feedbackStatus"
+            :status="(props.paper as TeacherPaper).feedbackStatus"
+          />
+        </template>
       </div>
 
       <h2 class="text-default-800 flex-1 mb-4 font-semibold">
         {{ props.paper.title }}
       </h2>
       <CardTimeProgress :startTime="props.paper.startTime" :endTime="props.paper.endTime" />
-
+      <div class="flex items-center gap-1 mt-2">
+        <template v-if="$props.role === 'teacher'">
+          <MarkingTag
+            status="submission"
+            :label="`${props.paper.trialsSubmitted}/${props.paper.trialsAssigned}`"
+          />
+        </template>
+        <template v-else>
+          <MarkingTag
+            v-tooltip="`${(props.paper as StudentPaper).mySubmmitedTrialNo?`Submitted ${(props.paper as StudentPaper).mySubmmitedTrialNo} times`:'Not submitted'}. ${props.paper.maxTrialNo?`${props.paper.maxTrialNo-(props.paper as StudentPaper).mySubmmitedTrialNo} remaining.`:''}`"
+            status="submission"
+            :label="`${(props.paper as StudentPaper).mySubmmitedTrialNo}/${props.paper.maxTrialNo?props.paper.maxTrialNo:'∞'}`"
+          />
+        </template>
+      </div>
       <!-- <div class="flex items-center gap-1 mt-4">
         <MarkingTag status="submission" label="20/20" size="small" />
       </div> -->
@@ -34,7 +53,7 @@
 </template>
 <script setup lang="ts">
 import { StatusTag, MarkingTag, SubjectTag } from "#star/atom/Chip";
-import type { Paper, TeacherPaper } from "@/services/models";
+import type { Paper, TeacherPaper, StudentPaper } from "@/services/models";
 import { useI18n } from "vue-i18n";
 // import { starDateFormat } from "@/composables";
 
@@ -47,7 +66,7 @@ import CardMoreAction from "./CardMoreAction.vue";
 const { locale } = useI18n();
 
 export type PaperCardProps = {
-  paper: Paper | TeacherPaper;
+  paper: Paper | TeacherPaper | StudentPaper;
   role: "teacher" | "student";
 };
 const props = withDefaults(defineProps<PaperCardProps>(), {});
