@@ -10,6 +10,7 @@
       <StarSearch class="flex-1" />
     </div>
     <div class="flex justify-end space-x-1">
+      <YearFilter v-model="t" />
       <StarMultipleSelect
         class="border-none"
         :options="[
@@ -91,4 +92,8 @@
 import { StarButton } from "@/components/star/atom/Button";
 import { StarSearch } from "@/components/star/atom/Search";
 import { StarMultipleSelect } from "@/components/star/atom/Filter";
+import YearFilter from "#star/atom/Filter/YearFilter.vue";
+import { ref } from "vue";
+
+const t = ref("");
 </script>
