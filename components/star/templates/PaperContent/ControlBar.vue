@@ -10,7 +10,7 @@
       <StarSearch class="flex-1" />
     </div>
     <div class="flex justify-end space-x-1">
-      <YearFilter v-model="t" />
+      <YearFilter v-model="year" />
       <StarMultipleSelect
         class="border-none"
         :options="[
@@ -89,11 +89,13 @@
   </div>
 </template>
 <script setup lang="ts">
-import { StarButton } from "@/components/star/atom/Button";
-import { StarSearch } from "@/components/star/atom/Search";
-import { StarMultipleSelect } from "@/components/star/atom/Filter";
+import { StarButton } from "#star/atom/Button";
+import { StarSearch } from "#star/atom/Search";
+import { StarMultipleSelect } from "#star/atom/Filter";
 import YearFilter from "#star/atom/Filter/YearFilter.vue";
-import { ref } from "vue";
+import { ref, defineModel } from "vue";
+import { AcademicYear } from "@/services/models";
 
 const t = ref("");
+const year = defineModel<AcademicYear>("year", { default: "2023/24", required: true });
 </script>

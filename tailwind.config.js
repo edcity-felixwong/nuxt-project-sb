@@ -27,7 +27,7 @@ export default {
       colors: {
         border: "var(--sui-border-color-default)",
         input: "var(--sui-color-input)",
-        ring: "hsl(var(--sui-color-primary-ring) / <alpha-value>)",
+        ring: "var(--sui-color-primary-ring)",
         background: "var(--sui-color-surface-ground)",
         foreground: "var(--sui-color-default-foreground)",
         primary: {

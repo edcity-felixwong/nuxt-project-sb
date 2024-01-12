@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ControlBar />
+    <ControlBar v-model:year="t" />
     <div class="relative">
       <div data-sui-section="papers">
         <StarBreadcrumbNav :model="[{ label: '未完成' }]" />
@@ -44,7 +44,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { PaperCard, StarButton } from "@/components/star/atom";
 import type { Paper } from "@/services/models";
 import { triage } from "@/services/composites/load-paper/useTriagePaper";
@@ -79,4 +79,6 @@ const finalPapers = computed(() => {
     O.getOrElse(() => ({} as ReturnType<typeof triage>))
   );
 });
+
+const t = ref("");
 </script>

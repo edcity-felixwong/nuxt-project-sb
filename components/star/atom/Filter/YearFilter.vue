@@ -40,14 +40,12 @@ const value = defineModel("modelValue", { default: "", local: true });
         role="combobox"
         :aria-expanded="open"
         class="w-[200px] justify-between"
-      >
-        {{
+        :label="
           value
             ? frameworks.find((framework) => framework.value === value)?.label
-            : "Select framework..."
-        }}
-        <!-- <CaretSortIcon class="ml-2 h-4 w-4 shrink-0 opacity-50" /> -->
-      </StarButton>
+            : 'Select framework...'
+        "
+      />
     </PopoverTrigger>
     <PopoverContent class="w-[200px] p-0">
       <Command>

@@ -18,18 +18,18 @@
       </slot>
 
       <PInputText
-        placeholder="Search"
         v-model="model"
-        class="text-inherit focus:ring focus:ring-offset-2 focus:ring-primary-200 focus:border-primary-400 border-default hover:border-primary-300 w-full h-full"
+        placeholder="Search"
+        class="text-inherit focus:ring focus:ring-offset-2 focus:ring-ring focus:ring-2 focus:border-primary-400 border-default hover:border-primary-300 w-full h-full"
         data-sui-section="input"
       />
       <slot name="iconRight">
         <button
           v-if="model"
-          @click="() => (model = '')"
           class="top-1/2 right-3 [&_*]:text-inherit absolute m-0 -translate-y-1/2 text-default-300"
           data-sui-section="clearButton"
           ariaLabel="Clear Search text"
+          @click="() => (model = '')"
         >
           <Icon icon="material-symbols:cancel-rounded" width="24px" data-sui-section="iconRight" />
         </button>
@@ -41,7 +41,8 @@
 <script setup lang="ts">
 import { Icon } from "@/components/star/atom/Icon";
 import PInputText from "primevue/inputtext";
-import { ref } from "vue";
+import { defineModel } from "vue";
 
-const model = ref();
+const model = defineModel<string>("modelValue", { local: true });
+// TODO autocomplete
 </script>
