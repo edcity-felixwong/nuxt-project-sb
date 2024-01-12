@@ -11,6 +11,8 @@
     </div>
     <div class="flex justify-end space-x-1">
       <YearFilter v-model="year" />
+      <YearFilterV2 v-model="year" />
+      <StatusFilter v-model="submission" />
       <StarMultipleSelect
         class="border-none"
         :options="[
@@ -93,9 +95,20 @@ import { StarButton } from "#star/atom/Button";
 import { StarSearch } from "#star/atom/Search";
 import { StarMultipleSelect } from "#star/atom/Filter";
 import YearFilter from "#star/atom/Filter/YearFilter.vue";
+import YearFilterV2 from "#star/atom/Filter/YearFilterV2.vue";
+import StatusFilter from "#star/atom/Filter/StatusFilter.vue";
 import { ref, defineModel } from "vue";
-import { AcademicYear } from "@/services/models";
+import { AcademicYear, Submission } from "@/services/models";
 
 const t = ref("");
-const year = defineModel<AcademicYear>("year", { default: "2023/24", required: true });
+const year = defineModel<AcademicYear>("year", { default: "2023/24", required: true, local: true });
+const submission = defineModel<Submission>("submission", {
+  default: "submitted",
+  required: true,
+  local: true,
+});
+// const emit = defineEmits(["update:submission"]);
+// onMounted(async () => {
+//   emit("update:submission", submission.value);
+// });
 </script>

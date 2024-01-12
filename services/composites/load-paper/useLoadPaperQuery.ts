@@ -21,7 +21,7 @@ export function useLoadPaperQuery<
     [role.value?.isTeacher ? "loadTeacherPaper" : "loadStudentPaper", para],
     () =>
       (role.value?.isTeacher ? loadTeacherPaperQuery : loadStudentPaperQuery)({
-        token: token!.value,
+        token: token.value,
         para: para.value,
       }),
     {

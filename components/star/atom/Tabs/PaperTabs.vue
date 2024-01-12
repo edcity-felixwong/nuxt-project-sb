@@ -39,8 +39,8 @@ type StarPaperTab = StarTabsProps["model"][number] & {
   trigger: Tab;
   default?: boolean;
 };
-type ExtendedTabModel = StarPaperTab & StarOptionItemProps["model"];
-const tabs: Ref<ExtendedTabModel[]> = computedWithControl(locale, () => [
+export type PaperTabModel = StarPaperTab & StarOptionItemProps["model"];
+const tabs: Ref<PaperTabModel[]> = computedWithControl(locale, () => [
   {
     trigger: "",
     icon: "material-symbols:crossword",

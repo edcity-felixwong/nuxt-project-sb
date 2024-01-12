@@ -1,5 +1,6 @@
-import type { School, AcademicYear } from "./common";
 import { z } from "zod";
+
+import type { School, AcademicYear } from "./common";
 import { PackageId } from "./common";
 
 export type FunctionType = "attempt";
