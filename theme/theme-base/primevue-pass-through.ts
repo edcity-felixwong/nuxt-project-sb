@@ -7,14 +7,15 @@ type PrimevueModuleOptions = NonNullable<
 export const pt: PrimeVuePTOptions = {
   directives: {
     tooltip: {
-      // arrow: {
-
-      // },
-      arrow: {
+      root: {
         class:
-          "[.p-tooltip-right_&]:border-r-gray-950 [.p-tooltip-left_&]:border-l-gray-950 [.p-tooltip-top_&]:border-t-gray-950 [.p-tooltip-bottom_&]:border-b-gray-950",
+          "[&.p-tooltip.p-tooltip-right_.p-tooltip-arrow]:border-r-gray-950 [&.p-tooltip.p-tooltip-left_.p-tooltip-arrow]:border-l-gray-950 [&.p-tooltip.p-tooltip-top_.p-tooltip-arrow]:border-t-gray-950 [&.p-tooltip.p-tooltip-bottom_.p-tooltip-arrow]:border-b-gray-950",
       },
-      text: { class: "text-sm bg-gray-950 px-3 py-1.5 rounded-[8px]" },
+      // arrow: {
+      //   class:
+      //     "[.p-tooltip-right_&]:border-r-gray-950 [.p-tooltip-left_&]:border-l-gray-950 [.p-tooltip-top_&]:border-t-gray-950 [.p-tooltip-bottom_&]:border-b-gray-950",
+      // },
+      text: { class: "text-sm bg-gray-950 px-3 py-1.5 rounded-xs" },
     },
   },
 };

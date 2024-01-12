@@ -1,7 +1,5 @@
 <template>
-  <div
-    :class="`${bem('root')} w-full h-full overflow-y-auto overflow-x-hidden`"
-  >
+  <div :class="`${bem('root')} w-full h-full overflow-y-auto overflow-x-hidden`">
     <slot />
   </div>
 </template>

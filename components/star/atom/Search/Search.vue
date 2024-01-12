@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { Icon } from "@/components/star/atom/Icon";
+import { Icon } from "#star/atom/Icon";
 import PInputText from "primevue/inputtext";
 import { defineModel } from "vue";
 

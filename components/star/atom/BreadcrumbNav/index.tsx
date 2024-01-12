@@ -1,1 +1,1 @@
-export { default } from './BreadcrumbNav.vue'
+export { default as StarBreadcrumbNav } from "./BreadcrumbNav.vue"

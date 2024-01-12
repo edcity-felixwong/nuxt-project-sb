@@ -12,3 +12,6 @@ export * from "./Tabs";
 export * from "./Search";
 export * from "./Filter";
 export * from "./Dialog";
+export * from "./BreadcrumbNav";
+export * from "./Banner";
+export * from "./Page";
