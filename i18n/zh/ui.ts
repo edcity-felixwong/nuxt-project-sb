@@ -14,4 +14,6 @@ export default {
     publishedAt: "發佈於 %{time}",
   },
   action: "操作",
+  refresh: "重新載入",
+  search: "搜尋",
 };

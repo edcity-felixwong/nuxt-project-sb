@@ -3,7 +3,7 @@
 </template>
 <script setup lang="ts">
 import { computedWithControl } from "@vueuse/core";
-import { ref, type Ref } from "vue";
+import { type Ref } from "vue";
 import { useI18n } from "vue-i18n";
 import { useRouter } from "vue-router";
 
@@ -15,9 +15,11 @@ const { push } = useRouter();
 
 type Props = {
   role?: "teacher" | "student";
+  isLoading?: boolean;
 };
 const props = withDefaults(defineProps<Props>(), {
   role: "teacher",
+  isLoading: false,
 });
 
 const subjects: StarHeaderProps["model"] = [
@@ -94,7 +96,7 @@ const teacherItems: Ref<StarHeaderProps["model"]> = computedWithControl(locale, 
     ],
   },
 ]);
-const studentItems: Ref<StarHeaderProps["model"]> = ref([
+const studentItems: Ref<StarHeaderProps["model"]> = computedWithControl(locale, () => [
   {
     label: t("header.my_papers"),
     icon: "material-symbols:article-outline-rounded",

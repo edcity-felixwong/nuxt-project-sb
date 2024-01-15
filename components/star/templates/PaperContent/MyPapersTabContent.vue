@@ -1,6 +1,12 @@
 <template>
   <div>
-    <ControlBar v-model:year="t" />
+    <ControlBar
+      v-model:year="year"
+      v-model:submission="submission"
+      v-mode:user="user"
+      :users="owners"
+      :statuses="statuses"
+    />
     <div class="relative">
       <div data-sui-section="papers">
         <StarBreadcrumbNav :model="[{ label: '未完成' }]" />
@@ -44,18 +50,24 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, ref, type Ref } from "vue";
 import { PaperCard, StarButton, StarBreadcrumbNav } from "#star/atom";
-import type { Paper } from "@/services/models";
+import type { Paper, AcademicYear } from "@/services/models";
 import { triage } from "@/services/composites/load-paper/useTriagePaper";
 import { groupByTab } from "@/services/composites/load-paper/usePaperGroupByTab";
+import { useI18n } from "vue-i18n";
 import { pipe } from "fp-ts/function";
 import * as O from "fp-ts/Option";
 import * as R from "fp-ts/Record";
+import * as A from "fp-ts/Array";
+import * as P from "fp-ts/Predicate";
 // import {  } from "fp-ts/Array";
 
 import ControlBar from "./ControlBar.vue";
 import { isValidPaper } from "./utils";
+import { yearIs, statusIs, identityPaperPredicate, type PaperPredicate } from "./filtering";
+import { usePaperOwners } from "@/services/composites/load-paper/useOwner";
+import { computedWithControl } from "@vueuse/core";
 
 export type MyPapersTabContentProps = {
   papers: Paper[];
@@ -68,6 +80,47 @@ const props = withDefaults(defineProps<MyPapersTabContentProps>(), {
   isLoading: false,
   state: "success",
 });
+const { t, locale } = useI18n();
+const owners = usePaperOwners(ref(props.papers));
+const statuses = computedWithControl(
+  () => [locale.value, props.role],
+  () => {
+    return props.role === "teacher"
+      ? [
+          { label: t("paper.status.all"), value: "all" },
+          { label: t("paper.status.pending"), value: "pending" },
+          { label: t("paper.status.ready"), value: "ready" },
+          { label: t("paper.status.notAttempted"), value: "not_attempted" },
+          { label: t("paper.status.attempted"), value: "attempted" },
+          { label: t("paper.status.finished"), value: "finished" },
+        ]
+      : [
+          { label: t("paper.status.all"), value: "all" },
+          { label: t("paper.status.submitted"), value: "submitted" },
+          { label: t("paper.status.not_submitted"), value: "not_submitted" },
+        ];
+  }
+);
+
+const year = ref<AcademicYear | "all">("2023/24");
+const submission = ref<Paper["status"]["submission"] | "all">("all");
+const user = ref();
+const yearPredicate: Ref<PaperPredicate> = computed(() => {
+  return pipe(
+    year.value === "all" ? identityPaperPredicate : yearIs(year.value) //
+  );
+});
+const submissionPredicate: Ref<PaperPredicate> = computed(() => {
+  return pipe(
+    submission.value === "all" ? identityPaperPredicate : statusIs(submission.value) //
+  );
+});
+const filterPredicate: Ref<PaperPredicate> = computed(() => {
+  return pipe(
+    yearPredicate.value, //
+    P.and(submissionPredicate.value)
+  );
+});
 
 const finalPapers = computed(() => {
   return pipe(
@@ -76,9 +129,11 @@ const finalPapers = computed(() => {
     O.map(groupByTab),
     O.chain(R.lookup("")),
     O.map(triage),
+    O.map(R.map(A.filter(filterPredicate.value))),
     O.getOrElse(() => ({} as ReturnType<typeof triage>))
   );
 });
-
-const t = ref("");
+watch(finalPapers, (v) => {
+  console.log(`🚀 // DEBUG 🍔 ~ v:`, v);
+});
 </script>

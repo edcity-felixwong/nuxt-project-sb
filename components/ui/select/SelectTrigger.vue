@@ -32,7 +32,7 @@ const props = withDefaults(
       <slot name="iconRight">
         <!-- <ChevronDown class="w-4 h-4 opacity-50" /> -->
         <!-- <Icon icon="material-symbols:unfold-more-rounded" /> -->
-        <Icon icon="material-symbols:expand-more-rounded" />
+        <Icon icon="material-symbols:expand-more-rounded" class="shrink-0" />
       </slot>
     </SelectIcon>
   </SelectTrigger>

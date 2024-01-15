@@ -7,22 +7,22 @@
       <DropdownMenuGroup>
         <DropdownMenuItem>
           <Icon icon="material-symbols:user-attributes-outline-rounded" class="mr-2 h-4 w-4" />
-          編輯
+          {{ $t("paper.action.edit") }}
           <DropdownMenuShortcut>
             <Icon icon="material-symbols:arrow-outward-rounded" class="w-4 h-4" />
           </DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Icon icon="material-symbols:calendar-add-on" class="w-4 h-4 mr-2" />
-          預覽
+          {{ $t("paper.action.preview") }}
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Icon icon="material-symbols:calendar-add-on" class="w-4 h-4 mr-2" />
-          派發
+          {{ $t("paper.action.publish") }}
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Icon icon="material-symbols:calendar-add-on" class="w-4 h-4 mr-2" />
-          回收
+          {{ $t("paper.action.recall") }}
         </DropdownMenuItem>
         <!-- <DropdownMenuItem>
           <Icon icon="material-symbols:calendar-add-on" class="mr-2" />
@@ -30,18 +30,18 @@
         </DropdownMenuItem> -->
         <DropdownMenuItem>
           <Icon icon="material-symbols:calendar-add-on" class="w-4 h-4 mr-2" />
-          報告
+          {{ $t("paper.action.report") }}
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <Icon icon="material-symbols:calendar-add-on" class="w-4 h-4 mr-2" />
-          分享評估
+          {{ $t("paper.action.sharePaper") }}
         </DropdownMenuItem>
         <DropdownMenuItem>
           <Icon icon="material-symbols:calendar-add-on" class="w-4 h-4 mr-2" />
-          分享報告
+          {{ $t("paper.action.shareReport") }}
         </DropdownMenuItem>
-        <DropdownMenuSeparator />
+        <!-- <DropdownMenuSeparator /> -->
         <!-- <DropdownMenuItem>
           <Icon icon="material-symbols:calendar-add-on" class="mr-2" />
           分享連結
@@ -53,11 +53,11 @@
           </DropdownMenuSubTrigger>
         </DropdownMenuSub> -->
         <!-- <DropdownMenuSeparator /> -->
-        <DropdownMenuItem class="text-red-600">
+        <!-- <DropdownMenuItem class="text-red-600">
           <Icon icon="material-symbols:delete-outline-rounded" class="mr-2 h-4 w-4" />
           刪除
           <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
-        </DropdownMenuItem>
+        </DropdownMenuItem> -->
       </DropdownMenuGroup>
     </DropdownMenuContent>
   </DropdownMenu>

@@ -1,4 +1,5 @@
 export default {
+  /** paper.status.submission */
   status: {
     attempted: "Attempted",
     finished: "Finished",
@@ -10,6 +11,12 @@ export default {
     upcoming: "Upcoming",
     not_submitted: "Not submitted",
     submitted: "Submitted",
+    all: "All statuses",
+    fieldName: "Status",
+  },
+  year: {
+    fieldName: "Year",
+    all: "All years",
   },
   /** Marking directly linked to paper.feedbackStatus,
    * But some alias is kept, which is early idea.
@@ -35,6 +42,10 @@ export default {
     retry: "Retry",
     share: "Share",
     review: "Review",
+    publish: "Publish",
+    recall: "Recall",
+    shareReport: "Share report",
+    sharePaper: "Share paper",
   },
   subject: {
     chinese: "中文科",

@@ -10,6 +10,12 @@ export default {
     upcoming: "未就緒",
     not_submitted: "未遞交",
     submitted: "已遞交",
+    all: "所有狀況",
+    fieldName: "狀況",
+  },
+  year: {
+    fieldName: "學年",
+    all: "所有學年",
   },
   marking: {
     manualMarking: "需評改",
@@ -32,6 +38,10 @@ export default {
     retry: "重試",
     share: "分享",
     review: "閱卷",
+    publish: "派發",
+    recall: "回收",
+    shareReport: "分享報告",
+    sharePaper: "分享評估",
   },
   subject: {
     chinese: "中文科",

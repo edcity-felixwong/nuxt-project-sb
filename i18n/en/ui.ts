@@ -19,4 +19,6 @@ export default {
     // "St"
   },
   action: "Actions",
+  refresh: "Refresh",
+  search: "Search",
 };

@@ -37,41 +37,11 @@ import {
   SharedPapersTabsContent,
   StarPaperTabs,
 } from "@/components/star";
-import { createBEM, useSearchParams } from "@/composables";
-import { useJwt, useRole, type Tab } from "@/services";
-import { getPackageId } from "@/services/api/utils";
+import { useRole, type Tab } from "@/services";
 import { useLoadPaperQuery, usePaperTabs } from "@/services/composites";
-import { computed, ref, type Component } from "vue";
-import { z } from "zod";
-
-import { toRefs } from "@vueuse/core";
+import { ref, type Component } from "vue";
 
 const { data: role } = useRole();
-
-// const query = useSearchParams(
-//   {
-//     subject: computed(
-//       () =>
-//         (role.value?.isTeacher ? undefined : undefined) as "chinese" | "english" | "cmath" | "emath"
-//     ),
-//     // key2: undefined,
-//   },
-//   {
-//     transform: (_) => {
-//       return z
-//         .object({
-//           subject: z.enum(["chinese", "english", "cmath", "emath"]).catch(() => "english"),
-//           key2: z
-//             .enum(["key2default"])
-//             // .optional()
-//             .catch(() => "key2default"),
-//         })
-//         .parse(_);
-//     },
-//   }
-// );
-// const { subject } = toRefs(query);
-// const bem = createBEM("my-papers");
 
 const papers = useLoadPaperQuery();
 const tabs = usePaperTabs(papers.data);
@@ -84,6 +54,9 @@ watch(tabs, (tab) => {
 // const papers=role.value?.isTeacher?
 
 const tab = ref<string>("");
+const tabModels = computed(() => {
+  return tabs?.value?.map((_) => ({ trigger: _, default: tab.value === _ }));
+});
 
 const tabComponentMap: Partial<Record<Tab, Component>> = {
   "": MyPapersTabContent,

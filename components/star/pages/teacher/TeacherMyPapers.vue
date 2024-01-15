@@ -42,6 +42,7 @@ import { createBEM, useSearchParams } from "@/composables";
 import { useJwt, useRole, type Tab } from "@/services";
 import { getPackageId } from "@/services/api/utils";
 import { useLoadPaperQuery, usePaperTabs } from "@/services/composites";
+import { usePaperOwners } from "@/services/composites/load-paper/useOwner";
 import { computed, ref, type Component } from "vue";
 import { z } from "zod";
 
@@ -81,6 +82,7 @@ const papers = useLoadPaperQuery(
   }))
 );
 const tabs = usePaperTabs(papers.data);
+const owners = usePaperOwners(papers.data);
 
 const { data: token } = useJwt();
 

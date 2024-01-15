@@ -3,8 +3,8 @@
 </template>
 
 <script setup lang="ts">
-import { OptionItem, paperTabItem as paperTabItemTv } from "@/components/star/atom/Option";
-import type { StarOptionItemProps } from "@/components/star/atom/Option";
+import { OptionItem, paperTabItem as paperTabItemTv } from "#star/atom/Option";
+import type { StarOptionItemProps } from "#star/atom/Option";
 import { usePassThrough } from "@/composables";
 import { watch } from "vue";
 
@@ -16,7 +16,4 @@ const props = withDefaults(defineProps<PaperTabItemProps>(), {
 });
 
 const pt = usePassThrough(paperTabItemTv, props);
-// watch(pt, (newValue) => {
-//   console.log(`🚀 // DEBUG 🍔 ~ file: PaperTabItem.vue:22 ~ watch ~ pt:`, newValue);
-// });
 </script>

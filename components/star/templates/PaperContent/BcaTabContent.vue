@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ControlBar />
+    <ControlBar v-model:year="year" />
     <div class="relative">
       <div data-sui-section="papers">
         <StarBreadcrumbNav :model="[{ label: '未完成' }]" />
@@ -44,17 +44,21 @@
   </div>
 </template>
 <script setup lang="ts">
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import { PaperCard, StarButton, StarBreadcrumbNav } from "#star/atom";
-import type { Paper, Tab } from "@/services/models";
+import type { Paper, Tab, AcademicYear } from "@/services/models";
 import { triage } from "@/services/composites/load-paper/useTriagePaper";
 import { groupByTab } from "@/services/composites/load-paper/usePaperGroupByTab";
 import { pipe } from "fp-ts/function";
 import * as O from "fp-ts/Option";
+import * as R from "fp-ts/Record";
+import * as A from "fp-ts/Array";
+import * as P from "fp-ts/Predicate";
 // import {  } from "fp-ts/Array";
 
 import ControlBar from "./ControlBar.vue";
 import { isValidPaper } from "./utils";
+import { yearIs, type PaperPredicate } from "./filtering";
 
 export type MyPapersTabContentProps = {
   papers: Paper[];
@@ -69,6 +73,12 @@ const props = withDefaults(defineProps<MyPapersTabContentProps>(), {
   isError: false,
   // state: "success",
 });
+const year = ref<AcademicYear>("2023/24");
+const filterPredicate: Ref<PaperPredicate> = computed(() => {
+  return pipe(
+    yearIs(year.value) //
+  );
+});
 
 const finalPapers = computed(() => {
   return pipe(
@@ -77,6 +87,7 @@ const finalPapers = computed(() => {
     O.map(groupByTab),
     O.chain((_) => O.fromNullable(_[props.tab])),
     O.map(triage),
+    O.map(R.map(A.filter(filterPredicate.value))),
     O.getOrElse(() => ({} as ReturnType<typeof triage>))
   );
 });

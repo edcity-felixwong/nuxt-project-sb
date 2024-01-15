@@ -21,7 +21,9 @@ export type Mode = "sequential";
 export type SerializedJsonString = string;
 export type SchType = "SEC";
 export type CompiledBy = "myself" | "others";
-export type Submission = "submitted" | "not_attempted" | "finished" | "attempted";
+export type TeacherSubmission = "pending" | "ready" | "not_attempted" | "finished" | "attempted";
+export type StudentSubmission = "submitted" | "not_submitted";
+export type Submission = TeacherSubmission | StudentSubmission;
 export type EntityType = "paper";
 
 export interface Status {
