@@ -1,3 +1,5 @@
+import * as changeCaseKeys from "change-case/keys";
+
 /** To cast different cases, mostly knbab/snake to camel */
 
 export type Head<T extends any[]> = T extends [infer H, ...any[]] ? H : never;
@@ -25,3 +27,10 @@ export type KnbabToCamel<T extends string | number> = TupleToString<
 export type KnbabToCamelS<T extends Record<string | number, any>> = {
   [K in keyof T as KnbabToCamel<K>]: T[K];
 };
+
+export function deeplyCamelize<T>(x: T): T {
+  return changeCaseKeys.camelCase(x, Number.MAX_SAFE_INTEGER);
+}
+export function deeplySnakelize<T>(x: T): T {
+  return changeCaseKeys.snakeCase(x, Number.MAX_SAFE_INTEGER);
+}

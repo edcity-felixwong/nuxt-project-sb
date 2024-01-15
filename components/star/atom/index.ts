@@ -15,3 +15,4 @@ export * from "./Dialog";
 export * from "./BreadcrumbNav";
 export * from "./Banner";
 export * from "./Page";
+export * from "./ThemeProvider";

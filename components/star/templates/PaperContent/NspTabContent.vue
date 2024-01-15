@@ -46,7 +46,7 @@
 <script setup lang="ts">
 import { computed } from "vue";
 
-import { PaperCard, StarButton } from "@/components/star/atom";
+import { PaperCard, StarButton, StarBreadcrumbNav } from "#star/atom";
 import { groupByTab } from "@/services/composites/load-paper/usePaperGroupByTab";
 import { triage } from "@/services/composites/load-paper/useTriagePaper";
 import type { Paper } from "@/services/models";

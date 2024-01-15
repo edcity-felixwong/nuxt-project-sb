@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { SelectGroup, type SelectGroupProps } from 'radix-vue'
-import { cn } from '@/utils'
+import { SelectGroup, type SelectGroupProps } from "radix-vue";
+import { cn } from "@/utils";
 
-const props = defineProps<SelectGroupProps & { class?: string }>()
+const props = defineProps<SelectGroupProps & { class?: string }>();
 </script>
 
 <template>

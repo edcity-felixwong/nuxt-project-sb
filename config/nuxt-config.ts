@@ -42,7 +42,10 @@ export const config: NuxtConfig = {
     "@pinia-plugin-persistedstate/nuxt",
     "shadcn-nuxt",
   ],
-  components: [{ path: "./components/star/atom", prefix: "Star" }],
+  // components: [{ path: "./components/star/atom", prefix: "Star" }],
+  components: {
+    dirs: [],
+  },
   // Plugins
   primevue,
   tailwindcss: {
@@ -52,7 +55,7 @@ export const config: NuxtConfig = {
     storage: "localStorage",
   },
   shadcn: {
-    componentDir: "./components/atom/ui",
+    componentDir: "./components/",
   },
   vite: {
     plugins: [vanillaExtractPlugin(), visualizer({ gzipSize: true, emitFile: true })],

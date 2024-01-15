@@ -9,5 +9,5 @@
 import "@/styles";
 // import "@/theme/theme.css.ts";
 
-import { StarThemeProvider } from "#components";
+import { StarThemeProvider } from "#star";
 </script>
