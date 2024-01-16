@@ -12,8 +12,10 @@ export default {
     end: "結束",
     invalid: "未設定",
     publishedAt: "發佈於 %{time}",
+    updatedAt: "更新於 %{time}",
   },
   action: "操作",
   refresh: "重新載入",
   search: "搜尋",
+  createPaper: "建立評估",
 };

@@ -4,16 +4,11 @@
       class="pl-2 py-1 text-xs uppercase tracking-widest flex items-center [&_*]:text-inherit text-text-450"
     >
       <div>{{ $t("ui.time.start") }}</div>
-      <Icon icon="material-symbols:arrow-right-alt-rounded" />
+      <Icon icon="material-symbols-light:chevron-right-rounded" class="w-4 h-4" />
       <div>{{ $t("ui.time.end") }}</div>
     </div>
     <div class="rounded-small bg-default-50 relative flex overflow-hidden text-sm">
-      <div
-        class="bg-secondary-200 absolute top-0 left-0 z-10 h-full rounded-md"
-        :style="{ width: barWidth }"
-        aria-label=""
-      ></div>
-      <div class="text-black/60 z-20 flex-1 p-2">
+      <div class="text-text-450 z-20 flex-1 p-2">
         <p>
           {{
             dayjs(props.startTime).isValid()
@@ -22,13 +17,18 @@
           }}
         </p>
       </div>
-      <div class="text-black/60 z-20 p-2">
+      <div class="text-text-450 z-20 p-2">
         <p>
           {{
             dayjs(props.endTime).isValid() ? starDateFormat(props.endTime) : $t("ui.time.invalid")
           }}
         </p>
       </div>
+      <div
+        class="bg-primary-700 absolute bottom-0 left-0 z-10 h-0.5 rounded-md"
+        :style="{ width: barWidth }"
+        aria-label=""
+      ></div>
     </div>
   </div>
 </template>

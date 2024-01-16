@@ -6,7 +6,7 @@
     </div>
     <Tabs
       v-model="model"
-      :model="tabs"
+      :model="tabModels"
       variant="card"
       ariaLabel="Select paper category"
       :pt="{
@@ -22,66 +22,27 @@
 </template>
 <script setup lang="ts">
 import type { Tab } from "@/services";
-import { ref, defineModel, type Ref } from "vue";
+import { computed, defineModel } from "vue";
 import { useI18n } from "vue-i18n";
-import { computedWithControl } from "@vueuse/core";
 
-import Tabs from "./Tabs.vue";
-import type { StarTabsProps } from "./Tabs.vue";
 import PaperTabItem from "./PaperTabItem.vue";
+import type { StarTabsProps } from "./Tabs.vue";
+import Tabs from "./Tabs.vue";
+import { mapTabLabel } from "./map-tab-model";
 
 import type { StarOptionItemProps } from "../Option";
 
-const { t, locale } = useI18n();
+const { t } = useI18n();
 
-const tabMap: Record<Tab, StarTabsProps["model"]> = {};
 type StarPaperTab = StarTabsProps["model"][number] & {
   trigger: Tab;
   default?: boolean;
 };
 export type PaperTabModel = StarPaperTab & StarOptionItemProps["model"];
-const tabs: Ref<PaperTabModel[]> = computedWithControl(locale, () => [
-  {
-    trigger: "",
-    icon: "material-symbols:crossword",
-    title: t("paper.tab.empty"),
-    // default: true,
-  },
-  // {
-  //   trigger: "Preset Papers",
-  //   default: true,
-  //   icon: "material-symbols:crossword",
-  //   title: "Preset Papers",
-  //
-  // },
-  {
-    trigger: "shared",
-    icon: "material-symbols:crossword",
-    title: t("paper.tab.shared"),
-  },
-  // {
-  //   trigger: "Student Corner",
-  //   icon: "material-symbols:crossword",
-  //   title: "Student Corner",
-  //
-  // },
-  {
-    trigger: "bca2022",
-    icon: "material-symbols:crossword",
-    title: t("paper.tab.bca2022"),
-  },
-  {
-    trigger: "bca2021",
-    icon: "material-symbols:crossword",
-    title: t("paper.tab.bca2021"),
-  },
-  {
-    trigger: "nsp2020",
-    icon: "material-symbols:crossword",
-    title: t("paper.tab.nsp2020"),
-  },
-]);
-export type PaperTabsProps = {};
+export type PaperTabsProps = {
+  tabs: Tab[];
+};
 const props = withDefaults(defineProps<PaperTabsProps>(), {});
+const tabModels = computed(() => props.tabs?.map((_) => mapTabLabel(_, t)));
 const model = defineModel<string>();
 </script>

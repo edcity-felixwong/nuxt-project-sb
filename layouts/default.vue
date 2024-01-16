@@ -25,7 +25,7 @@ import DynamicDialog from "primevue/dynamicdialog";
 
 import { StarAlert, StarIdentityBar, StarHeader, StarButton, ErrorDialog } from "@/components/star";
 import { createBEM, useMedia, useNotice } from "@/composables";
-import { useUser, useSchool, useRole } from "@/services/api";
+import { useUser, useSchool, useRoleQuery } from "@/services/api";
 
 const { isLaptopOrLarger } = useMedia();
 
@@ -54,6 +54,6 @@ watch(isError, () => {
 });
 /** meta */
 const { data: school } = useSchool();
-const { data: role } = useRole();
+const { data: role } = useRoleQuery();
 const notice = useNotice();
 </script>

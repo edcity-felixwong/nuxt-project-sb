@@ -1,7 +1,7 @@
 <template>
   <TabsRoot
     v-model="modelValue"
-    :defaultValue="$props.model.find((_) => _.default)?.trigger"
+    :defaultValue="$props.model?.find((_) => _.default)?.trigger"
     :class="pt.root"
     data-sui-section="root"
   >

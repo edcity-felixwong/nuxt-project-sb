@@ -13,6 +13,7 @@ export default {
     submitted: "Submitted",
     all: "All statuses",
     fieldName: "Status",
+    unlimited: "Unlimited",
   },
   year: {
     fieldName: "Year",

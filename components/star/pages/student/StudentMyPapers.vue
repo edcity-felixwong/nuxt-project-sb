@@ -5,12 +5,12 @@
       <div class="max-w-[1680px] px-5 m-auto">
         <StarBreadcrumbNav
           :model="[
-            { label: 'My Papers' },
+            { label: $t('header.my_papers') },
             { label: $t(tab ? `paper.tab.${tab}` : 'paper.tab.empty') },
           ]"
         />
         <div v-if="papers.isIdle.value || papers.isLoading.value">not ready</div>
-        <StarPaperTabs v-model="tab" v-else />
+        <StarPaperTabs v-else v-model="tab" :tabs="tabs" />
         <div v-if="papers.status.value !== 'success'">
           loading?{{ papers.isLoading }}{{ papers.status }}
         </div>
@@ -37,17 +37,17 @@ import {
   SharedPapersTabsContent,
   StarPaperTabs,
 } from "@/components/star";
-import { useRole, type Tab } from "@/services";
+import { useRoleQuery, type Tab } from "@/services";
 import { useLoadPaperQuery, usePaperTabs } from "@/services/composites";
-import { ref, type Component } from "vue";
+import { ref, type Component, inject } from "vue";
 
-const { data: role } = useRole();
+const { data: role } = useRoleQuery();
 
 const papers = useLoadPaperQuery();
 const tabs = usePaperTabs(papers.data);
-watch(tabs, (tab) => {
-  console.log(`🚀 // DEBUG 🍔 ~ watch ~ tab:`, tab);
-});
+// watch(tabs, (tab) => {
+//   console.log(`🚀 // DEBUG 🍔 ~ watch ~ tab:`, tab);
+// });
 
 // const { data: token } = useJwt();
 

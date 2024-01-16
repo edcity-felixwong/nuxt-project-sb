@@ -1,12 +1,13 @@
 import * as O from "fp-ts/Option";
-import type { Error, Meta } from "../models";
 import { pipe } from "fp-ts/function";
-import { $http } from "../axios";
-import { useQuery, useQueryClient } from "vue-query";
-import type { UseQueryOptions, UseQueryReturnType } from "vue-query";
-import { useJwt } from "./jwt";
 import { computed } from "vue";
-import { computedWithControl, toRefs } from "@vueuse/core";
+import type { UseQueryOptions, UseQueryReturnType } from "vue-query";
+import { useQuery } from "vue-query";
+
+import { $http } from "../axios";
+import type { Error, Meta } from "../models";
+import { useJwt } from "./jwt";
+
 type FetchParams = {
   meta: any;
   pageParam: any;
@@ -29,26 +30,16 @@ export function useLoadMetaQuery<TOption extends UseQueryOptions<Meta, Error, Me
     ...options,
   });
 }
-export function useIsTeacher(): UseQueryReturnType<boolean, Error> {
-  return useLoadMetaQuery({ select: (_) => _.aseRole.includes("Teacher") });
-}
-export function useIsStudent(): UseQueryReturnType<boolean, Error> {
-  return useLoadMetaQuery({ select: (_) => _.aseRole.includes("Student") });
-}
 export function useSchool(): UseQueryReturnType<Meta["school"], Error> {
   return useLoadMetaQuery({ select: (_) => _.school });
 }
-type Role = Ref<
-  | {
-      isTeacher: boolean;
-      isStudent: boolean;
-      isOther: boolean;
-      role: "teacher" | "student" | "other";
-    }
-  | undefined
->;
-/** Tell if the user is a teacher, a student, or other */
-export function useRole(): UseQueryReturnType<Role, Error> {
+/**
+ * `load_meta`'s `role` selector, this attempt to fetch `load_meta`.
+ * suitable for initialization or place that need latest update on role,
+ * like sign out.
+ *
+ */
+export function useRoleQuery(): UseQueryReturnType<Role, Error> {
   return useLoadMetaQuery({
     select: (meta) => {
       return pipe(
@@ -70,10 +61,9 @@ export function useRole(): UseQueryReturnType<Role, Error> {
     },
   });
 }
+
 export function useNoticeQuery(): UseQueryReturnType<Meta["notice"], Error> {
   return useLoadMetaQuery({
-    select: (meta) => {
-      return meta.notice;
-    },
+    select: (_) => _.notice,
   });
 }

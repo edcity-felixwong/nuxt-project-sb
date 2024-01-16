@@ -11,6 +11,7 @@ export default {
     end: "end",
     invalid: "Unset",
     publishedAt: "Published at %{time}",
+    updatedAt: "Updated at %{time}",
   },
   /** Should follow the routes */
   page: {
@@ -21,4 +22,5 @@ export default {
   action: "Actions",
   refresh: "Refresh",
   search: "Search",
+  createPaper: "New",
 };

@@ -12,6 +12,7 @@ export default {
     submitted: "已遞交",
     all: "所有狀況",
     fieldName: "狀況",
+    unlimited: "不限次數",
   },
   year: {
     fieldName: "學年",

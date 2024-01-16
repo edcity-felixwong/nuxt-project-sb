@@ -82,25 +82,22 @@ const props = withDefaults(defineProps<MyPapersTabContentProps>(), {
 });
 const { t, locale } = useI18n();
 const owners = usePaperOwners(ref(props.papers));
-const statuses = computedWithControl(
-  () => [locale.value, props.role],
-  () => {
-    return props.role === "teacher"
-      ? [
-          { label: t("paper.status.all"), value: "all" },
-          { label: t("paper.status.pending"), value: "pending" },
-          { label: t("paper.status.ready"), value: "ready" },
-          { label: t("paper.status.notAttempted"), value: "not_attempted" },
-          { label: t("paper.status.attempted"), value: "attempted" },
-          { label: t("paper.status.finished"), value: "finished" },
-        ]
-      : [
-          { label: t("paper.status.all"), value: "all" },
-          { label: t("paper.status.submitted"), value: "submitted" },
-          { label: t("paper.status.not_submitted"), value: "not_submitted" },
-        ];
-  }
-);
+const statuses = computed(() => {
+  return props.role === "teacher"
+    ? [
+        { label: t("paper.status.all"), value: "all" },
+        { label: t("paper.status.pending"), value: "pending" },
+        { label: t("paper.status.ready"), value: "ready" },
+        { label: t("paper.status.notAttempted"), value: "not_attempted" },
+        { label: t("paper.status.attempted"), value: "attempted" },
+        { label: t("paper.status.finished"), value: "finished" },
+      ]
+    : [
+        { label: t("paper.status.all"), value: "all" },
+        { label: t("paper.status.submitted"), value: "submitted" },
+        { label: t("paper.status.not_submitted"), value: "not_submitted" },
+      ];
+});
 
 const year = ref<AcademicYear | "all">("2023/24");
 const submission = ref<Paper["status"]["submission"] | "all">("all");

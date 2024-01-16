@@ -19,7 +19,7 @@
 
       <PInputText
         v-model="model"
-        placeholder="Search"
+        :placeholder="`${$t('ui.search')}...`"
         class="text-inherit focus:ring focus:ring-offset-2 focus:ring-ring focus:ring-2 focus:border-primary-400 border-default hover:border-primary-300 w-full h-full"
         data-sui-section="input"
       />

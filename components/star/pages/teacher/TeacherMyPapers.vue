@@ -5,13 +5,13 @@
       <div class="max-w-[1680px] px-5 m-auto">
         <StarBreadcrumbNav
           :model="[
-            { label: 'My Papers' },
+            { label: $t('header.my_papers') },
             { label: $t(`paper.subject.${subject}`) },
             { label: $t(tab ? `paper.tab.${tab}` : 'paper.tab.empty') },
           ]"
         />
         <div v-if="papers.isIdle.value || papers.isLoading.value">not ready</div>
-        <StarPaperTabs v-model="tab" v-else />
+        <StarPaperTabs v-else v-model="tab" :tabs="tabs" />
         <div v-if="papers.status.value !== 'success'">
           loading?{{ papers.isLoading }}{{ papers.status }}
         </div>
@@ -39,7 +39,7 @@ import {
   StarPaperTabs,
 } from "@/components/star";
 import { createBEM, useSearchParams } from "@/composables";
-import { useJwt, useRole, type Tab } from "@/services";
+import { useJwt, useRoleQuery, type Tab } from "@/services";
 import { getPackageId } from "@/services/api/utils";
 import { useLoadPaperQuery, usePaperTabs } from "@/services/composites";
 import { usePaperOwners } from "@/services/composites/load-paper/useOwner";
@@ -48,7 +48,7 @@ import { z } from "zod";
 
 import { toRefs } from "@vueuse/core";
 
-const { data: role } = useRole();
+const { data: role } = useRoleQuery();
 
 const query = useSearchParams(
   {
@@ -73,7 +73,7 @@ const query = useSearchParams(
   }
 );
 const { subject } = toRefs(query);
-const bem = createBEM("my-papers");
+// const bem = createBEM("my-papers");
 
 const papers = useLoadPaperQuery(
   computed(() => ({

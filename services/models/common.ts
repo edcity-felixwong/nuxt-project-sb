@@ -71,3 +71,6 @@ export interface WithTimeStamp {
   timestamp: Date;
 }
 export interface SuccessResponseWithTimeStamp<R> extends SuccessResponse<R>, WithTimeStamp {}
+
+export const packageCodeZ = z.enum(["chi", "eng", "math_zh", "math_en"]);
+export type packageCode = z.infer<typeof packageCodeZ>;

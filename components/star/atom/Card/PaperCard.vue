@@ -26,18 +26,53 @@
         {{ props.paper.title }}
       </h2>
       <CardTimeProgress :startTime="props.paper.startTime" :endTime="props.paper.endTime" />
-      <div class="flex items-center gap-1 mt-2">
+      <div class="flex items-center gap-1 mt-2 overflow-hidden">
         <template v-if="$props.role === 'teacher'">
-          <MarkingTag
+          <StarChip
             status="submission"
+            v-tooltip="`${(props.paper as StudentPaper).mySubmmitedTrialNo?`Submitted ${(props.paper as StudentPaper).mySubmmitedTrialNo} times`:'Not submitted'}. ${props.paper.maxTrialNo?`${props.paper.maxTrialNo-(props.paper as StudentPaper).mySubmmitedTrialNo} remaining.`:''}`"
             :label="`${props.paper.trialsSubmitted}/${props.paper.trialsAssigned}`"
+            icon="material-symbols:task-outline-rounded"
+            size="xs"
+            variant="flat"
+            :pt="{
+              label: 'text-text-450 font-normal',
+              icon: 'text-text-450',
+            }"
+          />
+          <StarChip
+            status="submission"
+            :label="$t('ui.time.updatedAt',{time:starDateFormat((props.paper as StudentPaper).ownerModifyAt)})"
+            size="xs"
+            variant="flat"
+            :pt="{
+              label: 'text-text-450 font-normal',
+              icon: 'text-text-450',
+            }"
           />
         </template>
         <template v-else>
-          <MarkingTag
-            v-tooltip="`${(props.paper as StudentPaper).mySubmmitedTrialNo?`Submitted ${(props.paper as StudentPaper).mySubmmitedTrialNo} times`:'Not submitted'}. ${props.paper.maxTrialNo?`${props.paper.maxTrialNo-(props.paper as StudentPaper).mySubmmitedTrialNo} remaining.`:''}`"
+          <StarChip
             status="submission"
-            :label="`${(props.paper as StudentPaper).mySubmmitedTrialNo}/${props.paper.maxTrialNo?props.paper.maxTrialNo:'∞'}`"
+            v-tooltip="`${(props.paper as StudentPaper).mySubmmitedTrialNo?`Submitted ${(props.paper as StudentPaper).mySubmmitedTrialNo} times`:'Not submitted'}. ${props.paper.maxTrialNo?`${props.paper.maxTrialNo-(props.paper as StudentPaper).mySubmmitedTrialNo} remaining.`:''}`"
+            :label="`${(props.paper as StudentPaper).mySubmmitedTrialNo}/${props.paper.maxTrialNo?props.paper.maxTrialNo:$t('paper.status.unlimited')}`"
+            icon="material-symbols:task-outline-rounded"
+            size="xs"
+            variant="flat"
+            :pt="{
+              label: 'text-text-450 font-normal',
+              icon: 'text-text-450',
+            }"
+          />
+          <StarChip
+            status="submission"
+            :label="$t('ui.time.updatedAt',{time:starDateFormat((props.paper as StudentPaper).ownerModifyAt)})"
+            size="xs"
+            variant="flat"
+            :pt="{
+              label: 'text-text-450 font-normal',
+              icon: 'text-text-450',
+            }"
           />
         </template>
       </div>
@@ -52,9 +87,10 @@
   </div>
 </template>
 <script setup lang="ts">
-import { StatusTag, MarkingTag, SubjectTag } from "#star/atom/Chip";
+import { StatusTag, MarkingTag, SubjectTag, StarChip } from "#star/atom/Chip";
 import type { Paper, TeacherPaper, StudentPaper } from "@/services/models";
 import { useI18n } from "vue-i18n";
+import { starDateFormat } from "@/composables";
 // import { starDateFormat } from "@/composables";
 
 import CardButtonBar from "./CardButtonBar.vue";
@@ -62,6 +98,7 @@ import { useParseState } from "./useParseState";
 import CardTimeProgress from "./CardTimeProgress.vue";
 import PublishDate from "./PublishDate.vue";
 import CardMoreAction from "./CardMoreAction.vue";
+import CardActivityBar from "./CardActivityBar.vue";
 
 const { locale } = useI18n();
 

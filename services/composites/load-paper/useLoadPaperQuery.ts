@@ -1,7 +1,7 @@
 import { computed } from "vue";
 import type { UseQueryReturnType, UseQueryOptions } from "vue-query";
 import { useQueries, useQuery } from "vue-query";
-import { useJwt, useRole } from "@/services/api";
+import { useJwt, useRoleQuery } from "@/services/api";
 // import { useRole } from "../api/load-meta";
 import { loadStudentPaperQuery } from "@/services/api/load-student-paper";
 import { loadTeacherPaperQuery, LoadTeacherPaperParams } from "@/services/api/load-teacher-paper";
@@ -14,7 +14,7 @@ export function useLoadPaperQuery<
   para?: LoadTeacherPaperParams = {},
   options?: TOption = undefined
 ): UseQueryReturnType<Paper[], Error> {
-  const { data: role } = useRole();
+  const { data: role } = useRoleQuery();
   const { data: token } = useJwt();
   console.log(`🚀 // DEBUG 🍔 ~ para:`, para);
   return useQuery(

@@ -2,7 +2,7 @@
   <div class="my-medium flex justify-between h-12 space-x-2">
     <div class="flex flex-1 space-x-2">
       <StarButton
-        label="New"
+        :label="$t('ui.createPaper')"
         icon="material-symbols:add-rounded"
         variant="ghost"
         ariaLabel="Create a new paper"
