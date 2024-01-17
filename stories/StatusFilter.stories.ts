@@ -9,7 +9,7 @@ const meta: Meta<typeof StatusFilter> = {
 
 export default meta;
 type Story = StoryObj<typeof StatusFilter>;
-export const Generic: Story = {
+export const Default: Story = {
   args: {
     statuses: [
       { label: "attempted", value: "attempted" }, //

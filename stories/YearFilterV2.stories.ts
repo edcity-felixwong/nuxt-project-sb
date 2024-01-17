@@ -9,4 +9,4 @@ const meta: Meta<typeof YearFilterV2> = {
 
 export default meta;
 type Story = StoryObj<typeof YearFilterV2>;
-export const Generic: Story = {};
+export const Default: Story = {};
