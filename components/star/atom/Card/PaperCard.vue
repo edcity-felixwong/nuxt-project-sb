@@ -100,6 +100,9 @@ import PublishDate from "./PublishDate.vue";
 import CardMoreAction from "./CardMoreAction.vue";
 import CardActivityBar from "./CardActivityBar.vue";
 
+// TODO
+import { useAttemptLink } from "@/services/composites/edit-paper";
+
 const { locale } = useI18n();
 
 export type PaperCardProps = {
@@ -109,4 +112,10 @@ export type PaperCardProps = {
 const props = withDefaults(defineProps<PaperCardProps>(), {});
 
 const buttonState = useParseState(props.paper, props.role);
+watchEffect(() => {
+  console.log(
+    `🚀 // DEBUG 🍔 ~ watchEffect ~ useAttemptLink({paper:props.paper}):`,
+    useAttemptLink({ paper: props.paper })
+  );
+});
 </script>

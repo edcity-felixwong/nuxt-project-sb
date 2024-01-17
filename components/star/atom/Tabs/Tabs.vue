@@ -1,7 +1,7 @@
 <template>
   <TabsRoot
     v-model="modelValue"
-    :defaultValue="$props.model?.find((_) => _.default)?.trigger"
+    :defaultValue="$props.model?.find((_) => _.default)?.trigger ?? props.model?.[0]?.trigger"
     :class="pt.root"
     data-sui-section="root"
   >
@@ -55,7 +55,7 @@ const pt = usePassThrough(tabs, props);
 
 const modelValue = defineModel<string>({
   local: true,
-  // default: props?.model?.find((_) => _.default)?.trigger,
+  default: props.model?.find((_) => _.default)?.trigger ?? props.model?.[0]?.trigger,
 });
 
 /**
@@ -78,6 +78,6 @@ const modelValue = defineModel<string>({
  */
 const emit = defineEmits(["update:model-value"]);
 onMounted(async () => {
-  emit("update:model-value", modelValue.value);
+  emit("update:model-value", modelValue?.value);
 });
 </script>

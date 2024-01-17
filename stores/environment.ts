@@ -1,15 +1,14 @@
 import { defineStore } from "pinia";
 
+const STAR_DEV_URL = "e.star.dev.hkedcity.net";
 const devHostname: string[] = [
   "localhost", //
-  "e.star.dev.hkedcity.net",
+  STAR_DEV_URL,
 ];
 const uatHostname: string[] = [
   "estar-uat.edcity.hk", //
 ];
-const stagingHostname: string[] = [
-  // "e.star.dev.hkedcity.net",//
-];
+const stagingHostname: string[] = [];
 const prdHostname: string[] = [
   "estar.edcity.hk", //
 ];
@@ -34,6 +33,23 @@ const getEnv = () => {
   if (prdHostname.includes(window.location.hostname)) return ENV.PRD;
   return null;
 };
+const getCurrentEnvHostname = ({
+  isDev,
+  isUat,
+  isStaging,
+  isPrd,
+}: {
+  isDev: boolean;
+  isUat: boolean;
+  isStaging: boolean;
+  isPrd: boolean;
+}) => {
+  if (isDev) return STAR_DEV_URL;
+  if (isUat) return window.location.hostname;
+  if (isStaging) return window.location.hostname;
+  if (isPrd) return window.location.hostname;
+  throw new Error("Can't find suitable hostname.");
+};
 
 export const useEnvironmentStore = defineStore("environment", () => {
   const isHostnameValid = computed(_isHostnameValid);
@@ -43,12 +59,13 @@ export const useEnvironmentStore = defineStore("environment", () => {
   const isStaging = computed(() => env.value === ENV.STAGING);
   const isPrd = computed(() => env.value === ENV.PRD);
 
-  function getCurrentEnvHostname() {
-    if (isDev.value) return "e.star.dev.hkedcity.net";
-    if (isUat.value) return window.location.hostname;
-    if (isStaging.value) return window.location.hostname;
-    if (isPrd.value) return window.location.hostname;
-    throw new Error("Can't find suitable hostname.");
+  function useEnvHostname() {
+    return getCurrentEnvHostname({
+      isDev: isDev.value,
+      isUat: isUat.value,
+      isStaging: isStaging.value,
+      isPrd: isPrd.value,
+    });
   }
-  return { isHostnameValid, env, isDev, isUat, isStaging, isPrd, getCurrentEnvHostname };
+  return { isHostnameValid, env, isDev, isUat, isStaging, isPrd, useEnvHostname };
 });

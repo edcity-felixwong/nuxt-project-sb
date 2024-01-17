@@ -74,3 +74,17 @@ export interface SuccessResponseWithTimeStamp<R> extends SuccessResponse<R>, Wit
 
 export const packageCodeZ = z.enum(["chi", "eng", "math_zh", "math_en"]);
 export type packageCode = z.infer<typeof packageCodeZ>;
+
+export type Actions =
+  | "view"
+  | "edit"
+  | "preview"
+  | "share"
+  | "report"
+  | "accept"
+  | "reject"
+  | "attempt"
+  | "retry"
+  | "review"
+  | "delete"
+  | "assign";

@@ -5,7 +5,6 @@ import StarTabs from "@/components/star/atom/Tabs/PaperTabs.vue";
 const meta: Meta<typeof StarTabs> = {
   title: "components/Tabs/PaperTabs",
   component: StarTabs,
-  args: {},
   tags: ["autodocs"],
 };
 
@@ -14,11 +13,20 @@ export default meta;
 type Story = StoryObj<typeof StarTabs>;
 
 export const Default: Story = {
-  args: {},
+  args: { tabs: ["", "bca2021"] },
 };
-export const HasNothing: Story = {
-  args: {},
+export const JustOne: Story = {
+  args: { tabs: ["bca2021"] },
 };
-export const HasALot: Story = {
-  args: {},
+export const Nothing: Story = {
+  args: { tabs: [] },
 };
+export const All: Story = {
+  args: { tabs: ["", "bca2021", "bca2022", "nsp2020", "shared"] },
+};
+// export const HasNothing: Story = {
+//   args: {},
+// };
+// export const HasALot: Story = {
+//   args: {},
+// };

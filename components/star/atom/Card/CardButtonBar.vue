@@ -7,9 +7,9 @@
 </template>
 <script setup lang="ts">
 import type { Status } from "@/services/models";
+
 import type { CardButtonProps } from "./CardButton.vue";
 import CardButton from "./CardButton.vue";
-
 import { State, stateButtonPropsMap } from "./utils";
 
 export type CardButtonBarProps = {

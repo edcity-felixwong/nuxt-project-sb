@@ -5,8 +5,8 @@
     role="heading"
     aria-label="Account menu"
   >
-    <div class="flex items-center gap-4 leading-4" :class="`${bem('function-menu')}`">
-      <div v-if="!isLoading" :class="`${bem('account')} flex space-x-1 items-center`">
+    <div class="flex items-center leading-4 w-full justify-end" :class="`${bem('function-menu')}`">
+      <div v-if="!isLoading" class="flex space-x-1 items-center mr-2 min-w-0">
         <div class="flex-none" :class="`${bem('avatar')}`">
           <img
             :src="`https://www.dev.hkedcity.net/citizen/profile/profile_picture.php?size=50&user_id=${props.user?.userId}`"
@@ -16,17 +16,27 @@
             :class="`${bem('avatar', 'img')}`"
           />
         </div>
-        <div>
-          <PButton
+        <div class="min-w-0">
+          <StarButton
+            :ariaLabel="`Logged in as ${
+              locale === 'en' ? props.user.efullname : props.user.cfullname
+            }, click for more actions`"
+            size="sm"
+            variant="light"
             v-ripple="{
               unstyled: true,
             }"
-            class="hover:text-primary-700 focus-visible:outline-4"
+            class="hover:text-primary-700 focus:ring-2 focus:ring-offset-2 focus:ring-ring"
+            :pt="{
+              root: '!px-0 w-full block truncate',
+              label: '!font-normal !text-text-450',
+            }"
             :class="`${bem('account', 'username')}`"
             @click="toggle"
             unstyled
-            :label="locale === 'en' ? props.user.efullname : props.user.cfullname"
-          />
+          >
+            {{ locale === "en" ? props.user.efullname : props.user.cfullname }}
+          </StarButton>
           <UserMenu
             v-if="!isLoading && props.user"
             ref="menu"
@@ -37,26 +47,45 @@
           />
         </div>
       </div>
-      <Divider />
-      <PButton
-        unstyled
-        class="hover:text-primary-700"
-        :class="`${bem('language')}`"
-        @click="() => (locale === 'zh' ? (locale = 'en') : (locale = 'zh'))"
-        :aria-label="`Current language: ${locale}`"
-        :title="$t('ui.language')"
-        >{{ locale === "zh" ? "中" : "English" }}</PButton
+      <div class="flex items-center">
+        <StarButton
+          size="sm"
+          variant="light"
+          class="!hover:text-primary-700 !text-text-450"
+          @click="() => (locale = 'zh')"
+          :aria-label="`Current language: ${locale}, click for chinese version.`"
+          :title="'繁體中文'"
+          :disabled="locale === 'zh'"
+          isIconOnly
+          >繁</StarButton
+        >
+        <Divider class="p-0 pt-4" />
+        <StarButton
+          size="sm"
+          variant="light"
+          class="!hover:text-primary-700 !text-text-450"
+          @click="() => (locale = 'en')"
+          :aria-label="`Current language: ${locale}, click for english version.`"
+          :title="'English'"
+          :disabled="locale === 'en'"
+          >English</StarButton
+        >
+      </div>
+
+      <StarButton
+        isIconOnly
+        size="sm"
+        variant="light"
+        :class="`${bem('home')}`"
+        :title="$t('ui.identityBar.homePage')"
+        @click="goHome"
       >
-      <Divider />
-      <PButton unstyled :class="`${bem('home')}`">
-        <div class="flex items-center justify-center" :title="$t('ui.identityBar.homePage')">
-          <Icon
-            icon="material-symbols:home-outline-rounded"
-            width="1.25rem"
-            class="text-text-450 hover:text-primary-700"
-          />
-        </div>
-      </PButton>
+        <Icon
+          icon="material-symbols-light:home-outline-rounded"
+          width="1.25rem"
+          class="text-text-450 hover:text-primary-700"
+        />
+      </StarButton>
     </div>
   </div>
 </template>
@@ -70,6 +99,7 @@ import UserMenu from "./UserMenu.vue";
 import type { UserMenuProps } from "./UserMenu.vue";
 import { Icon } from "@iconify/vue";
 import PButton from "primevue/button";
+import { StarButton } from "#star/atom/Button";
 // import { User } from "@/services/models";
 
 const { locale } = useI18n();
@@ -108,4 +138,5 @@ const props = withDefaults(defineProps<IdentityBarProps>(), {
 const menu = ref();
 /** No direct reference to menu.toggle as it is null at start */
 const toggle = (event) => menu.value.menu.toggle(event);
+const goHome = () => window.open("https://www.edcity.hk", "_blank");
 </script>

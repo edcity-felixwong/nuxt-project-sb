@@ -2,7 +2,7 @@ export default {
   language: "language",
   showMore: "Show more",
   identityBar: {
-    homePage: "Edcity home",
+    homePage: "EdCity", // This is from https://www.edcity.hk/home/en/
     settings: "Settings",
     signOut: "Sign out",
   },

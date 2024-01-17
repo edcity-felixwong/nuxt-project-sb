@@ -1,6 +1,7 @@
 import { createI18n, type I18n, type I18nOptions } from "vue-i18n";
 import { messages } from "./messages";
 
+export type Locale = "en" | "zh";
 export const options = {
   locale: "en",
   legacy: false,

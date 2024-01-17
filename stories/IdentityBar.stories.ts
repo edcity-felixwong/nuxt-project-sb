@@ -6,50 +6,41 @@ const meta: Meta<typeof StarIdentityBar> = {
   title: "Components/IdentityBar/StarIdentityBar",
   tags: ["autodocs"],
   component: StarIdentityBar,
+  parameters: {
+    layout: "fullscreen",
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof StarIdentityBar>;
 
-export const English: Story = {
-  // render,
+export const Default: Story = {
   args: {
-    model: [
-      {
-        label: "Settings",
-        icon: "material-symbols:settings-outline-rounded",
-      },
-      { separator: true },
-      {
-        label: "Sign out",
-        icon: "material-symbols:logout",
-      },
-    ],
     user: {
-      fullname: "losum ipsum",
-      schoolName: "hkedity wqwe school no.2",
-      avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=Felix",
+      cfullname: "陳小明",
+      efullname: "Jhon Doe",
+      // avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=Felix",
+    },
+    school: {
+      nameC: "中文學校",
+      nameE: "School",
     },
   },
 };
-export const Chinese: Story = {
-  // render,
+export const NoSchool: Story = {
   args: {
-    model: [
-      {
-        label: "設定",
-        icon: "material-symbols:settings-outline-rounded",
-      },
-      { separator: true },
-      {
-        label: "登出",
-        icon: "material-symbols:logout",
-      },
-    ],
     user: {
-      fullname: "陳小明",
-      schoolName: "天主小學",
-      avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=Felix",
+      cfullname: "陳小明",
+      efullname: "Jhon Doe",
+      // avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=Felix",
+    },
+  },
+};
+export const LongName: Story = {
+  args: {
+    user: {
+      cfullname: "沃夫斯里積士丁可辛貝格多夫沃夫斯里積士丁可辛貝格多夫",
+      efullname: "Savungaz Valincinan Savungaz Valincinan",
     },
   },
 };
@@ -65,9 +56,8 @@ export const WithCommand: Story = {
       },
     ],
     user: {
-      fullname: "陳小明",
-      schoolName: "天主小學",
-      avatar: "https://api.dicebear.com/7.x/thumbs/svg?seed=Felix",
+      cfullname: "沃夫斯里積士丁可辛貝格多夫",
+      efullname: "Savungaz Valincinan",
     },
   },
 };
