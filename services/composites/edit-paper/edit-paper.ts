@@ -1,8 +1,8 @@
-import { z } from "zod";
-import { packageIdZ, packageCodeZ, Paper, Actions } from "../../models";
-import { pipe } from "fp-ts/function";
-import { useEnvironmentStore } from "@/stores";
 import type { Locale } from "@/i18n";
+import { useEnvironmentStore } from "@/stores";
+import { pipe } from "fp-ts/function";
+import { z } from "zod";
+import { Actions, Paper, packageCodeZ, packageIdZ } from "../../models";
 
 /* eslint indent:0 implicit-arrow-linebreak:0 */
 
@@ -76,11 +76,11 @@ const getPayload =
     if (["view", "edit"].includes(action) || ["report"].includes(action)) {
       return payloadZ.parse({
         paper_id: paper.id,
+        // @ts-ignore
         package_id: paper.packageId,
-
         package_code: packageIdToPackageCode(paper.packageId),
         locale,
-        preview: action === "view" ? "1" : "0",
+        preview: action === "view" ? 1 : 0,
       } satisfies Payload);
     }
   };
@@ -98,6 +98,7 @@ const actionDispatcher =
       (_) => `${window.location.protocol}//${useEnvHostname()}${_}`
     );
   };
+export const useActionLink = actionDispatcher;
 export const usePreviewLink: ActionToLinkFn = actionDispatcher("preview");
 export const useAttemptLink: ActionToLinkFn = actionDispatcher("attempt");
 export const useReviewLink: ActionToLinkFn = actionDispatcher("review");

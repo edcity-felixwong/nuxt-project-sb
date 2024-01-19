@@ -25,7 +25,7 @@ import { Icon } from "#star/atom/Icon";
     <SelectContent>
       <SelectGroup>
         <SelectLabel>{{ $t("paper.year.fieldName") }}</SelectLabel>
-        <!-- <SelectItem value="all">{{ $t("paper.year.all") }}</SelectItem> -->
+        <SelectItem value="all">{{ $t("paper.year.all") }}</SelectItem>
         <SelectItem value="2023/24">2023/24</SelectItem>
         <SelectItem value="2022/23">2022/23</SelectItem>
         <SelectItem value="2021/22">2021/22</SelectItem>

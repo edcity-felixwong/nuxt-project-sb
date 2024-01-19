@@ -1,17 +1,20 @@
 <template>
   <StarButton
     v-bind="{ ...props, ...getProps(props.action) }"
-    @click="props.command"
     :label="props.label ?? label"
+    @click="action"
   />
 </template>
 <script setup lang="ts">
-import { StarButton } from "@/components/star/atom/Button";
-import type { StarButtonProps } from "@/components/star/atom/Button";
 import { useI18n } from "vue-i18n";
-import { computedWithReactive } from "@/composables";
+import { computed } from "vue";
 
-const { t, locale } = useI18n();
+import type { StarButtonProps } from "#star/atom/Button";
+import { StarButton } from "#star/atom/Button";
+
+import { useCardButtonAction } from "./usePaper";
+
+const { t } = useI18n();
 
 export type CardButtonProps = StarButtonProps & {
   action:
@@ -24,21 +27,17 @@ export type CardButtonProps = StarButtonProps & {
     | "attempt"
     | "retry"
     | "review";
-  locale?: "zh" | "en";
-  command?: (e: HTMLElementEventMap["click"]) => void;
+  // locale?: "zh" | "en";
+  // command?: (e: HTMLElementEventMap["click"]) => void;
 };
 const props = withDefaults(defineProps<CardButtonProps>(), {});
-const label = computedWithReactive([props, locale], () => {
-  const localeFallback = props.locale ?? locale.value;
-  return t(`paper.action.${props.action}`, null, { locale: localeFallback });
-});
+const label = computed(() => t(`paper.action.${props.action}`));
 function getProps(action: CardButtonProps["action"]): StarButtonProps {
   const propMap: Record<CardButtonProps["action"], StarButtonProps> = {
     accept: {
       icon: "material-symbols:thumb-up-outline-rounded",
     },
     attempt: { icon: "material-symbols:edit-outline-rounded", color: "primary", variant: "flat" },
-
     edit: { icon: "material-symbols:edit-square-outline-rounded" },
     preview: { icon: "material-symbols:visibility-outline-rounded" },
     review: { icon: "material-symbols:visibility-outline-rounded" },
@@ -49,4 +48,6 @@ function getProps(action: CardButtonProps["action"]): StarButtonProps {
   };
   return propMap[action];
 }
+
+const action = useCardButtonAction(props.action);
 </script>

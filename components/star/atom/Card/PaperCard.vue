@@ -87,21 +87,17 @@
   </div>
 </template>
 <script setup lang="ts">
-import { StatusTag, MarkingTag, SubjectTag, StarChip } from "#star/atom/Chip";
-import type { Paper, TeacherPaper, StudentPaper } from "@/services/models";
-import { useI18n } from "vue-i18n";
+import { MarkingTag, StarChip, StatusTag, SubjectTag } from "#star/atom/Chip";
 import { starDateFormat } from "@/composables";
-// import { starDateFormat } from "@/composables";
+import type { Paper, StudentPaper, TeacherPaper } from "@/services/models";
+import { useI18n } from "vue-i18n";
 
 import CardButtonBar from "./CardButtonBar.vue";
-import { useParseState } from "./useParseState";
+import CardMoreAction from "./CardMoreAction.vue";
 import CardTimeProgress from "./CardTimeProgress.vue";
 import PublishDate from "./PublishDate.vue";
-import CardMoreAction from "./CardMoreAction.vue";
-import CardActivityBar from "./CardActivityBar.vue";
-
-// TODO
-import { useAttemptLink } from "@/services/composites/edit-paper";
+import { useParseState } from "./useParseState";
+import { createPaperContext } from "./usePaper";
 
 const { locale } = useI18n();
 
@@ -111,11 +107,6 @@ export type PaperCardProps = {
 };
 const props = withDefaults(defineProps<PaperCardProps>(), {});
 
+createPaperContext(props.paper);
 const buttonState = useParseState(props.paper, props.role);
-watchEffect(() => {
-  console.log(
-    `🚀 // DEBUG 🍔 ~ watchEffect ~ useAttemptLink({paper:props.paper}):`,
-    useAttemptLink({ paper: props.paper })
-  );
-});
 </script>
