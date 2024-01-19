@@ -10,5 +10,5 @@
 <script setup lang="ts">
 import { StarButton } from "../Button";
 
-const login = () => window.open("https://e.star.dev.hkedcity.net", "_self");
+const login = () => window.open("https://e.star.dev.hkedcity.net", "_blank");
 </script>

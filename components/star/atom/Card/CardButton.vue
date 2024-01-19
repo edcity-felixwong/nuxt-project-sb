@@ -1,5 +1,9 @@
 <template>
-  <StarButton v-bind="{ ...props, ...getProps(props.action) }" :label="props.label ?? label" />
+  <StarButton
+    v-bind="{ ...props, ...getProps(props.action) }"
+    @click="props.command"
+    :label="props.label ?? label"
+  />
 </template>
 <script setup lang="ts">
 import { StarButton } from "@/components/star/atom/Button";
@@ -21,6 +25,7 @@ export type CardButtonProps = StarButtonProps & {
     | "retry"
     | "review";
   locale?: "zh" | "en";
+  command?: (e: HTMLElementEventMap["click"]) => void;
 };
 const props = withDefaults(defineProps<CardButtonProps>(), {});
 const label = computedWithReactive([props, locale], () => {

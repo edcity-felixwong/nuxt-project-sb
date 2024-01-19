@@ -12,7 +12,16 @@ export type State =
   | "studentReportUnReadyRetry";
 
 export const stateButtonPropsMap: Record<State, CardButtonProps[]> = {
-  teacherDraft: [{ action: "edit" }, { action: "preview" }, { action: "share" }],
+  teacherDraft: [
+    {
+      action: "edit",
+      command: () => {
+        console.log(`🚀 // DEBUG 🍔 ~ "qweqw:`, "qweqw");
+      },
+    },
+    { action: "preview" },
+    { action: "share" },
+  ],
   teacherPublished: [{ action: "report" }, { action: "preview" }, { action: "share" }],
   teacherEditPreview: [{ action: "edit" }, { action: "preview" }],
   teacherShared: [{ action: "preview" }, { action: "accept" }, { action: "reject" }],

@@ -19,41 +19,26 @@
   </div>
 </template>
 <script setup lang="ts">
-import { markRaw, defineAsyncComponent, defineComponent } from "vue";
-import { useDialog } from "primevue/usedialog";
 import DynamicDialog from "primevue/dynamicdialog";
 
-import { StarAlert, StarIdentityBar, StarHeader, StarButton, ErrorDialog } from "@/components/star";
+import { StarAlert, StarHeader, StarIdentityBar, useNotLoggedInDialog } from "#star";
 import { createBEM, useMedia, useNotice } from "@/composables";
-import { useUser, useSchool, useRoleQuery } from "@/services/api";
+import { useRoleQuery, useSchool, useUser } from "@/services/api";
 
 const { isLaptopOrLarger } = useMedia();
 
 const bem = createBEM("layout");
 
-const dialog = useDialog();
-
 /** jwt */
 const { data: user, isLoading, isError, status } = useUser();
-watch(isError, () => {
-  console.log(`🚀 // DEBUG 🍔 ~ file: default.vue:33 ~ watch ~ isError:`, isError.value);
-  if (!isError.value) return;
-  dialog.open(ErrorDialog, {
-    onClose: () => {
-      console.log(`🚀 // DEBUG 🍔 ~ file: default.vue:43 ~ dialog.open ~ 'close':`, "close");
-    },
-    props: {
-      blockScroll: true,
-      draggable: false,
-      // header: "header",
-      // footer: "footer",
-      modal: true,
-      closable: true,
-    },
-  });
-});
+
+useNotLoggedInDialog(isError);
+
 /** meta */
 const { data: school } = useSchool();
 const { data: role } = useRoleQuery();
 const notice = useNotice();
+
+function useIsAuthenticated(role) {}
+function useNotAuthenticatedDialog() {}
 </script>
