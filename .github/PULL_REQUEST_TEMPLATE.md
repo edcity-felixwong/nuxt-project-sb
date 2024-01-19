@@ -1,5 +1,4 @@
 #### 💻 Change Type
-
 <!-- For change type, change [ ] to [x]. -->
 
 - [ ] ✨ feat
@@ -9,22 +8,20 @@
 - [ ] 📝 docs
 
 #### 🔀 Description of Change
-
 <!-- Thank you for your Pull Request. Please provide a description above. -->
 
 #### 📝 Additional Information
-
 <!-- Add any other context about the Pull Request here. -->
 
 #### 🧪 This PR has been tested in the following browsers:
 <!-- change [ ] to [x]. -->
 - [ ] Edge
-- [ ] IE 11
-- [ ] IE 10
-- [ ] IE 9
 - [ ] Chrome
 - [ ] Firefox
 - [ ] Safari
+- [ ] IE 11
+- [ ] IE 10
+- [ ] IE 9
 - [ ] iOS Safari
 - [ ] iOS Chrome
 - [ ] iOS Firefox
